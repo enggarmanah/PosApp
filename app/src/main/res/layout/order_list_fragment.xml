@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle" >
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        style="@style/SectionTopPanelStyle" >
+
+        <TextView
+            android:id="@+id/sectionTitle"
+            style="@style/SectionTopTextStyle"
+            android:text="@string/order_list"
+            android:gravity="start|center_vertical" />
+        
+    </LinearLayout>
+
+    <GridView
+	    android:id="@+id/orderList"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:columnWidth="90dp"
+	    android:numColumns="auto_fit"
+	    android:verticalSpacing="3dp"
+	    android:horizontalSpacing="3dp"
+	    android:stretchMode="columnWidth"
+	    android:layout_margin="3dp"
+	    android:gravity="center"
+	    android:layout_below="@id/topPanel" />
+    
+</RelativeLayout>

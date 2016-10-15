@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/PopUpDialogHeaderStyle"
+        android:text="@string/order_summary" />
+	
+    <LinearLayout 
+	    android:id="@+id/orderTypePanel"
+	    style="@style/PaymentSummaryRowStyle" >
+		
+	    <TextView
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/order_type" />
+	    
+        <TextView
+            android:id="@+id/orderTypeText"
+            style="@style/PaymentSummaryRowValueStyle"
+            android:gravity="end"/>
+        
+    </LinearLayout>
+    
+	<LinearLayout
+        android:id="@+id/customerPanel"
+        style="@style/PaymentSummaryRowStyle" >
+
+        <TextView
+            android:id="@+id/orderReferenceLabel"
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/order_info" />
+
+        <TextView
+            android:id="@+id/orderReferenceText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+	
+	<LinearLayout
+        android:id="@+id/waitressPanel"
+        style="@style/PaymentSummaryRowStyle" >
+
+        <TextView
+            android:id="@+id/waitressLabel"
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/order_waitress" />
+
+        <TextView
+            android:id="@+id/waitressText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/okBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/ok" />
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="#AAA" />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

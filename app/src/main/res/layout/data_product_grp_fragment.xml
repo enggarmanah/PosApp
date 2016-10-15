@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/PlainFragmentStyle" >
+
+    <LinearLayout style="@style/FormStyle" >
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_name_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_name" />
+
+            <EditText
+                android:id="@+id/nameText"
+                style="@style/FormInputTextAreaStyle" />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</ScrollView>

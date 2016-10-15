@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spinnerRowLayout"
+    style="@style/SpinnerRowStyle">
+
+    <TextView
+        android:id="@+id/label1Text"
+        style="@style/CashierSpinnerRowDropDownLeftTextStyle"/>
+    
+    <TextView
+        android:id="@+id/label2Text"
+        style="@style/CashierSpinnerRowDropDownRightTextStyle"/>
+
+</LinearLayout>

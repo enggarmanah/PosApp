@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/PlainFragmentStyle" >
+
+    <LinearLayout style="@style/FormStyle" >
+		
+        <LinearLayout style="@style/FormRowStyle" >
+			
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_name_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_name" />
+
+            <EditText
+                android:id="@+id/nameText"
+                style="@style/FormInputStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle" >
+			
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_percentage_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_percentage" />
+
+            <EditText
+                android:id="@+id/percentageText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</ScrollView>

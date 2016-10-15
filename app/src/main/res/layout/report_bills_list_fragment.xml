@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle" >
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        style="@style/SectionTopPanelStyle" >
+
+        <TextView
+            android:layout_weight="2"
+            android:id="@+id/titleText"
+            style="@style/SectionTopTextStyle"
+            android:text="@string/report_inventory_product"
+            android:gravity="start|center_vertical" />
+
+        <TextView
+            android:layout_weight="1"
+            style="@style/SectionTopTextStyle"
+            android:gravity="end|center_vertical" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/billInfoList"
+        style="@style/ListViewStyle"
+        android:layout_below="@id/topPanel" >
+    </ListView>
+
+</RelativeLayout>

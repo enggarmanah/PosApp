@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#DDD"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/searchPanel"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/dialog_header_background">
+
+        <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:background="@color/background_blue_dark">
+	        <TextView
+	            android:id="@+id/headerText"
+	            style="@style/PopUpDialogHeaderStyle"
+	            android:gravity="start|center_vertical">
+	        </TextView>
+		    <TextView
+		        android:id="@+id/cancelBtn"
+		        style="@style/PopUpDialogHeaderBtnStyle"
+		        android:layout_marginStart="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginEnd="0dp"
+		        android:layout_marginRight="0dp"
+		        android:drawableStart="@drawable/ic_clear_white"
+		        android:drawableLeft="@drawable/ic_clear_white"/>
+		</LinearLayout>
+
+        <EditText
+            android:id="@+id/transactionSearchText"
+            android:hint="@string/search_transaction"
+            style="@style/PopupSearchTextStyle">
+        </EditText>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/SectionDividerStyle"></LinearLayout>
+
+    <ListView
+        android:id="@+id/transactionListView"
+        style="@style/ListViewStyle"
+        android:layout_height="350dp">
+    </ListView>
+
+</LinearLayout>

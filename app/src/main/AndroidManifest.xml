@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tokoku.pos">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/app_theme">
+
+        <meta-data
+            android:name="com.google.android.gms.analytics.globalConfigResource"
+            android:resource="@xml/global_tracker" />
+
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name="com.tokoku.pos.auth.MerchantLoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tokoku.pos.auth.UserLoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.auth.RegistrationActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.auth.MerchantActivationActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.auth.ResendActivationCodeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.auth.ForgotPasswordActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.auth.ForgotPasswordValidateActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.auth.ForgotPasswordResetActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.password.ChangePasswordActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Dialog"></activity>
+        <activity
+            android:name="com.tokoku.pos.cashier.CashierActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.waitress.WaitressActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.order.OrderActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.cashier.CashierPrinterListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Dialog"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.user.UserMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.merchant.MerchantMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.productGrp.ProductGrpMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.product.ProductMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.employee.EmployeeMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity android:name="com.tokoku.pos.data.customer.CustomerMgtActivity"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.supplier.SupplierMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.inventory.InventoryMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.bills.BillsMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.cashflow.CashflowMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.data.discount.DiscountMgtActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.transaction.TransactionActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.product.ProductStatisticActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.inventory.InventoryActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.cashflow.CashFlowActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.commission.CommissionActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.bills.BillsActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.credit.CreditActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.tax.TaxActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.report.srvcharge.ServiceChargeActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.favorite.customer.CustomerActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.favorite.supplier.SupplierActivity"
+            android:launchMode="singleTask"></activity>
+        <activity
+            android:name="com.tokoku.pos.printer.PrinterConfigActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Dialog"></activity>
+    </application>
+
+</manifest>

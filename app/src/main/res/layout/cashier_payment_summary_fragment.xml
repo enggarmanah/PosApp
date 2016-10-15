@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/PopUpDialogHeaderStyle"
+        android:layout_width="300dp"
+        android:text="@string/transaction_summary" />
+	
+    <LinearLayout
+        android:id="@+id/customerPanel"
+        style="@style/PaymentSummaryRowStyle" >
+
+        <TextView
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/customer" />
+
+        <TextView
+            android:id="@+id/customerText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/PaymentSummaryRowStyle" >
+
+        <TextView
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/total" />
+
+        <TextView
+            android:id="@+id/totalBillText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/PaymentSummaryRowStyle" >
+
+        <TextView
+            android:id="@+id/paymentTypeText"
+            style="@style/PaymentSummaryRowLabelStyle"/>
+
+        <TextView
+            android:id="@+id/paymentText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/PaymentSummaryRowStyle" >
+
+        <TextView
+            android:id="@+id/changeLabelText"
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/change" />
+
+        <TextView
+            android:id="@+id/changeText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+    
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/okBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/ok" />
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="#AAA" />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "442767777525",
+    "firebase_url": "https://pos-tokoku.firebaseio.com",
+    "project_id": "pos-tokoku",
+    "storage_bucket": "pos-tokoku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442767777525:android:7f7801cdb2ab7694",
+        "android_client_info": {
+          "package_name": "com.tokoku.pos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442767777525-h9fb52n8uhagar1hf4nun6ft0uunqd4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaqcHV84-v6FO0VwaTdBKh9KILGkquYrk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

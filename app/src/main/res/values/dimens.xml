@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="text_mini">10sp</dimen>
+	<dimen name="text_small">12sp</dimen>
+	<dimen name="text_normal">13sp</dimen>
+	<dimen name="text_big">14sp</dimen>
+	
+	<dimen name="popup_search">15sp</dimen>
+	<dimen name="actionbar_text">16sp</dimen>
+	<dimen name="dialog_header">16sp</dimen>
+	<dimen name="title_text">16sp</dimen>
+	<dimen name="title_big_text">18sp</dimen>
+	<dimen name="title_mega_text">20sp</dimen>
+	<dimen name="button_text">16sp</dimen>
+	<dimen name="field_text">16sp</dimen>
+	<dimen name="registration_text">16sp</dimen>
+	
+	<dimen name="auth_title">20sp</dimen>
+	<dimen name="auth_sub_title">18sp</dimen>
+	<dimen name="auth_text">16sp</dimen>
+	
+	<dimen name="cashier_spinner">18sp</dimen>
+	<dimen name="cashier_number_text">26sp</dimen>
+	<dimen name="cashier_number_button">24sp</dimen>
+	
+	<dimen name="order_list_text">22sp</dimen>
+	
+</resources>

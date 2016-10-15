@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:background="@color/background_blue_dark"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/productText"
+            style="@style/PopUpDialogHeaderStyle"
+            android:layout_width="fill_parent"
+            android:gravity="start|center_vertical"
+            android:text="@string/printer_settings"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerRequiredPanel"
+        style="@style/FormRowStyle" >
+
+        <TextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_required_fl" />
+
+        <TextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_required" />
+
+        <Spinner
+            android:id="@+id/printerRequiredSp"
+            style="@style/FormInputListStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerMiniSizePanel"
+        style="@style/FormRowStyle">
+
+        <TextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_font_fl" />
+
+        <TextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_font" />
+
+        <Spinner
+            android:id="@+id/printerFontSizeSp"
+            style="@style/FormInputListStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerLineSizePanel"
+        style="@style/FormRowStyle" >
+
+        <TextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_line_size_fl" />
+
+        <TextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_line_size" />
+
+        <EditText
+            android:id="@+id/printerLineSizeText"
+            style="@style/FormInputNumericStyle" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/CashierNumberRowStyle"
+         android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/okBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/ok" />
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="#AAA" />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

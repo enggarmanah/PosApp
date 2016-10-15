@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle" >
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout style="@style/SectionTopPanelStyle" >
+
+            <ImageButton
+                android:id="@+id/backButton"
+                style="@style/SectionBackButtonStyle"
+                android:contentDescription="@string/none" />
+
+            <TextView
+                android:id="@+id/referenceNoText"
+                style="@style/SectionTopTextStyle"
+                android:layout_weight="2"
+                android:gravity="start|center_vertical"
+                android:text="@string/field_bills_reference_no" />
+
+            <TextView
+                android:id="@+id/dateText"
+                style="@style/SectionTopTextStyle"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical" />
+        </LinearLayout>
+		
+        <LinearLayout
+            android:id="@+id/supplierAndDatePanel"
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                android:id="@+id/supplierPanel"
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_supplier" />
+
+                <TextView
+                    android:id="@+id/supplierText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dueDatePanel"
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_duedate" />
+
+                <TextView
+                    android:id="@+id/dueDateText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/paymentDatePanel"
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_paymentdate" />
+
+                <TextView
+                    android:id="@+id/paymentDateText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+        
+        <TextView style="@style/SectionDividerStyle" />
+        
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_total" />
+
+                <TextView
+                    android:id="@+id/totalAmountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_payment" />
+
+                <TextView
+                    android:id="@+id/paymentAmountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_outstanding" />
+
+                <TextView
+                    android:id="@+id/outstandingAmountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+		
+        <TextView style="@style/SectionDividerStyle" />
+        
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/report_bill_remarks" />
+
+                <TextView
+                    android:id="@+id/remarksText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <TextView style="@style/SectionDividerStyle" />
+        
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false"
+            android:paddingBottom="0dp">
+        	
+            <TextView
+	       		android:id="@+id/billPaymentsText"
+		        style="@style/SectionBillsInfoTextStyle"
+		        android:layout_marginStart="11dp"
+		        android:layout_marginLeft="11dp"
+		        android:text="@string/report_bill_payments" />
+            	
+	     	<TextView
+	       		android:id="@+id/productPurchasedText"
+		        style="@style/SectionBillsInfoTextStyle"
+			    android:layout_marginStart="15dp"
+		    	android:layout_marginLeft="15dp"
+		        android:text="@string/report_bill_purchased" />
+		</LinearLayout>
+        
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/billInfoList"
+        style="@style/ListViewStyle"
+        android:layout_below="@id/topPanel" />
+
+</RelativeLayout>

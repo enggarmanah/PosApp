@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@color/dialog_header_background" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_vertical|start"
+            android:text="@string/total"
+            android:textColor="@color/dialog_header_text"
+            android:textSize="@dimen/title_mega_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/totalBillText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:textColor="@color/dialog_header_text"
+            android:textSize="@dimen/title_mega_text"
+            android:textStyle="bold" />
+    </LinearLayout>
+	
+    <TextView
+        android:id="@+id/customerText"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:gravity="center_vertical|start"
+        android:padding="12dp"
+        android:textColor="@color/text_default"
+        android:textSize="@dimen/title_big_text"
+        android:textStyle="bold" 
+        android:background="#FFF"
+        android:text="@string/track_customer"
+        android:drawableRight="@drawable/ic_search_black"
+        android:drawableEnd="@drawable/ic_search_black"/>
+    
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/paymentTypeSp"
+            style="@style/CashierSpinnerRowTextStyle" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:paddingBottom="1dp">
+
+        <TextView
+            android:gravity="center_vertical|start"
+            android:text="@string/payment"
+            style="@style/CashierNumberValueStyle"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/title_mega_text"/>
+
+        <TextView
+            android:id="@+id/paymentText"
+            android:gravity="center_vertical|end"
+            style="@style/CashierNumberValueStyle"/>
+    </LinearLayout>
+    
+    <TextView
+        	android:layout_width="fill_parent"
+        	android:layout_height="0.5dp"
+        	android:background="@color/border_grey"/>
+
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/number7Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_7" />
+
+        <Button
+            android:id="@+id/number8Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_8" />
+
+        <Button
+            android:id="@+id/number9Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_9" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/number4Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_4" />
+
+        <Button
+            android:id="@+id/number5Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_5" />
+
+        <Button
+            android:id="@+id/number6Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_6" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/number1Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_1" />
+
+        <Button
+            android:id="@+id/number2Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_2" />
+
+        <Button
+            android:id="@+id/number3Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_3" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/actionCBtn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_c" />
+
+        <Button
+            android:id="@+id/number0Btn"
+            style="@style/CashierNumberButtonStyle"
+            android:text="@string/number_0" />
+
+        <ImageButton
+            android:id="@+id/actionXBtn"
+            style="@style/CashierNumberButtonStyle"
+            android:src="@drawable/ic_backspace_black"
+            android:contentDescription="@string/none"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/CashierNumberRowStyle" >
+
+        <Button
+            android:id="@+id/okBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/ok" />
+		
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="0.5dp"
+            android:background="#AAA"/>
+        
+        <Button
+            android:id="@+id/cancelBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

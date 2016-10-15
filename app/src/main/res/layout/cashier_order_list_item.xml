@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListViewRowStyle">
+
+    <TextView
+        android:id="@+id/quantityText"
+        style="@style/ListViewRowTransItemCountTextStyle"/>
+    
+    <LinearLayout
+        style="@style/ListViewRowTransItemProductTextStyle"
+        android:orientation="vertical">
+    	
+        <TextView
+	        android:id="@+id/nameText"
+	        style="@style/ListViewRowTransItemProductNameTextStyle" />
+	    
+        <TextView
+	        android:id="@+id/infoText"
+	        style="@style/ListViewRowTransItemProductInfoStyle" />
+    
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/priceText"
+        style="@style/ListViewRowTransItemPriceTextStyle"/>
+    
+    <TextView
+        android:id="@+id/totalPriceText"
+        style="@style/ListViewRowTransItemTotalPriceTextStyle"/>
+
+</LinearLayout>

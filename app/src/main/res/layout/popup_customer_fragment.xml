@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#DDD"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/searchPanel"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/dialog_header_background">
+
+        <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:background="@color/background_blue_dark">
+	        <TextView
+	            style="@style/PopUpDialogHeaderStyle"
+	            android:gravity="start|center_vertical"
+	            android:text="@string/select_customer" >
+	        </TextView>
+		    <TextView
+		        android:id="@+id/cancelBtn"
+		        style="@style/PopUpDialogHeaderBtnStyle"
+		        android:layout_marginStart="10dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginEnd="0dp"
+		        android:layout_marginRight="0dp"
+		        android:drawableStart="@drawable/ic_clear_white"
+		        android:drawableLeft="@drawable/ic_clear_white"/>
+		</LinearLayout>
+		
+        <EditText
+            android:id="@+id/customerSearchText"
+            android:hint="@string/search_customer"
+            style="@style/PopupSearchTextStyle">
+        </EditText>
+    </LinearLayout>
+    
+    <LinearLayout style="@style/SectionDividerStyle"></LinearLayout>
+
+    <ListView
+        android:id="@+id/customerListView"
+        style="@style/ListViewStyle"
+        android:layout_height="357dp">
+    </ListView>
+	
+    <TextView
+        android:id="@+id/newCustomerText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@color/dialog_button_background"
+        android:gravity="center"
+        android:text="@string/new_customer"
+        android:textColor="@color/dialog_button_text"
+        android:textSize="@dimen/button_text"
+        android:textStyle="bold"
+        android:layout_marginBottom="0.5dp">
+    </TextView>
+    <TextView
+        android:id="@+id/noCustomerText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@color/dialog_button_background"
+        android:gravity="center"
+        android:text="@string/no_customer"
+        android:textColor="@color/dialog_button_text"
+        android:textSize="@dimen/button_text"
+        android:textStyle="bold" >
+    </TextView>
+
+</LinearLayout>

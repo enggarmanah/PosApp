@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+    <color name="header_background">#285275</color>
+    <color name="header_text">#FFF</color>
+    
+    <color name="dialog_header_text">#FFF</color>
+    <color name="dialog_header_background">#285275</color>
+    
+    <color name="dialog_button_text">#FFF</color>
+    <color name="dialog_button_background">#285275</color>
+    
+    <color name="section_header_background">#aac8e1</color>
+    <color name="section_header_text">#31343a</color>
+    
+    <color name="search_hint_color">#DDD</color>
+    
+    <color name="border_black">#555</color>
+    <color name="border_dark">#666</color>
+    <color name="border_grey">#AAA</color>
+    <color name="border_grey_dark">#777</color>
+    <color name="border_grey_light">#E1E1E1</color>
+    <color name="border_white">#FFF</color>
+    <color name="border_blue_light">#c3d8ea</color>
+    <color name="border_blue_dark">#356d9b</color>
+    
+    <color name="menu_normal_start">#b4d1e8</color>
+    <color name="menu_normal_end">#cee1f0</color>
+    <color name="menu_sub_start">#cee1f0</color>
+    <color name="menu_sub_end">#dbe9f4</color>
+    <color name="menu_selected_start">#a7c7e8</color>
+    <color name="menu_selected_end">#c2d8ef</color>
+    
+    <color name="menu_normal">#cee1f0</color>
+    <color name="menu_sub">#dbe9f4</color>
+    <color name="menu_selected">#b4d0ec</color>
+    <color name="menu_pressed">#aac8e1</color>
+    <color name="menu_border">#a9c8e2</color>
+    
+    <color name="text_number">#4d4d4d</color>
+    <color name="text_white">#fff</color>
+    <color name="text_light">#9397a4</color>
+    <color name="text_default">#4f5460</color>
+    <color name="text_medium">#6e7585</color>
+    <color name="text_darkmed">#575c68</color>
+    <color name="text_dark">#484c56</color>
+    <color name="text_blue">#5e98c7</color>
+    <color name="text_blue_medium">#68a5ba</color>
+    <color name="text_blue_dark">#285275</color>
+    <color name="text_red">#e2575c</color>
+    <color name="text_orange">#f98c47</color>
+    
+    <color name="input_text">#484c56</color>
+    
+    <color name="background">#FFF</color>
+    <color name="background_grey">#FBFBFB</color>
+    <color name="background_red">#dc2a32</color>
+    <color name="background_red_light">#e3565c</color>
+    <color name="background_orange">#dca621</color>
+    <color name="background_blue">#aac8e1</color>
+    <color name="background_blue_medium">#dbe9f4</color>
+    <color name="background_blue_light">#f5f9fc</color>
+    <color name="background_blue_dark">#285275</color>
+    
+    <color name="payment_disc_tax_charge_text">#4f5460</color>
+    <color name="payment_disc_tax_charge_background">#FFF</color>
+    <color name="payment_total_text">#484c56</color>
+    <color name="payment_total_background">#cfe1ef</color>
+    <color name="payment_btn_text">#FFF</color>
+    <color name="payment_btn_background">#285275</color>
+    
+    <color name="form_text_background">#FFFFFF</color>
+    <color name="left_panel_background">#DDDDDD</color>
+    
+    <color name="list_divider">#EEE</color>
+    <color name="button_divider">#999</color>
+    
+    <color name="flow_out">#fc82a4</color>
+    <color name="flow_out_start">#fc7198</color>
+    <color name="flow_out_end">#fc93b0</color>
+    
+    <color name="flow_in">#7bfbb8</color>
+    <color name="flow_in_start">#5afaa6</color>
+    <color name="flow_in_end">#9cfcca</color>
+    
+    <color name="search_row_start">#DEDEDE</color>
+    <color name="search_row_end">#DEDEDE</color>
+    
+    <color name="list_row_background">#FFF</color>
+    <color name="list_row_normal_text">#4f5460</color>
+    <color name="list_row_normal_grey_text">#777</color>
+    <color name="list_row_normal_light_text">#5e98c7</color>
+    <color name="list_row_normal_background">#FFF</color>
+    <color name="list_row_selected_text">#4f5460</color>
+    <color name="list_row_selected_background">#e2f3fd</color>
+    
+    <color name="button_normal">#285275</color>
+    <color name="button_pressed">#31648e</color>
+    <color name="button_focused">#285275</color>
+    
+    <color name="button_red_normal">#d2232a</color>
+    <color name="button_red_pressed">#e93562</color>
+    <color name="button_red_focused">#d2232a</color>
+    
+    <color name="button_number_normal">#e9f1f7</color>
+    <color name="button_number_pressed">#90b8d9</color>
+    <color name="button_number_focused">#90b8d9</color>
+    
+    <color name="button_menu_normal">#cee1f0</color>
+    <color name="button_menu_pressed">#90b8d9</color>
+    <color name="button_menu_focused">#90b8d9</color>
+    
+    <color name="button_back_normal_start">#e8f1f8</color>
+    <color name="button_back_normal_end">#f5f9fc</color>
+    
+    <color name="button_back_pressed">#d0e1ee</color>
+    
+</resources>

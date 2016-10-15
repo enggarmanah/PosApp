@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle"
+    android:orientation="vertical">
+
+    <LinearLayout 
+        android:id="@+id/topPanel"
+        style="@style/SectionTopPanelStyle" >
+
+	    <ImageButton
+	        android:id="@+id/backButton"
+	        style="@style/SectionBackButtonStyle"
+	        android:contentDescription="@string/none" />
+	
+	    <TextView
+	        android:id="@+id/infoText"
+	        style="@style/SectionTopTextStyle"
+	        android:layout_weight="2"
+	        android:gravity="start|center_vertical"
+	        android:text="@string/transaction" />
+	
+	    <TextView
+	        android:id="@+id/dateText"
+	        style="@style/SectionTopTextStyle"
+	        android:layout_weight="1"
+	        android:gravity="end|center_vertical" />
+	    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/belowPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+		
+        <LinearLayout style="@style/PaymentRowTotalStyle" >
+            <TextView
+                android:text="@string/total"
+                style="@style/PaymentRowTotalContentLeftStyle" />
+
+            <TextView
+                android:id="@+id/totalText"
+                style="@style/PaymentRowTotalContentRightStyle" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/employeeCommisionList"
+        style="@style/ListViewStyle"
+        android:layout_above="@id/belowPanel"
+        android:layout_below="@id/topPanel"/>
+
+</RelativeLayout>

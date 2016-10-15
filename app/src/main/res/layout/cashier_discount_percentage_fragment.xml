@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+   	android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+    
+    <TextView
+        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:textSize="@dimen/dialog_header"
+        android:textStyle="bold"
+        android:textColor="@color/dialog_header_text"
+        android:background="@color/dialog_header_background"
+        android:gravity="center"
+        android:text="@string/select_discount">
+	</TextView>
+    
+    <ListView
+        android:id="@+id/discountListView"
+        style="@style/ListViewStyle" 
+        android:layout_width="fill_parent">
+        
+    </ListView>
+    
+    <TextView
+        android:id="@+id/noDiscountText"
+        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:textSize="@dimen/field_text"
+        android:textStyle="bold"
+        android:textColor="@color/dialog_button_text"
+        android:background="@color/dialog_button_background"
+        android:gravity="center"
+        android:text="@string/no_discount">
+       
+    </TextView>
+    
+</LinearLayout>

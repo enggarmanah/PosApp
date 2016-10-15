@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/PlainFragmentStyle" >
+
+    <LinearLayout style="@style/FormStyle" >
+		
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_name_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_name" />
+
+            <EditText
+                android:id="@+id/nameText"
+                style="@style/FormInputStyle" />
+        </LinearLayout>
+		
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_code_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_code" />
+
+            <EditText
+                android:id="@+id/codeText"
+                style="@style/FormInputStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_type_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_type" />
+
+            <Spinner
+                android:id="@+id/typeSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
+        
+        <LinearLayout android:id="@+id/productGroupLayout" 
+            style="@style/FormRowStyle">
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_group_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_group" />
+
+            <EditText
+                android:id="@+id/productGroupText"
+                style="@style/FormInputSelectStyle" />
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/price1Panel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_price_fl" />
+            
+            <TextView
+                android:id="@+id/priceLabel1Text"
+                style="@style/FormTextStyle"
+                android:text="@string/field_price" />
+
+            <EditText
+                android:id="@+id/price1Text"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/price2Panel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_price_fl" />
+            
+            <TextView
+                android:id="@+id/priceLabel2Text"
+                style="@style/FormTextStyle"
+                android:text="@string/field_price" />
+
+            <EditText
+                android:id="@+id/price2Text"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/price3Panel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_price_fl" />
+            
+            <TextView
+                android:id="@+id/priceLabel3Text"
+                style="@style/FormTextStyle"
+                android:text="@string/field_price" />
+
+            <EditText
+                android:id="@+id/price3Text"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_cost_price_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_cost_price" />
+
+            <EditText
+                android:id="@+id/costPriceText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_pic_required_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_pic_required" />
+
+            <Spinner
+                android:id="@+id/picRequiredSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_commision_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_commision" />
+
+            <EditText
+                android:id="@+id/commisionText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_promo_price_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_promo_price" />
+
+            <EditText
+                android:id="@+id/promoPriceText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_promo_start_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_promo_start" />
+
+            <EditText
+                android:id="@+id/promoStartDate"
+                style="@style/FormInputDateStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_promo_end_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_promo_end" />
+
+            <EditText
+                android:id="@+id/promoEndDate"
+                style="@style/FormInputDateStyle" />
+        </LinearLayout>
+		
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_quantity_type_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_quantity_type" />
+
+            <Spinner
+                android:id="@+id/quantityTypeSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_stock_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_stock" />
+
+            <EditText
+                android:id="@+id/stockText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_min_stock_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_min_stock" />
+
+            <EditText
+                android:id="@+id/minStockText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_status_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_status" />
+
+            <Spinner
+                android:id="@+id/statusSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

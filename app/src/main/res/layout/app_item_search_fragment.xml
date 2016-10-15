@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BorderFragmentStyle">
+
+        <ListView
+            android:id="@+id/searchResultList"
+            style="@style/ListViewStyle"
+            android:layout_alignParentTop="true" />
+
+       <ImageButton
+            android:id="@+id/addButton"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_add_white"
+            android:background="@drawable/bg_add_btn"
+            android:contentDescription="@string/none"/>
+
+</RelativeLayout>

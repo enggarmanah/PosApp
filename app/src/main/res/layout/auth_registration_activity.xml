@@ -1,0 +1,112 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RegistrationFragmentStyle"
+    android:background="@color/background_blue_light">
+
+	<LinearLayout    
+	    style="@style/MainActivityStyle"
+	    android:orientation="vertical"
+	    android:gravity="center"
+	    android:minHeight="450dp">
+		
+	    <TextView
+	        android:text="@string/registration"
+	        android:layout_height="wrap_content"
+	        android:layout_width="300dp"
+	        android:fontFamily="sans-serif-condensed"
+	        android:textSize="@dimen/auth_sub_title"
+	        android:textStyle="bold"
+	        android:textColor="@color/text_blue_dark"
+	        android:singleLine="true"
+	        android:layout_marginTop="15dp"
+	        android:padding="0dp"
+	        android:layout_marginBottom="5dp"/>
+	    
+	    <TextView
+	        android:id="@+id/infoText"
+	        android:layout_height="wrap_content"
+	        android:layout_width="300dp"
+	        android:fontFamily="sans-serif-condensed"
+	        android:textSize="@dimen/auth_text"
+	        android:textStyle="bold"
+	        android:textColor="@color/text_dark"
+	        android:singleLine="false"
+	        android:layout_marginTop="10dp"
+	        android:padding="0dp"
+	        android:layout_marginBottom="10dp"/>
+	    
+	    <EditText
+	        android:id="@+id/nameText"
+	        android:hint="@string/merchant_name"
+	        style="@style/RegistrationTextStyle"
+	        android:text=""/>
+	    
+	    <Spinner
+	        android:id="@+id/typeSp"
+	        style="@style/RegistrationListStyle" />
+	    
+	    <EditText
+	        android:id="@+id/addressText"
+	        android:hint="@string/field_address"
+	        style="@style/RegistrationTextStyle"
+	        android:singleLine="false"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/telephoneText"
+	        android:hint="@string/field_telephone"
+	        style="@style/RegistrationTextStyle"
+	        android:inputType="phone"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/emailText"
+	        style="@style/RegistrationTextStyle"
+	        android:hint="@string/field_email"
+	        android:inputType="textEmailAddress"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/localeText"
+	        style="@style/RegistrationTextStyle"
+	        android:hint="@string/field_locale"/>
+	    
+	    <EditText
+	        android:id="@+id/loginIdText"
+	        android:hint="@string/field_login_id"
+	        style="@style/RegistrationTextStyle"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/passwordText"
+	        android:hint="@string/password"
+	        android:inputType="textPassword"
+	        style="@style/RegistrationTextStyle"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/passwordConfirmText"
+	        android:hint="@string/field_password_confirm"
+	        android:inputType="textPassword"
+	        style="@style/RegistrationTextStyle"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/securityQuestionText"
+	        android:hint="@string/field_security_question"
+	        style="@style/RegistrationTextStyle"
+	        android:text=""/>
+	    
+	    <EditText
+	        android:id="@+id/securityAnswerText"
+	        android:hint="@string/field_security_answer"
+	        style="@style/RegistrationTextStyle"
+	        android:text=""/>
+	    
+	    <Button
+	        android:id="@+id/loginBtn"
+	        android:text="@string/ok"
+	        style="@style/LoginButtonStyle"
+	        android:layout_marginTop="20dp"/>
+	    
+	</LinearLayout>
+</ScrollView>

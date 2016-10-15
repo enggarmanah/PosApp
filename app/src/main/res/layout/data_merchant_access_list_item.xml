@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListViewCheckedBtnRowStyle">
+
+    <TextView
+        android:id="@+id/nameText"
+        style="@style/ListViewRowAccessRightTextStyle"/>
+    
+    <ImageButton
+        android:id="@+id/checkedButton"
+        style="@style/CheckedUserAccessButtonStyle"
+        android:contentDescription="@string/none" />
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MainActivityStyle"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background_blue_light">
+	
+    <TextView
+        android:text="@string/merchant_activation_title"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="@dimen/auth_title"
+        android:textStyle="bold"
+        android:textColor="@color/text_blue_dark"
+        android:singleLine="true"
+        android:layout_marginTop="0dp"
+        android:padding="0dp"
+        android:layout_marginBottom="20dp"/>
+    
+    <TextView
+        android:id="@+id/activationInfoText"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="@dimen/auth_sub_title"
+        android:textStyle="bold"
+        android:textColor="@color/text_dark"
+        android:singleLine="false"
+        android:layout_marginTop="0dp"
+        android:padding="0dp"
+        android:layout_marginBottom="20dp"/>
+    
+    <EditText
+        android:id="@+id/activationCodeText"
+        android:hint="@string/merchant_activation_hint"
+        style="@style/CodeActivationTextStyle"/>
+    
+    <Button
+        android:id="@+id/okBtn"
+        android:text="@string/ok"
+        style="@style/LoginButtonStyle"
+        android:layout_marginTop="30dp"/>
+	
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:paddingTop="30dp">
+    	
+        <TextView
+            android:id="@+id/resendActivationCodeText"
+	        android:text="@string/resend_activation_code"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:fontFamily="sans-serif-condensed"
+	        android:textSize="@dimen/auth_sub_title"
+	        android:textStyle="bold"
+	        android:textColor="@color/text_blue_dark"
+	        android:singleLine="true"/>
+        
+        <TextView
+	        android:text="@string/separator"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:fontFamily="sans-serif-condensed"
+        	android:textSize="@dimen/auth_sub_title"
+	        android:textStyle="bold"
+	        android:textColor="@color/text_blue_dark"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:singleLine="true"/>
+        
+        <TextView
+            android:id="@+id/helpText"
+	        android:text="@string/menu_help"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:fontFamily="sans-serif-condensed"
+	        android:textSize="@dimen/auth_sub_title"
+	        android:textStyle="bold"
+	        android:textColor="@color/text_blue_dark"
+	        android:singleLine="true"/>
+        
+    </LinearLayout>
+    
+</LinearLayout>

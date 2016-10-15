@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle"
+    android:id="@+id/mainFragmentLayout">
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        style="@style/SectionTopPanelStyle" >
+
+        <TextView
+            android:id="@+id/headerText"
+            style="@style/SectionTopTextStyle"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/transaction_items" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/belowPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="@color/background">
+		
+        <LinearLayout
+            android:id="@+id/discountPanel"
+            style="@style/PaymentRowStyle" >
+			
+            <TextView
+                android:id="@+id/discountLabelText"
+                style="@style/PaymentRowContentLeftStyle" />
+
+            <TextView
+                android:id="@+id/discountText"
+                style="@style/PaymentRowContentRightStyle" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/taxPanel"
+            style="@style/PaymentRowStyle" >
+			
+            <TextView
+                android:id="@+id/taxLabel"
+                style="@style/PaymentRowContentLeftStyle"
+                android:text="@string/tax" />
+
+            <TextView
+                android:id="@+id/taxText"
+                style="@style/PaymentRowContentRightStyle" />
+        </LinearLayout>
+		
+        <LinearLayout
+            android:id="@+id/serviceChargePanel"
+            style="@style/PaymentRowStyle" >
+			
+            <TextView
+                android:id="@+id/serviceChargeLabel"
+                style="@style/PaymentRowContentLeftStyle"
+                android:text="@string/service_charge" />
+
+            <TextView
+                android:id="@+id/serviceChargeText"
+                style="@style/PaymentRowContentRightStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/PaymentRowTotalStyle" >
+            
+            <TextView
+                style="@style/PaymentRowTotalContentLeftStyle"
+                android:text="@string/total" />
+
+            <TextView
+                android:id="@+id/totalOrderText"
+                style="@style/PaymentRowTotalContentRightStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/payment_btn_background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:baselineAligned="false">
+
+            <FrameLayout
+                android:id="@+id/paymentPanel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/paymentText"
+                    style="@style/CashierButtonStyle"
+                    android:drawableLeft="@drawable/ic_check_white"
+                    android:drawableStart="@drawable/ic_check_white"
+                    android:drawablePadding="10dp"
+                    android:text="@string/payment" />
+            </FrameLayout>
+            
+            <FrameLayout
+                android:id="@+id/orderNewItemPanel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/orderNewItemText"
+                    style="@style/CashierButtonStyle"
+                    android:drawableLeft="@drawable/ic_check_white"
+                    android:drawableStart="@drawable/ic_check_white"
+                    android:drawablePadding="10dp"
+                    android:text="@string/ok" />
+            </FrameLayout>
+            
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+                
+	            <TextView
+	                android:id="@+id/orderDivider"
+	                android:layout_width="1dp"
+	                android:layout_height="fill_parent"
+	                android:background="@color/payment_btn_text" />
+            </FrameLayout>
+            
+            <FrameLayout
+                android:id="@+id/orderPanel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/orderText"
+                    style="@style/CashierButtonStyle"
+                    android:drawableLeft="@drawable/ic_border_color_white"
+                    android:drawableStart="@drawable/ic_border_color_white"
+                    android:drawablePadding="10dp"
+                    android:text="@string/order" />
+            </FrameLayout>
+			
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+            	
+            	<TextView
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@color/payment_btn_text" />    
+            </FrameLayout>
+            
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/cancelText"
+                    style="@style/CashierButtonStyle"
+                    android:text="@string/cancel"
+                    android:drawableLeft="@drawable/ic_clear_white"
+                    android:drawableStart="@drawable/ic_clear_white"
+                    android:drawablePadding="10dp" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/transactionItemList"
+        style="@style/ListViewStyle"
+        android:layout_above="@id/belowPanel"
+        android:layout_below="@id/topPanel" />
+
+</RelativeLayout>

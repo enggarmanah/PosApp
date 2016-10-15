@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListViewRowPopUpStyle">
+	
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <TextView
+        	android:id="@+id/billReferenceNoText"
+        	style="@style/ListViewRowBillReferenceNoTextStyle"/>
+        
+        <TextView
+        	android:id="@+id/billDateText"
+        	style="@style/ListViewRowBillDateTextStyle"/>
+    </LinearLayout>
+    
+    <TextView
+       	android:id="@+id/remarksText"
+       	style="@style/ListViewRowBillRemarksTextStyle"/>
+    
+    <TextView
+        android:id="@+id/supplierText"
+        style="@style/ListViewRowBillSupplierTextStyle"/>
+    
+</LinearLayout>

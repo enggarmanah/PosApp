@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/SectionTopPanelStyle" >
+
+	    <ImageButton
+	        android:id="@+id/backButton"
+	        style="@style/SectionBackButtonStyle"
+	        android:contentDescription="@string/none" />
+	
+	    <TextView
+	        android:id="@+id/productNameText"
+	        style="@style/SectionTopTextStyle"
+	        android:layout_weight="2"
+	        android:gravity="start|center_vertical"
+	        android:text="@string/transaction" />
+	
+	    <TextView
+	        android:id="@+id/productStockText"
+	        style="@style/SectionTopTextStyle"
+	        android:layout_weight="1"
+	        android:gravity="end|center_vertical" />
+	    
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/productStatisticList"
+        style="@style/ListViewStyle"/>
+
+</LinearLayout>

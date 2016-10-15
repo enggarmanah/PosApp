@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/PlainFragmentStyle" >
+
+    <LinearLayout style="@style/FormStyle" >
+		
+        <LinearLayout style="@style/FormRowStyle" >
+			
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_type_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_type" />
+
+            <Spinner
+                android:id="@+id/typeSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/supplierPanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_supplier_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_supplier" />
+
+            <EditText
+                android:id="@+id/supplierNameText"
+                style="@style/FormInputSelectStyle"/>
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/billReferenceNoPanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_bills_reference_no_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_bills_reference_no" />
+
+            <EditText
+                android:id="@+id/billsReferenceNoText"
+                style="@style/FormInputStyle" />
+        </LinearLayout>
+        
+		<LinearLayout 
+		    android:id="@+id/billDatePanel"
+		    style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_bills_date_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_bills_date" />
+
+            <EditText
+                android:id="@+id/billsDate"
+                style="@style/FormInputDateStyle" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/billAmountPanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_total_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_total" />
+
+            <EditText
+                android:id="@+id/billsAmountText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+		
+        <LinearLayout 
+            android:id="@+id/billDueDatePanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_bills_due_date_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_bills_due_date" />
+
+            <EditText
+                android:id="@+id/billsDueDate"
+                style="@style/FormInputDateStyle" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/deliveryDatePanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_delivery_date_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_delivery_date" />
+
+            <EditText
+                android:id="@+id/deliveryDate"
+                style="@style/FormInputDateStyle" />
+        </LinearLayout>
+        
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_remarks_fl" />
+            
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_remarks" />
+
+            <EditText
+                android:id="@+id/remarksText"
+                style="@style/FormInputTextAreaStyle" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

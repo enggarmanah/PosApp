@@ -1,0 +1,702 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">POS - TokoKu</string>
+    
+    <string name="event_cat_merchant">Merchant</string>
+    <string name="event_cat_user">User</string>
+    <string name="event_cat_product">Product</string>
+    <string name="event_act_registration">Registration</string>
+    <string name="event_act_activation">Activation</string>
+    
+    <string name="event_cat_transaction">Transaction</string>
+    <string name="event_act_payment">Payment</string>
+    
+    <string name="event_cat_task">Task</string>
+    <string name="event_act_sync">Sync</string>
+    
+    <string name="login_merchant">Login to TokoKu</string>
+    <string name="login_user">Login</string>
+    
+    <string name="merchant_id">Merchant Id</string>
+    <string name="password">Password</string>
+    
+    <string name="user_id">User Id</string>
+    <string name="pin">Password</string>
+    
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="separator">|</string>
+    
+    <string name="registration">Registration</string>
+    <string name="merchant_name">Merchant Name</string>
+    <string name="merchant_activation_title">Merchant Activation</string>
+    <string name="merchant_activation_hint">Activation Code</string>
+    
+    <string name="forgot_password_login_id">Please provide your Login Id</string>
+    
+    <string name="resend_activation_code">Resend Activation Code</string>
+    <string name="resend_activation_code_info">Please provide your email</string>
+    
+    <string name="tap_to_select">Tap to select</string>
+    
+    <string name="info_quantity">Total</string>
+    <string name="info_revenue">Income</string>
+    <string name="info_profit">Profit</string>
+    
+    <string name="empty"></string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+    <string name="alert">Alert</string>
+    <string name="notification">Notification</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="select">Select</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="save">Save&#160;</string>
+    <string name="select_printer">Select Printer</string>
+    <string name="remarks">Remarks</string>
+    <string name="none"></string>
+    
+    <string name="sync">Sync</string>
+    <string name="exit">Exit</string>
+    <string name="logout">Logout</string>
+
+    <string name="status_active">Active</string>
+    <string name="status_inactive">Inactive</string>
+    
+    <string name="status_yes">Yes</string>
+    <string name="status_no">No</string>
+    
+    <string name="email_status_yes">Send promotional email</string>
+    <string name="email_status_no">"Don\'t send promotional email"</string>
+    
+    <string name="product_status_active">Available</string>
+    <string name="product_status_inactive">Not Available</string>
+    
+    <string name="product_type_goods">Goods</string>
+    <string name="product_type_service">Service</string>
+    
+    <string name="fnb_product_type_purchased">Purchased</string>
+    <string name="fnb_product_type_self_made">Self Made</string>
+    
+    <string name="merchant_type_general_goods">General Goods</string>
+    <string name="merchant_type_goods_and_service">Goods &amp; Services</string>
+    <string name="merchant_type_food_and_beverage">Foods &amp; Beverages</string>
+    <string name="merchant_type_medical_service">Medical Services</string>
+    
+    <string name="discount_type_percent">Percentage</string>
+    <string name="discount_type_amount">Amount</string>
+    
+    <string name="order_type_no">Without Order</string>
+    <string name="order_type_before_payment">Before Payment</string>
+    <string name="order_type_after_payment">After Payment</string>
+    
+    <string name="product_search">Product Search</string>
+    <string name="product_list">Product List</string>
+    <string name="product_add">Add Product</string>
+    <string name="product_group_list">Product Category</string>
+    
+    <string name="product_stock_alert">Stock Below Limit</string>
+    <string name="bill_pastdue_alert">Bill Past Due</string>
+    
+    <string name="bill_no_receipt">No Receipt</string>
+    
+    <string name="msg_notification_search_action">Please provide your search criteria on top</string>
+    <string name="msg_data_save_success">Data has been saved</string>
+    <string name="msg_register_user">Select [+] below to register user account. Re-login with user account to enable full access to system functionality. </string>
+    <string name="msg_register_user_conflict">User Login Id should not be the same as Merchant Login Id. </string>
+    <string name="msg_reset_password_success">Reset password is successful !</string>
+    <string name="msg_merchant_registration_info">Activation code will be sent to registered email</string>
+    <string name="msg_merchant_registration_success">Merchant registration is successful !</string>
+    <string name="msg_merchant_activation_info">Activation code has been sent to %1$s \n\nPlease contact us at +62 856 4745 3111 / app.tokoku@gmail.com, if you havent received it.</string>
+    <string name="msg_merchant_activation_info_contact_us">Activation code has been sent to your email. Please contact us at app.tokoku@gmail.com, if you havent received it.</string>
+    <string name="msg_refresh_data">Refreshing data</string>
+    
+    <string name="field_code">Code</string>
+    <string name="field_code_fl">C</string>
+    <string name="field_name">Name</string>
+    <string name="field_name_fl">N</string>
+    <string name="field_type">Type</string>
+    <string name="field_type_fl">T</string>
+    <string name="field_group">Category</string>
+    <string name="field_group_fl">C</string>
+    <string name="field_price">Price</string>
+    <string name="field_price_fl">P</string>
+    <string name="field_selling_price">Sell Price</string>
+    <string name="field_selling_price_fl">S</string>
+    <string name="field_cost_price">Cost Price</string>
+    <string name="field_cost_price_fl">P</string>
+    <string name="field_pic_required">PIC Required</string>
+    <string name="field_pic_required_fl">P</string>
+    <string name="field_commision">Commission</string>
+    <string name="field_commision_fl">C</string>
+    <string name="field_quantity_type">Quantity Type</string>
+    <string name="field_quantity_type_fl">Q</string>
+    <string name="field_stock">Stock</string>
+    <string name="field_stock_fl">S</string>
+    <string name="field_min_stock">Min. Stock</string>
+    <string name="field_min_stock_fl">M</string>
+    <string name="field_promo_price">Promo Price</string>
+    <string name="field_promo_price_fl">P</string>
+    <string name="field_promo_start">Promo Start</string>
+    <string name="field_promo_start_fl">P</string>
+    <string name="field_promo_end">Promo End</string>
+    <string name="field_promo_end_fl">P</string>
+    <string name="field_status">Status</string>
+    <string name="field_status_fl">S</string>
+    <string name="field_address">Address</string>
+    <string name="field_address_fl">A</string>
+    <string name="field_contact_name">Manager</string>
+    <string name="field_contact_name_fl">M</string>
+    <string name="field_contact_telephone">Telephone</string>
+    <string name="field_contact_telephone_fl">T</string>
+    <string name="field_contact_email">Email</string>
+    <string name="field_contact_email_fl">E</string>
+    <string name="field_login_id">Login Id</string>
+    <string name="field_login_id_fl">L</string>
+    <string name="field_password">Password</string>
+    <string name="field_password_fl">P</string>
+    <string name="field_password_new">New Password</string>
+    <string name="field_password_new_fl">N</string>
+    <string name="field_password_confirm">Retype Password</string>
+    <string name="field_password_confirm_fl">R</string>
+    <string name="field_employee">Employee</string>
+    <string name="field_employee_fl">E</string>
+    <string name="field_period_start">Service Start</string>
+    <string name="field_period_start_fl">A</string>
+    <string name="field_period_end">Service End</string>
+    <string name="field_period_end_fl">A</string>
+    <string name="field_locale_fl">C</string>
+    <string name="field_locale">Calendar &amp; Currency</string>
+    <string name="field_tax_percentage">Tax</string>
+    <string name="field_tax_percentage_fl">T</string>
+    <string name="field_service_charge_percentage">Service Charge</string>
+    <string name="field_service_charge_percentage_fl">S</string>
+    <string name="field_capacity">Capacity</string>
+    <string name="field_capacity_fl">C</string>
+    <string name="field_role">Role</string>
+    <string name="field_role_fl">R</string>
+    <string name="field_access_right">Access Rights</string>
+    <string name="field_access_right_fl">A</string>
+    <string name="field_telephone">Telephone</string>
+    <string name="field_telephone_fl">T</string>
+    <string name="field_email">Email</string>
+    <string name="field_email_fl">E</string>
+    <string name="field_email_status">Email Status</string>
+    <string name="field_email_status_fl">E</string>
+    <string name="field_percentage">Percentage</string>
+    <string name="field_percentage_fl">P</string>
+    <string name="field_remarks">Remarks</string>
+    <string name="field_remarks_fl">R</string>
+    <string name="field_pic_name">Contact Name</string>
+    <string name="field_pic_name_fl">P</string>
+    <string name="field_pic_telephone">Telephone</string>
+    <string name="field_pic_telephone_fl">T</string>
+    <string name="field_product">Product</string>
+    <string name="field_product_fl">P</string>
+    <string name="field_quantity">Total</string>
+    <string name="field_quantity_fl">T</string>
+    <string name="field_bills_reference_no">Bill No.</string>
+    <string name="field_bills_reference_no_fl">B</string>
+    <string name="field_supplier">Supplier</string>
+    <string name="field_supplier_fl">S</string>
+    <string name="field_delivery_date">Delivery Date</string>
+    <string name="field_delivery_date_fl">D</string>
+    <string name="field_bills_date">Bill Date</string>
+    <string name="field_bills_date_fl">B</string>
+    <string name="field_bills_due_date">Due Date</string>
+    <string name="field_bills_due_date_fl">D</string>
+    <string name="field_total">Total</string>
+    <string name="field_total_fl">T</string>
+    <string name="field_payment_date">Payment Date</string>
+    <string name="field_payment_date_fl">P</string>
+    <string name="field_payment">Payment</string>
+    <string name="field_payment_fl">P</string>
+    <string name="field_payment_type">Payment Type</string>
+    <string name="field_payment_type_fl">P</string>
+    <string name="field_date">Date</string>
+    <string name="field_date_fl">D</string>
+    <string name="field_price_type_count">Price Type Count</string>
+    <string name="field_price_type_count_fl">P</string>
+    <string name="field_price_label_1">Price Type 1</string>
+    <string name="field_price_label_1_fl">P</string>
+    <string name="field_price_label_2">Price Type 2</string>
+    <string name="field_price_label_2_fl">P</string>
+    <string name="field_price_label_3">Price Type 3</string>
+    <string name="field_price_label_3_fl">P</string>
+    <string name="field_printer_required">Status</string>
+    <string name="field_printer_required_fl">S</string>
+    <string name="field_printer_font">Font</string>
+    <string name="field_printer_font_fl">F</string>
+    <string name="field_printer_line_size">Text / Line</string>
+    <string name="field_printer_line_size_fl">T</string>
+    <string name="field_discount_type">Discount Type</string>
+    <string name="field_discount_type_fl">D</string>
+    <string name="field_order_type">Order Type</string>
+    <string name="field_order_type_fl">O</string>
+    <string name="field_invoice_fl">I</string>
+    <string name="field_invoice">Invoice No.</string>
+    <string name="field_customer_fl">C</string>
+    <string name="field_customer">Customer</string>
+    <string name="field_amount_fl">A</string>
+    <string name="field_amount">Amount</string>
+    <string name="field_security_question">Security Question</string>
+    <string name="field_security_question_fl">S</string>
+    <string name="field_security_answer">Security Answer</string>
+    <string name="field_security_answer_fl">S</string>
+    
+    <string name="favorite_customer_title">Customer</string>
+    <string name="favorite_customer_quantity">Total</string>
+    <string name="favorite_customer_amount">Amount</string>
+    <string name="favorite_customer_category">Category</string>
+    <string name="favorite_customer_transaction">Transaction</string>
+    <string name="favorite_customer_transaction_search">Search</string>
+    <string name="favorite_customer_product">Product</string>
+    <string name="favorite_customer_total">Total</string>
+    <string name="favorite_customer_first_trans">First Trans.</string>
+    <string name="favorite_customer_last_trans">Last Trans.</string>
+    <string name="favorite_customer_average">Average</string>
+    <string name="favorite_customer_min_trans">Minimal</string>
+    <string name="favorite_customer_max_trans">Maximal</string>
+    
+    <string name="favorite_supplier_title">Supplier</string>
+    <string name="favorite_supplier_quantity">Quantity</string>
+    <string name="favorite_supplier_amount">Amount</string>
+    
+    <string name="report_sale_count">Quantity</string>
+    <string name="report_sale_income">Revenue</string>
+	<string name="report_sale_profit">Profit</string>
+	    
+    <string name="report_inventory_product">Product</string>
+    <string name="report_inventory_product_stock">Stock</string>
+   	<string name="report_inventory_stock">"Total : %1$s"</string>
+   	
+   	<string name="report_credit_title">Credit</string>
+    <string name="report_credit_date">Date</string>
+   	<string name="report_credit_initial_payment">Initial Payment</string>
+    <string name="report_credit_credit_payment">Credit Payment</string>
+    <string name="report_credit_total_product_sold">Total Product Sold</string>
+    <string name="report_credit_total_payment">Total Payment</string>
+    <string name="report_credit_credit_payments">Credit Payments</string>
+    <string name="report_credit_product_sold">Product Sold</string>
+    <string name="report_credit_total">Total</string>
+    <string name="report_credit_add_payment">+ Payment</string>
+    <string name="report_credit_add_payment_confirmation">Add Payment ?</string>
+    
+    <string name="report_year">"Year %1$s"</string>
+    <string name="report_total">"Total %1$s"</string>
+	
+    <string name="report_cashflow_total">Total Cashflow</string>
+    <string name="report_cashflow_month">Month</string>
+    <string name="report_cashflow_total_bills">Total Expense</string>
+    <string name="report_cashflow_total_amount">Revenue</string>
+    <string name="report_cashflow_tax_amount">Tax</string>
+    <string name="report_cashflow_service_charge_amount">Service Charge</string>
+    <string name="report_cashflow_expense">Expense</string>
+    
+    <string name="report_bill">Bills</string>
+    <string name="report_bill_pastdue">Past Due</string>
+    <string name="report_bill_supplier">Supplier</string>
+    <string name="report_bill_duedate">Due Date</string>
+    <string name="report_bill_paymentdate">Payment Date</string>
+    <string name="report_bill_total">Total</string>
+    <string name="report_bill_payment">Payment</string>
+    <string name="report_bill_outstanding">Outstanding</string>
+    <string name="report_bill_remarks">Remarks</string>
+    <string name="report_bill_purchased">Product Purchased</string>
+    <string name="report_bill_payments">Bill Payments</string>
+    
+    <string name="report_bill_outstanding_title">Outstanding Bill</string>
+    
+    <string name="report_commision">Commission</string>
+    
+    <string name="hint_percentage">Percentage %</string>
+    <string name="hint_cost_price">Cost Price</string>  
+    
+    <string name="count">Total</string>
+    <string name="number_0">0</string>
+    <string name="number_1">1</string>
+    <string name="number_2">2</string>
+    <string name="number_3">3</string>
+    <string name="number_4">4</string>
+    <string name="number_5">5</string>
+    <string name="number_6">6</string>
+    <string name="number_7">7</string>
+    <string name="number_8">8</string>
+    <string name="number_9">9</string>
+    <string name="number_c">C</string>
+    <string name="delete_char">X</string>
+    
+    <string name="total">Total</string>
+    <string name="payment">Payment</string>
+    <string name="payment_type">Type</string>
+    <string name="change">Return</string>
+    <string name="order">Order</string>
+    <string name="print">Print Receipt</string>
+    <string name="transaction_items">Transaction Items</string>
+    
+    <string name="reservation_no">Order No.</string>
+    
+    <string name="order_waitress">Waitress</string>
+    <string name="order_info">Customer</string>
+    <string name="order_type">Order Type</string>
+    <string name="order_total">Total</string>
+    <string name="order_list">Order List</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="order_table_no">"Order No. : %1$s"</string>
+    <string name="order_customer">"Customer : %1$s"</string>
+    
+    <string name="product_group">Product Group</string>
+    <string name="product">Product</string>
+    <string name="product_below_min_stock">Product Below Min. Stock</string>
+    <string name="product_short">Prd</string>
+    <string name="item">Item</string>
+    
+    <string name="select_discount">Select Discount</string>
+    <string name="discount">Discount</string>
+    <string name="no_discount">No Discount</string>
+    <string name="tax">Tax</string>
+    <string name="service_charge">Service Charge</string>
+    
+    <string name="order_table_no_add_on">"Order Add On : %1$s"</string>
+    <string name="order_customer_add_on">"Customer Add On : %1$s"</string>
+  	<string name="order_transaction_list">"Transaction Items"</string>
+  	<string name="order_order_list">"Order List"</string>
+    
+    <string name="transaction_summary">Transaction Confirmation</string>
+    <string name="order_summary">Order Confirmation</string>
+    
+    <string name="customer">Customer</string>
+    <string name="search_customer">Search Customer</string>
+    <string name="select_customer">Select Customer</string>
+    <string name="track_customer">Select Customer</string>
+    <string name="no_customer">No Customer</string>
+    <string name="new_customer">New Customer</string>
+    <string name="search_employee">Search Employee</string>
+    <string name="select_employee">Select Employee</string>
+    <string name="track_employee">Select Employee</string>
+    <string name="no_employee">No Employee</string>
+    <string name="search_locale">Search Calendar &amp; Currency</string>
+    <string name="select_locale">Select Calendar &amp; Currency</string>
+    <string name="track_locale">Select Calendar &amp; Currency</string>
+    <string name="no_locale">No Local Setting</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="search_product">Search Product</string>
+    <string name="select_product">Select Product</string>
+    <string name="no_product">No Product</string>
+    <string name="search_product_group">Search Product Group</string>
+    <string name="select_product_group">Select Product Group</string>
+    <string name="no_product_group">No Product Group</string>
+    <string name="search_supplier">Search Supplier</string>
+    <string name="select_supplier">Select Supplier</string>
+    <string name="no_supplier">No Supplier</string>
+    <string name="search_bill">Search Bills</string>
+    <string name="select_bill">Select Bill</string>
+    <string name="no_bill">No Receipt</string>
+	<string name="search_credit">Search Credit</string>
+    <string name="select_credit">Select Credit</string>
+    <string name="no_credit">No Credit</string>
+    <string name="search_transaction">Search Transaction</string>
+    <string name="select_transaction">Select Transaction</string>
+    <string name="no_transaction">No Transaction</string>
+    <string name="waitress">Waitress</string>
+    
+    <string name="transaction_daily">Daily Transaction</string>
+    
+    <string name="transaction">Transaction</string>
+    <string name="transaction_no">Transaction No.</string>
+    <string name="transaction_date">Date</string>
+    <string name="transaction_cashier">Cashier</string>
+    <string name="transaction_list">Transaction List</string>
+    <string name="transaction_recap">Transaction Summary</string>
+    <string name="transaction_total">Total Transaction</string>
+    
+    <string name="printer_settings">Printer Configuration</string>
+    
+    <string name="font_size_regular">Standard</string>
+    <string name="font_size_small">Small</string>
+    
+    <string name="login_telephone">"Tel"</string>
+    
+    <string name="print_telephone">" Tel. "</string>
+    <string name="print_cashier">"Cashier : "</string>
+    <string name="print_waitress">"Waitress : "</string>
+    <string name="print_order_type">"Order Type : "</string>
+    <string name="print_table_no">"Order No. : "</string>
+    <string name="print_customer">"Customer : "</string>
+    <string name="print_sub_total">Sub Total</string>
+	<string name="print_negative">"- "</string>
+	<string name="print_tax">"Tax "</string>
+	<string name="print_service_charge">"Service Charge "</string>
+	<string name="print_total">Total</string>
+	<string name="print_return">Return</string>
+	<string name="print_remarks">"* "</string>
+	<string name="print_thank_you">Thank You, Please Come Again!</string>
+	
+	<string name="sign_negative">"- "</string>
+	
+	<string name="confirm_print_customer_copy">"Print receipt for customer ?"</string>
+	<string name="confirm_transaction_cancellation">"Cancel Transaction ?"</string>
+	<string name="confirm_delete">"Delete %1$s ?"</string>
+	<string name="confirm_delete_transaction">"Delete Transaction ?"</string>
+		
+	<string name="favorite_average_transaction">"%1$d,%2$s Month"</string>
+	
+	<string name="server_cant_connect">"Could not connect to Server!"</string>
+	<string name="server_sync_error">"Could not sync to Server!"</string>
+	
+	<string name="order_submit_ok">"Order has been submitted"</string>
+	<string name="order_download_ok">"Order has been downloaded"</string>
+	
+	<string name="printer_cant_connect">"Could not connect to Printer"</string>
+	<string name="printer_connection_lost">"Printer is disconnected"</string>
+	<string name="printer_connected_to">"Connected to Printer : %1$s"</string>
+	<string name="printer_connecting">"Connecting to Printer &#8230;"</string>
+	<string name="printer_please_check_printer">"Could not connect to Printer. Please check printer is active"</string>
+	<string name="printer_cant_print">"Could not connect to Printer.\nReceipt could not be printed"</string>
+	<string name="printer_bluetooth_inactive">"Bluetooth is not active, Please activate device bluetooth"</string>
+	<string name="printer_bluetooth_adapter_error">"Bluetooth adapter error. Please restart bluetooth adapter"</string>
+	
+	<string name="payment_insufficient">Payment is not sufficient</string>
+	<string name="payment_credit_without_customer">Customer should not be empty when the payment type is Credit</string>
+	<string name="payment_should_not_be_credit">Payment by credit should be less than total transaction</string>
+	
+    <string name="none_paired">There is no printer connected</string>
+    <string name="scanning">Scanning printer  &#8230;</string>
+    <string name="select_device">Please Select Printer</string>
+    <string name="none_found">Could not find Printer Device</string>
+    <string name="paired_device">Paired Bluetooth Device</string>
+    <string name="other_device">New Bluetooth Device Found</string>
+    <string name="scan_device">Scan Printer</string>
+    
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    
+    <string name="alert_empty_mandatory_field">"%1$s should not be empty"</string>
+    <string name="alert_invalid_format_field">"%1$s invalid value.\nCorrect format e.g: %2$s"</string>
+    <string name="alert_password_incorrect">"Password is incorrect"</string>
+    <string name="alert_password_dont_match">"Password and retype password don\'t match"</string>
+    <string name="alert_merchant_login_id_not_exist">"Merchant Login Id is not registered"</string>
+    <string name="alert_security_answer_dont_match">"Answer is incorrect !"</string>
+    <string name="alert_server_not_connected">"Could not connect to server !"</string>
+    <string name="alert_server_sync_error">"Error syncing up data to server !"</string>
+    <string name="alert_merchant_authentication_error">"ID Merchant or password is incorrect !"</string>
+    <string name="alert_user_authentication_error">"ID user or password is incorrect !"</string>
+    <string name="alert_activation_code_incorrect">"Activation code is incorrect !"</string>
+    <string name="alert_data_no_more">"There is no more data to show !"</string>
+    <string name="alert_data_show_next">"Show next list of data &#8230;"</string>
+    <string name="alert_please_choose_table_no">"Please choose order no !"</string>
+    <string name="alert_customer_name_empty">"Customer\'s name could not be empty !"</string>
+    <string name="alert_transaction_list_empty">"Transaction list is still empty"</string>
+    <string name="alert_pic_required">"%1$s\nPIC is required !"</string>
+    <string name="alert_order_list_empty">"Order list is still empty"</string>
+    <string name="alert_bluetooth_not_available">"Bluetooth is not available. Receipt could not be printed"</string>
+    <string name="alert_bluetooth_not_active">"Bluetooth is not active. Please active your bluetooth"</string>
+    <string name="alert_no_payment_type">"Payment type must be selected"</string>
+    <string name="alert_sync_cancellation">"Synchronization has been cancelled. It may cause data integrity issue. It\'s advised to complete synchronization process."</string>
+    <string name="alert_refresh_cancellation">"Data refresh has been cancelled. Data shown may not be updated."</string>
+    <string name="alert_demo_account">"Delete is not allowed under demo account."</string>
+    <string name="alert_product_price_issue">"Product price is lesser or equal than product cost"</string>
+    <string name="alert_install_browser">"Please install browser to view user guide."</string>
+    
+    <string name="user_role_cashier">Cashier</string>
+	<string name="user_role_admin">Admin</string>
+	<string name="user_role_waitress">Waitress</string>
+	<string name="user_role_employee">Employee</string>
+    
+	<string name="price_type_count_1">1 Price Type</string>
+	<string name="price_type_count_2">2 Price Types</string>
+	<string name="price_type_count_3">3 Price Types</string>
+	
+	<string name="quantity_type_piece">Pc</string>
+	<string name="quantity_type_pack">Pack</string>
+	<string name="quantity_type_dozen">Dozen</string>
+	<string name="quantity_type_kg">Kg</string>
+	<string name="quantity_type_meter">Meter</string>
+	<string name="quantity_type_liter">Liter</string>
+	
+	<string name="quantity_type_piece_short">Pc</string>
+	<string name="quantity_type_pack_short">Pk</string>
+	<string name="quantity_type_dozen_short">Dz</string>
+	<string name="quantity_type_kg_short">Kg</string>
+	<string name="quantity_type_meter_short">M</string>
+	<string name="quantity_type_liter_short">Lt</string>
+	
+	<string name="payment_type_cash">Cash</string>
+	<string name="payment_type_debit_card">Debit Card</string>
+	<string name="payment_type_credit_card">Credit Card</string>
+	<string name="payment_type_credit">Credit</string>
+	
+	<string name="order_type_dine_in">Dine In</string>
+	<string name="order_type_take_away">Take Away</string>
+	
+	<string name="bill_type_product_purchase">"Product Purchase"</string>
+	<string name="bill_type_expense">"Expense"</string>
+	
+	<string name="bill_status_unpaid">"Unpaid"</string>
+	<string name="bill_status_partial">"Partial Payment"</string>
+	<string name="bill_status_paid">"Full Payment"</string>
+
+	<string name="inventory_status_purchase">"Product Purchase"</string>
+	<string name="inventory_status_self_production">"Self Production"</string>
+	<string name="inventory_status_sale">"Product Sale"</string>
+	<string name="inventory_status_return">"Return Damaged Product"</string>
+	<string name="inventory_status_refund">"Sale Cancellation"</string>
+	<string name="inventory_status_replacement">"Replacement of Damaged Product"</string>
+	<string name="inventory_status_not_owned_in">"Product Own by Third Party (IN)"</string>
+	<string name="inventory_status_not_owned_out">"Product Own by Third Party (OUT)"</string>
+	<string name="inventory_status_lost">"Product Lost"</string>
+	<string name="inventory_status_damage">"Product Damaged"</string>
+	<string name="inventory_status_initial_stock">"Initial Stock"</string>
+	
+	<string name="demo">Demo</string>
+	
+	<string name="menu_user">User</string>
+	<string name="menu_cashier">Cashier</string>
+	<string name="menu_waitress">Waitress</string>
+	<string name="menu_order">Order</string>
+	<string name="menu_customer">Customer</string>
+	<string name="menu_patient">Patient</string>
+	<string name="menu_merchant">Merchant</string>
+	<string name="menu_data_management">Master Data</string>
+	<string name="menu_inventory">Inventory</string>
+	<string name="menu_cashflow">Cashflow</string>
+	<string name="menu_user_access">User Access</string>
+	<string name="menu_bills">Bills</string>
+	<string name="menu_report">Reports</string>
+	
+	<string name="menu_help">Contact Support</string>
+	<string name="menu_guide">Guide</string>		
+				
+	<string name="menu_report_transaction">Transaction Report</string>
+	<string name="menu_report_product_statistic">Sales Report</string>
+	<string name="menu_report_commision">Commission Report</string>
+	<string name="menu_report_inventory">Inventory Report</string>
+	<string name="menu_report_cashflow">Cashflow Report</string>
+	<string name="menu_report_bills">Bills Report</string>
+	<string name="menu_report_credit">Credit Report</string>
+	<string name="menu_report_tax">Tax Report</string>
+	<string name="menu_report_service_charge">Service Charge Report</string>
+	<string name="menu_favorite">Favorites</string>
+	<string name="menu_favorite_customer">Favorite Customer</string>
+	<string name="menu_favorite_patient">Favorite Patient</string>
+	<string name="menu_favorite_supplier">Favorite Supplier</string>
+	<string name="menu_reference_merchant">Merchant</string>
+	<string name="menu_reference_product_group">Product Group</string>
+	<string name="menu_reference_product">Product</string>	
+	<string name="menu_reference_employee">Employee</string>	
+	<string name="menu_reference_supplier">Supplier</string>	
+	<string name="menu_reference_discount">Discount</string>
+	<string name="menu_printer">Printer</string>
+	<string name="menu_change_password">Change Password</string>
+	<string name="menu_exit">Exit</string>
+	<string name="menu_sync">Sync</string>
+	
+	<string name="menu_cashier_order">A01</string>
+	<string name="menu_waitress_order">B01</string>
+	<string name="menu_order_order">C01</string>
+	<string name="menu_data_management_order">D01</string>
+	<string name="menu_customer_order">E01</string>
+	<string name="menu_inventory_order">F01</string>
+	<string name="menu_bills_order">G01</string>
+	<string name="menu_cashflow_order">H01</string>
+	<string name="menu_user_access_order">I01</string>
+	<string name="menu_report_transaction_order">J01</string>
+	<string name="menu_report_product_statistic_order">J02</string>
+	<string name="menu_report_inventory_order">J03</string>
+	<string name="menu_report_cashflow_order">J04</string>
+	<string name="menu_report_commision_order">J05</string>
+	<string name="menu_report_bills_order">J06</string>
+	<string name="menu_report_credit_order">J07</string>
+	<string name="menu_report_tax_order">J08</string>
+	<string name="menu_report_service_charge_order">J09</string>
+	<string name="menu_favorite_customer_order">K01</string>
+	<string name="menu_favorite_supplier_order">K02</string>
+	
+	<string name="task_register_merchant">"Registering merchant &#8230;"</string>
+	<string name="task_resend_activation_code">"Resend activation code &#8230;"</string>
+	<string name="task_get_merchant_by_login_id">"Checking merchant Login Id &#8230;"</string>
+	<string name="task_reset_password">"Reset password &#8230;"</string>
+	<string name="task_validate_merchant">"Authenticate merchant &#8230;"</string>
+	<string name="task_validate_user">"Authenticate user &#8230;"</string>
+	<string name="task_root_get_merchant">"Download merchant &#8230;"</string>
+	<string name="task_root_get_merchant_access">"Download merchant access &#8230;"</string>
+	<string name="task_activate_merchant">"Activating merchant &#8230;"</string>
+	<string name="task_submit_orders">"Submit order &#8230;"</string>
+	<string name="task_submit_order_items">"Submit order detail &#8230;"</string>
+	<string name="task_get_orders">"Download order &#8230;"</string>
+	<string name="task_get_order_item">"Download order detail &#8230;"</string>
+	<string name="task_delete_orders">"Download order detail &#8230;"</string>
+	<string name="task_get_product_group">"Download product group &#8230;"</string>
+	<string name="task_update_product_group">"Upload product group &#8230;"</string>
+	<string name="task_get_discount">"Download discount &#8230;"</string>
+	<string name="task_update_discount">"Upload discount &#8230;"</string>
+	<string name="task_get_employee">"Download employee &#8230;"</string>
+	<string name="task_update_employee">"Upload employee &#8230;"</string>
+	<string name="task_get_customer">"Download customer &#8230;"</string>
+	<string name="task_update_customer">"Upload customer &#8230;"</string>
+	<string name="task_get_product">"Download product &#8230;"</string>
+	<string name="task_update_product">"Upload product &#8230;"</string>
+	<string name="task_get_user">"Download user &#8230;"</string>
+	<string name="task_update_user">"Upload user &#8230;"</string>
+	<string name="task_get_user_access">"Download user access &#8230;"</string>
+	<string name="task_update_user_access">"Upload user access &#8230;"</string>
+	<string name="task_get_transactions">"Download transaction &#8230;"</string>
+	<string name="task_update_transactions">"Upload transaction &#8230;"</string>
+	<string name="task_get_transaction_item">"Download transaction item &#8230;"</string>
+	<string name="task_update_transaction_item">"Upload transaction item &#8230;"</string>
+	<string name="task_get_supplier">"Download supplier &#8230;"</string>
+	<string name="task_update_supplier">"Upload supplier &#8230;"</string>
+	<string name="task_get_bill">"Download bill &#8230;"</string>
+	<string name="task_update_bill">"Upload bill &#8230;"</string>
+	<string name="task_get_cashflow">"Download cashflow &#8230;"</string>
+	<string name="task_update_cashflow">"Upload cashflow &#8230;"</string>
+	<string name="task_get_inventory">"Download inventory &#8230;"</string>
+	<string name="task_update_inventory">"Upload inventory &#8230;"</string>
+	<string name="task_get_merchant">"Download merchant &#8230;"</string>
+	<string name="task_update_merchant">"Upload merchant &#8230;"</string>
+	<string name="task_get_merchant_access">"Download merchant access &#8230;"</string>
+	<string name="task_update_merchant_access">"Upload merchant access &#8230;"</string>
+	<string name="task_get_last_sync">"Check last sync up &#8230;"</string>
+	<string name="task_update_last_sync">"Update last sync up &#8230;"</string>
+	
+	<string name="cashflow_type_capital_in">Capital Investment</string>
+	<string name="cashflow_type_capital_out">Capital Withdrawal</string>
+	<string name="cashflow_type_bank_deposit">Funds Transfer to Bank</string>
+	<string name="cashflow_type_bank_withdrawal">Funds Withdrawal from Bank</string>
+	<string name="cashflow_type_bill_payment">Bill Payment</string>
+	<string name="cashflow_type_invc_payment">Customer Credit Payment</string>
+	<string name="cashflow_type_expense">General Expense</string>
+	<string name="cashflow_type_refund">Refund</string>
+	
+	<string name="error_general">System error, please contact admin app.tokoku@gmail.com !</string>
+	<string name="error_system_maintenance">System is under maintenance, please try again later !</string>
+	<string name="error_app_update_required">Please update app from Google Play !</string>
+	<string name="error_invalid_token">Invalid token !</string>
+	<string name="error_service_expired">Sync up data service has been expired !</string>
+	<string name="error_could_not_obtained_lock">Data sync up error !</string>
+	<string name="error_register_merchant_conflict">Login Id has been registered by other merchant. Choose other Login Id !</string>
+	<string name="error_invalid_app_cert">Application certificate is not valid !</string>
+	
+	
+</resources>

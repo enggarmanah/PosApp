@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle" >
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        style="@style/SectionTopPanelStyle" >
+
+        <ImageButton
+            android:id="@+id/backButton"
+            style="@style/SectionBackButtonStyle"
+            android:contentDescription="@string/none" />
+
+        <TextView
+            android:id="@+id/navigationTitle"
+            style="@style/SectionTopTextStyle"
+            android:gravity="start|center_vertical" />
+
+        <TextView
+            android:id="@+id/navText"
+            style="@style/SectionTopTextStyle"
+            android:gravity="end|center_vertical" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/transactionList"
+        style="@style/ListViewStyle"
+        android:layout_below="@id/topPanel" >
+    </ListView>
+
+</RelativeLayout>

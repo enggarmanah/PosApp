@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/LeftFragmentStyle" >
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout style="@style/SectionTopPanelStyle" >
+            
+	      	<ImageButton
+		        android:id="@+id/backButton"
+		        style="@style/SectionBackButtonStyle"
+		        android:contentDescription="@string/none" />
+		
+		    <TextView
+		        android:id="@+id/supplierNameText"
+		        style="@style/SectionTopTextStyle"
+		        android:gravity="start|center_vertical"
+		        android:text="@string/transaction" />
+		
+		    <ImageButton
+		        android:id="@+id/transactionsButton"
+		        style="@style/DetailsButtonStyle"
+		        android:contentDescription="@string/none" />
+		    
+        </LinearLayout>
+		
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_first_trans" />
+
+                <TextView
+                    android:id="@+id/firstTransactionText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_last_trans" />
+
+                <TextView
+                    android:id="@+id/lastTransactionText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+            
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_average" />
+
+                <TextView
+                    android:id="@+id/averageTransactionText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+		
+        <TextView style="@style/SectionDividerStyle" />
+        
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_transaction" />
+
+                <TextView
+                    android:id="@+id/transactionCountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_product" />
+
+                <TextView
+                    android:id="@+id/productCountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_total" />
+
+                <TextView
+                    android:id="@+id/totalAmountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+		
+        <TextView style="@style/SectionDividerStyle" />
+        
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_min_trans" />
+
+                <TextView
+                    android:id="@+id/minTransactionText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_max_trans" />
+
+                <TextView
+                    android:id="@+id/maxTransactionText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/SectionSubContentPanelStyle"
+                android:layout_weight="1" >
+
+                <TextView
+                    style="@style/SectionSubCashFlowContentLabelTextStyle"
+                    android:text="@string/favorite_customer_average" />
+
+                <TextView
+                    android:id="@+id/averageAmountText"
+                    style="@style/SectionSubCashFlowContentInfoTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+		
+        <TextView style="@style/SectionDividerStyle" />
+        
+        <LinearLayout
+            style="@style/SectionContentPanelStyle"
+            android:baselineAligned="false"
+            android:paddingLeft="11dp"
+            android:paddingStart="11dp"
+            android:paddingRight="11dp"
+            android:paddingEnd="11dp">
+
+            <TextView
+            	style="@style/SectionSubFavoriteTitleTextStyle"
+                android:text="@string/favorite_customer_category"
+                android:gravity="center_vertical|start"
+                android:layout_weight="2"/>
+            
+            <TextView
+            	style="@style/SectionSubFavoriteTitleTextStyle"
+                android:text="@string/favorite_customer_quantity"
+                android:gravity="center_vertical|end"
+                android:layout_weight="1"/>
+            
+            <TextView
+            	style="@style/SectionSubFavoriteTitleTextStyle"
+                android:text="@string/favorite_customer_amount"
+                android:gravity="center_vertical|end"
+                android:layout_weight="2"/>	
+        </LinearLayout>
+        
+        <TextView style="@style/SectionDividerStyle" />
+        
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/productStatisticList"
+        style="@style/ListViewStyle"
+        android:layout_below="@id/topPanel" />
+
+</RelativeLayout>
