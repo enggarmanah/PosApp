@@ -248,7 +248,8 @@ public abstract class BaseEditFragment<T> extends BaseFragment {
 				if (getFragmentManager().findFragmentByTag(fragmentTag) != null) {
 					fragment = (DatePickerFragment) getFragmentManager().findFragmentByTag(fragmentTag);
 				} else {
-					fragment = new DatePickerFragment(dateInput);
+					fragment = new DatePickerFragment();
+					fragment.setInputField(dateInput);
 				}
 				
 				if (fragment.isAdded()) {
