@@ -64,6 +64,21 @@
                 android:id="@+id/productGroupText"
                 style="@style/FormInputSelectStyle" />
         </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_price_type_fl" />
+
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_price_type" />
+
+            <Spinner
+                android:id="@+id/priceTypeSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
         
         <LinearLayout 
             android:id="@+id/price1Panel"
@@ -119,7 +134,9 @@
                 style="@style/FormInputNumericStyle" />
         </LinearLayout>
         
-        <LinearLayout style="@style/FormRowStyle" >
+        <LinearLayout
+            android:id="@+id/costPricePanel"
+            style="@style/FormRowStyle" >
 
             <TextView
                 style="@style/FormTextFirstLetterStyle"
@@ -153,11 +170,26 @@
 
             <TextView
                 style="@style/FormTextFirstLetterStyle"
-                android:text="@string/field_commision_fl" />
+                android:text="@string/field_commission_type_fl" />
+
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_commission_type" />
+
+            <Spinner
+                android:id="@+id/commissionTypeSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_commission_fl" />
             
             <TextView
                 style="@style/FormTextStyle"
-                android:text="@string/field_commision" />
+                android:text="@string/field_commission" />
 
             <EditText
                 android:id="@+id/commisionText"

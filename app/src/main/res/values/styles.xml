@@ -2,7 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="app_theme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:windowBackground">@color/background_blue_dark</item>
+        <item name="android:windowBackground">@color/background</item>
         <item name="android:actionBarStyle">@style/ActionBarStyle</item>
         <item name="android:actionButtonStyle">@style/ActionButtonStyle</item>
         <item name="android:dropDownListViewStyle">@style/SpinnerStyle</item>
@@ -11,7 +11,7 @@
     <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/header_background</item>
         <item name="android:titleTextStyle">@style/ActionBarTextStyle</item>
-        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:paddingRight">0dp</item>
     </style>
 
     <style name="ActionBarTextStyle" parent="@android:style/TextAppearance">
@@ -66,8 +66,8 @@
 	
     <style name="PlainFragmentStyle">
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:padding">1dp</item>
         <item name="android:orientation">vertical</item>
@@ -393,6 +393,11 @@
         <item name="android:gravity">center_vertical|left</item>
     </style>
 
+    <style name="ListViewRowProductUnitTextStyle" parent="ListViewRowProductTextStyle">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="ListViewRowProductPriceTextStyle" parent="ListViewRowProductTextStyle">
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical|right</item>
@@ -439,6 +444,13 @@
         <item name="android:gravity">center_vertical|left</item>
         <item name="android:layout_gravity">top</item>
     </style>
+
+    <style name="ListViewRowTransItemQuantityTypeTextStyle" parent="ListViewRowTransItemBaseTextStyle">
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:layout_gravity">top</item>
+    </style>
     
     <style name="ListViewRowTransItemUnitTextStyle" parent="ListViewRowTransItemBaseTextStyle">
         <item name="android:layout_weight">0</item>
@@ -466,7 +478,7 @@
     </style>
 
     <style name="ListViewRowTransItemPriceTextStyle" parent="ListViewRowTransItemBaseTextStyle">
-        <item name="android:layout_weight">25</item>
+        <item name="android:layout_weight">20</item>
         <item name="android:gravity">center_vertical|right</item>
         <item name="android:layout_gravity">top</item>
         <item name="android:paddingRight">5dp</item>
@@ -474,7 +486,7 @@
     </style>
 
     <style name="ListViewRowTransItemTotalPriceTextStyle" parent="ListViewRowTransItemBaseTextStyle">
-        <item name="android:layout_weight">35</item>
+        <item name="android:layout_weight">30</item>
         <item name="android:gravity">center_vertical|right</item>
         <item name="android:layout_gravity">top</item>
     </style>
@@ -604,8 +616,8 @@
     </style>
 
     <style name="FormStyle">
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">5dp</item>
     </style>
@@ -615,6 +627,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@color/background</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:paddingTop">3dp</item>
         <item name="android:paddingBottom">3dp</item>
         <item name="android:paddingRight">10dp</item>
@@ -626,28 +639,24 @@
         <item name="android:minWidth">28dp</item>
         <item name="android:minHeight">28dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_gravity">top</item>
         <item name="android:textSize">@dimen/text_big</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_dark</item>
         <item name="android:shadowColor">@color/text_dark</item>
         <item name="android:shadowRadius">0</item>
-        <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_marginLeft">11dp</item>
         <item name="android:background">@drawable/bg_first_letter</item>
     </style>
     
     <style name="FormTextStyle">
-        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingTop">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">top|left</item>
+        <item name="android:layout_marginBottom">0dp</item>
         <item name="android:textSize">@dimen/text_big</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_default</item>
-        <item name="android:layout_marginTop">1dp</item>
-        <item name="android:layout_marginBottom">3dp</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
     </style>

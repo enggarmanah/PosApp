@@ -138,6 +138,8 @@
     <string name="field_type_fl">T</string>
     <string name="field_group">Category</string>
     <string name="field_group_fl">C</string>
+    <string name="field_price_type">Price Type</string>
+    <string name="field_price_type_fl">P</string>
     <string name="field_price">Price</string>
     <string name="field_price_fl">P</string>
     <string name="field_selling_price">Sell Price</string>
@@ -146,8 +148,10 @@
     <string name="field_cost_price_fl">P</string>
     <string name="field_pic_required">PIC Required</string>
     <string name="field_pic_required_fl">P</string>
-    <string name="field_commision">Commission</string>
-    <string name="field_commision_fl">C</string>
+    <string name="field_commission_type">Commission Type</string>
+    <string name="field_commission_type_fl">C</string>
+    <string name="field_commission">Commission</string>
+    <string name="field_commission_fl">C</string>
     <string name="field_quantity_type">Quantity Type</string>
     <string name="field_quantity_type_fl">Q</string>
     <string name="field_stock">Stock</string>
@@ -248,8 +252,8 @@
     <string name="field_printer_font_fl">F</string>
     <string name="field_printer_line_size">Text / Line</string>
     <string name="field_printer_line_size_fl">T</string>
-    <string name="field_discount_type">Discount Type</string>
-    <string name="field_discount_type_fl">D</string>
+    <string name="field_discount_type">Type</string>
+    <string name="field_discount_type_fl">T</string>
     <string name="field_order_type">Order Type</string>
     <string name="field_order_type_fl">O</string>
     <string name="field_invoice_fl">I</string>
@@ -556,6 +560,12 @@
 	<string name="bill_status_unpaid">"Unpaid"</string>
 	<string name="bill_status_partial">"Partial Payment"</string>
 	<string name="bill_status_paid">"Full Payment"</string>
+
+    <string name="price_type_static">"Static"</string>
+    <string name="price_type_dynamic">"Dynamic"</string>
+
+    <string name="commission_type_amount">"Amount"</string>
+    <string name="commission_type_percentage">"Percentage"</string>
 
 	<string name="inventory_status_purchase">"Product Purchase"</string>
 	<string name="inventory_status_self_production">"Self Production"</string>

@@ -271,23 +271,6 @@
         </LinearLayout>
         
         <LinearLayout 
-            android:id="@+id/discountTypePanel"
-            style="@style/FormRowStyle" >
-
-            <TextView
-                style="@style/FormTextFirstLetterStyle"
-                android:text="@string/field_discount_type_fl" />
-            
-            <TextView
-                style="@style/FormTextStyle"
-                android:text="@string/field_discount_type" />
-
-            <Spinner
-                android:id="@+id/discountTypeSp"
-                style="@style/FormInputListStyle" />
-        </LinearLayout>
-        
-        <LinearLayout 
             android:id="@+id/orderTypePanel"
             style="@style/FormRowStyle" >
 

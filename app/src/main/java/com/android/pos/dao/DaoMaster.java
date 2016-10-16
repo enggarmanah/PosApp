@@ -31,7 +31,7 @@ import com.android.pos.dao.UserAccessDao;
  * Master of DAO (schema version 47): knows all DAOs.
 */
 public class DaoMaster extends AbstractDaoMaster {
-    public static final int SCHEMA_VERSION = 47;
+    public static final int SCHEMA_VERSION = 48;
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(SQLiteDatabase db, boolean ifNotExists) {

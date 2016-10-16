@@ -77,6 +77,8 @@ public class BeanUtil {
 		bean.setRemote_id(discount.getId());
 		bean.setRef_id(discount.getRefId());
 		bean.setName(discount.getName());
+        bean.setType(discount.getType());
+        bean.setAmount(discount.getAmount());
 		bean.setPercentage(discount.getPercentage());
 		bean.setStatus(discount.getStatus());
 		bean.setCreate_by(discount.getCreateBy());
@@ -93,6 +95,8 @@ public class BeanUtil {
 		discount.setId(bean.getRemote_id());
 		discount.setRefId(bean.getRef_id());
 		discount.setName(bean.getName());
+		discount.setType(bean.getType());
+		discount.setAmount(bean.getAmount());
 		discount.setPercentage(bean.getPercentage());
 		discount.setStatus(bean.getStatus());
 		discount.setUploadStatus(Constant.STATUS_NO);
@@ -281,11 +285,13 @@ public class BeanUtil {
 		bean.setCode(product.getCode());
 		bean.setName(product.getName());
 		bean.setType(product.getType());
+        bean.setPrice_type(product.getPriceType());
 		bean.setPrice_1(product.getPrice1());
 		bean.setPrice_2(product.getPrice2());
 		bean.setPrice_3(product.getPrice3());
 		bean.setCost_price(product.getCostPrice());
 		bean.setPic_required(product.getPicRequired());
+        bean.setCommision_type(product.getCommisionType());
 		bean.setCommision(product.getCommision());
 		bean.setPromo_price(product.getPromoPrice());
 		bean.setPromo_start(product.getPromoStart());
@@ -311,11 +317,13 @@ public class BeanUtil {
 		product.setCode(bean.getCode());
 		product.setName(bean.getName());
 		product.setType(bean.getType());
+		product.setPriceType(bean.getPrice_type());
 		product.setPrice1(bean.getPrice_1());
 		product.setPrice2(bean.getPrice_2());
 		product.setPrice3(bean.getPrice_3());
 		product.setCostPrice(bean.getCost_price());
 		product.setPicRequired(bean.getPic_required());
+		product.setCommisionType(bean.getCommision_type());
 		product.setCommision(bean.getCommision());
 		product.setPromoPrice(bean.getPromo_price());
 		product.setPromoStart(bean.getPromo_start());

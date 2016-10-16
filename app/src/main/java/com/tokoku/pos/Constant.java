@@ -65,7 +65,7 @@ public class Constant {
 	public static final String PAYMENT_TYPE_DEBIT_CARD = "DEBIT_CARD";
 	public static final String PAYMENT_TYPE_CREDIT = "CREDIT";
 	
-	public static final String DISCOUNT_TYPE_NOMINAL = "N";
+	public static final String DISCOUNT_TYPE_AMOUNT = "A";
 	public static final String DISCOUNT_TYPE_PERCENTAGE = "P";
 	
 	public static final String ORDER_TYPE_NO = "N";
@@ -217,6 +217,12 @@ public class Constant {
 	public static final String CASHFLOW_TYPE_INVC_PAYMENT = "INVPAY";
 	public static final String CASHFLOW_TYPE_EXPENSE = "EXPENS";
 	public static final String CASHFLOW_TYPE_REFUND = "REFUND";
+
+	public static final String PRICE_TYPE_STATIC = "S";
+	public static final String PRICE_TYPE_DYNAMIC = "D";
+
+	public static final String COMMISSION_TYPE_AMOUNT = "A";
+	public static final String COMMISSION_TYPE_PERCENTAGE = "P";
 	
 	public static final String ERROR_INVALID_TOKEN = "ERR001";
 	public static final String ERROR_SERVICE_EXPIRED = "ERR002";

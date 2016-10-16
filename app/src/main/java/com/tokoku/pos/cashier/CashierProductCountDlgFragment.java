@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -40,7 +41,8 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 	
 	TextView mProductText;
 	TextView mPersonInChargeText;
-	TextView mQuantityText;
+	TextView mValueText;
+	TextView mInfoText;
 	
 	LinearLayout mProductCountPanel;
 	LinearLayout mNumberBtnPanel;
@@ -69,7 +71,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 	Float mPrice;
 	Employee mPersonInCharge;
 	String mRemarks;
-	Float mQuantity;
+	Float mValue;
 	
 	ProductActionListener mActionListener;
 	
@@ -79,7 +81,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 	private static String PRICE = "PRICE";
 	private static String PERSON_IN_CHARGE = "PERSON_IN_CHARGE";
 	private static String REMARKS = "REMARKS";
-	private static String QUANTITY = "QUANTITY";
+	private static String VALUE = "VALUE";
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
         	mPrice = (Float) savedInstanceState.get(PRICE);
         	mPersonInCharge = (Employee) savedInstanceState.get(PERSON_IN_CHARGE);
         	mRemarks = (String) savedInstanceState.getString(REMARKS);
-        	mQuantity = (Float) savedInstanceState.get(QUANTITY);
+        	mValue = (Float) savedInstanceState.get(VALUE);
         }
         
         setCancelable(false);
@@ -108,7 +110,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		outState.putSerializable(PRICE, mPrice);
 		outState.putSerializable(PERSON_IN_CHARGE, mPersonInCharge);
 		outState.putSerializable(REMARKS, mRemarks);
-		outState.putSerializable(QUANTITY, mQuantity);
+		outState.putSerializable(VALUE, mValue);
 	}
 	
 	private void saveDataFromView() {
@@ -116,8 +118,8 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		float quantity = 1; 
 		String quantityStr = "1";
 		
-		if (!CommonUtil.isEmpty(mQuantityText.getText().toString())) {
-			quantityStr = mQuantityText.getText().toString();
+		if (!CommonUtil.isEmpty(mValueText.getText().toString())) {
+			quantityStr = mValueText.getText().toString();
 		}
 		
 		try {
@@ -126,7 +128,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			e.printStackTrace();
 		}
 		
-		mQuantity = quantity;
+		mValue = quantity;
 	}
 	
 	public void setEmployee(Employee employee) {
@@ -152,7 +154,8 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		mProductText = (TextView) getView().findViewById(R.id.productText);
 		mPersonInChargeText = (TextView) getView().findViewById(R.id.personInChargeText);
 		mPriceSp = (Spinner) getView().findViewById(R.id.priceSp);
-		mQuantityText = (TextView) getView().findViewById(R.id.countText);
+		mValueText = (TextView) getView().findViewById(R.id.countText);
+		mInfoText = (TextView) getView().findViewById(R.id.infoText);
 		
 		mRemarksBtn = (TextView) getView().findViewById(R.id.remarksBtn);
 		mRemarksText = (EditText) getView().findViewById(R.id.remarksText);
@@ -176,6 +179,13 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		
 		mOkBtn = (Button) getView().findViewById(R.id.okBtn);
 		mCancelBtn = (Button) getView().findViewById(R.id.cancelBtn);
+
+        PriceBean[] prices = getPrices();
+
+        mPriceArrayAdapter = new CashierProductCountPriceSpinnerArrayAdapter(mPriceSp, getActivity(), prices);
+        mPriceSp.setAdapter(mPriceArrayAdapter);
+
+        mPrice = ((PriceBean) mPriceSp.getSelectedItem()).getValue();
 		
 		mPersonInChargeText.setOnClickListener(getPersonInChargeTextOnClickListener());
 		mRemarksBtn.setOnClickListener(getRemarksBtnOnClickListener());
@@ -195,6 +205,8 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		
 		mOkBtn.setOnClickListener(getOkBtnOnClickListener());
 		mCancelBtn.setOnClickListener(getCancelBtnOnClickListener());
+
+        mPriceSp.setOnItemSelectedListener(getPriceSpOnSelectedListener());
 		
 		refreshDisplay();
 	}
@@ -225,7 +237,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		
 		/*if (Constant.PRODUCT_TYPE_SERVICE.equals(mProduct.getType())) {
 			
-			mQuantity = Float.valueOf(1);
+			mValue = Float.valueOf(1);
 			
 			mProductCountPanel.setVisibility(View.GONE);
 			mNumberBtnPanel.setVisibility(View.GONE);
@@ -235,10 +247,21 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			mProductCountPanel.setVisibility(View.VISIBLE);
 			mNumberBtnPanel.setVisibility(View.VISIBLE);
 		}*/
-		
+
+        if (Constant.PRICE_TYPE_DYNAMIC.equals(mProduct.getPriceType())) {
+
+            mPriceSp.setVisibility(View.GONE);
+            mInfoText.setText(getText(R.string.field_price));
+
+        } else {
+
+            mPriceSp.setVisibility(View.VISIBLE);
+            mInfoText.setText(getText(R.string.count));
+        }
+
 		mProductText.setText(mProduct.getName());
 		mRemarksText.setText(mRemarks);
-		mQuantityText.setText(CommonUtil.formatNumber(mQuantity));
+		mValueText.setText(CommonUtil.formatNumber(mValue));
 		
 		if (mPersonInCharge != null) {
 			mPersonInChargeText.setText(mPersonInCharge.getName());
@@ -247,12 +270,9 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 		}
 		
 		displayRemarks(!CommonUtil.isEmpty(mRemarks));
-		
-		PriceBean[] prices = getPrices();
-		
-		mPriceArrayAdapter = new CashierProductCountPriceSpinnerArrayAdapter(mPriceSp, getActivity(), prices);
-		mPriceSp.setAdapter(mPriceArrayAdapter);
-		
+
+        PriceBean[] prices = getPrices();
+
 		if (prices != null && prices.length == 1) {
 			mPriceSp.setEnabled(false);
 		} else {
@@ -336,19 +356,19 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			@Override
 			public void onClick(View v) {
 				
-				String quantityText = mQuantityText.getText().toString();
+				String quantityText = mValueText.getText().toString();
 				String decimalSeparator = CommonUtil.getNumberDecimalSeparator(); 
 				
 				if (decimalSeparator != null && quantityText.contains(decimalSeparator)) {
-					mQuantityText.setText(mQuantityText.getText() + numberText);
+					mValueText.setText(mValueText.getText() + numberText);
 					
 				} else {
-					float payment = CommonUtil.parseFloatNumber(mQuantityText.getText().toString());
+					float payment = CommonUtil.parseFloatNumber(mValueText.getText().toString());
 					float number = CommonUtil.parseFloatNumber(numberText);
 					
 					float total = payment * 10 + number;
 					
-					mQuantityText.setText(CommonUtil.formatNumber(total));
+					mValueText.setText(CommonUtil.formatNumber(total));
 				}
 			}
 		};
@@ -361,7 +381,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			@Override
 			public void onClick(View v) {
 				
-				mQuantityText.setText("0");
+				mValueText.setText("0");
 			}
 		};
 	}
@@ -373,11 +393,11 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			@Override
 			public void onClick(View v) {
 				
-				String quantityText = mQuantityText.getText().toString();
+				String quantityText = mValueText.getText().toString();
 				String decimalSeparator = CommonUtil.getNumberDecimalSeparator(); 
 				
 				if (!quantityText.contains(decimalSeparator)) {
-					mQuantityText.setText(mQuantityText.getText() + decimalSeparator);
+					mValueText.setText(mValueText.getText() + decimalSeparator);
 				}
 			}
 		};
@@ -390,14 +410,14 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			@Override
 			public void onClick(View v) {
 				
-				float quantity = CommonUtil.parseFloatNumber(mQuantityText.getText().toString());
+				float quantity = CommonUtil.parseFloatNumber(mValueText.getText().toString());
 				String number = CommonUtil.isRound(quantity) ? String.valueOf((int) quantity) : String.valueOf(quantity);
 				
 				if (number.length() == 1) {
-					mQuantityText.setText("0");
+					mValueText.setText("0");
 				} else {
 					number = CommonUtil.formatNumber(number.substring(0, number.length()-1));
-					mQuantityText.setText(number);
+					mValueText.setText(number);
 				}
 			}
 		};
@@ -425,8 +445,17 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 				
 				Float price = ((PriceBean) mPriceSp.getSelectedItem()).getValue();
 				
-				mQuantity = CommonUtil.parseFloatNumber(mQuantityText.getText().toString());
-				mActionListener.onProductQuantitySelected(mProduct, price, mPersonInCharge, mQuantity, mRemarksText.getText().toString());
+				mValue = CommonUtil.parseFloatNumber(mValueText.getText().toString());
+
+                if (Constant.PRICE_TYPE_DYNAMIC.equals(mProduct.getPriceType())) {
+
+                    mActionListener.onProductQuantitySelected(mProduct, mValue, mPersonInCharge, 1f, mRemarksText.getText().toString());
+
+                } else {
+
+                    mActionListener.onProductQuantitySelected(mProduct, price, mPersonInCharge, mValue, mRemarksText.getText().toString());
+                }
+
 				dismiss();
 			}
 		};
@@ -465,12 +494,23 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 	}
 	
 	public void setProduct(Product product, Float price, Employee personInCharge, Float quantity, String remarks) {
-		
-		this.mProduct = product;
-		this.mPrice = price;
-		this.mPersonInCharge = personInCharge;
-		this.mRemarks = remarks;
-		this.mQuantity = quantity;
+
+        price = price != null ? price : 0f;
+
+		mProduct = product;
+		mPersonInCharge = personInCharge;
+		mRemarks = remarks;
+
+        if (Constant.PRICE_TYPE_DYNAMIC.equals(product.getPriceType())) {
+
+            mPrice = price;
+            mValue = price;
+
+        } else {
+
+            mPrice = price;
+            mValue = quantity;
+        }
 		
 		refreshDisplay();
 	}
@@ -490,4 +530,19 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			mRemarksText.setVisibility(View.GONE);
 		}
 	}
+
+    private AdapterView.OnItemSelectedListener getPriceSpOnSelectedListener() {
+
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                mPrice = ((PriceBean) mPriceSp.getSelectedItem()).getValue();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+    }
 }

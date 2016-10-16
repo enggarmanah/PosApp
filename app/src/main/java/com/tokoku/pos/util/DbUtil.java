@@ -379,6 +379,15 @@ public class DbUtil {
             	
             	db.execSQL("ALTER TABLE 'MERCHANT' ADD 'ORDER_TYPE' TEXT");
             }
+
+			// handle version 47 changes
+			if (oldVersion < 48) {
+
+				db.execSQL("ALTER TABLE 'PRODUCT' ADD 'PRICE_TYPE' TEXT");
+				db.execSQL("ALTER TABLE 'PRODUCT' ADD 'COMMISION_TYPE' TEXT");
+
+				db.execSQL("ALTER TABLE 'DISCOUNT' ADD 'TYPE' TEXT");
+			}
             
             //DaoMaster.dropAllTables(db, true);
             //onCreate(db);

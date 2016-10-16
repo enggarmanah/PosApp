@@ -54,6 +54,7 @@
         android:layout_marginBottom="0.5dp">
 
         <TextView
+            android:id="@+id/infoText"
             style="@style/CashierNumberValueStyle"
             android:layout_width="wrap_content"
             android:gravity="center_vertical|start"

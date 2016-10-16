@@ -27,12 +27,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 		super();
 	}
 	
-	public DatePickerFragment(TextView inputDate) {
-		
-		super();
-		this.inputDate = inputDate;
-	}
-	
 	public void setInputField(TextView inputDate) {
 		
 		this.inputDate = inputDate;

@@ -12,12 +12,13 @@ import de.greenrobot.dao.DaoException;
  */
 @SuppressWarnings("serial")
 public class Discount implements Serializable {
-	
+
     private Long id;
     private String refId;
     private long merchantId;
     /** Not-null value. */
     private String name;
+    private String type;
     private Float percentage;
     private Float amount;
     private String status;
@@ -44,11 +45,12 @@ public class Discount implements Serializable {
         this.id = id;
     }
 
-    public Discount(Long id, String refId, long merchantId, String name, Float percentage, Float amount, String status, String uploadStatus, String createBy, java.util.Date createDate, String updateBy, java.util.Date updateDate) {
+    public Discount(Long id, String refId, long merchantId, String name, String type, Float percentage, Float amount, String status, String uploadStatus, String createBy, java.util.Date createDate, String updateBy, java.util.Date updateDate) {
         this.id = id;
         this.refId = refId;
         this.merchantId = merchantId;
         this.name = name;
+        this.type = type;
         this.percentage = percentage;
         this.amount = amount;
         this.status = status;
@@ -97,6 +99,14 @@ public class Discount implements Serializable {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Float getPercentage() {

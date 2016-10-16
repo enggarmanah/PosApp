@@ -41,7 +41,14 @@ public abstract class BaseSpinnerArrayAdapter<T> extends ArrayAdapter<T> {
 	}
 
 	public T getItem(int position) {
-		return options[position];
+
+		if (options == null || options.length == 0) {
+			return null;
+		} else if (options.length <= position) {
+			return options[0];
+		} else {
+			return options[position];
+		}
 	}
 
 	public long getItemId(int position) {
@@ -88,7 +95,7 @@ public abstract class BaseSpinnerArrayAdapter<T> extends ArrayAdapter<T> {
 	
 	private View getCustomView(int position, View convertView, ViewGroup parent, boolean isDropDown) {
 		
-		T option = options[position];
+		T option = getItem(position);
 		
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		

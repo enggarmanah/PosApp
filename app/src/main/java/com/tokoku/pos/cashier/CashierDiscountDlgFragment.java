@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class CashierDiscountPercentageDlgFragment extends DialogFragment implements CashierDiscountArrayAdapter.ItemActionListener {
+public class CashierDiscountDlgFragment extends DialogFragment implements CashierDiscountArrayAdapter.ItemActionListener {
 	
 	ListView mDiscountListView;
 	

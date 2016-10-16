@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class CashierProductArrayAdapter extends ArrayAdapter<Product> {
 
 	private Context context;
@@ -29,6 +31,7 @@ public class CashierProductArrayAdapter extends ArrayAdapter<Product> {
 		
 		TextView codeText;
 		TextView nameText;
+		TextView unitText;
 		TextView priceText;
 	}
 
@@ -51,6 +54,7 @@ public class CashierProductArrayAdapter extends ArrayAdapter<Product> {
 		View rowView = convertView;
 		
 		TextView prdCode = null;
+		TextView unit = null;
 		TextView prdName = null;
 		TextView prdPrice = null;
 		
@@ -59,12 +63,14 @@ public class CashierProductArrayAdapter extends ArrayAdapter<Product> {
 			rowView = inflater.inflate(R.layout.cashier_product_list_item, parent, false);
 			
 			prdCode = (TextView) rowView.findViewById(R.id.codeText);
+			unit = (TextView) rowView.findViewById(R.id.unitText);
 			prdName = (TextView) rowView.findViewById(R.id.nameText);
 			prdPrice = (TextView) rowView.findViewById(R.id.priceText);
 
 			ViewHolder viewHolder = new ViewHolder();
 			
 			viewHolder.codeText = prdCode;
+			viewHolder.unitText = unit;
 			viewHolder.nameText = prdName;
 			viewHolder.priceText = prdPrice;
 
@@ -75,12 +81,14 @@ public class CashierProductArrayAdapter extends ArrayAdapter<Product> {
 			ViewHolder viewHolder = (ViewHolder) rowView.getTag();
 			
 			prdCode = viewHolder.codeText;
+			unit = viewHolder.unitText;
 			prdName = viewHolder.nameText;
 			prdPrice = viewHolder.priceText;
 		}
 		
 		prdCode.setText(product.getCode());
-		prdName.setText(product.getName() + "  [" + CommonUtil.getShortUnitName(product.getQuantityType()) + "]");
+		unit.setText(CommonUtil.getShortUnitName(product.getQuantityType()));
+		prdName.setText(product.getName());
 		
 		prdPrice.setText(CommonUtil.formatCurrency(CommonUtil.getCurrentPrice(product)));
 		

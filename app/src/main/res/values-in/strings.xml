@@ -16,7 +16,19 @@
 
 <resources>
     <string name="app_name">POS - TokoKu</string>
-    
+
+    <string name="event_cat_merchant">Merchant</string>
+    <string name="event_cat_user">User</string>
+    <string name="event_cat_product">Product</string>
+    <string name="event_act_registration">Registration</string>
+    <string name="event_act_activation">Activation</string>
+
+    <string name="event_cat_transaction">Transaction</string>
+    <string name="event_act_payment">Payment</string>
+
+    <string name="event_cat_task">Task</string>
+    <string name="event_act_sync">Sync</string>
+
     <string name="login_merchant">Login ke TokoKu</string>
     <string name="login_user">Login</string>
     
@@ -127,6 +139,8 @@
     <string name="field_type_fl">T</string>
     <string name="field_group">Kategori</string>
     <string name="field_group_fl">K</string>
+    <string name="field_price_type">Tipe Harga</string>
+    <string name="field_price_type_fl">T</string>
     <string name="field_price">Harga</string>
     <string name="field_price_fl">H</string>
     <string name="field_selling_price">Harga Jual</string>
@@ -135,8 +149,10 @@
     <string name="field_cost_price_fl">H</string>
     <string name="field_pic_required">Butuh PIC</string>
     <string name="field_pic_required_fl">B</string>
-    <string name="field_commision">Komisi</string>
-    <string name="field_commision_fl">K</string>
+    <string name="field_commission_type">Tipe Komisi</string>
+    <string name="field_commission_type_fl">T</string>
+    <string name="field_commission">Komisi</string>
+    <string name="field_commission_fl">K</string>
     <string name="field_quantity_type">Satuan</string>
     <string name="field_quantity_type_fl">S</string>
     <string name="field_stock">Jumlah Stok</string>
@@ -237,7 +253,7 @@
     <string name="field_printer_font_fl">F</string>
     <string name="field_printer_line_size">Teks / Baris</string>
     <string name="field_printer_line_size_fl">T</string>
-    <string name="field_discount_type">Tipe Diskon</string>
+    <string name="field_discount_type">Tipe</string>
     <string name="field_discount_type_fl">T</string>
     <string name="field_order_type">Tipe Pesanan</string>
     <string name="field_order_type_fl">T</string>
@@ -356,6 +372,7 @@
     <string name="product_group">Kategori</string>
     <string name="product">Produk</string>
     <string name="product_below_min_stock">Produk Dibawah Min. Stok</string>
+    <string name="product_short">Prd</string>
     <string name="item">Item</string>
     
     <string name="select_discount">Pilih Diskon</string>
@@ -544,6 +561,12 @@
 	<string name="bill_status_unpaid">"Belum Dibayar"</string>
 	<string name="bill_status_partial">"Pembayaran Sebagian"</string>
 	<string name="bill_status_paid">"Lunas"</string>
+
+    <string name="price_type_static">"Statis"</string>
+    <string name="price_type_dynamic">"Dinamis"</string>
+
+    <string name="commission_type_amount">"Nominal"</string>
+    <string name="commission_type_percentage">"Persentase"</string>
 
 	<string name="inventory_status_purchase">"Pembelian Produk"</string>
 	<string name="inventory_status_self_production">"Produksi Sendiri"</string>

@@ -21,11 +21,13 @@ public class Product implements Serializable {
     private String code;
     private String name;
     private String type;
+    private String priceType;
     private Float price1;
     private Float price2;
     private Float price3;
     private Float costPrice;
     private String picRequired;
+    private String commisionType;
     private Float commision;
     private Float promoPrice;
     private java.util.Date promoStart;
@@ -62,7 +64,7 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Long id, String refId, long merchantId, Long productGroupId, String code, String name, String type, Float price1, Float price2, Float price3, Float costPrice, String picRequired, Float commision, Float promoPrice, java.util.Date promoStart, java.util.Date promoEnd, String quantityType, Float stock, Float minStock, String status, String uploadStatus, String createBy, java.util.Date createDate, String updateBy, java.util.Date updateDate) {
+    public Product(Long id, String refId, long merchantId, Long productGroupId, String code, String name, String type, String priceType, Float price1, Float price2, Float price3, Float costPrice, String picRequired, String commisionType, Float commision, Float promoPrice, java.util.Date promoStart, java.util.Date promoEnd, String quantityType, Float stock, Float minStock, String status, String uploadStatus, String createBy, java.util.Date createDate, String updateBy, java.util.Date updateDate) {
         this.id = id;
         this.refId = refId;
         this.merchantId = merchantId;
@@ -70,11 +72,13 @@ public class Product implements Serializable {
         this.code = code;
         this.name = name;
         this.type = type;
+        this.priceType = priceType;
         this.price1 = price1;
         this.price2 = price2;
         this.price3 = price3;
         this.costPrice = costPrice;
         this.picRequired = picRequired;
+        this.commisionType = commisionType;
         this.commision = commision;
         this.promoPrice = promoPrice;
         this.promoStart = promoStart;
@@ -152,6 +156,14 @@ public class Product implements Serializable {
         this.type = type;
     }
 
+    public String getPriceType() {
+        return priceType;
+    }
+
+    public void setPriceType(String priceType) {
+        this.priceType = priceType;
+    }
+
     public Float getPrice1() {
         return price1;
     }
@@ -190,6 +202,14 @@ public class Product implements Serializable {
 
     public void setPicRequired(String picRequired) {
         this.picRequired = picRequired;
+    }
+
+    public String getCommisionType() {
+        return commisionType;
+    }
+
+    public void setCommisionType(String commisionType) {
+        this.commisionType = commisionType;
     }
 
     public Float getCommision() {

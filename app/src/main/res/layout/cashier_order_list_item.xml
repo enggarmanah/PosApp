@@ -4,7 +4,13 @@
 
     <TextView
         android:id="@+id/quantityText"
-        style="@style/ListViewRowTransItemCountTextStyle"/>
+        style="@style/ListViewRowTransItemCountTextStyle"
+        android:text="12"/>
+
+    <TextView
+        android:id="@+id/unitText"
+        style="@style/ListViewRowTransItemQuantityTypeTextStyle"
+        android:text="Pc"/>
     
     <LinearLayout
         style="@style/ListViewRowTransItemProductTextStyle"
@@ -12,20 +18,24 @@
     	
         <TextView
 	        android:id="@+id/nameText"
-	        style="@style/ListViewRowTransItemProductNameTextStyle" />
+	        style="@style/ListViewRowTransItemProductNameTextStyle"
+            android:text="Paijo"/>
 	    
         <TextView
 	        android:id="@+id/infoText"
-	        style="@style/ListViewRowTransItemProductInfoStyle" />
+	        style="@style/ListViewRowTransItemProductInfoStyle"
+            android:text="Note"/>
     
     </LinearLayout>
     
     <TextView
         android:id="@+id/priceText"
-        style="@style/ListViewRowTransItemPriceTextStyle"/>
+        style="@style/ListViewRowTransItemPriceTextStyle"
+        android:text="100.000"/>
     
     <TextView
         android:id="@+id/totalPriceText"
-        style="@style/ListViewRowTransItemTotalPriceTextStyle"/>
+        style="@style/ListViewRowTransItemTotalPriceTextStyle"
+        android:text="Rp 120.000"/>
 
 </LinearLayout>

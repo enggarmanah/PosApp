@@ -30,6 +30,7 @@ public class TransactionDetailArrayAdapter extends ArrayAdapter<TransactionItem>
 
 	class ViewHolder {
 		TextView quantityText;
+		TextView unitText;
 		TextView nameText;
 		TextView remarksText;
 		TextView priceText;
@@ -55,6 +56,7 @@ public class TransactionDetailArrayAdapter extends ArrayAdapter<TransactionItem>
 		View rowView = convertView;
 		
 		TextView quantityText = null;
+		TextView unitText = null;
 		TextView nameText = null;
 		TextView remarksText = null;
 		TextView priceText = null;
@@ -65,6 +67,7 @@ public class TransactionDetailArrayAdapter extends ArrayAdapter<TransactionItem>
 			rowView = inflater.inflate(R.layout.cashier_order_list_item, parent, false);
 			
 			quantityText = (TextView) rowView.findViewById(R.id.quantityText);
+			unitText = (TextView) rowView.findViewById(R.id.unitText);
 			nameText = (TextView) rowView.findViewById(R.id.nameText);
 			remarksText = (TextView) rowView.findViewById(R.id.infoText);
 			priceText = (TextView) rowView.findViewById(R.id.priceText);
@@ -73,6 +76,7 @@ public class TransactionDetailArrayAdapter extends ArrayAdapter<TransactionItem>
 			ViewHolder viewHolder = new ViewHolder();
 			
 			viewHolder.quantityText = quantityText;
+			viewHolder.unitText = unitText;
 			viewHolder.nameText = nameText;
 			viewHolder.remarksText = remarksText;
 			viewHolder.priceText = priceText;
@@ -85,6 +89,7 @@ public class TransactionDetailArrayAdapter extends ArrayAdapter<TransactionItem>
 			ViewHolder viewHolder = (ViewHolder) rowView.getTag();
 			
 			quantityText = viewHolder.quantityText;
+			unitText = viewHolder.unitText;
 			nameText = viewHolder.nameText;
 			remarksText = viewHolder.remarksText;
 			priceText = viewHolder.priceText;
@@ -94,7 +99,8 @@ public class TransactionDetailArrayAdapter extends ArrayAdapter<TransactionItem>
 		Product product = mProductDaoService.getProduct(transactionItem.getProductId());
 		
 		quantityText.setText(CommonUtil.formatNumber(transactionItem.getQuantity()));
-		nameText.setText(transactionItem.getProductName() + "  [" + CommonUtil.getShortUnitName(product.getQuantityType()) + "]");
+		unitText.setText(CommonUtil.getShortUnitName(product.getQuantityType()));
+		nameText.setText(transactionItem.getProductName());
 		
 		if (transactionItem.getEmployee() != null) {
 			

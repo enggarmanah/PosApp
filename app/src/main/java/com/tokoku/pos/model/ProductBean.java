@@ -6,11 +6,13 @@ public class ProductBean extends BaseBean {
 	private String code;
 	private String name;
 	private String type;
+	private String price_type;
 	private Float price_1;
 	private Float price_2;
 	private Float price_3;
 	private Float cost_price;
 	private String pic_required;
+	private String commision_type;
 	private Float commision;
 	private Float promo_price;
 	private java.util.Date promo_start;
@@ -154,5 +156,21 @@ public class ProductBean extends BaseBean {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getPrice_type() {
+		return price_type;
+	}
+
+	public void setPrice_type(String price_type) {
+		this.price_type = price_type;
+	}
+
+	public String getCommision_type() {
+		return commision_type;
+	}
+
+	public void setCommision_type(String commision_type) {
+		this.commision_type = commision_type;
 	}
 }

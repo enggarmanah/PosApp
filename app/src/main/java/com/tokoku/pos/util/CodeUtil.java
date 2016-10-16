@@ -31,6 +31,8 @@ public class CodeUtil {
 	private static CodeBean[] moduleAccess;
 	private static CodeBean[] fontSizes;
 	private static CodeBean[] cashflowTypes;
+	private static CodeBean[] priceTypes;
+	private static CodeBean[] commissionTypes;
 	
 	private static List<CodeBean> inventorystatusList;
 	
@@ -394,7 +396,7 @@ public class CodeUtil {
 		discountTypes[0] = code;
 		
 		code = new CodeBean();
-		code.setCode(Constant.DISCOUNT_TYPE_NOMINAL);
+		code.setCode(Constant.DISCOUNT_TYPE_AMOUNT);
 		code.setLabel(mContext.getString(R.string.discount_type_amount));
 		discountTypes[1] = code;
 			
@@ -514,6 +516,30 @@ public class CodeUtil {
 		bean.setCode(Constant.INVENTORY_STATUS_REFUND);
 		bean.setLabel(mContext.getString(R.string.inventory_status_refund));
 		inventorystatusList.add(bean);
+
+		priceTypes = new CodeBean[2];
+
+		code = new CodeBean();
+		code.setCode(Constant.PRICE_TYPE_STATIC);
+		code.setLabel(mContext.getString(R.string.price_type_static));
+		priceTypes[0] = code;
+
+		code = new CodeBean();
+		code.setCode(Constant.PRICE_TYPE_DYNAMIC);
+		code.setLabel(mContext.getString(R.string.price_type_dynamic));
+		priceTypes[1] = code;
+
+		commissionTypes = new CodeBean[2];
+
+		code = new CodeBean();
+		code.setCode(Constant.COMMISSION_TYPE_AMOUNT);
+		code.setLabel(mContext.getString(R.string.commission_type_amount));
+		commissionTypes[0] = code;
+
+		code = new CodeBean();
+		code.setCode(Constant.COMMISSION_TYPE_PERCENTAGE);
+		code.setLabel(mContext.getString(R.string.commission_type_percentage));
+		commissionTypes[1] = code;
 		
 		isInitialized = true;
 	}
@@ -561,6 +587,14 @@ public class CodeUtil {
 	public static CodeBean[] getQuantityTypes() {
 		return quantityType;
 	}
+
+    public static CodeBean[] getPriceTypes() {
+        return priceTypes;
+    }
+
+    public static CodeBean[] getCommissionTypes() {
+        return commissionTypes;
+    }
 	
 	public static CodeBean[] getFontSizes() {
 		return fontSizes;

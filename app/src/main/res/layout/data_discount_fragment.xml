@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/PlainFragmentStyle" >
+    style="@style/PlainFragmentStyle">
 
     <LinearLayout style="@style/FormStyle" >
 		
@@ -18,8 +18,27 @@
                 android:id="@+id/nameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/discountTypePanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_discount_type_fl" />
+
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_discount_type" />
+
+            <Spinner
+                android:id="@+id/discountTypeSp"
+                style="@style/FormInputListStyle" />
+        </LinearLayout>
         
-        <LinearLayout style="@style/FormRowStyle" >
+        <LinearLayout
+            android:id="@+id/percentagePanel"
+            style="@style/FormRowStyle" >
 			
             <TextView
                 style="@style/FormTextFirstLetterStyle"
@@ -31,6 +50,23 @@
 
             <EditText
                 android:id="@+id/percentageText"
+                style="@style/FormInputNumericStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/amountPanel"
+            style="@style/FormRowStyle" >
+
+            <TextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_amount_fl" />
+
+            <TextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_amount" />
+
+            <EditText
+                android:id="@+id/amountText"
                 style="@style/FormInputNumericStyle" />
         </LinearLayout>
         

@@ -67,7 +67,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     LinearLayout mPriceLabel3Panel;
     
     Spinner mPriceTypeCountSp;
-    Spinner mDiscountTypeSp;
     Spinner mOrderTypeSp;
     Spinner mStatusSp;
     
@@ -87,7 +86,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     
     CodeSpinnerArrayAdapter statusArrayAdapter;
     CodeSpinnerArrayAdapter typeArrayAdapter;
-    CodeSpinnerArrayAdapter discountTypeArrayAdapter;
     CodeSpinnerArrayAdapter orderTypeArrayAdapter;
     CodeSpinnerArrayAdapter priceTypeCountArrayAdapter;
     
@@ -165,7 +163,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     	mTaxText = (EditText) view.findViewById(R.id.taxText);
     	mServiceChargeText = (EditText) view.findViewById(R.id.serviceChargeText);
     	mPriceTypeCountSp = (Spinner) view.findViewById(R.id.priceTypeCountSp);
-    	mDiscountTypeSp = (Spinner) view.findViewById(R.id.discountTypeSp);
     	mOrderTypeSp = (Spinner) view.findViewById(R.id.orderTypeSp);
     	mStatusSp = (Spinner) view.findViewById(R.id.statusSp);
     	
@@ -224,7 +221,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     	registerField(mSecurityAnswerText);
     	registerField(mTaxText);
     	registerField(mPriceTypeCountSp);
-    	registerField(mDiscountTypeSp);
     	registerField(mOrderTypeSp);
     	registerField(mServiceChargeText);
     	registerField(mStatusSp);
@@ -239,9 +235,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     	
     	typeArrayAdapter = new CodeSpinnerArrayAdapter(mTypeSp, getActivity(), CodeUtil.getMerchantTypes());
     	mTypeSp.setAdapter(typeArrayAdapter);
-    	
-    	discountTypeArrayAdapter = new CodeSpinnerArrayAdapter(mDiscountTypeSp, getActivity(), CodeUtil.getDiscountTypes());
-    	mDiscountTypeSp.setAdapter(discountTypeArrayAdapter);
     	
     	orderTypeArrayAdapter = new CodeSpinnerArrayAdapter(mOrderTypeSp, getActivity(), CodeUtil.getOrderTypes());
     	mOrderTypeSp.setAdapter(orderTypeArrayAdapter);
@@ -267,7 +260,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     		
     		int typeIndex = typeArrayAdapter.getPosition(merchant.getType());
     		int priceTypeCountIndex = priceTypeCountArrayAdapter.getPosition(String.valueOf(merchant.getPriceTypeCount()));
-    		int discountTypeIndex = discountTypeArrayAdapter.getPosition(merchant.getDiscountType());
     		int orderTypeIndex = orderTypeArrayAdapter.getPosition(merchant.getOrderType());
     		int statusIndex = statusArrayAdapter.getPosition(merchant.getStatus());
     		
@@ -301,7 +293,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     		
     		mTypeSp.setSelection(typeIndex);
     		mPriceTypeCountSp.setSelection(priceTypeCountIndex);
-    		mDiscountTypeSp.setSelection(discountTypeIndex);
     		mOrderTypeSp.setSelection(orderTypeIndex);
     		mStatusSp.setSelection(statusIndex);
     		
@@ -451,7 +442,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     	String priceLabel3 = mPriceLabel3Text.getText().toString();
     	String securityQuestion = mSecurityQuestionText.getText().toString();
     	String securityAnswer = mSecurityAnswerText.getText().toString();
-    	String discountType = CodeBean.getNvlCode((CodeBean) mDiscountTypeSp.getSelectedItem());
     	String orderType = CodeBean.getNvlCode((CodeBean) mOrderTypeSp.getSelectedItem());
     	String status = CodeBean.getNvlCode((CodeBean) mStatusSp.getSelectedItem());
     	
@@ -477,7 +467,6 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     		mItem.setSecurityAnswer(securityAnswer);
     		mItem.setTaxPercentage(tax);
     		mItem.setServiceChargePercentage(serviceCharge);
-    		mItem.setDiscountType(discountType);
     		mItem.setOrderType(orderType);
     		mItem.setStatus(status);
     		

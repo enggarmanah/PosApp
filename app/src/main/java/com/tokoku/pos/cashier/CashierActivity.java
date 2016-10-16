@@ -71,7 +71,7 @@ public class CashierActivity extends BaseActivity
 	private CashierPaymentDlgFragment mPaymentDlgFragment;
 	private CashierOrderSummaryDlgFragment mOrderSummaryDlgFragment;
 	private CashierPaymentSummaryDlgFragment mPaymentSummaryDlgFragment;
-	private CashierDiscountPercentageDlgFragment mDiscountPercentageDlgFragment;
+	private CashierDiscountDlgFragment mDiscountDlgFragment;
 	private CashierDiscountNominalDlgFragment mDiscountNominalDlgFragment;
 	private CustomerDlgFragment mCustomerDlgFragment;
 	private EmployeeDlgFragment mEmployeeDlgFragment;
@@ -106,7 +106,7 @@ public class CashierActivity extends BaseActivity
 	private static final String mOrderDlgFragmentTag = "orderDlgFragmentTag";
 	private static final String mPaymentSummaryDlgFragmentTag = "paymentSummaryDlgFragmentTag";
 	private static final String mOrderSummaryDlgFragmentTag = "orderSummaryDlgFragmentTag";
-	private static final String mDiscountPercentageDlgFragmentTag = "discountPercentageDlgFragmentTag";
+	private static final String mDiscountDlgFragmentTag = "mDiscountDlgFragmentTag";
 	private static final String mDiscountNominalDlgFragmentTag = "discountNominalDlgFragmentTag";
 	private static final  String mCustomerDlgFragmentTag = "customerDlgFragmentTag";
 	private static final  String mEmployeeDlgFragmentTag = "employeeDlgFragmentTag";
@@ -308,10 +308,10 @@ public class CashierActivity extends BaseActivity
 			mOrderSummaryDlgFragment = new CashierOrderSummaryDlgFragment();
 		}
 		
-		mDiscountPercentageDlgFragment = (CashierDiscountPercentageDlgFragment) getFragmentManager().findFragmentByTag(mDiscountPercentageDlgFragmentTag);
+		mDiscountDlgFragment = (CashierDiscountDlgFragment) getFragmentManager().findFragmentByTag(mDiscountDlgFragmentTag);
 		
-		if (mDiscountPercentageDlgFragment == null) {
-			mDiscountPercentageDlgFragment = new CashierDiscountPercentageDlgFragment();
+		if (mDiscountDlgFragment == null) {
+			mDiscountDlgFragment = new CashierDiscountDlgFragment();
 		}
 		
 		mDiscountNominalDlgFragment = (CashierDiscountNominalDlgFragment) getFragmentManager().findFragmentByTag(mDiscountNominalDlgFragmentTag);
@@ -595,10 +595,26 @@ public class CashierActivity extends BaseActivity
 			
 			transItem.setEmployeeId(personInCharge.getId());
 			transItem.setEmployee(personInCharge);
-			transItem.setCommision(product.getCommision());
+
+            float commission = product.getCommision() != null ? product.getCommision() : 0f;
+
+            if (Constant.COMMISSION_TYPE_PERCENTAGE.equals(product.getCommisionType())) {
+                transItem.setCommision(commission * price / 100);
+            } else {
+                transItem.setCommision(commission);
+            }
 		}
 		
-		float costPrice = product.getCostPrice() != null ? product.getCostPrice() : CommonUtil.getCurrentPrice(product);
+		float costPrice = 0f;
+
+        if (Constant.PRICE_TYPE_DYNAMIC.equals(product.getPriceType())) {
+
+            costPrice = price;
+
+        } else {
+
+            costPrice = product.getCostPrice() != null ? product.getCostPrice() : CommonUtil.getCurrentPrice(product);
+        }
 		
 		transItem.setPrice(price);
 		transItem.setCostPrice(costPrice);
@@ -898,7 +914,7 @@ public class CashierActivity extends BaseActivity
 	@Override
 	public void onSelectDiscount() {
 		
-		if (Constant.DISCOUNT_TYPE_NOMINAL.equals(MerchantUtil.getMerchant().getDiscountType())) {
+		/*if (Constant.DISCOUNT_TYPE_AMOUNT.equals(MerchantUtil.getMerchant().getDiscountType())) {
 			
 			if (mDiscountNominalDlgFragment.isAdded()) {
 				return;
@@ -909,26 +925,54 @@ public class CashierActivity extends BaseActivity
 			
 		} else {
 			
-			if (mDiscountPercentageDlgFragment.isAdded()) {
+			if (mDiscountDlgFragment.isAdded()) {
 				return;
 			}
 			
-			mDiscountPercentageDlgFragment.show(getFragmentManager(), mDiscountPercentageDlgFragmentTag);
+			mDiscountDlgFragment.show(getFragmentManager(), mDiscountDlgFragmentTag);
+		}*/
+
+		if (mDiscountDlgFragment.isAdded()) {
+			return;
 		}
+
+		mDiscountDlgFragment.show(getFragmentManager(), mDiscountDlgFragmentTag);
 	}
 	
 	@Override
 	public void onDiscountSelected(Discount discount) {
 		
-		mDiscount = discount;
-		
-		mOrderFragment.setDiscount(discount);
-		updateTransactionItemsDiscount();
-		
-		if (Constant.DISCOUNT_TYPE_NOMINAL.equals(MerchantUtil.getMerchant().getDiscountType())) {
-			mDiscountNominalDlgFragment.dismissAllowingStateLoss();
+		if (discount != null && Constant.DISCOUNT_TYPE_AMOUNT.equals(discount.getType())) {
+
+			//mDiscountNominalDlgFragment.dismissAllowingStateLoss();
+
+			if (discount.getAmount() == 0f) {
+
+				if (mDiscountNominalDlgFragment.isAdded()) {
+					return;
+				}
+
+				mDiscountNominalDlgFragment.show(getFragmentManager(), mDiscountNominalDlgFragmentTag);
+				mDiscountNominalDlgFragment.setDiscount(mDiscount);
+
+            } else {
+
+                mDiscount = discount;
+
+                mOrderFragment.setDiscount(discount);
+                updateTransactionItemsDiscount();
+
+                mDiscountDlgFragment.dismissAllowingStateLoss();
+            }
+
 		} else {
-			mDiscountPercentageDlgFragment.dismissAllowingStateLoss();
+
+			mDiscount = discount;
+
+			mOrderFragment.setDiscount(discount);
+			updateTransactionItemsDiscount();
+
+			mDiscountDlgFragment.dismissAllowingStateLoss();
 		}
 	}
 	

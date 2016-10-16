@@ -57,6 +57,7 @@ public class CashierOrderArrayAdapter extends ArrayAdapter<TransactionItem> {
 		View rowView = convertView;
 		
 		TextView productQuantity = null;
+		TextView unit = null;
 		TextView productName = null;
 		TextView productInfo = null;
 		TextView productPrice = null;
@@ -67,6 +68,7 @@ public class CashierOrderArrayAdapter extends ArrayAdapter<TransactionItem> {
 			rowView = inflater.inflate(R.layout.cashier_order_list_item, parent, false);
 			
 			productQuantity = (TextView) rowView.findViewById(R.id.quantityText);
+			unit = (TextView) rowView.findViewById(R.id.unitText);
 			productName = (TextView) rowView.findViewById(R.id.nameText);
 			productInfo = (TextView) rowView.findViewById(R.id.infoText);
 			productPrice = (TextView) rowView.findViewById(R.id.priceText);
@@ -75,6 +77,7 @@ public class CashierOrderArrayAdapter extends ArrayAdapter<TransactionItem> {
 			ViewHolder viewHolder = new ViewHolder();
 			
 			viewHolder.quantityText = productQuantity;
+			viewHolder.unitText = unit;
 			viewHolder.nameText = productName;
 			viewHolder.picText = productInfo;
 			viewHolder.priceText = productPrice;
@@ -87,6 +90,7 @@ public class CashierOrderArrayAdapter extends ArrayAdapter<TransactionItem> {
 			ViewHolder viewHolder = (ViewHolder) rowView.getTag();
 			
 			productQuantity = viewHolder.quantityText;
+			unit = viewHolder.unitText;
 			productName = viewHolder.nameText;
 			productInfo = viewHolder.picText;
 			productPrice = viewHolder.priceText;
@@ -96,7 +100,8 @@ public class CashierOrderArrayAdapter extends ArrayAdapter<TransactionItem> {
 		Product product = mProductDaoService.getProduct(transactionItem.getProductId());
 		
 		productQuantity.setText(CommonUtil.formatNumber(transactionItem.getQuantity()));
-		productName.setText(transactionItem.getProductName() + "  [" + CommonUtil.getShortUnitName(product.getQuantityType()) + "]");
+        unit.setText(CommonUtil.getShortUnitName(product.getQuantityType()));
+		productName.setText(transactionItem.getProductName());
 		
 		if (transactionItem.getEmployeeId() != null) {
 			
