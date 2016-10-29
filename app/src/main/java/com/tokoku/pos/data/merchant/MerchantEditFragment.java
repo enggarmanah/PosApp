@@ -786,7 +786,11 @@ public class MerchantEditFragment extends BaseEditFragment<Merchant> {
     	if (mItem != null) {
     		
     		if (mLocale != null) {
-    			mItem.setLocale(mLocale.getISO3Language() + "," + mLocale.getISO3Country());
+
+                String lang = CommonUtil.convertLanguageIso3toIso(mLocale.getISO3Language());
+                String country = CommonUtil.convertCountryIso3toIso(mLocale.getISO3Country());
+
+    			mItem.setLocale(lang + "," + country);
     		}
     		
     		updateView(mItem);

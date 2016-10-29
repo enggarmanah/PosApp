@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
@@ -46,7 +47,208 @@ public class CommonUtil {
 	private static String mCertDN;
 	
 	private static boolean isDemo = false;
-	
+
+    private static HashMap<String,String> nonStdLangIso3Iso2Map;
+    private static HashMap<String,String> nonStdCountryIso3Iso2Map;
+
+    static {
+
+        nonStdLangIso3Iso2Map = new HashMap<String,String>();
+        nonStdCountryIso3Iso2Map = new HashMap<String,String>();
+
+        nonStdLangIso3Iso2Map.put("alb","sq");
+        nonStdLangIso3Iso2Map.put("arg","an");
+        nonStdLangIso3Iso2Map.put("arm","hy");
+        nonStdLangIso3Iso2Map.put("ave","ae");
+        nonStdLangIso3Iso2Map.put("baq","eu");
+        nonStdLangIso3Iso2Map.put("ben","bn");
+        nonStdLangIso3Iso2Map.put("bih","bh");
+        nonStdLangIso3Iso2Map.put("bos","bs");
+        nonStdLangIso3Iso2Map.put("bul","bg");
+        nonStdLangIso3Iso2Map.put("bur","my");
+        nonStdLangIso3Iso2Map.put("che","ce");
+        nonStdLangIso3Iso2Map.put("chi","zh");
+        nonStdLangIso3Iso2Map.put("chu","cu");
+        nonStdLangIso3Iso2Map.put("chv","cv");
+        nonStdLangIso3Iso2Map.put("cor","kw");
+        nonStdLangIso3Iso2Map.put("scr","hr");
+        nonStdLangIso3Iso2Map.put("cze","cs");
+        nonStdLangIso3Iso2Map.put("div","dv");
+        nonStdLangIso3Iso2Map.put("dut","nl");
+        nonStdLangIso3Iso2Map.put("epo","eo");
+        nonStdLangIso3Iso2Map.put("est","et");
+        nonStdLangIso3Iso2Map.put("fao","fo");
+        nonStdLangIso3Iso2Map.put("fij","fj");
+        nonStdLangIso3Iso2Map.put("gla","gd");
+        nonStdLangIso3Iso2Map.put("geo","ka");
+        nonStdLangIso3Iso2Map.put("ger","de");
+        nonStdLangIso3Iso2Map.put("gre","el");
+        nonStdLangIso3Iso2Map.put("grn","gn");
+        nonStdLangIso3Iso2Map.put("hat","ht");
+        nonStdLangIso3Iso2Map.put("her","hz");
+        nonStdLangIso3Iso2Map.put("hmo","ho");
+        nonStdLangIso3Iso2Map.put("ice","is");
+        nonStdLangIso3Iso2Map.put("ido","io");
+        nonStdLangIso3Iso2Map.put("ind","id");
+        nonStdLangIso3Iso2Map.put("ina","ia");
+        nonStdLangIso3Iso2Map.put("ile","ie");
+        nonStdLangIso3Iso2Map.put("iku","iu");
+        nonStdLangIso3Iso2Map.put("ipk","ik");
+        nonStdLangIso3Iso2Map.put("gle","ga");
+        nonStdLangIso3Iso2Map.put("jpn","ja");
+        nonStdLangIso3Iso2Map.put("jav","jv");
+        nonStdLangIso3Iso2Map.put("kal","kl");
+        nonStdLangIso3Iso2Map.put("kan","kn");
+        nonStdLangIso3Iso2Map.put("kas","ks");
+        nonStdLangIso3Iso2Map.put("kaz","kk");
+        nonStdLangIso3Iso2Map.put("khm","km");
+        nonStdLangIso3Iso2Map.put("kin","rw");
+        nonStdLangIso3Iso2Map.put("kir","ky");
+        nonStdLangIso3Iso2Map.put("kom","kv");
+        nonStdLangIso3Iso2Map.put("kua","kj");
+        nonStdLangIso3Iso2Map.put("lao","lo");
+        nonStdLangIso3Iso2Map.put("lav","lv");
+        nonStdLangIso3Iso2Map.put("lin","ln");
+        nonStdLangIso3Iso2Map.put("lit","lt");
+        nonStdLangIso3Iso2Map.put("ltz","lb");
+        nonStdLangIso3Iso2Map.put("mac","mk");
+        nonStdLangIso3Iso2Map.put("mlg","mg");
+        nonStdLangIso3Iso2Map.put("may","ms");
+        nonStdLangIso3Iso2Map.put("mal","ml");
+        nonStdLangIso3Iso2Map.put("mlt","mt");
+        nonStdLangIso3Iso2Map.put("glv","gv");
+        nonStdLangIso3Iso2Map.put("mao","mi");
+        nonStdLangIso3Iso2Map.put("mar","mr");
+        nonStdLangIso3Iso2Map.put("mah","mh");
+        nonStdLangIso3Iso2Map.put("mon","mn");
+        nonStdLangIso3Iso2Map.put("nav","nv");
+        nonStdLangIso3Iso2Map.put("nbl","nr");
+        nonStdLangIso3Iso2Map.put("ndo","ng");
+        nonStdLangIso3Iso2Map.put("sme","se");
+        nonStdLangIso3Iso2Map.put("nob","nb");
+        nonStdLangIso3Iso2Map.put("orm","om");
+        nonStdLangIso3Iso2Map.put("pli","pi");
+        nonStdLangIso3Iso2Map.put("per","fa");
+        nonStdLangIso3Iso2Map.put("pol","pl");
+        nonStdLangIso3Iso2Map.put("por","pt");
+        nonStdLangIso3Iso2Map.put("pus","ps");
+        nonStdLangIso3Iso2Map.put("roh","rm");
+        nonStdLangIso3Iso2Map.put("rum","ro");
+        nonStdLangIso3Iso2Map.put("run","rn");
+        nonStdLangIso3Iso2Map.put("sag","sg");
+        nonStdLangIso3Iso2Map.put("srd","sc");
+        nonStdLangIso3Iso2Map.put("scc","sr");
+        nonStdLangIso3Iso2Map.put("snd","sd");
+        nonStdLangIso3Iso2Map.put("slo","sk");
+        nonStdLangIso3Iso2Map.put("sot","st");
+        nonStdLangIso3Iso2Map.put("spa","es");
+        nonStdLangIso3Iso2Map.put("swe","sv");
+        nonStdLangIso3Iso2Map.put("tgl","tl");
+        nonStdLangIso3Iso2Map.put("tah","ty");
+        nonStdLangIso3Iso2Map.put("tat","tt");
+        nonStdLangIso3Iso2Map.put("tib","bo");
+        nonStdLangIso3Iso2Map.put("tsn","tn");
+        nonStdLangIso3Iso2Map.put("tur","tr");
+        nonStdLangIso3Iso2Map.put("tuk","tk");
+        nonStdLangIso3Iso2Map.put("uig","ug");
+        nonStdLangIso3Iso2Map.put("wln","wa");
+        nonStdLangIso3Iso2Map.put("wel","cy");
+        nonStdLangIso3Iso2Map.put("fry","fy");
+        nonStdLangIso3Iso2Map.put("zha","za");
+
+        nonStdCountryIso3Iso2Map.put("ALA","AX");
+        nonStdCountryIso3Iso2Map.put("AND","AD");
+        nonStdCountryIso3Iso2Map.put("AGO","AO");
+        nonStdCountryIso3Iso2Map.put("ATA","AQ");
+        nonStdCountryIso3Iso2Map.put("ATG","AG");
+        nonStdCountryIso3Iso2Map.put("ARM","AM");
+        nonStdCountryIso3Iso2Map.put("ABW","AW");
+        nonStdCountryIso3Iso2Map.put("AUT","AT");
+        nonStdCountryIso3Iso2Map.put("BHS","BS");
+        nonStdCountryIso3Iso2Map.put("BGD","BD");
+        nonStdCountryIso3Iso2Map.put("BRB","BB");
+        nonStdCountryIso3Iso2Map.put("BLR","BY");
+        nonStdCountryIso3Iso2Map.put("BLZ","BZ");
+        nonStdCountryIso3Iso2Map.put("BEN","BJ");
+        nonStdCountryIso3Iso2Map.put("BIH","BA");
+        nonStdCountryIso3Iso2Map.put("BRN","BN");
+        nonStdCountryIso3Iso2Map.put("BDI","BI");
+        nonStdCountryIso3Iso2Map.put("CPV","CV");
+        nonStdCountryIso3Iso2Map.put("CYM","KY");
+        nonStdCountryIso3Iso2Map.put("CAF","CF");
+        nonStdCountryIso3Iso2Map.put("TCD","TD");
+        nonStdCountryIso3Iso2Map.put("CHL","CL");
+        nonStdCountryIso3Iso2Map.put("CHN","CN");
+        nonStdCountryIso3Iso2Map.put("MAC","MO");
+        nonStdCountryIso3Iso2Map.put("COM","KM");
+        nonStdCountryIso3Iso2Map.put("COG","CG");
+        nonStdCountryIso3Iso2Map.put("COD","CD");
+        nonStdCountryIso3Iso2Map.put("COK","CK");
+        nonStdCountryIso3Iso2Map.put("DNK","DK");
+        nonStdCountryIso3Iso2Map.put("SLV","SV");
+        nonStdCountryIso3Iso2Map.put("GNQ","GQ");
+        nonStdCountryIso3Iso2Map.put("EST","EE");
+        nonStdCountryIso3Iso2Map.put("FLK","FK");
+        nonStdCountryIso3Iso2Map.put("FRO","FO");
+        nonStdCountryIso3Iso2Map.put("GUF","GF");
+        nonStdCountryIso3Iso2Map.put("PYF","PF");
+        nonStdCountryIso3Iso2Map.put("ATF","TF");
+        nonStdCountryIso3Iso2Map.put("GRL","GL");
+        nonStdCountryIso3Iso2Map.put("GRD","GD");
+        nonStdCountryIso3Iso2Map.put("GLP","GP");
+        nonStdCountryIso3Iso2Map.put("GIN","GN");
+        nonStdCountryIso3Iso2Map.put("GNB","GW");
+        nonStdCountryIso3Iso2Map.put("GUY","GY");
+        nonStdCountryIso3Iso2Map.put("IRQ","IQ");
+        nonStdCountryIso3Iso2Map.put("IRL","IE");
+        nonStdCountryIso3Iso2Map.put("ISR","IL");
+        nonStdCountryIso3Iso2Map.put("JAM","JM");
+        nonStdCountryIso3Iso2Map.put("KAZ","KZ");
+        nonStdCountryIso3Iso2Map.put("PRK","KP");
+        nonStdCountryIso3Iso2Map.put("KOR","KR");
+        nonStdCountryIso3Iso2Map.put("LBR","LR");
+        nonStdCountryIso3Iso2Map.put("LBY","LY");
+        nonStdCountryIso3Iso2Map.put("MDG","MG");
+        nonStdCountryIso3Iso2Map.put("MDV","MV");
+        nonStdCountryIso3Iso2Map.put("MLT","MT");
+        nonStdCountryIso3Iso2Map.put("MTQ","MQ");
+        nonStdCountryIso3Iso2Map.put("MYT","YT");
+        nonStdCountryIso3Iso2Map.put("MEX","MX");
+        nonStdCountryIso3Iso2Map.put("FSM","FM");
+        nonStdCountryIso3Iso2Map.put("MNE","ME");
+        nonStdCountryIso3Iso2Map.put("MOZ","MZ");
+        nonStdCountryIso3Iso2Map.put("NIU","NU");
+        nonStdCountryIso3Iso2Map.put("MNP","MP");
+        nonStdCountryIso3Iso2Map.put("PAK","PK");
+        nonStdCountryIso3Iso2Map.put("PLW","PW");
+        nonStdCountryIso3Iso2Map.put("PNG","PG");
+        nonStdCountryIso3Iso2Map.put("PRY","PY");
+        nonStdCountryIso3Iso2Map.put("PCN","PN");
+        nonStdCountryIso3Iso2Map.put("POL","PL");
+        nonStdCountryIso3Iso2Map.put("PRT","PT");
+        nonStdCountryIso3Iso2Map.put("MAF","MF");
+        nonStdCountryIso3Iso2Map.put("SPM","PM");
+        nonStdCountryIso3Iso2Map.put("SEN","SN");
+        nonStdCountryIso3Iso2Map.put("SRB","RS");
+        nonStdCountryIso3Iso2Map.put("SYC","SC");
+        nonStdCountryIso3Iso2Map.put("SVK","SK");
+        nonStdCountryIso3Iso2Map.put("SVN","SI");
+        nonStdCountryIso3Iso2Map.put("SLB","SB");
+        nonStdCountryIso3Iso2Map.put("SGS","GS");
+        nonStdCountryIso3Iso2Map.put("SUR","SR");
+        nonStdCountryIso3Iso2Map.put("SWZ","SZ");
+        nonStdCountryIso3Iso2Map.put("SWE","SE");
+        nonStdCountryIso3Iso2Map.put("TUN","TN");
+        nonStdCountryIso3Iso2Map.put("TUR","TR");
+        nonStdCountryIso3Iso2Map.put("TKM","TM");
+        nonStdCountryIso3Iso2Map.put("TUV","TV");
+        nonStdCountryIso3Iso2Map.put("UKR","UA");
+        nonStdCountryIso3Iso2Map.put("ARE","AE");
+        nonStdCountryIso3Iso2Map.put("URY","UY");
+        nonStdCountryIso3Iso2Map.put("WLF","WF");
+        nonStdCountryIso3Iso2Map.put("ESH","EH");
+    }
+
 	public static void setDemo(boolean status) {
 		
 		isDemo = status;
@@ -1017,4 +1219,42 @@ public class CommonUtil {
 
 		return mCertDN;
 	}
+
+	public static String convertLanguageIso3toIso(String lang) {
+
+		String langIso2 = lang;
+
+		if (!CommonUtil.isEmpty(lang)) {
+
+			if (lang.length() > 2) {
+
+                langIso2 = nonStdLangIso3Iso2Map.get(lang);
+
+                if (CommonUtil.isEmpty(langIso2)) {
+                    langIso2 = lang.substring(0, 2);
+                }
+			}
+		}
+
+		return langIso2;
+	}
+
+    public static String convertCountryIso3toIso(String country) {
+
+        String countryIso2 = country;
+
+        if (!CommonUtil.isEmpty(country)) {
+
+            if (country.length() > 2) {
+
+                countryIso2 = nonStdCountryIso3Iso2Map.get(country);
+
+                if (CommonUtil.isEmpty(countryIso2)) {
+                    countryIso2 = country.substring(0, 2);
+                }
+            }
+        }
+
+        return countryIso2;
+    }
 }

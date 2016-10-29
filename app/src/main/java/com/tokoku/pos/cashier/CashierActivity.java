@@ -618,7 +618,9 @@ public class CashierActivity extends BaseActivity
 		
 		transItem.setPrice(price);
 		transItem.setCostPrice(costPrice);
-		
+
+		/* transaction item discount is updated upon payment
+
 		float discountAmount = 0;
 		
 		if (mDiscount != null) {
@@ -627,7 +629,8 @@ public class CashierActivity extends BaseActivity
 			discountAmount = discountPercentage * transItem.getPrice() / 100;
 		}
 		
-		transItem.setDiscount(discountAmount);
+		transItem.setDiscount(discountAmount); */
+
 		transItem.setRemarks(remarks);
 		
 		return transItem;
@@ -727,7 +730,9 @@ public class CashierActivity extends BaseActivity
 	
 	@Override
 	public void onPaymentCompleted(Transactions transaction) {
-		
+
+        updateTransactionItemsDiscount();
+
 		transaction.setEmployee(mWaitress);
 		transaction.setOrderType(mOrderType);
 		transaction.setOrderReference(mOrderReference);
@@ -960,7 +965,9 @@ public class CashierActivity extends BaseActivity
                 mDiscount = discount;
 
                 mOrderFragment.setDiscount(discount);
-                updateTransactionItemsDiscount();
+
+                //transaction item discount is updated upon payment
+                //updateTransactionItemsDiscount();
 
                 mDiscountDlgFragment.dismissAllowingStateLoss();
             }
@@ -970,7 +977,9 @@ public class CashierActivity extends BaseActivity
 			mDiscount = discount;
 
 			mOrderFragment.setDiscount(discount);
-			updateTransactionItemsDiscount();
+
+            //transaction item discount is updated upon payment
+			//updateTransactionItemsDiscount();
 
 			mDiscountDlgFragment.dismissAllowingStateLoss();
 		}
@@ -981,28 +990,35 @@ public class CashierActivity extends BaseActivity
 		int totalItem = 0;
 		
 		for (TransactionItem transactionItem : mTransactionItems) {
-			totalItem += transactionItem.getQuantity();
+
+			if (!Constant.PRICE_TYPE_DYNAMIC.equals(transactionItem.getProduct().getPriceType())) {
+
+                totalItem += transactionItem.getQuantity();
+            }
 		}
 		
 		for (TransactionItem transactionItem : mTransactionItems) {
-			
-			float discountPercentage = 0;
-			float discountNominal = 0;
-			float discountAmount = 0;
-			
-			if (mDiscount != null) {
-				
-				discountPercentage = mDiscount.getPercentage() != null ? mDiscount.getPercentage() : 0;
-				discountNominal = mDiscount.getAmount() != null ? mDiscount.getAmount() : 0;
-				
-				if (discountPercentage != 0) {
-					discountAmount = discountPercentage * transactionItem.getPrice() / 100;
-				} else if (discountNominal != 0) {
-					discountAmount = (discountNominal / totalItem);
-				}
-			} 
-			
-			transactionItem.setDiscount(discountAmount);
+
+            if (!Constant.PRICE_TYPE_DYNAMIC.equals(transactionItem.getProduct().getPriceType())) {
+
+                float discountPercentage = 0;
+                float discountNominal = 0;
+                float discountAmount = 0;
+
+                if (mDiscount != null) {
+
+                    discountPercentage = mDiscount.getPercentage() != null ? mDiscount.getPercentage() : 0;
+                    discountNominal = mDiscount.getAmount() != null ? mDiscount.getAmount() : 0;
+
+                    if (discountPercentage != 0) {
+                        discountAmount = discountPercentage * transactionItem.getPrice() / 100;
+                    } else if (discountNominal != 0) {
+                        discountAmount = (discountNominal / totalItem);
+                    }
+                }
+
+                transactionItem.setDiscount(discountAmount);
+            }
 		}
 	}
 	

@@ -193,7 +193,7 @@ public class LocaleDlgFragment extends BaseSearchDlgFragment<Locale> implements 
 		}
 		
 		for (Locale locale : Locale.getAvailableLocales()) {
-			
+
 			String language = Constant.EMPTY_STRING;
 			String country = Constant.EMPTY_STRING;
 			
@@ -213,6 +213,7 @@ public class LocaleDlgFragment extends BaseSearchDlgFragment<Locale> implements 
 					locales.add(locale);
 					
 				} else if (displayName.contains(searchName)) {
+
 					locales.add(locale);
 				}
 			}
