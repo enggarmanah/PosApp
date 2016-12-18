@@ -21,6 +21,7 @@ import com.tokoku.pos.model.FormFieldBean;
 import com.tokoku.pos.report.commission.CommissionActivity;
 import com.tokoku.pos.report.transaction.TransactionActivity;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.DbUtil;
 import com.tokoku.pos.util.MerchantUtil;
 import com.tokoku.pos.util.NotificationUtil;
 import com.tokoku.pos.util.UserUtil;
@@ -264,5 +265,22 @@ public class UserLoginActivity extends BaseAuthActivity {
 
 	@Override
 	public void onBackPressed() {
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == AUTHENTICHATION_ON_EXIT) {
+
+			if (resultCode == RESULT_OK) {
+
+                Intent intent = new Intent(context, MerchantLoginActivity.class);
+				intent.putExtra("logout", true);
+				startActivity(intent);
+
+                finish();
+			}
+		}
 	}
 }

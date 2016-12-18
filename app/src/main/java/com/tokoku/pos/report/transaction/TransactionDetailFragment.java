@@ -200,10 +200,14 @@ public class TransactionDetailFragment extends BaseFragment implements Transacti
 		}
 		
 		if (!CommonUtil.isEmpty(mTransaction.getDiscountName()) &&
+			mTransaction.getDiscountAmount() != null &&
 			mTransaction.getDiscountAmount() != 0) {
 			
 			String label = mTransaction.getDiscountName();
-			if (mTransaction.getDiscountPercentage() != 0) {
+
+			if (mTransaction.getDiscountPercentage() != null &&
+				mTransaction.getDiscountPercentage() != 0) {
+
 				label += " " + CommonUtil.formatPercentage(mTransaction.getDiscountPercentage());
 			}
 			mDiscountLabelText.setText(label);

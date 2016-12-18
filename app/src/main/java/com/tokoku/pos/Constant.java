@@ -231,4 +231,5 @@ public class Constant {
 	public static final String ERROR_INVALID_APP_CERT = "ERR005";
 	public static final String ERROR_APP_UPDATE_REQUIRED = "ERR006";
 	public static final String ERROR_SYSTEM_MAINTENANCE = "ERR007";
+	public static final String ERROR_EMAIL_HAS_BEEN_REGISTERED = "ERR008";
 }

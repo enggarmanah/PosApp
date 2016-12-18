@@ -25,6 +25,7 @@ import com.tokoku.pos.async.ProgressDlgFragment;
 import com.tokoku.pos.dao.MerchantAccessDaoService;
 import com.tokoku.pos.dao.MerchantDaoService;
 import com.tokoku.pos.model.FormFieldBean;
+import com.tokoku.pos.password.LogoutPasswordActivity;
 import com.tokoku.pos.util.CommonUtil;
 import com.tokoku.pos.util.NotificationUtil;
 
@@ -50,6 +51,8 @@ public class BaseAuthActivity extends Activity implements HttpAsyncListener {
 	protected List<FormFieldBean> mMandatoryFields = new ArrayList<FormFieldBean>();
 	
 	Button mOkBtn;
+
+	protected static final int AUTHENTICHATION_ON_EXIT = 1;
 	
 	@Override
 	public void onStart() {
@@ -99,10 +102,9 @@ public class BaseAuthActivity extends Activity implements HttpAsyncListener {
 		switch (item.getItemId()) {
 
 		case R.id.menu_item_exit:
-			
-			Intent intent = new Intent(context, MerchantLoginActivity.class);
-			intent.putExtra("logout", true);
-			startActivity(intent);
+
+			Intent intent = new Intent(context, LogoutPasswordActivity.class);
+			startActivityForResult(intent, AUTHENTICHATION_ON_EXIT);
 			
 			return true;
 
@@ -111,7 +113,7 @@ public class BaseAuthActivity extends Activity implements HttpAsyncListener {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 	}

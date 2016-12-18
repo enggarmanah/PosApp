@@ -1470,7 +1470,10 @@ public class HttpAsyncManager {
 		} else if (Constant.ERROR_INVALID_APP_CERT.equals(code)) {
 			errorDesc = mContext.getString(R.string.error_invalid_app_cert);
 		
-		} else { 
+		} else if (Constant.ERROR_EMAIL_HAS_BEEN_REGISTERED.equals(code)) {
+			errorDesc = mContext.getString(R.string.error_email_has_been_registered);
+
+		} else {
 			errorDesc = mContext.getString(R.string.error_general);
 		}
 		

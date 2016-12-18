@@ -603,9 +603,9 @@ public class PrintUtil {
 
 		BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
 		
-		BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
-		BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
-		BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+		//BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+		//BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+		//BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
 	}
 	
 	public static void printOrder(Orders order) throws Exception {

@@ -621,15 +621,14 @@ public class CashierActivity extends BaseActivity
 
 		/* transaction item discount is updated upon payment
 
-		float discountAmount = 0;
-		
 		if (mDiscount != null) {
 			
 			float discountPercentage = mDiscount.getPercentage();
 			discountAmount = discountPercentage * transItem.getPrice() / 100;
-		}
-		
-		transItem.setDiscount(discountAmount); */
+		}*/
+
+		float discountAmount = 0;
+		transItem.setDiscount(discountAmount);
 
 		transItem.setRemarks(remarks);
 		
@@ -731,7 +730,8 @@ public class CashierActivity extends BaseActivity
 	@Override
 	public void onPaymentCompleted(Transactions transaction) {
 
-        updateTransactionItemsDiscount();
+        // 10 Dec 2016, disable item discount, item value on Product Report become not round
+		updateTransactionItemsDiscount();
 
 		transaction.setEmployee(mWaitress);
 		transaction.setOrderType(mOrderType);
@@ -749,7 +749,7 @@ public class CashierActivity extends BaseActivity
 		
 		if (mDiscount != null) {
 			
-			if (mDiscount.getPercentage() != 0) {
+			if (mDiscount.getPercentage() != null && mDiscount.getPercentage() != 0) {
 				discountAmount = mDiscount.getPercentage() * totalBill / 100;
 			} else {
 				discountAmount = mDiscount.getAmount();

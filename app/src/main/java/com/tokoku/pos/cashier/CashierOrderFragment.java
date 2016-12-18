@@ -204,6 +204,8 @@ public class CashierOrderFragment extends BaseFragment implements CashierOrderAr
 					}
 					transItem.setQuantity(item.getQuantity());
 					transItem.setPrice(item.getPrice());
+					transItem.setDiscount(0f);
+					transItem.setCommision(item.getCommision());
 					transItem.setRemarks(item.getRemarks());
 				}
 				isExist = true;

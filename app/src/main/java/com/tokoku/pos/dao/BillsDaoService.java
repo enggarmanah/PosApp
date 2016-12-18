@@ -544,7 +544,8 @@ public class BillsDaoService {
 		
 		bill.setPaymentDate(lastPaymentDate);
 		bill.setPayment(totalPayment);
-		
+		bill.setUploadStatus(Constant.STATUS_YES);
+
 		updateBills(bill);
 	}
 	

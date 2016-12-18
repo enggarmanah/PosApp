@@ -422,8 +422,16 @@ public class DbUtil {
     	
     	return dbId;
     }
-    
-    public static void switchDb(Context ctx, Long merchantId) {
+
+	public static void closeDb() {
+
+		if (db != null) {
+			db.close();
+			daoSession = null;
+		}
+	}
+
+	public static void switchDb(Context ctx, Long merchantId) {
     	
     	if (ctx != null) {
     		context = ctx;

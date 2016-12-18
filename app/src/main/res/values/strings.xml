@@ -707,6 +707,7 @@
 	<string name="error_could_not_obtained_lock">Data sync up error !</string>
 	<string name="error_register_merchant_conflict">Login Id has been registered by other merchant. Choose other Login Id !</string>
 	<string name="error_invalid_app_cert">Application certificate is not valid !</string>
+    <string name="error_email_has_been_registered">Email has been registered.\nContact us via WA/SMS 0856 4745 3111 / app.tokoku@gmail.com for help.</string>
 	
 	
 </resources>

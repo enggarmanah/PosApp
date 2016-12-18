@@ -381,8 +381,8 @@
     <string name="tax">Pajak</string>
     <string name="service_charge">Bea Servis</string>
     
-    <string name="order_table_no_add_on">"Tambahan No. Pesanan : "</string>
-    <string name="order_customer_add_on">"Tambahan Pelanggan : "</string>
+    <string name="order_table_no_add_on">"Tambahan No. Pesanan : %1$s"</string>
+    <string name="order_customer_add_on">"Tambahan Pelanggan : %1$s"</string>
   	<string name="order_transaction_list">"Daftar Penjualan"</string>
   	<string name="order_order_list">"Daftar Pesanan"</string>
     
@@ -620,7 +620,7 @@
 	<string name="menu_reference_discount">Diskon</string>
 	<string name="menu_printer">Printer</string>
 	<string name="menu_change_password">Ganti Password</string>
-	<string name="menu_exit">Keluar</string>
+    <string name="menu_exit">Keluar</string>
 	<string name="menu_sync">Sync</string>
 	
 	<string name="menu_cashier_order">A01</string>
@@ -708,5 +708,6 @@
 	<string name="error_could_not_obtained_lock">Error singkronisasi data !</string>
 	<string name="error_register_merchant_conflict">Login Id konflik dengan merchant yang lain. Silahkan pilih Login Id yang lain !</string>
 	<string name="error_invalid_app_cert">Sertifikat aplikasi tidak valid !</string>
+    <string name="error_email_has_been_registered">Email telah teregistrasi di sistem.\nHubungi kami di WA/SMS 0856 4745 3111 / app.tokoku@gmail.com untuk bantuan.</string>
 	
 </resources>
