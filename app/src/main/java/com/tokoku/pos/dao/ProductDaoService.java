@@ -451,7 +451,7 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price-discount) * quantity) revenue "
+		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price-(CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END)) * quantity) revenue "
 				+ " FROM transactions t, transaction_item ti "
 				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id "
 				+ " GROUP BY strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime')", null);
@@ -477,7 +477,7 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - discount - cost_price) * quantity) profit "
+		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - cost_price) * quantity) profit "
 				+ " FROM transactions t, transaction_item ti "
 				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id "
 				+ " GROUP BY strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime')", null);
@@ -536,7 +536,7 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price-discount) * quantity) revenue "
+		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price-(CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END)) * quantity) revenue "
 				+ " FROM transactions t, transaction_item ti "
 				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') ", 
@@ -566,7 +566,7 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - discount - cost_price) * quantity) profit "
+		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - cost_price) * quantity) profit "
 				+ " FROM transactions t, transaction_item ti "
 				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') ", 

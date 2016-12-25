@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.tokoku.pos.Constant;
 import com.tokoku.pos.R;
 import com.android.pos.dao.Merchant;
 import com.tokoku.pos.async.HttpAsyncListener;
@@ -27,6 +28,7 @@ import com.tokoku.pos.dao.MerchantDaoService;
 import com.tokoku.pos.model.FormFieldBean;
 import com.tokoku.pos.password.LogoutPasswordActivity;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.MerchantUtil;
 import com.tokoku.pos.util.NotificationUtil;
 
 public class BaseAuthActivity extends Activity implements HttpAsyncListener {
@@ -103,8 +105,16 @@ public class BaseAuthActivity extends Activity implements HttpAsyncListener {
 
 		case R.id.menu_item_exit:
 
-			Intent intent = new Intent(context, LogoutPasswordActivity.class);
-			startActivityForResult(intent, AUTHENTICHATION_ON_EXIT);
+			if (MerchantUtil.getMerchantId().longValue() != Constant.DEMO_MERCHANT_ID) {
+
+                Intent intent = new Intent(context, LogoutPasswordActivity.class);
+				startActivityForResult(intent, AUTHENTICHATION_ON_EXIT);
+
+			} else {
+                Intent intent = new Intent(context, MerchantLoginActivity.class);
+                intent.putExtra("logout", true);
+                startActivity(intent);
+            }
 			
 			return true;
 

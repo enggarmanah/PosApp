@@ -969,29 +969,33 @@ public abstract class BaseActivity extends Activity
 		
 		@Override
 		protected Boolean doInBackground(String... params) {
-			
-			ProductDaoService productDaoService = new ProductDaoService();
-			InventoryDaoService inventoryDaoServie = new InventoryDaoService();
-			
-			List<Product> products = productDaoService.getProducts(Constant.PRODUCT_TYPE_GOODS);
-			
-			if (products != null) {
-				
-				for (Product product : products) {
-					
-					Float quantity = inventoryDaoServie.getProductQuantity(product);
-					product.setStock(quantity);
-					
-					productDaoService.updateProduct(product);
-					
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+
+			try {
+				ProductDaoService productDaoService = new ProductDaoService();
+				InventoryDaoService inventoryDaoService = new InventoryDaoService();
+
+				List<Product> products = productDaoService.getProducts(Constant.PRODUCT_TYPE_GOODS);
+
+				if (products != null) {
+
+                    for (Product product : products) {
+
+                        Float quantity = inventoryDaoService.getProductQuantity(product);
+                        product.setStock(quantity);
+
+                        productDaoService.updateProduct(product);
+
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			
+
 			return true;
 		}
 

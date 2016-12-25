@@ -18,7 +18,7 @@ public class Constant {
 	public static final long DEMO_MERCHANT_ID = 1672;
 	public static final String DEMO_MERCHANT_LOGIN_ID = "berjaya";
 	public static final String DEMO_MERCHANT_PASSWORD = "mart";
-	public static final long DEMO_USER_ID = 1;
+	public static final long DEMO_USER_ID = 21;
 	public static final String DEMO_USER_LOGIN_ID = "Fahmi";
 	public static final String DEMO_USER_PASSWORD = "123456";
 	

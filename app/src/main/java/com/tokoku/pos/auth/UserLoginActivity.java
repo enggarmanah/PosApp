@@ -18,6 +18,7 @@ import com.tokoku.pos.cashier.CashierActivity;
 import com.tokoku.pos.dao.MerchantDaoService;
 import com.tokoku.pos.dao.UserDaoService;
 import com.tokoku.pos.model.FormFieldBean;
+import com.tokoku.pos.password.LogoutPasswordActivity;
 import com.tokoku.pos.report.commission.CommissionActivity;
 import com.tokoku.pos.report.transaction.TransactionActivity;
 import com.tokoku.pos.util.CommonUtil;
@@ -90,9 +91,16 @@ public class UserLoginActivity extends BaseAuthActivity {
 			@Override
 			public void onClick(View v) {
 
-				Intent intent = new Intent(context, MerchantLoginActivity.class);
-				intent.putExtra("logout", true);
-				startActivity(intent);
+				if (MerchantUtil.getMerchantId().longValue() != Constant.DEMO_MERCHANT_ID) {
+
+					Intent intent = new Intent(context, LogoutPasswordActivity.class);
+					startActivityForResult(intent, AUTHENTICHATION_ON_EXIT);
+
+				} else {
+					Intent intent = new Intent(context, MerchantLoginActivity.class);
+					intent.putExtra("logout", true);
+					startActivity(intent);
+				}
 			}
 		});
 

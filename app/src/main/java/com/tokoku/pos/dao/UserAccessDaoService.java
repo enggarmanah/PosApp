@@ -73,8 +73,8 @@ public class UserAccessDaoService {
 	}
 	
 	public List<UserAccess> getUserAccessList(Long userId) {
-		
-		if (userId == null) {
+
+        if (userId == null) {
 			userId = Long.valueOf(-1);
 		}
 		
@@ -93,7 +93,7 @@ public class UserAccessDaoService {
 		for (MerchantAccess merchantAccess : getMerchantAccessList(MerchantUtil.getMerchantId())) {
 			
 			UserAccess userAccess = userAccessMap.get(merchantAccess.getCode());
-			
+
 			if (userAccess == null) {
 				
 				userAccess = new UserAccess();
@@ -104,11 +104,31 @@ public class UserAccessDaoService {
 				userAccess.setStatus(Constant.STATUS_NO);
 			}
 			
-			userAccessList.add(userAccess);
+			userAccessList.add(getCopy(userAccess));
 		}
 		
 		return userAccessList;
 	}
+
+    public UserAccess getCopy(UserAccess bean) {
+
+        UserAccess userAccess = new UserAccess();
+
+        userAccess.setMerchantId(bean.getMerchantId());
+        userAccess.setId(bean.getId());
+        userAccess.setRefId(bean.getRefId());
+        userAccess.setUserId(bean.getUserId());
+        userAccess.setName(bean.getName());
+        userAccess.setCode(bean.getCode());
+        userAccess.setStatus(bean.getStatus());
+        userAccess.setUploadStatus(bean.getUploadStatus());
+        userAccess.setCreateBy(bean.getCreateBy());
+        userAccess.setCreateDate(bean.getCreateDate());
+        userAccess.setUpdateBy(bean.getUpdateBy());
+        userAccess.setUpdateDate(bean.getUpdateDate());
+
+        return userAccess;
+    }
 	
 	public List<UserAccessBean> getUserAccessesForUpload(int limit) {
 

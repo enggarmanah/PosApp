@@ -127,9 +127,7 @@ public class UserEditFragment extends BaseEditFragment<User> {
     	
     	mEmployeeText.setFocusable(false);
     	mEmployeeText.setOnClickListener(getEmployeeOnClickListener());
-    	
-    	mRoleSp.setOnItemSelectedListener(getRoleOnItemSelectedListener());
-    	
+
     	registerField(mNameText);
     	registerField(mUserIdText);
     	registerField(mPasswordText);
@@ -156,7 +154,7 @@ public class UserEditFragment extends BaseEditFragment<User> {
     
     @Override
     protected void updateView(User user) {
-    	
+
     	int employeeCount = mEmployeeDaoService.getEmployees(Constant.EMPTY_STRING, 0).size();
     	
     	if (employeeCount != 0) {
@@ -187,11 +185,13 @@ public class UserEditFragment extends BaseEditFragment<User> {
     		} else {
     			
     			mEmployeeText.setText(Constant.EMPTY_STRING);
-    		} 
-    		
-    		mRoleSp.setSelection(roleIndex);
+    		}
+
+    		mRoleSp.setSelection(roleIndex, false);
     		mStatusSp.setSelection(statusIndex);
-    		
+
+            mRoleSp.setOnItemSelectedListener(getRoleOnItemSelectedListener());
+
     		accessRightPanel.removeAllViews();
     		
     		mUserAccesses = mUserAccessDaoService.getUserAccessList(user.getId());
@@ -226,6 +226,14 @@ public class UserEditFragment extends BaseEditFragment<User> {
     				
     				@Override
     				public void onClick(View v) {
+
+                        // disable editing for demo account
+
+                        if (MerchantUtil.getMerchantId() == Constant.DEMO_MERCHANT_ID &&
+                                mItem != null && Long.valueOf(Constant.DEMO_USER_ID).equals(mItem.getId())) {
+
+                            return;
+                        }
     					
     					if (!isEnableInputFields) {
     						return;
@@ -422,6 +430,8 @@ public class UserEditFragment extends BaseEditFragment<User> {
     		mNameText.setEnabled(false);
     		mUserIdText.setEnabled(false);
     		mPasswordText.setEnabled(false);
+            mRoleSp.setEnabled(false);
+            mStatusSp.setEnabled(false);
     	}
     }
     
@@ -477,7 +487,7 @@ public class UserEditFragment extends BaseEditFragment<User> {
     		
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				
+
 		    	CodeBean codeBean = (CodeBean) mRoleSp.getSelectedItem();
 		    	
 		    	Set<UserAccess> keys = mAllAccessRights.keySet();
