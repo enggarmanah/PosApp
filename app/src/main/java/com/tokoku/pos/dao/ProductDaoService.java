@@ -82,7 +82,7 @@ public class ProductDaoService {
 		Cursor cursor = db.rawQuery("SELECT _id "
 				+ " FROM product "
 				+ " WHERE (name LIKE ? OR code LIKE ?) AND status <> ? "
-				+ " ORDER BY name LIMIT ? OFFSET ? ",
+				+ " ORDER BY name, price1 LIMIT ? OFFSET ? ",
 				new String[] { queryStr, queryStr, status, limit, lastIdx});
 		
 		List<Product> list = new ArrayList<Product>();

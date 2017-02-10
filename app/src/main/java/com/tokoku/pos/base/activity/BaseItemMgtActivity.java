@@ -543,13 +543,13 @@ public abstract class BaseItemMgtActivity<S, E, T> extends BaseActivity
 
 	@Override
 	public void addItem() {
-		
-		unSelectItem();
-		
-		showEditMenu();
-		
+
 		mSearchMenu.collapseActionView();
 
+		unSelectItem();
+
+		showEditMenu();
+		
 		mSelectedItem = getItemInstance();
 
 		addEditFragmentItem(mSelectedItem);
