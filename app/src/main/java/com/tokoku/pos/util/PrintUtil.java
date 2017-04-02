@@ -507,18 +507,36 @@ public class PrintUtil {
 			
 			String discountLabel = transaction.getDiscountName();
 			
-			if (transaction.getDiscountPercentage() != 0) {
+			if (transaction.getDiscountPercentage() != null && transaction.getDiscountPercentage() != 0) {
 				discountLabel +=  Constant.SPACE_STRING + CommonUtil.formatPercentage(transaction.getDiscountPercentage());
 			}
 			
 			String discountText = mActivity.getString(R.string.print_negative) + CommonUtil.formatCurrency(transaction.getDiscountAmount());
-			
-			line.setLength(0);
-			line.append(discountLabel);
-			line.append(spaces.substring(0, mPrinterLineSize - discountLabel.length() - discountText.length()));
-			line.append(discountText);
-			
-			BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
+
+			int minSpaces = 2;
+
+			if (discountLabel.length() + minSpaces + discountText.length() < mPrinterLineSize) {
+
+                line.setLength(0);
+                line.append(discountLabel);
+                line.append(spaces.substring(0, mPrinterLineSize - discountLabel.length() - discountText.length()));
+                line.append(discountText);
+
+                BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
+
+            } else {
+
+                line.setLength(0);
+                line.append(discountLabel);
+
+                BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
+
+                line.setLength(0);
+                line.append(spaces.substring(0, mPrinterLineSize - discountText.length()));
+                line.append(discountText);
+
+                BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
+            }
 		}
 		
 		if (transaction.getTaxAmount() != 0) {
