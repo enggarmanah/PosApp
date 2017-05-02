@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.tokoku.pos.Constant;
 import com.tokoku.pos.R;
 import com.android.pos.dao.Employee;
 import com.tokoku.pos.base.fragment.BaseFragment;
@@ -26,7 +27,8 @@ public class CommissionDetailFragment extends BaseFragment implements Commission
 	
 	private TextView mInfoText;
 	private TextView mDateText;
-	private TextView mTotalText;
+	private TextView mTotalItemText;
+	private TextView mTotalCommissionText;
 	
 	protected ListView mEmployeeCommisionList;
 
@@ -75,7 +77,8 @@ public class CommissionDetailFragment extends BaseFragment implements Commission
 		
 		mDateText = (TextView) getView().findViewById(R.id.dateText);
 		mInfoText = (TextView) getView().findViewById(R.id.infoText);
-		mTotalText = (TextView) getView().findViewById(R.id.totalText);
+		mTotalItemText = (TextView) getView().findViewById(R.id.totalItemText);
+		mTotalCommissionText = (TextView) getView().findViewById(R.id.totalCommissionText);
 	}
 	
 	private void initBackButton() {
@@ -149,7 +152,8 @@ public class CommissionDetailFragment extends BaseFragment implements Commission
 			mCommisionDetailAdapter.notifyDataSetChanged();
 			
 			mEmployeeCommisionList.setAdapter(mCommisionDetailAdapter);
-			mTotalText.setText(CommonUtil.formatCurrency(getEmployeeCommissionTotal(mEmployeeCommisionDetails)));
+			mTotalItemText.setText(getString(R.string.total_items) + Constant.SPACE_STRING + CommonUtil.formatNumber(mEmployeeCommisionDetails.size()));
+			mTotalCommissionText.setText(CommonUtil.formatCurrency(getEmployeeCommissionTotal(mEmployeeCommisionDetails)));
 			
 		} else if (mCommisionMonth != null) {
 			
@@ -161,7 +165,8 @@ public class CommissionDetailFragment extends BaseFragment implements Commission
 			mCommisionAdapter.notifyDataSetChanged();
 			
 			mEmployeeCommisionList.setAdapter(mCommisionAdapter);
-			mTotalText.setText(CommonUtil.formatCurrency(getEmployeeCommissionTotal(mEmployeeCommisions)));
+            mTotalItemText.setText(Constant.EMPTY_STRING);
+			mTotalCommissionText.setText(CommonUtil.formatCurrency(getEmployeeCommissionTotal(mEmployeeCommisions)));
 			
 			getView().setVisibility(View.VISIBLE);
 		

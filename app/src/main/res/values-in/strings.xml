@@ -349,6 +349,8 @@
     <string name="number_9">9</string>
     <string name="number_c">C</string>
     <string name="delete_char">X</string>
+
+    <string name="total_items">Item: </string>
     
     <string name="total">Total</string>
     <string name="payment">Bayar</string>

@@ -40,8 +40,13 @@
                 style="@style/PaymentRowTotalContentLeftStyle" />
 
             <TextView
-                android:id="@+id/totalText"
+                android:id="@+id/totalItemText"
+                style="@style/PaymentRowTotalContentLeftStyle" />
+
+            <TextView
+                android:id="@+id/totalCommissionText"
                 style="@style/PaymentRowTotalContentRightStyle" />
+
         </LinearLayout>
     </LinearLayout>
 

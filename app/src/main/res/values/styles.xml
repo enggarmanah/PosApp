@@ -984,6 +984,10 @@
         <item name="android:gravity">center_vertical|start</item>
     </style>
 
+    <style name="PaymentRowTotalContentCenterStyle" parent="PaymentRowTotalContentStyle">
+        <item name="android:gravity">center_vertical|center</item>
+    </style>
+
     <style name="PaymentRowTotalContentRightStyle" parent="PaymentRowTotalContentStyle">
         <item name="android:gravity">center_vertical|end</item>
     </style>
