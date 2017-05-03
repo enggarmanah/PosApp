@@ -2,6 +2,7 @@ package com.tokoku.pos.report.commission;
 
 import java.util.List;
 
+import com.tokoku.pos.Constant;
 import com.tokoku.pos.R;
 import com.tokoku.pos.model.EmployeeCommisionBean;
 import com.tokoku.pos.util.CommonUtil;
@@ -72,7 +73,7 @@ public class CommissionDetailEmployeeArrayAdapter extends ArrayAdapter<EmployeeC
 		}
 		
 		dateText.setText(CommonUtil.formatDateMonthTime(employeeCommision.getTransaction_date()));
-		productNameText.setText(employeeCommision.getProduct_name());
+		productNameText.setText(employeeCommision.getQuantity() + Constant.SPACE_STRING + employeeCommision.getProduct_name());
 		commisionText.setText(CommonUtil.formatCurrency(employeeCommision.getCommision()));
 		
 		return rowView;

@@ -152,7 +152,7 @@ public class CommissionDetailFragment extends BaseFragment implements Commission
 			mCommisionDetailAdapter.notifyDataSetChanged();
 			
 			mEmployeeCommisionList.setAdapter(mCommisionDetailAdapter);
-			mTotalItemText.setText(getString(R.string.total_items) + Constant.SPACE_STRING + CommonUtil.formatNumber(mEmployeeCommisionDetails.size()));
+			mTotalItemText.setText(Constant.EMPTY_STRING);
 			mTotalCommissionText.setText(CommonUtil.formatCurrency(getEmployeeCommissionTotal(mEmployeeCommisionDetails)));
 			
 		} else if (mCommisionMonth != null) {

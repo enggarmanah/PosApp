@@ -758,7 +758,7 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT strftime('%d-%m-%Y %H:%M:%S', transaction_date/1000, 'unixepoch', 'localtime'), p.name product_name, (ti.commision * quantity) commision "
+		Cursor cursor = db.rawQuery("SELECT strftime('%d-%m-%Y %H:%M:%S', transaction_date/1000, 'unixepoch', 'localtime'), p.name product_name, quantity, (ti.commision * quantity) commision "
 				+ " FROM transactions t, transaction_item ti, product p "
 				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND ti.product_id = p._id AND employee_id = ? AND transaction_date BETWEEN ? AND ? "
 				+ " ORDER BY ti._id ASC ", new String[] { employeeIdStr, startDate, endDate });
@@ -767,12 +767,14 @@ public class ProductDaoService {
 			
 			Date transactionDate = CommonUtil.parseDate(cursor.getString(0), "dd-MM-yyyy hh:mm:ss");
 			String productName = cursor.getString(1);
-			Float commision = cursor.getFloat(2);
+			Integer quantity = cursor.getInt(2);
+			Float commision = cursor.getFloat(3);
 			
 			EmployeeCommisionBean employeeCommision = new EmployeeCommisionBean();
 			
 			employeeCommision.setTransaction_date(transactionDate);
 			employeeCommision.setProduct_name(productName);
+            employeeCommision.setQuantity(quantity);
 			employeeCommision.setCommision(commision);
 			
 			employeeCommisions.add(employeeCommision);
