@@ -183,9 +183,9 @@ public class TransactionListFragment extends BaseFragment
 		mSelectedTransaction = transaction;
 	}
 	
-	private int getTransactionYearsTotalAmount(List<TransactionYearBean> transactionYears) {
+	private long getTransactionYearsTotalAmount(List<TransactionYearBean> transactionYears) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (TransactionYearBean transactionYear : transactionYears) {
 			totalAmount += transactionYear.getAmount();
@@ -194,9 +194,9 @@ public class TransactionListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private int getTransactionMonthsTotalAmount(List<TransactionMonthBean> transactionMonths) {
+	private long getTransactionMonthsTotalAmount(List<TransactionMonthBean> transactionMonths) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (TransactionMonthBean transactionMonth : transactionMonths) {
 			totalAmount += transactionMonth.getAmount();
@@ -205,9 +205,9 @@ public class TransactionListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private int getTransactionDaysTotalAmount(List<TransactionDayBean> transactionDays) {
+	private long getTransactionDaysTotalAmount(List<TransactionDayBean> transactionDays) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (TransactionDayBean transactionDay : transactionDays) {
 			totalAmount += transactionDay.getAmount();

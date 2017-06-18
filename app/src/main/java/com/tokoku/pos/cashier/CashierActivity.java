@@ -613,7 +613,8 @@ public class CashierActivity extends BaseActivity
 
         } else {
 
-            costPrice = product.getCostPrice() != null ? product.getCostPrice() : CommonUtil.getCurrentPrice(product);
+            //costPrice = product.getCostPrice() != null ? product.getCostPrice() : CommonUtil.getCurrentPrice(product);
+			costPrice = product.getCostPrice() != null ? product.getCostPrice() : price;
         }
 		
 		transItem.setPrice(price);

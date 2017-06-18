@@ -82,6 +82,8 @@ public class Constant {
 	public static final String QUANTITY_TYPE_KG = "K";
 	public static final String QUANTITY_TYPE_METER = "M";
 	public static final String QUANTITY_TYPE_LITER = "L";
+	public static final String QUANTITY_TYPE_GRAM= "g";
+	public static final String QUANTITY_TYPE_MILILITER= "ml";
 	
 	public static final String FONT_SIZE_REGULAR = "R";
 	public static final String FONT_SIZE_SMALL = "S";

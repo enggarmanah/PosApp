@@ -184,9 +184,9 @@ public class CommissionListFragment extends BaseFragment
 		displayCommisionOnYear(mSelectedCommisionYear);
 	} 
 	
-	private int getCommisionYearsTotalAmount(List<CommisionYearBean> transactionYears) {
+	private long getCommisionYearsTotalAmount(List<CommisionYearBean> transactionYears) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (CommisionYearBean transactionYear : transactionYears) {
 			totalAmount += transactionYear.getAmount();
@@ -195,9 +195,9 @@ public class CommissionListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private int getCommisionMonthsTotalAmount(List<CommisionMonthBean> transactionMonths) {
+	private long getCommisionMonthsTotalAmount(List<CommisionMonthBean> transactionMonths) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (CommisionMonthBean transactionMonth : transactionMonths) {
 			totalAmount += transactionMonth.getAmount();

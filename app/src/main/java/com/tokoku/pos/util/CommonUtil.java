@@ -1179,9 +1179,15 @@ public class CommonUtil {
 		} else if (Constant.QUANTITY_TYPE_KG.equals(quantityType)) {
 			shortDesc = mContext.getString(R.string.quantity_type_kg_short);
 		
+		} else if (Constant.QUANTITY_TYPE_GRAM.equals(quantityType)) {
+			shortDesc = mContext.getString(R.string.quantity_type_gram_short);
+
 		} else if (Constant.QUANTITY_TYPE_LITER.equals(quantityType)) {
 			shortDesc = mContext.getString(R.string.quantity_type_liter_short);
 		
+		} else if (Constant.QUANTITY_TYPE_MILILITER.equals(quantityType)) {
+			shortDesc = mContext.getString(R.string.quantity_type_milliliter_short);
+
 		} else if (Constant.QUANTITY_TYPE_METER.equals(quantityType)) {
 			shortDesc = mContext.getString(R.string.quantity_type_meter_short);
 		

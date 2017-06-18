@@ -541,6 +541,8 @@
 	<string name="quantity_type_kg">Kg</string>
 	<string name="quantity_type_meter">Meter</string>
 	<string name="quantity_type_liter">Liter</string>
+    <string name="quantity_type_gram">Gram</string>
+    <string name="quantity_type_milliliter">Mililiter</string>
 	
 	<string name="quantity_type_piece_short">Pc</string>
 	<string name="quantity_type_pack_short">Pk</string>
@@ -548,6 +550,8 @@
 	<string name="quantity_type_kg_short">Kg</string>
 	<string name="quantity_type_meter_short">M</string>
 	<string name="quantity_type_liter_short">Lt</string>
+    <string name="quantity_type_gram_short">g</string>
+    <string name="quantity_type_milliliter_short">ml</string>
 	
 	<string name="payment_type_cash">Tunai</string>
 	<string name="payment_type_debit_card">Kartu Debit</string>

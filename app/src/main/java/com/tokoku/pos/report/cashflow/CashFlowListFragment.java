@@ -170,9 +170,9 @@ public class CashFlowListFragment extends BaseFragment
 		displayCashFlowOnYear(mSelectedCashFlowYear);
 	} 
 	
-	private int getCashFlowYearsTotalAmount(List<CashFlowYearBean> cashFlowYears) {
+	private long getCashFlowYearsTotalAmount(List<CashFlowYearBean> cashFlowYears) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (CashFlowYearBean cashFlowYear : cashFlowYears) {
 			totalAmount += cashFlowYear.getAmount();
@@ -181,9 +181,9 @@ public class CashFlowListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private int getCashFlowMonthsTotalAmount(List<CashFlowMonthBean> cashFlowMonths) {
+	private long getCashFlowMonthsTotalAmount(List<CashFlowMonthBean> cashFlowMonths) {
 		
-		int totalAmount = 0;
+		long totalAmount = 0;
 		
 		for (CashFlowMonthBean cashFlowMonth : cashFlowMonths) {
 			totalAmount += cashFlowMonth.getAmount();
