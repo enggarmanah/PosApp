@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class ProductStatisticBean implements Serializable {
 
 	private String product_name;
-	private long value;
+	private Double value;
 
 	public String getProduct_name() {
 		return product_name;
@@ -16,11 +16,11 @@ public class ProductStatisticBean implements Serializable {
 		this.product_name = product_name;
 	}
 
-	public long getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 }

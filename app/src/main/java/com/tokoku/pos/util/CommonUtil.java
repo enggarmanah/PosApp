@@ -852,6 +852,15 @@ public class CommonUtil {
 			return Constant.EMPTY_STRING;
 		}
 	}
+
+	public static String formatString(Double inputInt) {
+
+		if (inputInt != null) {
+			return String.valueOf(inputInt);
+		} else {
+			return Constant.EMPTY_STRING;
+		}
+	}
 	
 	public static int getFirstNumberIndex(String input) {
 		
@@ -995,6 +1004,11 @@ public class CommonUtil {
 		
 		return formatCurrency(formatString(inputInt));
 	}
+
+	public static String formatCurrency(Double inputInt) {
+
+		return formatCurrency(formatString(inputInt));
+	}
 		
 	public static String formatCurrencyWithoutSymbol(Float inputInt) {
 		
@@ -1015,7 +1029,12 @@ public class CommonUtil {
 		
 		return formatNumber(formatString(inputInt));
 	}
-		
+
+	public static String formatNumber(Double inputInt) {
+
+		return formatNumber(formatString(inputInt));
+	}
+
 	public static String formatPlainNumber(Float inputInt) {
 		
 		String number = formatNumber(inputInt);

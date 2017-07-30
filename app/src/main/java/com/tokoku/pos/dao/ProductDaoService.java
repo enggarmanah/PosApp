@@ -338,7 +338,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			String productName = cursor.getString(0);
-			Long value = cursor.getLong(1);
+			Double value = cursor.getDouble(1);
 			
 			ProductStatisticBean productStatistic = new ProductStatisticBean();
 			
@@ -371,7 +371,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			String productName = cursor.getString(0);
-			Long value = cursor.getLong(1);
+			Double value = cursor.getDouble(1);
 			
 			ProductStatisticBean productStatistic = new ProductStatisticBean();
 			
@@ -404,7 +404,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			String productName = cursor.getString(0);
-			Long value = cursor.getLong(1);
+			Double value = cursor.getDouble(1);
 			
 			ProductStatisticBean productStatistic = new ProductStatisticBean();
 			
@@ -433,7 +433,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Float value = cursor.getFloat(1);
+			Double value = cursor.getDouble(1);
 			TransactionYearBean transactionYear = new TransactionYearBean();
 			transactionYear.setYear(date);
 			transactionYear.setAmount(value);
@@ -459,7 +459,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Float value = cursor.getFloat(1);
+			Double value = cursor.getDouble(1);
 			TransactionYearBean transactionYear = new TransactionYearBean();
 			transactionYear.setYear(date);
 			transactionYear.setAmount(value);
@@ -485,7 +485,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Float value = cursor.getFloat(1);
+			Double value = cursor.getDouble(1);
 			TransactionYearBean transactionYear = new TransactionYearBean();
 			transactionYear.setYear(date);
 			transactionYear.setAmount(value);
@@ -515,7 +515,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Float value = cursor.getFloat(1);
+			Double value = cursor.getDouble(1);
 			TransactionMonthBean transactionMonth = new TransactionMonthBean();
 			transactionMonth.setMonth(date);
 			transactionMonth.setAmount(value);
@@ -545,7 +545,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Float value = cursor.getFloat(1);
+			Double value = cursor.getDouble(1);
 			TransactionMonthBean transactionMonth = new TransactionMonthBean();
 			transactionMonth.setMonth(date);
 			transactionMonth.setAmount(value);
@@ -575,7 +575,7 @@ public class ProductDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Float value = cursor.getFloat(1);
+			Double value = cursor.getDouble(1);
 			TransactionMonthBean transactionMonth = new TransactionMonthBean();
 			transactionMonth.setMonth(date);
 			transactionMonth.setAmount(value);
@@ -641,7 +641,7 @@ public class ProductDaoService {
 			
 			Long employeeId = cursor.getLong(0);
 			String employeeName = cursor.getString(1);
-			Float commision = cursor.getFloat(2);
+			Double commision = cursor.getDouble(2);
 			
 			EmployeeCommisionBean employeeCommision = new EmployeeCommisionBean();
 			
@@ -768,7 +768,7 @@ public class ProductDaoService {
 			Date transactionDate = CommonUtil.parseDate(cursor.getString(0), "dd-MM-yyyy hh:mm:ss");
 			String productName = cursor.getString(1);
 			Integer quantity = cursor.getInt(2);
-			Float commision = cursor.getFloat(3);
+			Double commision = cursor.getDouble(3);
 			
 			EmployeeCommisionBean employeeCommision = new EmployeeCommisionBean();
 			

@@ -197,9 +197,9 @@ public class CommissionDetailFragment extends BaseFragment implements Commission
 		};
 	}
 	
-	private Float getEmployeeCommissionTotal(List<EmployeeCommisionBean> commisions) {
+	private Double getEmployeeCommissionTotal(List<EmployeeCommisionBean> commisions) {
 		
-		Float total = Float.valueOf(0);
+		Double total = Double.valueOf(0);
 		
 		for (EmployeeCommisionBean commision : commisions) {
 			total += commision.getCommision();

@@ -186,9 +186,9 @@ public class ProductStatisticListFragment extends BaseFragment
 		displayTransactionOnYear(mSelectedTransactionYear);
 	} 
 	
-	private long getTransactionYearsTotalAmount(List<TransactionYearBean> transactionYears) {
+	private double getTransactionYearsTotalAmount(List<TransactionYearBean> transactionYears) {
 		
-		long totalAmount = 0;
+		double totalAmount = 0d;
 		
 		for (TransactionYearBean transactionYear : transactionYears) {
 			totalAmount += transactionYear.getAmount();
@@ -197,9 +197,9 @@ public class ProductStatisticListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private long getTransactionMonthsTotalAmount(List<TransactionMonthBean> transactionMonths) {
+	private double getTransactionMonthsTotalAmount(List<TransactionMonthBean> transactionMonths) {
 		
-		long totalAmount = 0;
+		double totalAmount = 0;
 		
 		for (TransactionMonthBean transactionMonth : transactionMonths) {
 			totalAmount += transactionMonth.getAmount();

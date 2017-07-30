@@ -183,9 +183,9 @@ public class ServiceChargeListFragment extends BaseFragment
 		mSelectedTransaction = transaction;
 	}
 	
-	private long getTransactionYearsServiceChargeAmount(List<TransactionYearBean> transactionYears) {
+	private double getTransactionYearsServiceChargeAmount(List<TransactionYearBean> transactionYears) {
 		
-		long totalAmount = 0;
+		double totalAmount = 0;
 		
 		for (TransactionYearBean transactionYear : transactionYears) {
 			totalAmount += transactionYear.getAmount();
@@ -194,9 +194,9 @@ public class ServiceChargeListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private long getTransactionMonthsServiceChargeAmount(List<TransactionMonthBean> transactionMonths) {
+	private double getTransactionMonthsServiceChargeAmount(List<TransactionMonthBean> transactionMonths) {
 		
-		long totalAmount = 0;
+		double totalAmount = 0;
 		
 		for (TransactionMonthBean transactionMonth : transactionMonths) {
 			totalAmount += transactionMonth.getAmount();
@@ -205,9 +205,9 @@ public class ServiceChargeListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private long getTransactionDaysServiceChargeAmount(List<TransactionDayBean> transactionDays) {
+	private double getTransactionDaysServiceChargeAmount(List<TransactionDayBean> transactionDays) {
 		
-		long totalAmount = 0;
+		double totalAmount = 0;
 		
 		for (TransactionDayBean transactionDay : transactionDays) {
 			totalAmount += transactionDay.getAmount();
@@ -216,9 +216,9 @@ public class ServiceChargeListFragment extends BaseFragment
 		return totalAmount;
 	}
 	
-	private long getTransactionsServiceChargeAmount(List<Transactions> transactions) {
+	private double getTransactionsServiceChargeAmount(List<Transactions> transactions) {
 		
-		long totalAmount = 0;
+		double totalAmount = 0;
 		
 		for (Transactions transaction : transactions) {
 			totalAmount += transaction.getServiceChargeAmount();

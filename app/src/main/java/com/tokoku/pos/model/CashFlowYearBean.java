@@ -7,7 +7,7 @@ import java.util.Date;
 public class CashFlowYearBean implements Serializable {
 
 	private Date year;
-	private Long amount;
+	private Double amount;
 
 	public Date getYear() {
 		return year;
@@ -17,11 +17,11 @@ public class CashFlowYearBean implements Serializable {
 		this.year = year;
 	}
 
-	public Long getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Long amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 }

@@ -103,12 +103,14 @@ public class CashFlowDetailFragment extends BaseFragment
 		}
 	}
 	
-	private int getCashflowsTotalAmount(List<CashflowBean> cashflows) {
+	private Double getCashflowsTotalAmount(List<CashflowBean> cashflows) {
 		
-		int totalAmount = 0;
+		Double totalAmount = 0d;
 		
 		for (CashflowBean cashflow : cashflows) {
+			System.out.println("Cashflow: " + CommonUtil.formatCurrency(totalAmount) + " + " + CommonUtil.formatCurrency(cashflow.getCash_amount()));
 			totalAmount += cashflow.getCash_amount();
+			System.out.println("Total: " + CommonUtil.formatCurrency(totalAmount));
 		}
 		
 		return totalAmount;
@@ -136,7 +138,7 @@ public class CashFlowDetailFragment extends BaseFragment
 
 		mAdapter.notifyDataSetChanged();
 
-		Integer cashflowsTotalAmount = getCashflowsTotalAmount(cashflows);
+		Double cashflowsTotalAmount = getCashflowsTotalAmount(cashflows);
 
 		mTotalText.setText(CommonUtil.formatCurrency(cashflowsTotalAmount));
 

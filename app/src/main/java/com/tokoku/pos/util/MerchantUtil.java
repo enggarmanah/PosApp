@@ -23,7 +23,7 @@ public class MerchantUtil {
 		
 		if (mMerchant == null && Config.isDebug() && !UserUtil.isRoot()) {
 			
-			Long merchantId = Long.valueOf(2);
+			Long merchantId = Long.valueOf(17714);
 			
 			DbUtil.switchDb(null, merchantId);
 			MerchantUtil.recreateDao();

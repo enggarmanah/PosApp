@@ -251,22 +251,22 @@ public class CashflowDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery(""
-				+ " SELECT strftime('%Y', cash_date/1000, 'unixepoch', 'localtime') cash_date, SUM(cash_amount) cash_amount "
+				+ " SELECT cash_date, SUM(cash_amount) cash_amount "
 				+ " FROM "
-				+ "   (SELECT cash_date, cash_amount "
+				+ "   (SELECT strftime('%Y', cash_date/1000, 'unixepoch', 'localtime') cash_date, cash_amount "
 				+ "    FROM cashflow "
 				+ "    WHERE status = 'A' "
-				+ "   UNION "
-				+ "    SELECT transaction_date cash_date, cash_amount "
+				+ "   UNION ALL "
+				+ "    SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime') cash_date, cash_amount "
 				+ "    FROM (SELECT transaction_date, CASE payment_type WHEN ? THEN payment_amount ELSE total_amount END cash_amount "
 				+ "        FROM transactions "
 				+ "        WHERE status = 'A'))"
-				+ " GROUP BY strftime('%Y', cash_date/1000, 'unixepoch', 'localtime')", new String[] { paymentType });
+				+ " GROUP BY cash_date", new String[] { paymentType });
 			
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Long amount = cursor.getLong(1);
+			Double amount = cursor.getDouble(1);
 			CashFlowYearBean cashFlowYear = new CashFlowYearBean();
 			
 			cashFlowYear.setYear(date);
@@ -286,26 +286,29 @@ public class CashflowDaoService {
 		String paymentType = Constant.PAYMENT_TYPE_CREDIT;
 		String startDate = String.valueOf(CommonUtil.getFirstDayOfYear(cashFlowYear.getYear()).getTime());
 		String endDate = String.valueOf(CommonUtil.getLastDayOfYear(cashFlowYear.getYear()).getTime());
+
+		System.out.println("startdate: " + CommonUtil.getFirstDayOfYear(cashFlowYear.getYear()));
+		System.out.println("enddate:   " + CommonUtil.getLastDayOfYear(cashFlowYear.getYear()));
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery(""
-				+ " SELECT strftime('%m-%Y', cash_date/1000, 'unixepoch', 'localtime') cash_date, SUM(cash_amount) cash_amount "
+				+ " SELECT cash_date, SUM(cash_amount) cash_amount "
 				+ " FROM "
-				+ "   (SELECT cash_date, cash_amount "
+				+ "   (SELECT strftime('%m-%Y', cash_date/1000, 'unixepoch', 'localtime') cash_date, cash_amount "
 				+ "    FROM cashflow "
 				+ "    WHERE status = 'A' AND cash_date BETWEEN ? AND ? "
-				+ "   UNION "
-				+ "    SELECT transaction_date cash_date, cash_amount "
+				+ "   UNION ALL "
+				+ "    SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') cash_date, cash_amount "
 				+ "    FROM (SELECT transaction_date, CASE payment_type WHEN ? THEN payment_amount ELSE total_amount END cash_amount "
 				+ "        FROM transactions "
 				+ "        WHERE status = 'A' AND transaction_date BETWEEN ? AND ?))"
-				+ " GROUP BY strftime('%m-%Y', cash_date/1000, 'unixepoch', 'localtime')", new String[] { startDate, endDate, paymentType, startDate, endDate });
+				+ " GROUP BY cash_date", new String[] { startDate, endDate, paymentType, startDate, endDate });
 			
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Long amount = cursor.getLong(1);
+			Double amount = cursor.getDouble(1);
 			CashFlowMonthBean cashFlowMonth = new CashFlowMonthBean();
 			
 			cashFlowMonth.setMonth(date);
@@ -325,7 +328,10 @@ public class CashflowDaoService {
 		String paymentType = Constant.PAYMENT_TYPE_CREDIT;
 		String startDate = String.valueOf(CommonUtil.getFirstDayOfMonth(cashFlowMonth.getMonth()).getTime());
 		String endDate = String.valueOf(CommonUtil.getLastDayOfMonth(cashFlowMonth.getMonth()).getTime());
-		
+
+		System.out.println("startdate: " + CommonUtil.getFirstDayOfMonth(cashFlowMonth.getMonth()));
+		System.out.println("enddate:   " + CommonUtil.getLastDayOfMonth(cashFlowMonth.getMonth()));
+
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery(""
@@ -333,14 +339,15 @@ public class CashflowDaoService {
 				+ " SELECT type, bill_id, transaction_id, strftime('%d-%m-%Y', cash_date/1000, 'unixepoch', 'localtime') cash_date, cash_amount, remarks "
 				+ "  FROM cashflow "
 				+ "  WHERE status = 'A' AND cash_date BETWEEN ? AND ? "
-				+ " UNION "
+				+ " UNION ALL "
 				+ " SELECT null type, null bill_id, null transaction_id, cash_date, cash_amount, null remarks "
 				+ " FROM ("
-				+ "  SELECT strftime('%d-%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') cash_date, SUM(cash_amount) cash_amount "
-				+ "  FROM (SELECT transaction_date, CASE payment_type WHEN ? THEN payment_amount ELSE total_amount END cash_amount "
+				+ "  SELECT transaction_date cash_date, SUM(cash_amount) cash_amount "
+				+ "  FROM (SELECT strftime('%d-%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') transaction_date, "
+				+ "               CASE payment_type WHEN ? THEN payment_amount ELSE total_amount END cash_amount "
 				+ "        FROM transactions "
 				+ "        WHERE status = 'A' AND transaction_date BETWEEN ? AND ?) "
-				+ "  GROUP BY strftime('%d-%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'))"
+				+ "  GROUP BY transaction_date)"
 				+ " ) ORDER BY cash_date ", 
 				new String[] { startDate, endDate, paymentType, startDate, endDate });
 			

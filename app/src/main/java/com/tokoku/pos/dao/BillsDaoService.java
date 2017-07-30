@@ -481,7 +481,7 @@ public class BillsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Long value = cursor.getLong(1);
+			Double value = cursor.getDouble(1);
 			CashFlowYearBean cashFlowYear = new CashFlowYearBean();
 			cashFlowYear.setYear(date);
 			cashFlowYear.setAmount(value);
@@ -511,7 +511,7 @@ public class BillsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Long value = cursor.getLong(1);
+			Double value = cursor.getDouble(1);
 			CashFlowMonthBean cashFlowMonth = new CashFlowMonthBean();
 			cashFlowMonth.setMonth(date);
 			cashFlowMonth.setAmount(value);

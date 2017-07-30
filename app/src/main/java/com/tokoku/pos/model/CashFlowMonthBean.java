@@ -7,7 +7,7 @@ import java.util.Date;
 public class CashFlowMonthBean implements Serializable {
 
 	private Date month;
-	private Long amount;
+	private Double amount;
 
 	public Date getMonth() {
 		return month;
@@ -17,11 +17,11 @@ public class CashFlowMonthBean implements Serializable {
 		this.month = month;
 	}
 
-	public Long getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Long amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 }

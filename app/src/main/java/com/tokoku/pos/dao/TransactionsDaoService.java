@@ -289,7 +289,7 @@ public class TransactionsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionYearBean transactionYear = new TransactionYearBean();
 			transactionYear.setYear(date);
 			transactionYear.setAmount(amount);
@@ -318,7 +318,7 @@ public class TransactionsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionMonthBean transactionMonth = new TransactionMonthBean();
 			transactionMonth.setMonth(date);
 			transactionMonth.setAmount(amount);
@@ -347,7 +347,7 @@ public class TransactionsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "dd-MM-yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionDayBean summary = new TransactionDayBean();
 			summary.setDate(date);
 			summary.setAmount(amount);
@@ -373,7 +373,7 @@ public class TransactionsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionYearBean transactionYear = new TransactionYearBean();
 			transactionYear.setYear(date);
 			transactionYear.setAmount(amount);
@@ -402,7 +402,7 @@ public class TransactionsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionMonthBean transactionMonth = new TransactionMonthBean();
 			transactionMonth.setMonth(date);
 			transactionMonth.setAmount(amount);
@@ -431,7 +431,7 @@ public class TransactionsDaoService {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "dd-MM-yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionDayBean summary = new TransactionDayBean();
 			summary.setDate(date);
 			summary.setAmount(amount);
@@ -457,7 +457,7 @@ public List<TransactionYearBean> getTransactionServiceChargeYears() {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionYearBean transactionYear = new TransactionYearBean();
 			transactionYear.setYear(date);
 			transactionYear.setAmount(amount);
@@ -486,7 +486,7 @@ public List<TransactionYearBean> getTransactionServiceChargeYears() {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionMonthBean transactionMonth = new TransactionMonthBean();
 			transactionMonth.setMonth(date);
 			transactionMonth.setAmount(amount);
@@ -515,7 +515,7 @@ public List<TransactionYearBean> getTransactionServiceChargeYears() {
 		while(cursor.moveToNext()) {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "dd-MM-yyyy");
-			Float amount = cursor.getFloat(1);
+			Double amount = cursor.getDouble(1);
 			TransactionDayBean summary = new TransactionDayBean();
 			summary.setDate(date);
 			summary.setAmount(amount);
