@@ -1,6 +1,7 @@
 package com.tokoku.pos.base.activity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,9 +14,12 @@ import com.tokoku.pos.async.HttpAsyncManager;
 import com.tokoku.pos.async.ProgressDlgFragment;
 import com.tokoku.pos.auth.MerchantLoginActivity;
 import com.tokoku.pos.base.adapter.AppMenuArrayAdapter;
+import com.tokoku.pos.base.fragment.ReuploadFragment;
+import com.tokoku.pos.base.listener.ReUploadListener;
 import com.tokoku.pos.cashier.CashierActivity;
 import com.tokoku.pos.dao.InventoryDaoService;
 import com.tokoku.pos.dao.ProductDaoService;
+import com.tokoku.pos.dao.TransactionsDaoService;
 import com.tokoku.pos.data.bills.BillsMgtActivity;
 import com.tokoku.pos.data.cashflow.CashflowMgtActivity;
 import com.tokoku.pos.data.customer.CustomerMgtActivity;
@@ -72,7 +76,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public abstract class BaseActivity extends Activity
-	implements AppMenuArrayAdapter.ItemActionListener, HttpAsyncListener {
+	implements AppMenuArrayAdapter.ItemActionListener, HttpAsyncListener, ReUploadListener {
 	
 	protected static ProgressDlgFragment mProgressDialog;
 	
@@ -436,7 +440,8 @@ public abstract class BaseActivity extends Activity
 			
 			mMenus.add(getString(R.string.menu_printer));
 		}
-		
+
+		mMenus.add(getString(R.string.menu_reupload));
 		mMenus.add(getString(R.string.menu_help));
 		mMenus.add(getString(R.string.menu_guide));
 		mMenus.add(getString(R.string.menu_exit));
@@ -665,37 +670,31 @@ public abstract class BaseActivity extends Activity
 			
 		} else if (getString(R.string.menu_sync).equals(menu)) {
 			
-			if (mProgressDialog.isAdded()) {
-				return;
-			}
-			
-			CommonUtil.sendEvent(getString(R.string.event_cat_task), getString(R.string.event_act_sync));
-			
-			mProgressDialog.show(getFragmentManager(), progressDialogTag);
-			
-			if (mHttpAsyncManager == null) {
-				mHttpAsyncManager = new HttpAsyncManager(this);
-			}
-			
-			if (UserUtil.isMerchant()) {
-				//mHttpAsyncManager.syncUsers();
-				mHttpAsyncManager.syncAll();
-				
-			} else if (UserUtil.isRoot()) {
-				mHttpAsyncManager.syncMerchants();
-			
-			} else if (UserUtil.isAdmin()) {
-				mHttpAsyncManager.syncAll();
-				
-			} else {
-				mHttpAsyncManager.syncPartial();
-			}
+			doSyncUp();
 			
 		} else if (getString(R.string.menu_printer).equals(menu)) {
 
 			Intent intent = new Intent(this, PrinterConfigActivity.class);
 			startActivityForResult(intent, -1);
 			
+		} else if (getString(R.string.menu_reupload).equals(menu)) {
+
+			ReuploadFragment fragment = null;
+
+			String fragmentTag = "ReuploadFragment";
+			if (getFragmentManager().findFragmentByTag(fragmentTag) != null) {
+				fragment = (ReuploadFragment) getFragmentManager().findFragmentByTag(fragmentTag);
+			} else {
+				fragment = new ReuploadFragment();
+				fragment.setListener(this);
+			}
+
+			if (fragment.isAdded()) {
+				return;
+			}
+
+			fragment.show(getFragmentManager(), fragmentTag);
+
 		} else if (getString(R.string.menu_change_password).equals(menu)) {
 
 			Intent intent = new Intent(this, ChangePasswordActivity.class);
@@ -734,6 +733,31 @@ public abstract class BaseActivity extends Activity
 			
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent);
+		}
+	}
+
+	private void doSyncUp() {
+
+		CommonUtil.sendEvent(getString(R.string.event_cat_task), getString(R.string.event_act_sync));
+
+		mProgressDialog.show(getFragmentManager(), progressDialogTag);
+
+		if (mHttpAsyncManager == null) {
+			mHttpAsyncManager = new HttpAsyncManager(this);
+		}
+
+		if (UserUtil.isMerchant()) {
+			//mHttpAsyncManager.syncUsers();
+			mHttpAsyncManager.syncAll();
+
+		} else if (UserUtil.isRoot()) {
+			mHttpAsyncManager.syncMerchants();
+
+		} else if (UserUtil.isAdmin()) {
+			mHttpAsyncManager.syncAll();
+
+		} else {
+			mHttpAsyncManager.syncPartial();
 		}
 	}
 	
@@ -808,7 +832,6 @@ public abstract class BaseActivity extends Activity
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	protected synchronized void replaceFragment(Object fragment, String fragmentTag) {
@@ -1007,5 +1030,14 @@ public abstract class BaseActivity extends Activity
 			
 			MerchantUtil.refreshBelowStockLimitProductCount();
 		}
+	}
+
+	// ReUploadListener
+
+	public void onReUploadDateSelected(Date date) {
+
+        TransactionsDaoService mTransactionDaoService = new TransactionsDaoService();
+		mTransactionDaoService.reUploadTransactions(date);
+        doSyncUp();
 	}
 }

@@ -3,7 +3,7 @@ package com.tokoku.pos.report.commission;
 import java.util.List;
 
 import com.tokoku.pos.R;
-import com.tokoku.pos.model.CommisionMonthBean;
+import com.tokoku.pos.model.CommissionMonthBean;
 import com.tokoku.pos.util.CommonUtil;
 
 import android.content.Context;
@@ -13,17 +13,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class CommissionMonthArrayAdapter extends ArrayAdapter<CommisionMonthBean> {
+public class CommissionMonthArrayAdapter extends ArrayAdapter<CommissionMonthBean> {
 
 	private Context context;
-	private List<CommisionMonthBean> commisionMonths;
+	private List<CommissionMonthBean> commisionMonths;
 	private ItemActionListener mCallback;
 
 	public interface ItemActionListener {
 
-		public void onCommisionMonthSelected(CommisionMonthBean item);
+		public void onCommisionMonthSelected(CommissionMonthBean item);
 		
-		public CommisionMonthBean getSelectedCommisionMonth();
+		public CommissionMonthBean getSelectedCommisionMonth();
 	}
 
 	class ViewHolder {
@@ -31,7 +31,7 @@ public class CommissionMonthArrayAdapter extends ArrayAdapter<CommisionMonthBean
 		TextView commisionAmountText;
 	}
 
-	public CommissionMonthArrayAdapter(Context context, List<CommisionMonthBean> commisionMonths, ItemActionListener listener) {
+	public CommissionMonthArrayAdapter(Context context, List<CommissionMonthBean> commisionMonths, ItemActionListener listener) {
 
 		super(context, R.layout.report_commision_list_item, commisionMonths);
 		
@@ -43,7 +43,7 @@ public class CommissionMonthArrayAdapter extends ArrayAdapter<CommisionMonthBean
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		
-		final CommisionMonthBean commisionMonth = commisionMonths.get(position);
+		final CommissionMonthBean commisionMonth = commisionMonths.get(position);
 		
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -80,7 +80,7 @@ public class CommissionMonthArrayAdapter extends ArrayAdapter<CommisionMonthBean
 
 		rowView.setOnClickListener(getItemOnClickListener(commisionMonth, commisionDate));
 		
-		CommisionMonthBean selectedCommisionMonth = mCallback.getSelectedCommisionMonth();
+		CommissionMonthBean selectedCommisionMonth = mCallback.getSelectedCommisionMonth();
 		
 		if (selectedCommisionMonth != null && selectedCommisionMonth.getMonth().getTime() == commisionMonth.getMonth().getTime()) {
 			rowView.setBackgroundColor(context.getResources().getColor(R.color.list_row_selected_background));
@@ -91,7 +91,7 @@ public class CommissionMonthArrayAdapter extends ArrayAdapter<CommisionMonthBean
 		return rowView;
 	}
 	
-	private View.OnClickListener getItemOnClickListener(final CommisionMonthBean item, final TextView itemNameView) {
+	private View.OnClickListener getItemOnClickListener(final CommissionMonthBean item, final TextView itemNameView) {
 		
 		return new View.OnClickListener() {
 			

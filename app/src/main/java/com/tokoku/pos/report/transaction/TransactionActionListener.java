@@ -18,4 +18,8 @@ public interface TransactionActionListener {
 	public void onTransactionDeleted(Transactions transaction);
 	
 	public void onBackPressed();
+
+	public void onGenerateReportStart();
+
+	public void onGenerateReportCompleted();
 }

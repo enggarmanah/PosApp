@@ -33,10 +33,12 @@ public class InventoryActivity extends BaseActivity
 	
 	protected static ProgressDlgFragment mProgressDialog;
 	
-	protected static String mUpdateProductStockProgressDialogTag = "updateProductStockprogressDialogTag";
+	protected static String mUpdateProductStockProgressDialogTag = "updateProductStockProgressDialogTag";
+	protected static String mGenerateReportProgressDialogTag = "generateReportProgressDialogTag";
 	
 	private SearchView searchView;
-	
+
+	private MenuItem mEmailMenu;
 	private MenuItem mSearchMenu;
 	private MenuItem mListMenu;
 	private MenuItem mAlertMenu;
@@ -191,7 +193,8 @@ public class InventoryActivity extends BaseActivity
 
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.report_inventory_menu, menu);
-		
+
+		mEmailMenu = menu.findItem(R.id.menu_item_email);
 		mSearchMenu = menu.findItem(R.id.menu_item_search);
 		mListMenu = menu.findItem(R.id.menu_item_list);
 		mAlertMenu = menu.findItem(R.id.menu_item_alert);
@@ -236,7 +239,7 @@ public class InventoryActivity extends BaseActivity
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		hideSelectedMenu();
+		initMenus();
 		
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -273,10 +276,11 @@ public class InventoryActivity extends BaseActivity
 		}
 	}
 	
-	private void hideSelectedMenu() {
+	private void initMenus() {
 		
 		boolean isDrawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		
+
+		mEmailMenu.setVisible(!isDrawerOpen);
 		mSearchMenu.setVisible(!isDrawerOpen);
 		mRefreshMenu.setVisible(!isDrawerOpen);
 		
@@ -287,13 +291,25 @@ public class InventoryActivity extends BaseActivity
 		if (mIsShowBelowStockLimitProducts) {
 			mListMenu.setVisible(!isDrawerOpen);
 		}
+
+		mEmailMenu.setVisible(false);
+		if (MerchantUtil.hasActiveCloud()) {
+			mEmailMenu.setVisible(!isDrawerOpen);
+		}
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		
 		switch (item.getItemId()) {
-			
+
+			case R.id.menu_item_email:
+
+				showInventoryList();
+				mInventoryReportListFragment.generateReport(getString(R.string.menu_report_inventory));
+
+				return true;
+
 			case R.id.menu_item_refresh:
 				
 				refreshProductStock();
@@ -500,5 +516,18 @@ public class InventoryActivity extends BaseActivity
 			mIsProductStockUpdateInProgress = false;
 			mInventoryReportListFragment.searchProduct(prevQuery);
 		}
+	}
+
+	@Override
+	public void onGenerateReportStart() {
+
+		mProgressDialog.show(getFragmentManager(), mGenerateReportProgressDialogTag);
+		mProgressDialog.setMessage(getString(R.string.msg_generate_report));
+	}
+
+	@Override
+	public void onGenerateReportCompleted() {
+
+		mProgressDialog.dismissAllowingStateLoss();
 	}
 }

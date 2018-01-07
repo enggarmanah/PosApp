@@ -11,4 +11,8 @@ public interface InventoryActionListener {
 	public void cancelRefreshProductStock();
 	
 	public void onBackPressed();
+
+	public void onGenerateReportStart();
+
+	public void onGenerateReportCompleted();
 }

@@ -189,7 +189,7 @@ public class CashFlowDetailArrayAdapter extends ArrayAdapter<CashflowBean> {
 			entityText.setText(supplierName);
 			entityText.setVisibility(View.VISIBLE);
 		
-		} else if (!CommonUtil.isEmpty(supplierName)){
+		} else if (!CommonUtil.isEmpty(customerName)){
 			entityText.setText(customerName);
 			entityText.setVisibility(View.VISIBLE);
 		

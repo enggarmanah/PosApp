@@ -1,5 +1,6 @@
 package com.tokoku.pos.report.inventory;
 
+import java.io.File;
 import java.util.List;
 
 import com.tokoku.pos.R;
@@ -7,6 +8,9 @@ import com.android.pos.dao.Product;
 import com.tokoku.pos.Constant;
 import com.tokoku.pos.base.fragment.BaseFragment;
 import com.tokoku.pos.dao.ProductDaoService;
+import com.tokoku.pos.model.ProductStatisticBean;
+import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.PoiUtil;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,6 +22,12 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class InventoryListFragment extends BaseFragment 
 	implements InventoryArrayAdapter.ItemActionListener {
@@ -272,5 +282,84 @@ public class InventoryListFragment extends BaseFragment
 				}
 			}
 		};
+	}
+
+	private Double getTotalStockFromProducts(List<Product> products) {
+
+		Double total = 0d;
+
+		for (Product product : products) {
+			total += product.getStock();
+		}
+
+		return total;
+	}
+
+	public void generateReport(String title) {
+
+		mActionListener.onGenerateReportStart();
+
+		//New Workbook
+		Workbook wb = PoiUtil.getWorkbook();
+
+		Cell c = null;
+
+		CellStyle headerCs = PoiUtil.getHeaderCellStyle(wb);
+		CellStyle contentCs = PoiUtil.getContentCellStyle(wb);
+		CellStyle contentNumberCs = PoiUtil.getContentNumberCellStyle(wb);
+		CellStyle bottomCs = PoiUtil.getBottomCellStyle(wb);
+		CellStyle bottomNumberCs = PoiUtil.getBottomNumberCellStyle(wb);
+
+		//New Sheet
+		Sheet sheet = PoiUtil.getSheet(wb, title);
+
+		int index = 0;
+
+		// Generate column headings
+		Row row = sheet.createRow(index++);
+
+		c = row.createCell(0);
+		c.setCellValue(mTitleText.getText().toString());
+		c.setCellStyle(headerCs);
+
+		c = row.createCell(1);
+		c.setCellValue(Constant.EMPTY_STRING);
+		c.setCellStyle(headerCs);
+
+		sheet.setColumnWidth(0, (12 * 500));
+		sheet.setColumnWidth(1, (8 * 500));
+
+		for (Product product : mProducts) {
+
+			row = sheet.createRow(index++);
+
+			c = row.createCell(0);
+			c.setCellValue(product.getName());
+			c.setCellStyle(contentCs);
+
+			c = row.createCell(1);
+			c.setCellStyle(contentNumberCs);
+			c.setCellValue(product.getStock());
+		}
+
+		row = sheet.createRow(index++);
+
+		c = row.createCell(0);
+		c.setCellValue(getString(R.string.total));
+		c.setCellStyle(bottomCs);
+
+		c = row.createCell(1);
+		c.setCellValue(getTotalStockFromProducts(mProducts));
+		c.setCellStyle(bottomNumberCs);
+
+		mActionListener.onGenerateReportCompleted();
+
+		String subject = title + Constant.SPACE_DASH_SPACE_STRING + mTitleText.getText().toString();
+
+		// Create a path where we will place our List of objects on external storage
+		File file = CommonUtil.generateReportFile(subject, wb);
+
+		//startActivityForResult(CommonUtil.getActionViewIntent(file), 1);
+		startActivityForResult(CommonUtil.getActionSendIntent(file, subject), 1);
 	}
 }

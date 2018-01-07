@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.android.pos.dao.Cashflow;
 import com.android.pos.dao.CashflowDao;
+import com.android.pos.dao.Inventory;
+import com.android.pos.dao.InventoryDao;
 import com.android.pos.dao.TransactionItem;
 import com.android.pos.dao.TransactionItemDao;
 import com.android.pos.dao.Transactions;
@@ -31,6 +33,9 @@ public class TransactionsDaoService {
 	private TransactionsDao mTransactionsDao = DbUtil.getSession().getTransactionsDao();
 	private TransactionItemDao mTransactionItemDao = DbUtil.getSession().getTransactionItemDao();
 	private CashflowDao mCashflowDao = DbUtil.getSession().getCashflowDao();
+
+	private TransactionItemDaoService mTransactionItemDaoService = new TransactionItemDaoService();
+	private InventoryDaoService mInventoryDaoService = new InventoryDaoService();
 	
 	public void addTransactions(Transactions transactions) {
 		
@@ -541,6 +546,31 @@ public List<TransactionYearBean> getTransactionServiceChargeYears() {
 		List<Transactions> list = q.list();
 		
 		return list;
+	}
+
+	public void reUploadTransactions(Date transactionDate) {
+
+		List<Transactions> transactions = getTransactions(transactionDate);
+
+		for (Transactions transaction : transactions) {
+
+			transaction.setUploadStatus(Constant.STATUS_YES);
+			updateTransactions(transaction);
+
+			List<TransactionItem> transactionItems = transaction.getTransactionItemList();
+
+			for (TransactionItem transactionItem : transactionItems) {
+				transactionItem.setUploadStatus(Constant.STATUS_YES);
+				mTransactionItemDaoService.updateTransactionItem(transactionItem);
+			}
+
+			List<Inventory> inventories = mInventoryDaoService.getInventories(transaction.getTransactionNo());
+
+			for (Inventory inventory : inventories) {
+				inventory.setUploadStatus(Constant.STATUS_YES);
+				mInventoryDaoService.updateInventory(inventory);
+			}
+		}
 	}
 	
 	public boolean hasUpdate() {

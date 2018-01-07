@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class CommisionMonthBean implements Serializable {
+public class CommissionMonthBean implements Serializable {
 
 	private Date month;
 	private Float amount;

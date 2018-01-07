@@ -8,6 +8,7 @@ import com.android.pos.dao.Inventory;
 import com.android.pos.dao.Transactions;
 import com.tokoku.pos.Constant;
 import com.tokoku.pos.base.activity.BaseActivity;
+import com.tokoku.pos.common.ProgressDlgFragment;
 import com.tokoku.pos.dao.InventoryDaoService;
 import com.tokoku.pos.dao.TransactionsDaoService;
 import com.tokoku.pos.model.TransactionDayBean;
@@ -30,6 +31,10 @@ public class TransactionActivity extends BaseActivity
 	protected TransactionListFragment mTransactionListFragment;
 	protected TransactionDetailFragment mTransactionDetailFragment;
 	protected TransactionDeleteDlgFragment mTransactionDeleteFragment;
+
+	protected static ProgressDlgFragment mProgressDialog;
+
+	protected static String mGenerateReportProgressDialogTag = "generateReportProgressDialogTag";
 	
 	boolean mIsMultiplesPane = false;
 	
@@ -52,7 +57,8 @@ public class TransactionActivity extends BaseActivity
 	private boolean mIsDisplayTransactionMonth = false;
 	private boolean mIsDisplayTransactionDay = false;
 	private boolean mIsDisplayTransaction = false;
-	
+
+	private MenuItem mEmailItem;
 	private MenuItem mPrintItem;
 	private MenuItem mDeleteItem;
 	private MenuItem mUpItem;
@@ -76,6 +82,12 @@ public class TransactionActivity extends BaseActivity
 
 		mTransactionsDaoService = new TransactionsDaoService();
 		mInventoryDaoService = new InventoryDaoService();
+
+		mProgressDialog = (ProgressDlgFragment) getFragmentManager().findFragmentByTag(mGenerateReportProgressDialogTag);
+
+		if (mProgressDialog == null) {
+			mProgressDialog = new ProgressDlgFragment();
+		}
 	}
 	
 	@Override
@@ -207,7 +219,8 @@ public class TransactionActivity extends BaseActivity
 
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.report_transaction_menu, menu);
-		
+
+		mEmailItem = menu.findItem(R.id.menu_item_email);
 		mPrintItem = menu.findItem(R.id.menu_item_print);
 		mDeleteItem = menu.findItem(R.id.menu_item_delete);
 		mUpItem = menu.findItem(R.id.menu_item_up);
@@ -227,7 +240,13 @@ public class TransactionActivity extends BaseActivity
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		switch (item.getItemId()) {
-			
+
+			case R.id.menu_item_email:
+
+				mTransactionListFragment.generateReport(getString(R.string.menu_report_transaction));
+
+				return true;
+
 			case R.id.menu_item_print:
 				
 				if (PrintUtil.isPrinterConnected()) {
@@ -272,7 +291,8 @@ public class TransactionActivity extends BaseActivity
 	}
 	
 	private void hideAllMenus() {
-		
+
+		mEmailItem.setVisible(false);
 		mPrintItem.setVisible(false);
 		mDeleteItem.setVisible(false);
 		mUpItem.setVisible(false);
@@ -418,8 +438,19 @@ public class TransactionActivity extends BaseActivity
 		} else {
 			
 			hideAllMenus();
-			
-			if (mIsDisplayTransactionYear || mIsDisplayTransactionMonth || mIsDisplayTransactionDay) {
+
+			if (mIsDisplayTransactionAllYears) {
+
+				if (MerchantUtil.hasActiveCloud()) {
+					mEmailItem.setVisible(true);
+				}
+
+			} else if (mIsDisplayTransactionYear || mIsDisplayTransactionMonth || mIsDisplayTransactionDay) {
+
+				if (MerchantUtil.hasActiveCloud()) {
+					mEmailItem.setVisible(true);
+				}
+
 				mUpItem.setVisible(true);
 				
 			} else if (mIsDisplayTransaction) {
@@ -493,5 +524,18 @@ public class TransactionActivity extends BaseActivity
 		
 		mTransactionListFragment.updateContent();
 		mTransactionDetailFragment.updateContent();
+	}
+
+	@Override
+	public void onGenerateReportStart() {
+
+		mProgressDialog.show(getFragmentManager(), mGenerateReportProgressDialogTag);
+		mProgressDialog.setMessage(getString(R.string.msg_generate_report));
+	}
+
+	@Override
+	public void onGenerateReportCompleted() {
+
+		mProgressDialog.dismissAllowingStateLoss();
 	}
 }

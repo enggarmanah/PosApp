@@ -1,5 +1,6 @@
 package com.tokoku.pos.report.product;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,13 @@ import com.tokoku.pos.dao.ProductDaoService;
 import com.tokoku.pos.model.ProductStatisticBean;
 import com.tokoku.pos.model.TransactionMonthBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.PoiUtil;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class ProductStatisticDetailFragment extends BaseFragment implements ProductStatisticDetailArrayAdapter.ItemActionListener {
 	
@@ -166,5 +174,84 @@ public class ProductStatisticDetailFragment extends BaseFragment implements Prod
 				mActionListener.onBackPressed();
 			}
 		};
+	}
+
+	private Double getTotalFromProductStatistic(List<ProductStatisticBean> productStatistics) {
+
+        Double total = 0d;
+
+        for (ProductStatisticBean productStatistic : productStatistics) {
+            total += productStatistic.getValue();
+        }
+
+        return total;
+    }
+
+	public void generateReport(String title) {
+
+		mActionListener.onGenerateReportStart();
+
+		//New Workbook
+		Workbook wb = PoiUtil.getWorkbook();
+
+		Cell c = null;
+
+		CellStyle headerCs = PoiUtil.getHeaderCellStyle(wb);
+		CellStyle contentCs = PoiUtil.getContentCellStyle(wb);
+		CellStyle contentNumberCs = PoiUtil.getContentNumberCellStyle(wb);
+		CellStyle bottomCs = PoiUtil.getBottomCellStyle(wb);
+		CellStyle bottomNumberCs = PoiUtil.getBottomNumberCellStyle(wb);
+
+		//New Sheet
+		Sheet sheet = PoiUtil.getSheet(wb, title);
+
+		int index = 0;
+
+		// Generate column headings
+		Row row = sheet.createRow(index++);
+
+		c = row.createCell(0);
+		c.setCellValue(mProductInfoText.getText().toString());
+		c.setCellStyle(headerCs);
+
+		c = row.createCell(1);
+		c.setCellValue(Constant.EMPTY_STRING);
+		c.setCellStyle(headerCs);
+
+		sheet.setColumnWidth(0, (12 * 500));
+		sheet.setColumnWidth(1, (8 * 500));
+
+        for (ProductStatisticBean productStatistic : mProductStatistics) {
+
+            row = sheet.createRow(index++);
+
+            c = row.createCell(0);
+            c.setCellValue(productStatistic.getProduct_name());
+            c.setCellStyle(contentCs);
+
+            c = row.createCell(1);
+            c.setCellStyle(contentNumberCs);
+            c.setCellValue(productStatistic.getValue());
+        }
+
+        row = sheet.createRow(index++);
+
+        c = row.createCell(0);
+        c.setCellValue(getString(R.string.total));
+        c.setCellStyle(bottomCs);
+
+        c = row.createCell(1);
+        c.setCellValue(getTotalFromProductStatistic(mProductStatistics));
+        c.setCellStyle(bottomNumberCs);
+
+		mActionListener.onGenerateReportCompleted();
+
+		String subject = title + Constant.SPACE_DASH_SPACE_STRING + mProductInfoText.getText().toString() + Constant.SPACE_STRING +  mDateText.getText().toString();
+
+		// Create a path where we will place our List of objects on external storage
+		File file = CommonUtil.generateReportFile(subject, wb);
+
+		//startActivityForResult(CommonUtil.getActionViewIntent(file), 1);
+		startActivityForResult(CommonUtil.getActionSendIntent(file, subject), 1);
 	}
 }

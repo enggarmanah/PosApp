@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class EmployeeCommisionBean implements Serializable {
+public class EmployeeCommissionBean implements Serializable {
 
 	private Long employee_id;
 	private String employee_name;

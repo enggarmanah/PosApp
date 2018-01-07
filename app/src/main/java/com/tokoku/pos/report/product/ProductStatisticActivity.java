@@ -8,6 +8,7 @@ import com.tokoku.pos.base.activity.BaseActivity;
 import com.tokoku.pos.model.TransactionMonthBean;
 import com.tokoku.pos.model.TransactionYearBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.MerchantUtil;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,8 @@ public class ProductStatisticActivity extends BaseActivity
 	
 	private TransactionYearBean mSelectedTransactionYear;
 	private TransactionMonthBean mSelectedTransactionMonth;
+
+	protected static String mGenerateReportProgressDialogTag = "generateReportProgressDialogTag";
 	
 	private String mSelectedProductInfo = Constant.PRODUCT_QUANTITY;
 	
@@ -41,7 +44,8 @@ public class ProductStatisticActivity extends BaseActivity
 	private boolean mIsDisplayTransactionAllYears = false;
 	private boolean mIsDisplayTransactionYear = false;
 	private boolean mIsDisplayTransactionMonth = false;
-	
+
+	private MenuItem mMenuEmail;
 	private MenuItem mMenuRevenue;
 	private MenuItem mMenuProfit;
 	private MenuItem mMenuQuantity;
@@ -171,10 +175,11 @@ public class ProductStatisticActivity extends BaseActivity
 
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.report_product_menu, menu);
-		
-		mMenuRevenue = menu.findItem(R.id.menu_revenue);
-		mMenuProfit = menu.findItem(R.id.menu_profit);
-		mMenuQuantity = menu.findItem(R.id.menu_quantity);
+
+		mMenuEmail = menu.findItem(R.id.menu_item_email);
+		mMenuRevenue = menu.findItem(R.id.menu_item_revenue);
+		mMenuProfit = menu.findItem(R.id.menu_item_profit);
+		mMenuQuantity = menu.findItem(R.id.menu_item_quantity);
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -182,16 +187,22 @@ public class ProductStatisticActivity extends BaseActivity
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		hideSelectedMenu();
+		initMenus();
 		
 		return super.onPrepareOptionsMenu(menu);
 	}
 	
-	private void hideSelectedMenu() {
+	private void initMenus() {
 		
 		boolean isDrawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		
+
+		mMenuEmail.setVisible(false);
+
 		if (!isDrawerOpen) {
+
+			if (MerchantUtil.hasActiveCloud() && mIsDisplayTransactionMonth) {
+				mMenuEmail.setVisible(true);
+			}
 		
 			mMenuRevenue.setVisible(true);
 			mMenuProfit.setVisible(true);
@@ -220,8 +231,14 @@ public class ProductStatisticActivity extends BaseActivity
 		synchronized (CommonUtil.LOCK) {
 		
 			switch (item.getItemId()) {
-	
-				case R.id.menu_revenue:
+
+				case R.id.menu_item_email:
+
+					mProductStatisticDetailFragment.generateReport(getString(R.string.menu_report_product_statistic));
+
+					return true;
+
+				case R.id.menu_item_revenue:
 					
 					mSelectedProductInfo = Constant.PRODUCT_REVENUE;
 					
@@ -229,11 +246,11 @@ public class ProductStatisticActivity extends BaseActivity
 					mProductStatisticDetailFragment.setProductInfo(mSelectedProductInfo);
 					
 					refreshParentView();
-					hideSelectedMenu();
+					initMenus();
 					
 					return true;
 				
-				case R.id.menu_profit:
+				case R.id.menu_item_profit:
 					
 					mSelectedProductInfo = Constant.PRODUCT_PROFIT;
 					
@@ -241,11 +258,11 @@ public class ProductStatisticActivity extends BaseActivity
 					mProductStatisticDetailFragment.setProductInfo(mSelectedProductInfo);
 					
 					refreshParentView();
-					hideSelectedMenu();
+					initMenus();
 					
 					return true;
 				
-				case R.id.menu_quantity:
+				case R.id.menu_item_quantity:
 					
 					mSelectedProductInfo = Constant.PRODUCT_QUANTITY;
 					
@@ -253,7 +270,7 @@ public class ProductStatisticActivity extends BaseActivity
 					mProductStatisticDetailFragment.setProductInfo(mSelectedProductInfo);
 					
 					refreshParentView();
-					hideSelectedMenu();
+					initMenus();
 					
 					return true;
 					
@@ -270,7 +287,9 @@ public class ProductStatisticActivity extends BaseActivity
 		
 		resetDisplayStatus();
 		mIsDisplayTransactionYear = true;
-		
+
+        initMenus();
+
 		mProductStatisticListFragment.setSelectedTransactionYear(transactionYear);
 	}
 	
@@ -281,7 +300,9 @@ public class ProductStatisticActivity extends BaseActivity
 		
 		resetDisplayStatus();
 		mIsDisplayTransactionMonth = true;
-		
+
+        initMenus();
+
 		if (mIsMultiplesPane) {
 			
 			mProductStatisticListFragment.setSelectedTransactionMonth(transactionMonth);
@@ -289,9 +310,9 @@ public class ProductStatisticActivity extends BaseActivity
 			
 		} else {
 
-			replaceFragment(mProductStatisticDetailFragment, mProductStatisticDetailFragmentTag);
-			mProductStatisticDetailFragment.setTransactionMonth(transactionMonth);
-		}
+            replaceFragment(mProductStatisticDetailFragment, mProductStatisticDetailFragmentTag);
+            mProductStatisticDetailFragment.setTransactionMonth(transactionMonth);
+        }
 	}
 	
 	private void refreshParentView() {
@@ -329,6 +350,8 @@ public class ProductStatisticActivity extends BaseActivity
 			replaceFragment(mProductStatisticListFragment, mProductStatisticListFragmentTag);
 			initFragment();
 		}
+
+		initMenus();
 	}
 	
 	private void initFragment() {
@@ -379,5 +402,18 @@ public class ProductStatisticActivity extends BaseActivity
 		
 		mProductStatisticListFragment.updateContent();
 		mProductStatisticDetailFragment.updateContent();
+	}
+
+	@Override
+	public void onGenerateReportStart() {
+
+		mProgressDialog.show(getFragmentManager(), mGenerateReportProgressDialogTag);
+		mProgressDialog.setMessage(getString(R.string.msg_generate_report));
+	}
+
+	@Override
+	public void onGenerateReportCompleted() {
+
+		mProgressDialog.dismissAllowingStateLoss();
 	}
 }

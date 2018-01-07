@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.tokoku.pos.TokokuApp"
@@ -40,7 +42,6 @@
             android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
             android:exported="false" />
-
         <activity
             android:name="com.tokoku.pos.auth.MerchantLoginActivity"
             android:label="@string/app_name"
@@ -134,7 +135,8 @@
             android:launchMode="singleTask"></activity>
         <activity
             android:name="com.tokoku.pos.report.transaction.TransactionActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name="com.tokoku.pos.report.product.ProductStatisticActivity"
             android:launchMode="singleTask"></activity>
@@ -143,10 +145,12 @@
             android:launchMode="singleTask"></activity>
         <activity
             android:name="com.tokoku.pos.report.cashflow.CashFlowActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name="com.tokoku.pos.report.commission.CommissionActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name="com.tokoku.pos.report.bills.BillsActivity"
             android:launchMode="singleTask"></activity>

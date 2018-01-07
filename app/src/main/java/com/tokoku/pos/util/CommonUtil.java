@@ -1,5 +1,8 @@
 package com.tokoku.pos.util;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -14,6 +17,9 @@ import java.util.regex.Pattern;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.util.TypedValue;
 
 import com.android.pos.dao.Product;
@@ -28,6 +34,8 @@ import com.tokoku.pos.R;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+
+import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.ByteArrayInputStream;
 import java.security.cert.CertificateFactory;
@@ -696,7 +704,20 @@ public class CommonUtil {
 		
 		return dateStr;
 	}
-	
+
+	public static String formatDate(Date inputDate, String format) {
+
+		String dateStr = Constant.EMPTY_STRING;
+
+		try {
+			dateStr = getDateFormat(format).format(inputDate);
+		} catch (Exception e) {
+			// do nothing
+		}
+
+		return dateStr;
+	}
+
 	public static String formatDayDate(Date inputDate) {
 		
 		String dateStr = Constant.EMPTY_STRING;
@@ -1282,4 +1303,61 @@ public class CommonUtil {
 
         return countryIso2;
     }
+
+    public static File generateReportFile(String fileName, Workbook wb) {
+
+		// Create a path where we will place our List of objects on external storage
+		File file = null;
+		FileOutputStream os = null;
+
+		try {
+
+			file = new File(mContext.getExternalCacheDir(), fileName + ".xls");
+			os = new FileOutputStream(file);
+			wb.write(os);
+			Log.w("FileUtils", "Writing file" + file);
+
+		} catch (IOException e) {
+			Log.w("FileUtils", "Error writing " + file, e);
+		} catch (Exception e) {
+			Log.w("FileUtils", "Failed to save file", e);
+		} finally {
+			try {
+				if (null != os)
+					os.close();
+			} catch (Exception ex) {
+			}
+		}
+
+		return file;
+	}
+
+	public static Intent getActionViewIntent(File file) {
+
+		Uri path =  Uri.fromFile(file);
+
+		Intent intent = new Intent();
+		intent.setAction(android.content.Intent.ACTION_VIEW);
+		intent.setDataAndType(path, "application/vnd.ms-excel");
+
+		return intent;
+	}
+
+	public static Intent getActionSendIntent(File file, String subject) {
+
+		Uri path =  Uri.fromFile(file);
+
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        // set the type to 'email'
+        emailIntent .setType("vnd.android.cursor.dir/email");
+        String to[] = { MerchantUtil.getMerchant().getContactEmail() };
+        emailIntent .putExtra(Intent.EXTRA_EMAIL, to);
+        // the attachment
+        emailIntent .putExtra(Intent.EXTRA_STREAM, path);
+		// the mail subject
+        emailIntent .putExtra(Intent.EXTRA_SUBJECT, subject);
+		emailIntent = emailIntent.createChooser(emailIntent, mContext.getString(R.string.msg_send_email));
+
+		return emailIntent;
+	}
 }

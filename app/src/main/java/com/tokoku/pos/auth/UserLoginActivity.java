@@ -1,10 +1,18 @@
 package com.tokoku.pos.auth;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,11 +26,11 @@ import com.tokoku.pos.cashier.CashierActivity;
 import com.tokoku.pos.dao.MerchantDaoService;
 import com.tokoku.pos.dao.UserDaoService;
 import com.tokoku.pos.model.FormFieldBean;
+import com.tokoku.pos.model.UserBean;
 import com.tokoku.pos.password.LogoutPasswordActivity;
 import com.tokoku.pos.report.commission.CommissionActivity;
 import com.tokoku.pos.report.transaction.TransactionActivity;
 import com.tokoku.pos.util.CommonUtil;
-import com.tokoku.pos.util.DbUtil;
 import com.tokoku.pos.util.MerchantUtil;
 import com.tokoku.pos.util.NotificationUtil;
 import com.tokoku.pos.util.UserUtil;
@@ -172,6 +180,22 @@ public class UserLoginActivity extends BaseAuthActivity {
 
 			@Override
 			public void onClick(View v) {
+
+				try {
+
+					UserBean u1 = new UserBean();
+					u1.setName("Radix");
+
+					UserBean u2 = new UserBean();
+					u2.setName("Rado");
+
+					List<UserBean> users = new ArrayList<UserBean>();
+					users.add(u1);
+					users.add(u2);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				if (!isValidated()) {
 					return;

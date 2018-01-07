@@ -3,7 +3,7 @@ package com.tokoku.pos.report.commission;
 import java.util.List;
 
 import com.tokoku.pos.R;
-import com.tokoku.pos.model.CommisionYearBean;
+import com.tokoku.pos.model.CommissionYearBean;
 import com.tokoku.pos.util.CommonUtil;
 
 import android.content.Context;
@@ -13,17 +13,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class CommissionYearArrayAdapter extends ArrayAdapter<CommisionYearBean> {
+public class CommissionYearArrayAdapter extends ArrayAdapter<CommissionYearBean> {
 
 	private Context context;
-	private List<CommisionYearBean> commisionYears;
+	private List<CommissionYearBean> commisionYears;
 	private ItemActionListener mCallback;
 
 	public interface ItemActionListener {
 
-		public void onCommisionYearSelected(CommisionYearBean item);
+		public void onCommisionYearSelected(CommissionYearBean item);
 		
-		public CommisionYearBean getSelectedCommisionYear();
+		public CommissionYearBean getSelectedCommisionYear();
 	}
 
 	class ViewHolder {
@@ -31,7 +31,7 @@ public class CommissionYearArrayAdapter extends ArrayAdapter<CommisionYearBean> 
 		TextView commisionAmountText;
 	}
 
-	public CommissionYearArrayAdapter(Context context, List<CommisionYearBean> commisionYears, ItemActionListener listener) {
+	public CommissionYearArrayAdapter(Context context, List<CommissionYearBean> commisionYears, ItemActionListener listener) {
 
 		super(context, R.layout.report_commision_list_item, commisionYears);
 		
@@ -43,7 +43,7 @@ public class CommissionYearArrayAdapter extends ArrayAdapter<CommisionYearBean> 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		
-		final CommisionYearBean commisionYear = commisionYears.get(position);
+		final CommissionYearBean commisionYear = commisionYears.get(position);
 		
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -79,7 +79,7 @@ public class CommissionYearArrayAdapter extends ArrayAdapter<CommisionYearBean> 
 		
 		rowView.setOnClickListener(getItemOnClickListener(commisionYear, commisionDate));
 		
-		CommisionYearBean selectedCommisionYear = mCallback.getSelectedCommisionYear();
+		CommissionYearBean selectedCommisionYear = mCallback.getSelectedCommisionYear();
 		
 		if (selectedCommisionYear != null && selectedCommisionYear.getYear() == commisionYear.getYear()) {
 			rowView.setBackgroundColor(context.getResources().getColor(R.color.list_row_selected_background));
@@ -90,7 +90,7 @@ public class CommissionYearArrayAdapter extends ArrayAdapter<CommisionYearBean> 
 		return rowView;
 	}
 	
-	private View.OnClickListener getItemOnClickListener(final CommisionYearBean item, final TextView itemNameView) {
+	private View.OnClickListener getItemOnClickListener(final CommissionYearBean item, final TextView itemNameView) {
 		
 		return new View.OnClickListener() {
 			

@@ -16,27 +16,29 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_item_email"
-        android:icon="@drawable/ic_mail_outline_white"
-        android:title="@string/email"
+        android:id="@+id/menu_item_search"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_search_white"
+        android:title="@string/product_search"
         android:showAsAction="ifRoom|collapseActionView">
     </item>
     <item
-        android:id="@+id/menu_item_revenue"
-        android:icon="@drawable/ic_attach_money_white"
-        android:title="@string/info_revenue"
+        android:id="@+id/menu_item_list"
+        android:icon="@drawable/ic_view_list_white"
+        android:title="@string/product_list"
         android:showAsAction="ifRoom|collapseActionView">
     </item>
     <item
-        android:id="@+id/menu_item_profit"
-        android:icon="@drawable/ic_star_outline_white"
-        android:title="@string/info_profit"
-        android:showAsAction="ifRoom|collapseActionView">
+        android:id="@+id/menu_item_alert"
+        android:actionLayout="@layout/cmn_menu_alert"
+        android:icon="@drawable/ic_flag_white"
+        android:title="@string/product_stock_alert"
+        android:showAsAction="always">
     </item>
     <item
-        android:id="@+id/menu_item_quantity"
-        android:icon="@drawable/ic_favorite_outline_white"
-        android:title="@string/info_quantity"
+        android:id="@+id/menu_item_refresh"
+        android:icon="@drawable/ic_refresh_white"
+        android:title="@string/product_list"
         android:showAsAction="ifRoom|collapseActionView">
     </item>
 </menu>

@@ -6,6 +6,8 @@ import com.tokoku.pos.dao.BillsDaoService;
 import com.tokoku.pos.dao.MerchantDaoService;
 import com.tokoku.pos.dao.ProductDaoService;
 
+import java.util.Date;
+
 public class MerchantUtil {
 	
 	private static MerchantDaoService merchantDaoService = new MerchantDaoService();
@@ -23,7 +25,7 @@ public class MerchantUtil {
 		
 		if (mMerchant == null && Config.isDebug() && !UserUtil.isRoot()) {
 			
-			Long merchantId = Long.valueOf(17714);
+			Long merchantId = Long.valueOf(10189);
 			
 			DbUtil.switchDb(null, merchantId);
 			MerchantUtil.recreateDao();
@@ -48,7 +50,12 @@ public class MerchantUtil {
 		
 		return getMerchant() != null ? getMerchant().getLoginId() : null;
 	}
-	
+
+	public static boolean hasActiveCloud() {
+
+		return (getMerchant().getPeriodEnd().compareTo(new Date()) > 0);
+	}
+
 	public static void setMerchant(Merchant merchant) {
 		
 		mMerchant = merchant;

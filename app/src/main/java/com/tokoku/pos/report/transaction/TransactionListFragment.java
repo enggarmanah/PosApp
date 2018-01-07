@@ -1,8 +1,12 @@
 package com.tokoku.pos.report.transaction;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tokoku.pos.Constant;
 import com.tokoku.pos.R;
 import com.android.pos.dao.Transactions;
 import com.tokoku.pos.base.fragment.BaseFragment;
@@ -10,16 +14,33 @@ import com.tokoku.pos.dao.TransactionsDaoService;
 import com.tokoku.pos.model.TransactionDayBean;
 import com.tokoku.pos.model.TransactionMonthBean;
 import com.tokoku.pos.model.TransactionYearBean;
+import com.tokoku.pos.model.TransactionsBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.PoiUtil;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class TransactionListFragment extends BaseFragment 
 	implements TransactionArrayAdapter.ItemActionListener, 
@@ -410,4 +431,150 @@ public class TransactionListFragment extends BaseFragment
 			mBackButton.setVisibility(View.GONE);
 		}
 	}
+
+    public void generateReport(String title) {
+
+		mActionListener.onGenerateReportStart();
+
+        //New Workbook
+        Workbook wb = PoiUtil.getWorkbook();
+
+        Cell c = null;
+
+        CellStyle headerCs = PoiUtil.getHeaderCellStyle(wb);
+		CellStyle contentCs = PoiUtil.getContentCellStyle(wb);
+		CellStyle contentNumberCs = PoiUtil.getContentNumberCellStyle(wb);
+		CellStyle bottomCs = PoiUtil.getBottomCellStyle(wb);
+		CellStyle bottomNumberCs = PoiUtil.getBottomNumberCellStyle(wb);
+
+        //New Sheet
+        Sheet sheet = PoiUtil.getSheet(wb, title);
+
+        int index = 0;
+
+        // Generate column headings
+        Row row = sheet.createRow(index++);
+
+        c = row.createCell(0);
+        c.setCellValue(mNavigationTitle.getText().toString());
+        c.setCellStyle(headerCs);
+
+        c = row.createCell(1);
+        c.setCellValue(Constant.EMPTY_STRING);
+        c.setCellStyle(headerCs);
+
+        sheet.setColumnWidth(0, (12 * 500));
+        sheet.setColumnWidth(1, (8 * 500));
+
+        if (mSelectedTransactionDay != null) {
+
+			for (Transactions transaction : mTransactions) {
+
+                row = sheet.createRow(index++);
+
+                c = row.createCell(0);
+                c.setCellValue(CommonUtil.formatDateTime(transaction.getTransactionDate()));
+                c.setCellStyle(contentCs);
+
+                c = row.createCell(1);
+                c.setCellValue(transaction.getTotalAmount());
+                c.setCellStyle(contentNumberCs);
+            }
+
+            row = sheet.createRow(index++);
+
+            c = row.createCell(0);
+            c.setCellValue(getString(R.string.total));
+            c.setCellStyle(bottomCs);
+
+            c = row.createCell(1);
+            c.setCellValue(getTransactionsTotalAmount(mTransactions));
+            c.setCellStyle(bottomNumberCs);
+
+        } else if (mSelectedTransactionMonth != null) {
+
+			for (TransactionDayBean transactionDay : mTransactionDays) {
+
+				row = sheet.createRow(index++);
+
+				c = row.createCell(0);
+				c.setCellValue(CommonUtil.formatDate(transactionDay.getDate(), "dd MMM yyyy, EEEE"));
+				c.setCellStyle(contentCs);
+
+				c = row.createCell(1);
+				c.setCellValue(transactionDay.getAmount());
+				c.setCellStyle(contentNumberCs);
+			}
+
+			row = sheet.createRow(index++);
+
+			c = row.createCell(0);
+			c.setCellValue(getString(R.string.total));
+			c.setCellStyle(bottomCs);
+
+			c = row.createCell(1);
+			c.setCellValue(getTransactionDaysTotalAmount(mTransactionDays));
+			c.setCellStyle(bottomNumberCs);
+
+        } else if (mSelectedTransactionYear != null) {
+
+			for (TransactionMonthBean transactionMonth : mTransactionMonths) {
+
+				row = sheet.createRow(index++);
+
+				c = row.createCell(0);
+				c.setCellValue(CommonUtil.formatMonth(transactionMonth.getMonth()));
+				c.setCellStyle(contentCs);
+
+				c = row.createCell(1);
+				c.setCellValue(transactionMonth.getAmount());
+				c.setCellStyle(contentNumberCs);
+			}
+
+			row = sheet.createRow(index++);
+
+			c = row.createCell(0);
+			c.setCellValue(getString(R.string.total));
+			c.setCellStyle(bottomCs);
+
+			c = row.createCell(1);
+			c.setCellValue(getTransactionMonthsTotalAmount(mTransactionMonths));
+			c.setCellStyle(bottomNumberCs);
+
+        } else {
+
+			for (TransactionYearBean transactionYear : mTransactionYears) {
+
+				row = sheet.createRow(index++);
+
+				c = row.createCell(0);
+				c.setCellValue(CommonUtil.formatYear(transactionYear.getYear()));
+				c.setCellStyle(contentCs);
+
+				c = row.createCell(1);
+				c.setCellValue(transactionYear.getAmount());
+				c.setCellStyle(contentNumberCs);
+			}
+
+			row = sheet.createRow(index++);
+
+			c = row.createCell(0);
+			c.setCellValue(getString(R.string.total));
+			c.setCellStyle(bottomCs);
+
+			c = row.createCell(1);
+			c.setCellValue(getTransactionYearsTotalAmount(mTransactionYears));
+			c.setCellStyle(bottomNumberCs);
+        }
+
+        mActionListener.onGenerateReportCompleted();
+
+		String subject = title + Constant.SPACE_DASH_SPACE_STRING + mNavigationTitle.getText().toString();
+
+        // Create a path where we will place our List of objects on external storage
+		File file = CommonUtil.generateReportFile(subject, wb);
+
+		//startActivityForResult(CommonUtil.getActionViewIntent(file), 1);
+		startActivityForResult(CommonUtil.getActionSendIntent(file, subject), 1);
+    }
 }

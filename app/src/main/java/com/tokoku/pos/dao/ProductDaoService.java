@@ -16,9 +16,9 @@ import com.android.pos.dao.ProductGroup;
 import com.android.pos.dao.TransactionItem;
 import com.android.pos.dao.TransactionItemDao;
 import com.tokoku.pos.Constant;
-import com.tokoku.pos.model.CommisionMonthBean;
-import com.tokoku.pos.model.CommisionYearBean;
-import com.tokoku.pos.model.EmployeeCommisionBean;
+import com.tokoku.pos.model.CommissionMonthBean;
+import com.tokoku.pos.model.CommissionYearBean;
+import com.tokoku.pos.model.EmployeeCommissionBean;
 import com.tokoku.pos.model.ProductBean;
 import com.tokoku.pos.model.ProductStatisticBean;
 import com.tokoku.pos.model.SyncStatusBean;
@@ -622,9 +622,9 @@ public class ProductDaoService {
 		return count;
 	}
 	
-	public List<EmployeeCommisionBean> getEmployeeCommisions(CommisionMonthBean commisionMonth) {
+	public List<EmployeeCommissionBean> getEmployeeCommisions(CommissionMonthBean commisionMonth) {
 		
-		ArrayList<EmployeeCommisionBean> employeeCommisions = new ArrayList<EmployeeCommisionBean>();
+		ArrayList<EmployeeCommissionBean> employeeCommisions = new ArrayList<EmployeeCommissionBean>();
 		
 		String startDate = String.valueOf(CommonUtil.getFirstDayOfMonth(commisionMonth.getMonth()).getTime());
 		String endDate = String.valueOf(CommonUtil.getLastDayOfMonth(commisionMonth.getMonth()).getTime());
@@ -643,7 +643,7 @@ public class ProductDaoService {
 			String employeeName = cursor.getString(1);
 			Double commision = cursor.getDouble(2);
 			
-			EmployeeCommisionBean employeeCommision = new EmployeeCommisionBean();
+			EmployeeCommissionBean employeeCommision = new EmployeeCommissionBean();
 			
 			employeeCommision.setEmployee_id(employeeId);
 			employeeCommision.setEmployee_name(employeeName);
@@ -657,9 +657,9 @@ public class ProductDaoService {
 		return employeeCommisions;
 	}
 	
-	public List<CommisionYearBean> getCommisionYears(Employee employee) {
+	public List<CommissionYearBean> getCommisionYears(Employee employee) {
 		
-		ArrayList<CommisionYearBean> commisionYears = new ArrayList<CommisionYearBean>();
+		ArrayList<CommissionYearBean> commisionYears = new ArrayList<CommissionYearBean>();
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
@@ -689,7 +689,7 @@ public class ProductDaoService {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "yyyy");
 			Float value = cursor.getFloat(1);
-			CommisionYearBean commisionYear = new CommisionYearBean();
+			CommissionYearBean commisionYear = new CommissionYearBean();
 			commisionYear.setYear(date);
 			commisionYear.setAmount(value);
 			commisionYears.add(commisionYear);
@@ -700,9 +700,9 @@ public class ProductDaoService {
 		return commisionYears;
 	}
 	
-	public List<CommisionMonthBean> getCommisionMonths(CommisionYearBean commisionYear, Employee employee) {
+	public List<CommissionMonthBean> getCommisionMonths(CommissionYearBean commisionYear, Employee employee) {
 		
-		ArrayList<CommisionMonthBean> commisionMonths = new ArrayList<CommisionMonthBean>();
+		ArrayList<CommissionMonthBean> commisionMonths = new ArrayList<CommissionMonthBean>();
 		
 		String startDate = String.valueOf(CommonUtil.getFirstDayOfYear(commisionYear.getYear()).getTime());
 		String endDate = String.valueOf(CommonUtil.getLastDayOfYear(commisionYear.getYear()).getTime());
@@ -737,7 +737,7 @@ public class ProductDaoService {
 			
 			Date date = CommonUtil.parseDate(cursor.getString(0), "MM-yyyy");
 			Float value = cursor.getFloat(1);
-			CommisionMonthBean commisionMonth = new CommisionMonthBean();
+			CommissionMonthBean commisionMonth = new CommissionMonthBean();
 			commisionMonth.setMonth(date);
 			commisionMonth.setAmount(value);
 			commisionMonths.add(commisionMonth);
@@ -748,9 +748,9 @@ public class ProductDaoService {
 		return commisionMonths;
 	}
 	
-	public List<EmployeeCommisionBean> getEmployeeCommisions(CommisionMonthBean commisionMonth, Employee employee) {
+	public List<EmployeeCommissionBean> getEmployeeCommisions(CommissionMonthBean commisionMonth, Employee employee) {
 		
-		ArrayList<EmployeeCommisionBean> employeeCommisions = new ArrayList<EmployeeCommisionBean>();
+		ArrayList<EmployeeCommissionBean> employeeCommisions = new ArrayList<EmployeeCommissionBean>();
 		
 		String employeeIdStr = String.valueOf(employee.getId());
 		String startDate = String.valueOf(CommonUtil.getFirstDayOfMonth(commisionMonth.getMonth()).getTime());
@@ -770,7 +770,7 @@ public class ProductDaoService {
 			Integer quantity = cursor.getInt(2);
 			Double commision = cursor.getDouble(3);
 			
-			EmployeeCommisionBean employeeCommision = new EmployeeCommisionBean();
+			EmployeeCommissionBean employeeCommision = new EmployeeCommissionBean();
 			
 			employeeCommision.setTransaction_date(transactionDate);
 			employeeCommision.setProduct_name(productName);

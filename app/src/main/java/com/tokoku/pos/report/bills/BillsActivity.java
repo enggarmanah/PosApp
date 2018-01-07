@@ -152,7 +152,7 @@ public class BillsActivity extends BaseActivity
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.report_inventory_menu, menu);
+		inflater.inflate(R.menu.report_bills_menu, menu);
 		
 		mSearchMenu = menu.findItem(R.id.menu_item_search);
 		mListMenu = menu.findItem(R.id.menu_item_list);

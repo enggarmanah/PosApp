@@ -130,6 +130,8 @@
     <string name="msg_merchant_activation_info">Kode aktivasi telah dikirim ke %1$s \n\nCek folder spam, jika anda belum menerimanya. \n\nHubungi kami di 0856 4745 3111 / app.tokoku@gmail.com untuk bantuan</string>
     <string name="msg_merchant_activation_info_contact_us">Kode aktivasi telah dikirim ke email anda. Hubungi kami via email app.tokoku@gmail.com, jika anda belum menerimanya.</string>
     <string name="msg_refresh_data">Memperbarui data</string>
+    <string name="msg_generate_report">Membuat report</string>
+    <string name="msg_send_email">Mengirim email ...</string>
     
     <string name="field_code">Kode</string>
     <string name="field_code_fl">K</string>
@@ -328,6 +330,9 @@
     <string name="report_bill_remarks">Keterangan</string>
     <string name="report_bill_purchased">Daftar Pembelian</string>
     <string name="report_bill_payments">Daftar Pembayaran</string>
+
+    <string name="report_debit">Debit</string>
+    <string name="report_credit">Kredit</string>
     
     <string name="report_bill_outstanding_title">Tagihan Belum Lunas</string>
     
@@ -353,6 +358,7 @@
     <string name="total_items">Item: </string>
     
     <string name="total">Total</string>
+    <string name="email">Email</string>
     <string name="payment">Bayar</string>
     <string name="payment_type">Tipe</string>
     <string name="change">Kembali</string>
@@ -625,6 +631,7 @@
 	<string name="menu_reference_supplier">Supplier</string>	
 	<string name="menu_reference_discount">Diskon</string>
 	<string name="menu_printer">Printer</string>
+    <string name="menu_reupload">Re-upload</string>
 	<string name="menu_change_password">Ganti Password</string>
     <string name="menu_exit">Keluar</string>
 	<string name="menu_sync">Sync</string>

@@ -129,6 +129,8 @@
     <string name="msg_merchant_activation_info">Activation code has been sent to %1$s \n\nPlease contact us at +62 856 4745 3111 / app.tokoku@gmail.com, if you havent received it.</string>
     <string name="msg_merchant_activation_info_contact_us">Activation code has been sent to your email. Please contact us at app.tokoku@gmail.com, if you havent received it.</string>
     <string name="msg_refresh_data">Refreshing data</string>
+    <string name="msg_generate_report">Generate report</string>
+    <string name="msg_send_email">Sending email ...</string>
     
     <string name="field_code">Code</string>
     <string name="field_code_fl">C</string>
@@ -327,7 +329,10 @@
     <string name="report_bill_remarks">Remarks</string>
     <string name="report_bill_purchased">Product Purchased</string>
     <string name="report_bill_payments">Bill Payments</string>
-    
+
+    <string name="report_debit">Debit</string>
+    <string name="report_credit">Credit</string>
+
     <string name="report_bill_outstanding_title">Outstanding Bill</string>
     
     <string name="report_commision">Commission</string>
@@ -352,6 +357,7 @@
     <string name="total_items">Item: </string>
     
     <string name="total">Total</string>
+    <string name="email">Email</string>
     <string name="payment">Payment</string>
     <string name="payment_type">Type</string>
     <string name="change">Return</string>
@@ -624,6 +630,7 @@
 	<string name="menu_reference_supplier">Supplier</string>	
 	<string name="menu_reference_discount">Discount</string>
 	<string name="menu_printer">Printer</string>
+    <string name="menu_reupload">Re-upload</string>
 	<string name="menu_change_password">Change Password</string>
 	<string name="menu_exit">Exit</string>
 	<string name="menu_sync">Sync</string>

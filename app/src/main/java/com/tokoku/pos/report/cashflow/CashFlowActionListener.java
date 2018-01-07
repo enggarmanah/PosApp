@@ -14,4 +14,8 @@ public interface CashFlowActionListener {
 	public void onCashFlowSelected(CashflowBean cashFlow);
 	
 	public void onBackPressed();
+
+	public void onGenerateReportStart();
+
+	public void onGenerateReportCompleted();
 }

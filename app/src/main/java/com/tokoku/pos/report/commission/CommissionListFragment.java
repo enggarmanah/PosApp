@@ -1,15 +1,18 @@
 package com.tokoku.pos.report.commission;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tokoku.pos.Constant;
 import com.tokoku.pos.R;
 import com.android.pos.dao.Employee;
 import com.tokoku.pos.base.fragment.BaseFragment;
 import com.tokoku.pos.dao.ProductDaoService;
-import com.tokoku.pos.model.CommisionMonthBean;
-import com.tokoku.pos.model.CommisionYearBean;
+import com.tokoku.pos.model.CommissionMonthBean;
+import com.tokoku.pos.model.CommissionYearBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.PoiUtil;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,6 +22,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class CommissionListFragment extends BaseFragment 
 	implements CommissionMonthArrayAdapter.ItemActionListener,
@@ -31,12 +40,15 @@ public class CommissionListFragment extends BaseFragment
 	
 	private ListView mCommisionList;
 	
-	private List<CommisionYearBean> mCommisionYears;
-	private List<CommisionMonthBean> mCommisionMonths;
+	private List<CommissionYearBean> mCommisionYears;
+	private List<CommissionMonthBean> mCommisionMonths;
+
+    private CommissionYearBean mTransactionYear;
+    private CommissionMonthBean mTransactionMonth;
 	
 	private Employee mSelectedEmployee;
-	private CommisionYearBean mSelectedCommisionYear;
-	private CommisionMonthBean mSelectedCommisionMonth;
+	private CommissionYearBean mSelectedCommisionYear;
+	private CommissionMonthBean mSelectedCommisionMonth;
 	
 	private CommissionYearArrayAdapter mCommisionYearAdapter;
 	private CommissionMonthArrayAdapter mCommisionMonthAdapter;
@@ -119,11 +131,11 @@ public class CommissionListFragment extends BaseFragment
 	private void initList() {
 		
 		if (mCommisionYears == null) {
-			mCommisionYears = new ArrayList<CommisionYearBean>();
+			mCommisionYears = new ArrayList<CommissionYearBean>();
 		}
 		
 		if (mCommisionMonths == null) {
-			mCommisionMonths = new ArrayList<CommisionMonthBean>();
+			mCommisionMonths = new ArrayList<CommissionMonthBean>();
 		}
 	}
 	
@@ -149,7 +161,7 @@ public class CommissionListFragment extends BaseFragment
 		mSelectedEmployee = employee;
 	}
 	
-	public void setSelectedCommisionYear(CommisionYearBean transactionYear) {
+	public void setSelectedCommisionYear(CommissionYearBean transactionYear) {
 		
 		mSelectedCommisionYear = transactionYear;
 		
@@ -164,7 +176,7 @@ public class CommissionListFragment extends BaseFragment
 		}
 	}
 	
-	public void setSelectedCommisionMonth(CommisionMonthBean transactionMonth) {
+	public void setSelectedCommisionMonth(CommissionMonthBean transactionMonth) {
 		
 		mSelectedCommisionMonth = transactionMonth;
 		
@@ -184,22 +196,22 @@ public class CommissionListFragment extends BaseFragment
 		displayCommisionOnYear(mSelectedCommisionYear);
 	} 
 	
-	private long getCommisionYearsTotalAmount(List<CommisionYearBean> transactionYears) {
+	private long getCommisionYearsTotalAmount(List<CommissionYearBean> transactionYears) {
 		
 		long totalAmount = 0;
 		
-		for (CommisionYearBean transactionYear : transactionYears) {
+		for (CommissionYearBean transactionYear : transactionYears) {
 			totalAmount += transactionYear.getAmount();
 		}
 		
 		return totalAmount;
 	}
 	
-	private long getCommisionMonthsTotalAmount(List<CommisionMonthBean> transactionMonths) {
+	private long getCommisionMonthsTotalAmount(List<CommissionMonthBean> transactionMonths) {
 		
 		long totalAmount = 0;
 		
-		for (CommisionMonthBean transactionMonth : transactionMonths) {
+		for (CommissionMonthBean transactionMonth : transactionMonths) {
 			totalAmount += transactionMonth.getAmount();
 		}
 		
@@ -220,14 +232,16 @@ public class CommissionListFragment extends BaseFragment
 		
 		setBackButtonVisible(false);
 		
-		mNavigationTitle.setText(getString(R.string.transaction_total));
+		mNavigationTitle.setText(getString(R.string.total));
 		
 		mNavText.setText(CommonUtil.formatCurrency(getCommisionYearsTotalAmount(mCommisionYears)));
 		
 		mCommisionList.setAdapter(mCommisionYearAdapter);
 	}
 	
-	public void displayCommisionOnYear(CommisionYearBean transactionYear) {
+	public void displayCommisionOnYear(CommissionYearBean transactionYear) {
+
+        mTransactionYear = transactionYear;
 		
 		mStatus = CommissionActivity.DISPLAY_TRANSACTION_ON_YEAR;
 		
@@ -248,7 +262,9 @@ public class CommissionListFragment extends BaseFragment
 		mCommisionList.setAdapter(mCommisionMonthAdapter);
 	}
 	
-	public void displayCommisionOnMonth(CommisionMonthBean transactionMonth) {
+	public void displayCommisionOnMonth(CommissionMonthBean transactionMonth) {
+
+         mTransactionMonth = transactionMonth;
 		
 		mStatus = CommissionActivity.DISPLAY_TRANSACTION_ON_MONTH;
 		
@@ -257,25 +273,25 @@ public class CommissionListFragment extends BaseFragment
 	}
 	
 	@Override
-	public void onCommisionYearSelected(CommisionYearBean transactionYear) {
+	public void onCommisionYearSelected(CommissionYearBean transactionYear) {
 		
-		mActionListener.onCommisionYearSelected(transactionYear);
+		mActionListener.onCommissionYearSelected(transactionYear);
 	}
 	
 	@Override
-	public CommisionYearBean getSelectedCommisionYear() {
+	public CommissionYearBean getSelectedCommisionYear() {
 		
 		return mSelectedCommisionYear;
 	}
 	
 	@Override
-	public void onCommisionMonthSelected(CommisionMonthBean transactionMonth) {
+	public void onCommisionMonthSelected(CommissionMonthBean transactionMonth) {
 		
-		mActionListener.onCommisionMonthSelected(transactionMonth);
+		mActionListener.onCommissionMonthSelected(transactionMonth);
 	}
 	
 	@Override
-	public CommisionMonthBean getSelectedCommisionMonth() {
+	public CommissionMonthBean getSelectedCommisionMonth() {
 		
 		return mSelectedCommisionMonth;
 	}
@@ -299,5 +315,103 @@ public class CommissionListFragment extends BaseFragment
 		} else {
 			mBackButton.setVisibility(View.GONE);
 		}
+	}
+
+	public void generateReport(String title) {
+
+		mActionListener.onGenerateReportStart();
+
+		//New Workbook
+		Workbook wb = PoiUtil.getWorkbook();
+
+		Cell c = null;
+
+		CellStyle headerCs = PoiUtil.getHeaderCellStyle(wb);
+		CellStyle contentCs = PoiUtil.getContentCellStyle(wb);
+		CellStyle contentNumberCs = PoiUtil.getContentNumberCellStyle(wb);
+		CellStyle bottomCs = PoiUtil.getBottomCellStyle(wb);
+		CellStyle bottomNumberCs = PoiUtil.getBottomNumberCellStyle(wb);
+
+		//New Sheet
+		Sheet sheet = PoiUtil.getSheet(wb, title);
+
+		int index = 0;
+
+		// Generate column headings
+		Row row = sheet.createRow(index++);
+
+		c = row.createCell(0);
+		c.setCellValue(mNavigationTitle.getText().toString());
+		c.setCellStyle(headerCs);
+
+		c = row.createCell(1);
+		c.setCellValue(Constant.EMPTY_STRING);
+		c.setCellStyle(headerCs);
+
+		sheet.setColumnWidth(0, (12 * 500));
+		sheet.setColumnWidth(1, (8 * 500));
+
+        if (CommissionActivity.DISPLAY_TRANSACTION_ALL_YEARS.equals(mStatus)) {
+
+			for (CommissionYearBean commisionYear : mCommisionYears) {
+
+				row = sheet.createRow(index++);
+
+				c = row.createCell(0);
+				c.setCellValue(CommonUtil.formatYear(commisionYear.getYear()));
+				c.setCellStyle(contentCs);
+
+				c = row.createCell(1);
+				c.setCellValue(CommonUtil.formatCurrency(commisionYear.getAmount()));
+				c.setCellStyle(contentNumberCs);
+			}
+
+			row = sheet.createRow(index++);
+
+			c = row.createCell(0);
+			c.setCellValue(getString(R.string.total));
+			c.setCellStyle(bottomCs);
+
+			c = row.createCell(1);
+			c.setCellValue(CommonUtil.formatCurrency(getCommisionYearsTotalAmount(mCommisionYears)));
+			c.setCellStyle(bottomNumberCs);
+
+		} else if (CommissionActivity.DISPLAY_TRANSACTION_ON_YEAR.equals(mStatus) ||
+                CommissionActivity.DISPLAY_TRANSACTION_ON_MONTH.equals(mStatus)) {
+
+			for (CommissionMonthBean commisionMonth : mCommisionMonths) {
+
+				row = sheet.createRow(index++);
+
+				c = row.createCell(0);
+				c.setCellValue(CommonUtil.formatMonth(commisionMonth.getMonth()));
+				c.setCellStyle(contentCs);
+
+				c = row.createCell(1);
+				c.setCellValue(CommonUtil.formatCurrency(commisionMonth.getAmount()));
+				c.setCellStyle(contentNumberCs);
+			}
+
+			row = sheet.createRow(index++);
+
+			c = row.createCell(0);
+			c.setCellValue(getString(R.string.total));
+			c.setCellStyle(bottomCs);
+
+			c = row.createCell(1);
+			c.setCellValue(CommonUtil.formatCurrency(getCommisionMonthsTotalAmount(mCommisionMonths)));
+			c.setCellStyle(bottomNumberCs);
+
+		}
+
+		mActionListener.onGenerateReportCompleted();
+
+		String subject = title + Constant.SPACE_DASH_SPACE_STRING + mNavigationTitle.getText().toString();
+
+		// Create a path where we will place our List of objects on external storage
+		File file = CommonUtil.generateReportFile(subject, wb);
+
+		//startActivityForResult(CommonUtil.getActionViewIntent(file), 1);
+		startActivityForResult(CommonUtil.getActionSendIntent(file, subject), 1);
 	}
 }

@@ -10,4 +10,8 @@ public interface ProductStatisticActionListener {
 	public void onTransactionMonthSelected(TransactionMonthBean transactionMonth);
 	
 	public void onBackPressed();
+
+	public void onGenerateReportStart();
+
+	public void onGenerateReportCompleted();
 }

@@ -32,6 +32,7 @@ public class Constant {
 	
 	public static final String EMPTY_STRING = "";
 	public static final String SPACE_STRING = " ";
+	public static final String SPACE_DASH_SPACE_STRING = " - ";
 	public static final String CR_STRING = "\r";
 	
 	public static final String STATUS_YES = "Y";

@@ -1,15 +1,19 @@
 package com.tokoku.pos.report.product;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.pos.dao.Transactions;
 import com.tokoku.pos.R;
 import com.tokoku.pos.Constant;
 import com.tokoku.pos.base.fragment.BaseFragment;
 import com.tokoku.pos.dao.ProductDaoService;
+import com.tokoku.pos.model.TransactionDayBean;
 import com.tokoku.pos.model.TransactionMonthBean;
 import com.tokoku.pos.model.TransactionYearBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.PoiUtil;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,6 +23,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class ProductStatisticListFragment extends BaseFragment 
 	implements ProductStatisticMonthArrayAdapter.ItemActionListener,

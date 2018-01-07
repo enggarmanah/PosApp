@@ -8,25 +8,31 @@ import com.android.pos.dao.User;
 import com.tokoku.pos.Constant;
 import com.tokoku.pos.base.activity.BaseActivity;
 import com.tokoku.pos.dao.EmployeeDaoService;
-import com.tokoku.pos.model.CommisionMonthBean;
-import com.tokoku.pos.model.CommisionYearBean;
+import com.tokoku.pos.model.CommissionMonthBean;
+import com.tokoku.pos.model.CommissionYearBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.MerchantUtil;
 import com.tokoku.pos.util.UserUtil;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class CommissionActivity extends BaseActivity 
 	implements CommissionActionListener {
 	
-	protected CommissionListFragment mProductStatisticListFragment;
-	protected CommissionDetailFragment mProductStatisticDetailFragment;
+	protected CommissionListFragment mCommissionListFragment;
+	protected CommissionDetailFragment mCommissionDetailFragment;
 	
 	boolean mIsMultiplesPane = false;
+
+    protected static String mGenerateReportProgressDialogTag = "generateReportProgressDialogTag";
+
+	private MenuItem mMenuEmail;
 	
-	private CommisionYearBean mSelectedCommisionYear;
-	private CommisionMonthBean mSelectedCommisionMonth;
+	private CommissionYearBean mSelectedCommissionYear;
+	private CommissionMonthBean mSelectedCommissionMonth;
 	
 	private Employee mSelectedEmployee;
 	private Employee mUserEmployee;
@@ -42,9 +48,9 @@ public class CommissionActivity extends BaseActivity
 	private String mProductStatisticListFragmentTag = "productStatisticListFragmentTag";
 	private String mProductStatisticDetailFragmentTag = "productStatisticDetailFragmentTag";
 	
-	private boolean mIsDisplayCommisionAllYears = false;
-	private boolean mIsDisplayCommisionYear = false;
-	private boolean mIsDisplayCommisionMonth = false;
+	private boolean mIsDisplayCommissionAllYears = false;
+	private boolean mIsDisplayCommissionYear = false;
+	private boolean mIsDisplayCommissionMonth = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +83,7 @@ public class CommissionActivity extends BaseActivity
 			mUserEmployee = employeeDaoService.getEmployee(user.getEmployeeId());
 			mSelectedEmployee = mUserEmployee;
 			
-			mProductStatisticDetailFragment.setEmployee(mSelectedEmployee);
+			mCommissionDetailFragment.setEmployee(mSelectedEmployee);
 		}
 		
 	}
@@ -86,24 +92,24 @@ public class CommissionActivity extends BaseActivity
 		
 		if (savedInstanceState != null) {
 			
-			mSelectedCommisionYear = (CommisionYearBean) savedInstanceState.getSerializable(SELECTED_TRANSACTION_YEAR);
-			mSelectedCommisionMonth = (CommisionMonthBean) savedInstanceState.getSerializable(SELECTED_TRANSACTION_MONTH);
+			mSelectedCommissionYear = (CommissionYearBean) savedInstanceState.getSerializable(SELECTED_TRANSACTION_YEAR);
+			mSelectedCommissionMonth = (CommissionMonthBean) savedInstanceState.getSerializable(SELECTED_TRANSACTION_MONTH);
 			
 			mSelectedEmployee = (Employee) savedInstanceState.getSerializable(SELECTED_EMPLOYEE);
 			
-			mIsDisplayCommisionAllYears = (Boolean) savedInstanceState.getSerializable(DISPLAY_TRANSACTION_ALL_YEARS);
-			mIsDisplayCommisionYear = (Boolean) savedInstanceState.getSerializable(DISPLAY_TRANSACTION_ON_YEAR);
-			mIsDisplayCommisionMonth = (Boolean) savedInstanceState.getSerializable(DISPLAY_TRANSACTION_ON_MONTH);
+			mIsDisplayCommissionAllYears = (Boolean) savedInstanceState.getSerializable(DISPLAY_TRANSACTION_ALL_YEARS);
+			mIsDisplayCommissionYear = (Boolean) savedInstanceState.getSerializable(DISPLAY_TRANSACTION_ON_YEAR);
+			mIsDisplayCommissionMonth = (Boolean) savedInstanceState.getSerializable(DISPLAY_TRANSACTION_ON_MONTH);
 		
 		} else {
 			
-			mIsDisplayCommisionMonth = true;
+			mIsDisplayCommissionMonth = true;
 			
-			mSelectedCommisionMonth = new CommisionMonthBean();
-			mSelectedCommisionMonth.setMonth(CommonUtil.getCurrentMonth());
+			mSelectedCommissionMonth = new CommissionMonthBean();
+			mSelectedCommissionMonth.setMonth(CommonUtil.getCurrentMonth());
 			
-			mSelectedCommisionYear = new CommisionYearBean();
-			mSelectedCommisionYear.setYear(CommonUtil.getCurrentYear());
+			mSelectedCommissionYear = new CommissionYearBean();
+			mSelectedCommissionYear.setYear(CommonUtil.getCurrentYear());
 		} 
 	}
 	
@@ -111,22 +117,22 @@ public class CommissionActivity extends BaseActivity
 		
 		mIsMultiplesPane = getResources().getBoolean(R.bool.has_multiple_panes);
 
-		mProductStatisticListFragment = (CommissionListFragment) getFragmentManager().findFragmentByTag(mProductStatisticListFragmentTag);
+		mCommissionListFragment = (CommissionListFragment) getFragmentManager().findFragmentByTag(mProductStatisticListFragmentTag);
 		
-		if (mProductStatisticListFragment == null) {
-			mProductStatisticListFragment = new CommissionListFragment();
+		if (mCommissionListFragment == null) {
+			mCommissionListFragment = new CommissionListFragment();
 
 		} else {
-			removeFragment(mProductStatisticListFragment);
+			removeFragment(mCommissionListFragment);
 		}
 		
-		mProductStatisticDetailFragment = (CommissionDetailFragment) getFragmentManager().findFragmentByTag(mProductStatisticDetailFragmentTag);
+		mCommissionDetailFragment = (CommissionDetailFragment) getFragmentManager().findFragmentByTag(mProductStatisticDetailFragmentTag);
 		
-		if (mProductStatisticDetailFragment == null) {
-			mProductStatisticDetailFragment = new CommissionDetailFragment();
+		if (mCommissionDetailFragment == null) {
+			mCommissionDetailFragment = new CommissionDetailFragment();
 
 		} else {
-			removeFragment(mProductStatisticDetailFragment);
+			removeFragment(mCommissionDetailFragment);
 		}
 	}
 
@@ -135,14 +141,14 @@ public class CommissionActivity extends BaseActivity
 
 		super.onSaveInstanceState(outState);
 		
-		outState.putSerializable(SELECTED_TRANSACTION_YEAR, (Serializable) mSelectedCommisionYear);
-		outState.putSerializable(SELECTED_TRANSACTION_MONTH, (Serializable) mSelectedCommisionMonth);
+		outState.putSerializable(SELECTED_TRANSACTION_YEAR, (Serializable) mSelectedCommissionYear);
+		outState.putSerializable(SELECTED_TRANSACTION_MONTH, (Serializable) mSelectedCommissionMonth);
 		
 		outState.putSerializable(SELECTED_EMPLOYEE, (Serializable) mSelectedEmployee);
 		
-		outState.putSerializable(DISPLAY_TRANSACTION_ALL_YEARS, (Serializable) mIsDisplayCommisionAllYears);
-		outState.putSerializable(DISPLAY_TRANSACTION_ON_YEAR, (Serializable) mIsDisplayCommisionYear);
-		outState.putSerializable(DISPLAY_TRANSACTION_ON_MONTH, (Serializable) mIsDisplayCommisionMonth);
+		outState.putSerializable(DISPLAY_TRANSACTION_ALL_YEARS, (Serializable) mIsDisplayCommissionAllYears);
+		outState.putSerializable(DISPLAY_TRANSACTION_ON_YEAR, (Serializable) mIsDisplayCommissionYear);
+		outState.putSerializable(DISPLAY_TRANSACTION_ON_MONTH, (Serializable) mIsDisplayCommissionMonth);
 	}
 	
 	@Override
@@ -153,33 +159,38 @@ public class CommissionActivity extends BaseActivity
 	
 	private void loadFragments() {
 		
-		mProductStatisticListFragment.setSelectedEmployee(mUserEmployee);
-		mProductStatisticListFragment.setSelectedCommisionYear(mSelectedCommisionYear);
-		mProductStatisticListFragment.setSelectedCommisionMonth(mSelectedCommisionMonth);
+		mCommissionListFragment.setSelectedEmployee(mUserEmployee);
+		mCommissionListFragment.setSelectedCommisionYear(mSelectedCommissionYear);
+		mCommissionListFragment.setSelectedCommisionMonth(mSelectedCommissionMonth);
 		
-		mProductStatisticDetailFragment.setCommisionMonth(mSelectedCommisionMonth);
-		mProductStatisticDetailFragment.setEmployee(mSelectedEmployee);
+		mCommissionDetailFragment.setCommisionMonth(mSelectedCommissionMonth);
+		mCommissionDetailFragment.setEmployee(mSelectedEmployee);
 		
 		if (mIsMultiplesPane) {
 
-			addFragment(mProductStatisticListFragment, mProductStatisticListFragmentTag);
-			addFragment(mProductStatisticDetailFragment, mProductStatisticDetailFragmentTag);
+			addFragment(mCommissionListFragment, mProductStatisticListFragmentTag);
+			addFragment(mCommissionDetailFragment, mProductStatisticDetailFragmentTag);
 			
 		} else {
 
-			if (mSelectedCommisionMonth != null) {
+			if (mSelectedCommissionMonth != null) {
 				
-				addFragment(mProductStatisticDetailFragment, mProductStatisticDetailFragmentTag);
+				addFragment(mCommissionDetailFragment, mProductStatisticDetailFragmentTag);
 				
 			} else {
 				
-				addFragment(mProductStatisticListFragment, mProductStatisticListFragmentTag);
+				addFragment(mCommissionListFragment, mProductStatisticListFragmentTag);
 			}
 		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.report_cashflow_menu, menu);
+
+		mMenuEmail = menu.findItem(R.id.menu_item_email);
 
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -189,6 +200,20 @@ public class CommissionActivity extends BaseActivity
 
 		return super.onPrepareOptionsMenu(menu);
 	}
+
+	private void initMenus() {
+
+		boolean isDrawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+
+		mMenuEmail.setVisible(false);
+
+		if (!isDrawerOpen) {
+
+			if (MerchantUtil.hasActiveCloud()) {
+				mMenuEmail.setVisible(mIsDisplayCommissionAllYears || mIsDisplayCommissionYear || mIsDisplayCommissionMonth);
+			}
+		}
+	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -196,6 +221,16 @@ public class CommissionActivity extends BaseActivity
 		synchronized (CommonUtil.LOCK) {
 		
 			switch (item.getItemId()) {
+
+				case R.id.menu_item_email:
+
+				    if (mCommissionListFragment.isAdded()) {
+                        mCommissionListFragment.generateReport(getString(R.string.menu_report_commision));
+                    } else {
+                        mCommissionDetailFragment.generateReport(getString(R.string.menu_report_commision));
+                    }
+
+					return true;
 	
 				default:
 					return super.onOptionsItemSelected(item);
@@ -204,42 +239,46 @@ public class CommissionActivity extends BaseActivity
 	}
 	
 	@Override
-	public void onCommisionYearSelected(CommisionYearBean commisionYear) {
+	public void onCommissionYearSelected(CommissionYearBean commissionYear) {
 		
-		mSelectedCommisionYear = commisionYear;
+		mSelectedCommissionYear = commissionYear;
 		
 		resetDisplayStatus();
-		mIsDisplayCommisionYear = true;
+		mIsDisplayCommissionYear = true;
 		
-		mProductStatisticListFragment.setSelectedEmployee(mUserEmployee);
-		mProductStatisticListFragment.setSelectedCommisionYear(commisionYear);
+		mCommissionListFragment.setSelectedEmployee(mUserEmployee);
+		mCommissionListFragment.setSelectedCommisionYear(commissionYear);
+
+		initMenus();
 	}
 	
 	@Override
-	public void onCommisionMonthSelected(CommisionMonthBean commisionMonth) {
+	public void onCommissionMonthSelected(CommissionMonthBean commissionMonth) {
 		
-		mSelectedCommisionMonth = commisionMonth;
+		mSelectedCommissionMonth = commissionMonth;
 		
 		resetDisplayStatus();
-		mIsDisplayCommisionMonth = true;
+		mIsDisplayCommissionMonth = true;
 		
 		if (mIsMultiplesPane) {
 			
-			mProductStatisticDetailFragment.setCommisionMonth(commisionMonth);
+			mCommissionDetailFragment.setCommisionMonth(commissionMonth);
 			
 			if (mUserEmployee != null) {
-				mProductStatisticDetailFragment.setEmployee(mUserEmployee);
+				mCommissionDetailFragment.setEmployee(mUserEmployee);
 			}
 		} else {
 
-			replaceFragment(mProductStatisticDetailFragment, mProductStatisticDetailFragmentTag);
+			replaceFragment(mCommissionDetailFragment, mProductStatisticDetailFragmentTag);
 			
-			mProductStatisticDetailFragment.setCommisionMonth(commisionMonth);
+			mCommissionDetailFragment.setCommisionMonth(commissionMonth);
 			
 			if (mUserEmployee != null) {
-				mProductStatisticDetailFragment.setEmployee(mUserEmployee);
+				mCommissionDetailFragment.setEmployee(mUserEmployee);
 			}
 		}
+
+		initMenus();
 	}
 	
 	@Override
@@ -261,18 +300,18 @@ public class CommissionActivity extends BaseActivity
 		if (mSelectedEmployee != null && mUserEmployee == null) {
 			
 			mSelectedEmployee = null;
-			mProductStatisticDetailFragment.setCommisionMonth(mSelectedCommisionMonth);
+			mCommissionDetailFragment.setCommisionMonth(mSelectedCommissionMonth);
 			
 			return;
 		}
 		
 		setDisplayStatusToParent();
 		
-		mProductStatisticListFragment.setSelectedEmployee(mUserEmployee);
-		mProductStatisticListFragment.setSelectedCommisionYear(mSelectedCommisionYear);
-		mProductStatisticListFragment.setSelectedCommisionMonth(mSelectedCommisionMonth);
+		mCommissionListFragment.setSelectedEmployee(mUserEmployee);
+		mCommissionListFragment.setSelectedCommisionYear(mSelectedCommissionYear);
+		mCommissionListFragment.setSelectedCommisionMonth(mSelectedCommissionMonth);
 		
-		mProductStatisticDetailFragment.setCommisionMonth(mSelectedCommisionMonth);
+		mCommissionDetailFragment.setCommisionMonth(mSelectedCommissionMonth);
 		
 		if (mIsMultiplesPane) {
 			
@@ -280,48 +319,48 @@ public class CommissionActivity extends BaseActivity
 			
 		} else {
 			
-			replaceFragment(mProductStatisticListFragment, mProductStatisticListFragmentTag);
+			replaceFragment(mCommissionListFragment, mProductStatisticListFragmentTag);
 			initFragment();
 		}
 	}
 	
 	private void initFragment() {
 		
-		if (mIsDisplayCommisionAllYears) {
+		if (mIsDisplayCommissionAllYears) {
 			
-			mProductStatisticListFragment.displayCommisionAllYears();
+			mCommissionListFragment.displayCommisionAllYears();
 			
-		} else if (mIsDisplayCommisionYear) {
+		} else if (mIsDisplayCommissionYear) {
 			
-			mProductStatisticListFragment.displayCommisionOnYear(mSelectedCommisionYear);
+			mCommissionListFragment.displayCommisionOnYear(mSelectedCommissionYear);
 		}
 	}
 	
 	private void resetDisplayStatus() {
 		
-		mIsDisplayCommisionAllYears = false;
-		mIsDisplayCommisionYear = false;
-		mIsDisplayCommisionMonth = false;
+		mIsDisplayCommissionAllYears = false;
+		mIsDisplayCommissionYear = false;
+		mIsDisplayCommissionMonth = false;
 	}
 	
 	private void setDisplayStatusToParent() {
 		
-		if (mIsDisplayCommisionYear) {
+		if (mIsDisplayCommissionYear) {
 			
-			mIsDisplayCommisionYear = false;
-			mSelectedCommisionYear = null;
+			mIsDisplayCommissionYear = false;
+			mSelectedCommissionYear = null;
 			
-			mIsDisplayCommisionAllYears = true;
+			mIsDisplayCommissionAllYears = true;
 			
-		} else if (mIsDisplayCommisionMonth) {
+		} else if (mIsDisplayCommissionMonth) {
 			
-			mIsDisplayCommisionMonth = false;
-			mSelectedCommisionMonth = null;
+			mIsDisplayCommissionMonth = false;
+			mSelectedCommissionMonth = null;
 			
 			if (mIsMultiplesPane) {
-				mIsDisplayCommisionAllYears = true;
+				mIsDisplayCommissionAllYears = true;
 			} else {
-				mIsDisplayCommisionYear = true;
+				mIsDisplayCommissionYear = true;
 			}
 		}
 	}
@@ -331,7 +370,20 @@ public class CommissionActivity extends BaseActivity
 		
 		super.onAsyncTaskCompleted();
 		
-		mProductStatisticListFragment.updateContent();
-		mProductStatisticDetailFragment.updateContent();
+		mCommissionListFragment.updateContent();
+		mCommissionDetailFragment.updateContent();
 	}
+
+    @Override
+    public void onGenerateReportStart() {
+
+        mProgressDialog.show(getFragmentManager(), mGenerateReportProgressDialogTag);
+        mProgressDialog.setMessage(getString(R.string.msg_generate_report));
+    }
+
+    @Override
+    public void onGenerateReportCompleted() {
+
+        mProgressDialog.dismissAllowingStateLoss();
+    }
 }

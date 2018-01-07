@@ -2,15 +2,18 @@ package com.tokoku.pos.report.cashflow;
 
 import java.io.Serializable;
 
+import com.android.pos.dao.Merchant;
 import com.tokoku.pos.R;
 import com.tokoku.pos.base.activity.BaseActivity;
 import com.tokoku.pos.model.CashFlowMonthBean;
 import com.tokoku.pos.model.CashFlowYearBean;
 import com.tokoku.pos.model.CashflowBean;
 import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.MerchantUtil;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class CashFlowActivity extends BaseActivity 
@@ -21,9 +24,10 @@ public class CashFlowActivity extends BaseActivity
 	private CashFlowDailyDlgFragment mCashFlowDailyDlgFragment; 
 	
 	boolean mIsMultiplesPane = false;
-	
-	private MenuItem mAlertMenu;
-	private MenuItem mWarningMenu;
+
+	protected static String mGenerateReportProgressDialogTag = "generateReportProgressDialogTag";
+
+    private MenuItem mMenuEmail;
 	
 	private CashFlowYearBean mSelectedCashFlowYear;
 	private CashFlowMonthBean mSelectedCashFlowMonth;
@@ -168,6 +172,11 @@ public class CashFlowActivity extends BaseActivity
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.report_cashflow_menu, menu);
+
+        mMenuEmail = menu.findItem(R.id.menu_item_email);
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -175,22 +184,23 @@ public class CashFlowActivity extends BaseActivity
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
-		hideSelectedMenu();
+		initMenus();
 		
 		return super.onPrepareOptionsMenu(menu);
 	}
 	
-	private void hideSelectedMenu() {
+	private void initMenus() {
 		
 		boolean isDrawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		
-		if (mPastDueBillsCount != 0) {
-			mAlertMenu.setVisible(!isDrawerOpen);
-		}
-		
-		if (mOutstandingBillsCount != 0) {
-			mWarningMenu.setVisible(!isDrawerOpen);
-		}
+
+        mMenuEmail.setVisible(false);
+
+        if (!isDrawerOpen) {
+
+            if (MerchantUtil.hasActiveCloud()) {
+                mMenuEmail.setVisible(mIsDisplayCashFlowMonth);
+            }
+        }
 	}
 
 	@Override
@@ -199,6 +209,12 @@ public class CashFlowActivity extends BaseActivity
 		synchronized (CommonUtil.LOCK) {
 		
 			switch (item.getItemId()) {
+
+                case R.id.menu_item_email:
+
+                    mCashFlowDetailFragment.generateReport(getString(R.string.menu_report_product_statistic));
+
+                    return true;
 	
 				default:
 					return super.onOptionsItemSelected(item);
@@ -215,6 +231,8 @@ public class CashFlowActivity extends BaseActivity
 		mIsDisplayCashFlowYear = true;
 		
 		mCashFlowListFragment.setSelectedCashFlowYear(cashFlowYear);
+
+        initMenus();
 	}
 	
 	@Override
@@ -235,6 +253,8 @@ public class CashFlowActivity extends BaseActivity
 			replaceFragment(mCashFlowDetailFragment, mCashFlowDetailFragmentTag);
 			mCashFlowDetailFragment.setCashFlowMonth(cashFlowMonth);
 		}
+
+		initMenus();
 	}
 	
 	@Override
@@ -250,6 +270,8 @@ public class CashFlowActivity extends BaseActivity
 		
 		mCashFlowDailyDlgFragment.setTransactionDate(cashFlow.getCash_date());
 		mCashFlowDailyDlgFragment.show(getFragmentManager(), mCashFlowDailyDlgFragmentTag);
+
+        initMenus();
 	}
 	
 	@Override
@@ -265,7 +287,7 @@ public class CashFlowActivity extends BaseActivity
 		if (mIsMultiplesPane) {
 			
 			setDisplayStatusToParent();
-				
+
 			mCashFlowListFragment.setSelectedCashFlowYear(mSelectedCashFlowYear);
 			mCashFlowListFragment.setSelectedCashFlowMonth(mSelectedCashFlowMonth);
 				
@@ -286,6 +308,8 @@ public class CashFlowActivity extends BaseActivity
 				
 			initFragment();
 		}
+
+		initMenus();
 	}
 	
 	private void initFragment() {
@@ -336,5 +360,18 @@ public class CashFlowActivity extends BaseActivity
 		
 		mCashFlowListFragment.updateContent();
 		mCashFlowDetailFragment.updateContent();
+	}
+
+	@Override
+	public void onGenerateReportStart() {
+
+		mProgressDialog.show(getFragmentManager(), mGenerateReportProgressDialogTag);
+		mProgressDialog.setMessage(getString(R.string.msg_generate_report));
+	}
+
+	@Override
+	public void onGenerateReportCompleted() {
+
+		mProgressDialog.dismissAllowingStateLoss();
 	}
 }

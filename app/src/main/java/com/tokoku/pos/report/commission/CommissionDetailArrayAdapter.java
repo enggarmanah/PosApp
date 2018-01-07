@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tokoku.pos.R;
 import com.android.pos.dao.Employee;
-import com.tokoku.pos.model.EmployeeCommisionBean;
+import com.tokoku.pos.model.EmployeeCommissionBean;
 import com.tokoku.pos.util.CommonUtil;
 
 import android.content.Context;
@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class CommissionDetailArrayAdapter extends ArrayAdapter<EmployeeCommisionBean> {
+public class CommissionDetailArrayAdapter extends ArrayAdapter<EmployeeCommissionBean> {
 
 	private Context context;
-	private List<EmployeeCommisionBean> employeeCommisions;
+	private List<EmployeeCommissionBean> employeeCommisions;
 	private ItemActionListener mCallback;
 	
 	public interface ItemActionListener {
@@ -30,7 +30,7 @@ public class CommissionDetailArrayAdapter extends ArrayAdapter<EmployeeCommision
 		TextView commisionText;
 	}
 
-	public CommissionDetailArrayAdapter(Context context, List<EmployeeCommisionBean> employeeCommisions, ItemActionListener listener) {
+	public CommissionDetailArrayAdapter(Context context, List<EmployeeCommissionBean> employeeCommisions, ItemActionListener listener) {
 
 		super(context, R.layout.report_commision_detail_list_item, employeeCommisions);
 		
@@ -42,7 +42,7 @@ public class CommissionDetailArrayAdapter extends ArrayAdapter<EmployeeCommision
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		
-		EmployeeCommisionBean employeeCommision = employeeCommisions.get(position);
+		EmployeeCommissionBean employeeCommision = employeeCommisions.get(position);
 		
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 

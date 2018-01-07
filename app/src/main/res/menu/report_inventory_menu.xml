@@ -36,6 +36,12 @@
         android:showAsAction="always">
     </item>
     <item
+        android:id="@+id/menu_item_email"
+        android:icon="@drawable/ic_mail_outline_white"
+        android:title="@string/email"
+        android:showAsAction="ifRoom|collapseActionView">
+    </item>
+    <item
         android:id="@+id/menu_item_refresh"
         android:icon="@drawable/ic_refresh_white"
         android:title="@string/product_list"
