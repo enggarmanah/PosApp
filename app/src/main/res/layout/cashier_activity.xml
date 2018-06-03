@@ -51,7 +51,7 @@
                 android:contentDescription="@string/none">
             </ImageView>
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/messageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

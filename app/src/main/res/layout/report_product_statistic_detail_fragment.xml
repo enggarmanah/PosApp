@@ -10,14 +10,14 @@
 	        style="@style/SectionBackButtonStyle"
 	        android:contentDescription="@string/none" />
 	
-	    <TextView
+	    <com.tokoku.pos.common.BoldTextView
 	        android:id="@+id/productInfoText"
 	        style="@style/SectionTopTextStyle"
 	        android:layout_weight="1"
 	        android:gravity="start|center_vertical"
 	        android:text="@string/transaction" />
 	
-	    <TextView
+	    <com.tokoku.pos.common.BoldTextView
 	        android:id="@+id/dateText"
 	        style="@style/SectionTopTextStyle"
 	        android:layout_weight="1"

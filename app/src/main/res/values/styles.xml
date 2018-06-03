@@ -158,8 +158,8 @@
         <item name="android:gravity">center</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
-        <item name="android:paddingLeft">11dp</item>
-        <item name="android:paddingRight">11dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
         <item name="android:background">@color/list_row_background</item>
     </style>
     
@@ -324,6 +324,16 @@
     
     <style name="ListViewRowPopUpTitleStyle">
         <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">@dimen/text_big</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_default</item>
+        <item name="android:background">@color/list_row_normal_background</item>
+    </style>
+
+    <style name="ListViewRowPopUpHorizontalStyle">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">left</item>
         <item name="android:textSize">@dimen/text_big</item>
@@ -636,8 +646,8 @@
     <style name="FormTextFirstLetterStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:minWidth">28dp</item>
-        <item name="android:minHeight">28dp</item>
+        <item name="android:minWidth">30dp</item>
+        <item name="android:minHeight">30dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_big</item>
         <item name="android:textStyle">bold</item>
@@ -646,6 +656,7 @@
         <item name="android:shadowRadius">0</item>
         <item name="android:layout_marginLeft">11dp</item>
         <item name="android:background">@drawable/bg_first_letter</item>
+        <item name="android:visibility">gone</item>
     </style>
     
     <style name="FormTextStyle">
@@ -656,7 +667,7 @@
         <item name="android:layout_marginBottom">0dp</item>
         <item name="android:textSize">@dimen/text_big</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/text_default</item>
+        <item name="android:textColor">@color/text_blue_dark</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
     </style>
@@ -1025,15 +1036,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/border_grey_light</item>
         <item name="android:paddingTop">0.5dp</item>
+        <item name="android:paddingBottom">0dp</item>
     </style>
 
     <style name="PaymentSummaryRowTextStyle">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_weight">2</item>
-        <item name="android:paddingTop">12dp</item>
-        <item name="android:paddingBottom">12dp</item>
         <item name="android:paddingLeft">11dp</item>
         <item name="android:paddingRight">11dp</item>
         <item name="android:textColor">@color/text_dark</item>
@@ -1191,7 +1201,7 @@
         <item name="android:layout_gravity">center_vertical|left</item>
         <item name="android:padding">2dp</item>
         <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:background">@drawable/selector_square</item>
+        <item name="android:background">@drawable/selector_circle</item>
         <item name="android:src">@drawable/ic_check_black</item>
     </style>
     

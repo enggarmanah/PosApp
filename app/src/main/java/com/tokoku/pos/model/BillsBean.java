@@ -14,6 +14,7 @@ public class BillsBean extends BaseBean {
 	private java.util.Date delivery_date;
 	private String remarks;
 	private String status;
+	private String delivery_no;
 
 	public String getBill_reference_no() {
 		return bill_reference_no;
@@ -109,5 +110,13 @@ public class BillsBean extends BaseBean {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getDelivery_no() {
+		return delivery_no;
+	}
+
+	public void setDelivery_no(String delivery_no) {
+		this.delivery_no = delivery_no;
 	}
 }

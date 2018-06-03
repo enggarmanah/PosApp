@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListViewRowStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/quantityText"
         style="@style/ListViewRowTransItemCountTextStyle"
         android:text="12"/>
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/unitText"
         style="@style/ListViewRowTransItemQuantityTypeTextStyle"
         android:text="Pc"/>
@@ -16,24 +16,24 @@
         style="@style/ListViewRowTransItemProductTextStyle"
         android:orientation="vertical">
     	
-        <TextView
+        <com.tokoku.pos.common.StdTextView
 	        android:id="@+id/nameText"
 	        style="@style/ListViewRowTransItemProductNameTextStyle"
             android:text="Paijo"/>
 	    
-        <TextView
+        <com.tokoku.pos.common.StdTextView
 	        android:id="@+id/infoText"
 	        style="@style/ListViewRowTransItemProductInfoStyle"
             android:text="Note"/>
     
     </LinearLayout>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/priceText"
         style="@style/ListViewRowTransItemPriceTextStyle"
         android:text="100.000"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/totalPriceText"
         style="@style/ListViewRowTransItemTotalPriceTextStyle"
         android:text="Rp 120.000"/>

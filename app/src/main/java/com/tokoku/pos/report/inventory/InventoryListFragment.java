@@ -28,6 +28,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class InventoryListFragment extends BaseFragment 
 	implements InventoryArrayAdapter.ItemActionListener {
@@ -108,7 +109,7 @@ public class InventoryListFragment extends BaseFragment
 		
 		if (mIsShowAllProducts) {
 			
-			mTitleText.setText(getString(R.string.product));
+			mTitleText.setText(getString(R.string.product).toUpperCase());
 			mProductList.setAdapter(mAdapter);
 			
 		} else if (mIsShowBelowStockLimitProducts) {
@@ -166,7 +167,7 @@ public class InventoryListFragment extends BaseFragment
 			return;
 		}
 		
-		mTitleText.setText(getString(R.string.product));
+		mTitleText.setText(getString(R.string.product).toUpperCase());
 		mProductList.setAdapter(mAdapter);
 	}
 	
@@ -300,7 +301,7 @@ public class InventoryListFragment extends BaseFragment
 		mActionListener.onGenerateReportStart();
 
 		//New Workbook
-		Workbook wb = PoiUtil.getWorkbook();
+		XSSFWorkbook wb = PoiUtil.getWorkbook();
 
 		Cell c = null;
 

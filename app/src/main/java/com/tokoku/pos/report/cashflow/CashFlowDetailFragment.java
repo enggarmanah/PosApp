@@ -35,6 +35,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CashFlowDetailFragment extends BaseFragment 
 	implements CashFlowDetailArrayAdapter.ItemActionListener {
@@ -198,7 +199,7 @@ public class CashFlowDetailFragment extends BaseFragment
 		mActionListener.onGenerateReportStart();
 
 		//New Workbook
-		Workbook wb = PoiUtil.getWorkbook();
+		XSSFWorkbook wb = PoiUtil.getWorkbook();
 
 		Cell c = null;
 

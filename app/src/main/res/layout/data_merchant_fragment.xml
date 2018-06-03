@@ -8,15 +8,15 @@
         <LinearLayout style="@style/FormRowStyle"
             android:id="@+id/codePanel">
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_code_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_code" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/codeText"
                 style="@style/FormInputStyle"
                 android:focusable="false"/>
@@ -24,26 +24,26 @@
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_name_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_name" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/nameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_type_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_type" />
 
@@ -54,150 +54,150 @@
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_address_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_address" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/addressText"
                 style="@style/FormInputTextAreaStyle" />
         </LinearLayout>
 		
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_telephone_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_telephone" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/telephoneText"
                 style="@style/FormInputPhoneStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_contact_name_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_contact_name" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/contactNameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_contact_telephone_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_contact_telephone" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/contactTelephoneText"
                 style="@style/FormInputPhoneStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_contact_email_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_contact_email" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/contactEmailText"
                 style="@style/FormInputEmailStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_login_id_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_login_id" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/loginIdText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_password_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_password" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/passwordText"
                 style="@style/FormInputPasswordStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_period_start_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_period_start" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/periodStartDate"
                 style="@style/FormInputDateStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_period_end_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_period_end" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/periodEndDate"
                 style="@style/FormInputDateStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_locale_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_locale" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/localeText"
                 style="@style/FormInputDateStyle" />
         </LinearLayout>
@@ -206,11 +206,11 @@
             android:id="@+id/priceTypeCountPanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_price_type_count_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_price_type_count" />
 
@@ -223,15 +223,15 @@
             android:id="@+id/priceLabel1Panel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_price_label_1_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_price_label_1" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/priceLabel1Text"
                 style="@style/FormInputStyle" />
         </LinearLayout>
@@ -240,15 +240,15 @@
             android:id="@+id/priceLabel2Panel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_price_label_2_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_price_label_2" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/priceLabel2Text"
                 style="@style/FormInputStyle" />
         </LinearLayout>
@@ -257,15 +257,15 @@
             android:id="@+id/priceLabel3Panel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_price_label_3_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_price_label_3" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/priceLabel3Text"
                 style="@style/FormInputStyle" />
         </LinearLayout>
@@ -274,11 +274,11 @@
             android:id="@+id/orderTypePanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_order_type_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_order_type" />
 
@@ -289,15 +289,15 @@
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_tax_percentage_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_tax_percentage"/>
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/taxText"
                 style="@style/FormInputNumericStyle"
                 android:hint="@string/hint_percentage" />
@@ -305,15 +305,15 @@
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_service_charge_percentage_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_service_charge_percentage"/>
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/serviceChargeText"
                 style="@style/FormInputNumericStyle"
                 android:hint="@string/hint_percentage"/>
@@ -321,30 +321,30 @@
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_security_question_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_security_question"/>
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/securityQuestionText"
                 style="@style/FormInputStyle"/>
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_security_answer_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_security_answer"/>
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/securityAnswerText"
                 style="@style/FormInputStyle"/>
         </LinearLayout>
@@ -353,11 +353,11 @@
             android:id="@+id/statusPanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_status_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_status" />
 
@@ -369,13 +369,13 @@
         <LinearLayout
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:layout_gravity="top"
                 android:layout_marginTop="2dp"
                 android:text="@string/field_payment_type_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:layout_gravity="top"
                 android:layout_marginTop="2dp"
@@ -396,13 +396,13 @@
             android:id="@+id/accessRightsRowPanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:layout_gravity="top"
                 android:layout_marginTop="2dp"
                 android:text="@string/field_access_right_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:layout_gravity="top"
                 android:layout_marginTop="2dp"

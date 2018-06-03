@@ -5,7 +5,7 @@
     android:gravity="center"
     android:background="@color/background_blue_light">
 
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:text="@string/login_merchant"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
@@ -17,7 +17,7 @@
         android:padding="0dp"
         android:layout_marginBottom="20dp"/>
     
-    <EditText
+    <com.tokoku.pos.common.BoldEditText
         android:id="@+id/loginIdText"
         android:hint="@string/merchant_id"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:singleLine="true"
         android:padding="10dp"/>
     
-    <EditText
+    <com.tokoku.pos.common.BoldEditText
         android:id="@+id/passwordText"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -42,7 +42,7 @@
         android:singleLine="true"
         android:padding="10dp"/>
     
-    <Button
+    <com.tokoku.pos.common.BoldButton
         android:id="@+id/loginBtn"
         android:text="@string/ok"
         style="@style/LoginButtonStyle"
@@ -55,7 +55,7 @@
         android:paddingTop="30dp">
     	
         
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
 			android:id="@+id/demoText"
 	        android:text="@string/demo"
 	        android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
 	        android:textColor="@color/text_blue_dark"
 	        android:singleLine="true"/>
         
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
 	        android:text="@string/separator"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
 	        android:paddingRight="10dp"
 	        android:singleLine="true"/>
         
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/signUpText"
 	        android:text="@string/sign_up"
 	        android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
 	        android:textColor="@color/text_blue_dark"
 	        android:singleLine="true"/>
     	    
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
 	        android:text="@string/separator"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
 	        android:paddingRight="10dp"
 	        android:singleLine="true"/>
         
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
 			android:id="@+id/forgotPasswordText"
 	        android:text="@string/forgot_password"
 	        android:layout_height="wrap_content"

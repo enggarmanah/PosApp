@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ListViewRowPopUpStyle"
+    android:orientation="horizontal">
+
+    <com.tokoku.pos.common.StdTextView
+        android:id="@+id/noText"
+        style="@style/ListViewRowPopUpHorizontalStyle"/>
+    
+    <com.tokoku.pos.common.StdTextView
+        android:id="@+id/dateText"
+        style="@style/ListViewRowPopUpHorizontalStyle"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:textColor="@color/text_blue"/>
+
+</LinearLayout>

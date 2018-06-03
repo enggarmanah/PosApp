@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/background_blue_dark">
-	    <TextView
+	    <com.tokoku.pos.common.BoldTextView
 	        android:id="@+id/productText"
 	        style="@style/PopUpDialogHeaderStyle"
 	        android:gravity="start|center_vertical"
 	        android:textSize="@dimen/title_big_text"/>
-	    <TextView
+	    <com.tokoku.pos.common.BoldTextView
 	        android:id="@+id/remarksBtn"
 	        style="@style/RemarksBtnStyle"
 	        android:drawableStart="@drawable/ic_border_color_white"
@@ -30,7 +30,7 @@
     <LinearLayout
         style="@style/SectionDividerWhiteStyle"></LinearLayout>
     
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:id="@+id/personInChargeText"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
@@ -53,7 +53,7 @@
         android:background="#FFF"
         android:layout_marginBottom="0.5dp">
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/infoText"
             style="@style/CashierNumberValueStyle"
             android:layout_width="wrap_content"
@@ -61,13 +61,13 @@
             android:text="@string/count"
             android:textSize="@dimen/title_mega_text" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/countText"
             style="@style/CashierNumberValueStyle"
             android:gravity="center_vertical|end" />
     </LinearLayout>
 	
-    <EditText 
+    <com.tokoku.pos.common.BoldEditText 
         android:id="@+id/remarksText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -90,17 +90,17 @@
 
         <LinearLayout style="@style/CashierNumberRowStyle" >
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number7Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_7" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number8Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_8" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number9Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_9" />
@@ -108,17 +108,17 @@
 
         <LinearLayout style="@style/CashierNumberRowStyle" >
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number4Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_4" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number5Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_5" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number6Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_6" />
@@ -126,17 +126,17 @@
 
         <LinearLayout style="@style/CashierNumberRowStyle" >
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number1Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_1" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number2Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_2" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number3Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_3" />
@@ -144,12 +144,12 @@
 
         <LinearLayout style="@style/CashierNumberRowStyle" >
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/actionCBtn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_c" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/number0Btn"
                 style="@style/CashierNumberButtonStyle"
                 android:text="@string/number_0" />
@@ -164,17 +164,17 @@
 
     <LinearLayout style="@style/CashierNumberRowStyle" >
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/okBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/ok" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:layout_width="0.5dp"
             android:layout_height="fill_parent"
             android:background="#AAA" />
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/cancelBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/cancel" />

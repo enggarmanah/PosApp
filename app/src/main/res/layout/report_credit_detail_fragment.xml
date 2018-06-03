@@ -15,14 +15,14 @@
                 style="@style/SectionBackButtonStyle"
                 android:contentDescription="@string/none" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/dateText"
                 style="@style/SectionTopTextStyle"
                 android:layout_weight="3"
                 android:gravity="start|center_vertical"
                 android:text="@string/transaction" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/titleText"
                 style="@style/SectionTopTextStyle"
                 android:layout_weight="2"
@@ -38,18 +38,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/transaction_no" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/transactionNoText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
        
        </LinearLayout>
 		
-       <TextView style="@style/SectionDividerStyle" />
+       <com.tokoku.pos.common.BoldTextView style="@style/SectionDividerStyle" />
        
        <LinearLayout
             style="@style/SectionContentPanelStyle"
@@ -60,11 +60,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1">
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/transaction_cashier" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/cashierText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
@@ -74,11 +74,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/waitress" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/waitressText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
@@ -88,11 +88,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/customer" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/customerText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
@@ -108,11 +108,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/report_credit_initial_payment" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/initialPaymentText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
@@ -121,11 +121,11 @@
          	    style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/report_credit_credit_payment" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/totalCreditPaymentText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
@@ -140,11 +140,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/report_credit_total_product_sold" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/totalPurchaseText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
@@ -153,18 +153,18 @@
          	    style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubContentLabelTextStyle"
                     android:text="@string/report_credit_total_payment" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/totalPaymentText"
                     style="@style/SectionSubContentInfoTextStyle" />
             </LinearLayout>
             
         </LinearLayout>
         
-        <TextView style="@style/SectionDividerStyle" />
+        <com.tokoku.pos.common.BoldTextView style="@style/SectionDividerStyle" />
         
         <LinearLayout
             android:layout_width="match_parent"
@@ -172,14 +172,14 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
         	
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
 	       		android:id="@+id/creditPaymentsText"
 		        style="@style/SectionBillsInfoTextStyle"
 		        android:layout_marginStart="15dp"
 		        android:layout_marginLeft="15dp"
 		        android:text="@string/report_credit_credit_payments" />
             	
-	     	<TextView
+	     	<com.tokoku.pos.common.BoldTextView
 	       		android:id="@+id/productPurchasedText"
 		        style="@style/SectionBillsInfoTextStyle"
 			    android:layout_marginStart="15dp"
@@ -203,7 +203,7 @@
 	        android:orientation="vertical"
 	        android:background="@color/border_grey_light">
 			
-	        <TextView
+	        <com.tokoku.pos.common.BoldTextView
 	        	android:id="@+id/paymentText"
 	            style="@style/SectionBottomTextStyle"
 	            android:text="@string/report_credit_add_payment"/>
@@ -220,11 +220,11 @@
 	            android:id="@+id/discountPanel"
 	            style="@style/PaymentRowStyle" >
 				
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/discountLabelText"
 	                style="@style/PaymentRowContentLeftStyle" />
 	
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/discountText"
 	                style="@style/PaymentRowContentRightStyle" />
 	        </LinearLayout>
@@ -233,12 +233,12 @@
 	            android:id="@+id/taxPanel"
 	            style="@style/PaymentRowStyle" >
 				
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/taxLabel"
 	                style="@style/PaymentRowContentLeftStyle"
 	                android:text="@string/tax" />
 	
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/taxText"
 	                style="@style/PaymentRowContentRightStyle" />
 	        </LinearLayout>
@@ -247,23 +247,23 @@
 	            android:id="@+id/serviceChargePanel"
 	            style="@style/PaymentRowStyle" >
 	
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/serviceChargeLabel"
 	                style="@style/PaymentRowContentLeftStyle"
 	                android:text="@string/service_charge" />
 	
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/serviceChargeText"
 	                style="@style/PaymentRowContentRightStyle" />
 	        </LinearLayout>
 	
 	        <LinearLayout style="@style/PaymentRowTotalStyle" >
 	
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                style="@style/PaymentRowTotalContentLeftStyle"
 	                android:text="@string/report_credit_total"/>
 	
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/totalOrderText"
 	                style="@style/PaymentRowTotalContentRightStyle" />
 	        </LinearLayout>

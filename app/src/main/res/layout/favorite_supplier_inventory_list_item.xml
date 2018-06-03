@@ -7,20 +7,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         
-        <TextView
+        <com.tokoku.pos.common.StdTextView
         	android:id="@+id/productGroupNameText"
         	style="@style/ListViewRowBillReferenceNoTextStyle"/>
         
-        <TextView
+        <com.tokoku.pos.common.StdTextView
         	android:id="@+id/deliveryDateText"
         	style="@style/ListViewRowBillDateTextStyle"/>
     </LinearLayout>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
        	android:id="@+id/productNameText"
        	style="@style/ListViewRowBillRemarksTextStyle"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/amountText"
         style="@style/ListViewRowBillSupplierTextStyle"/>
     

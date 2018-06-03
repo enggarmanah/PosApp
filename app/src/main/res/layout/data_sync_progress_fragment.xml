@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/section_header_background"
-    android:padding="4dp">
+    android:padding="0dp">
 
     <LinearLayout
         android:layout_width="300dp"
@@ -21,19 +21,19 @@
             android:id="@+id/dataSyncPb"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="10dp"
             android:paddingBottom="5dp"
             android:progressDrawable="@drawable/bg_progressbar" >
         </ProgressBar>
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/syncMessageText"
             android:layout_width="fill_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:textSize="@dimen/text_big"
             android:textStyle="bold" >
-        </TextView>
+        </com.tokoku.pos.common.BoldTextView>
     </LinearLayout>
 
 </FrameLayout>

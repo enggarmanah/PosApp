@@ -13,6 +13,7 @@ public class InventoryBean extends BaseBean {
 	private java.util.Date inventory_date;
 	private String remarks;
 	private String status;
+	private String delivery_no;
 	
 	public Long getProduct_id() {
 		return product_id;
@@ -100,5 +101,13 @@ public class InventoryBean extends BaseBean {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getDelivery_no() {
+		return delivery_no;
+	}
+
+	public void setDelivery_no(String delivery_no) {
+		this.delivery_no = delivery_no;
 	}
 }

@@ -11,6 +11,7 @@ import com.tokoku.pos.base.adapter.CodeSpinnerArrayAdapter;
 import com.tokoku.pos.base.fragment.BaseEditFragment;
 import com.tokoku.pos.base.listener.BaseItemListener;
 import com.tokoku.pos.dao.BillsDaoService;
+import com.tokoku.pos.model.Delivery;
 import com.tokoku.pos.model.FormFieldBean;
 import com.tokoku.pos.util.CodeUtil;
 import com.tokoku.pos.util.CommonUtil;
@@ -35,6 +36,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     
 	Spinner mTypeSp;
     EditText mSupplierNameText;
+	EditText mDeliveryNoText;
     EditText mBillReferenceNoText;
     EditText mBillDate;
     EditText mBillDueDate;
@@ -43,6 +45,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     EditText mRemarksText;
     
     LinearLayout mSupplierPanel;
+	LinearLayout mDeliveryNoPanel;
     LinearLayout mBillReferenceNoPanel;
     LinearLayout mBillDatePanel;
     LinearLayout mBillDueDatePanel;
@@ -102,6 +105,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     	mTypeSp = (Spinner) view.findViewById(R.id.typeSp);
     	
     	mSupplierNameText = (EditText) view.findViewById(R.id.supplierNameText);
+		mDeliveryNoText = (EditText) view.findViewById(R.id.deliveryNoText);
     	mBillReferenceNoText = (EditText) view.findViewById(R.id.billsReferenceNoText);
     	mBillDate = (EditText) view.findViewById(R.id.billsDate);
     	mBillDueDate = (EditText) view.findViewById(R.id.billsDueDate);
@@ -111,6 +115,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     	
     	registerField(mTypeSp);
     	registerField(mSupplierNameText);
+		registerField(mDeliveryNoText);
     	registerField(mBillReferenceNoText);
     	registerField(mBillDate);
     	registerField(mBillDueDate);
@@ -135,8 +140,12 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     	
     	mSupplierNameText.setFocusable(false);
     	mSupplierNameText.setOnClickListener(getSupplierOnClickListener());
+
+    	mDeliveryNoText.setFocusable(false);
+    	mDeliveryNoText.setOnClickListener(getDeliveryNoOnClickListener());
     	
     	mSupplierPanel = (LinearLayout) view.findViewById(R.id.supplierPanel);
+		mDeliveryNoPanel = (LinearLayout) view.findViewById(R.id.deliveryNoPanel);
         mBillReferenceNoPanel = (LinearLayout) view.findViewById(R.id.billReferenceNoPanel);
         mBillDatePanel = (LinearLayout) view.findViewById(R.id.billDatePanel);
         mBillDueDatePanel = (LinearLayout) view.findViewById(R.id.billDueDatePanel);
@@ -157,6 +166,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     		mTypeSp.setSelection(typeIndex);
     		
     		mSupplierNameText.setText(bills.getSupplierName());
+			mDeliveryNoText.setText(bills.getDeliveryNo());
     		mBillReferenceNoText.setText(bills.getBillReferenceNo());
     		mBillDate.setText(CommonUtil.formatDate(bills.getBillDate()));
     		mBillDueDate.setText(CommonUtil.formatDate(bills.getBillDueDate()));
@@ -181,6 +191,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     	
     	String type = CodeBean.getNvlCode((CodeBean) mTypeSp.getSelectedItem());
     	String supplierName = mSupplierNameText.getText().toString();
+		String deliveryNo = mDeliveryNoText.getText().toString();
     	String billReferenceNo = mBillReferenceNoText.getText().toString();
     	Date billDate = CommonUtil.parseDate(mBillDate.getText().toString());
     	Date billDueDate = CommonUtil.parseDate(mBillDueDate.getText().toString());
@@ -194,6 +205,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     		
     		mItem.setBillType(type);
     		mItem.setSupplierName(supplierName);
+			mItem.setDeliveryNo(deliveryNo);
     		mItem.setBillReferenceNo(billReferenceNo);
     		mItem.setBillDate(billDate);
     		mItem.setBillDueDate(billDueDate);
@@ -228,6 +240,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
         mBillsDaoService.addBills(mItem);
         
         mSupplierNameText.getText().clear();
+        mDeliveryNoText.getText().clear();
         mBillReferenceNoText.getText().clear();
         mBillDate.getText().clear();
         mBillDueDate.getText().clear();
@@ -288,10 +301,30 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     		updateView(mItem);
     	}
 	}
+
+    public void setDelivery(Delivery delivery) {
+
+        if (mItem != null) {
+
+            if (delivery != null) {
+
+                mItem.setDeliveryNo(delivery.getNo());
+                mItem.setDeliveryDate(delivery.getDate());
+
+            } else {
+
+                mItem.setDeliveryNo(null);
+                mItem.setDeliveryDate(null);
+            }
+
+            updateView(mItem);
+        }
+    }
     
     private void refreshVisibleField() {
     	
     	mSupplierPanel.setVisibility(View.VISIBLE);
+        mDeliveryNoPanel.setVisibility(View.VISIBLE);
 		mBillReferenceNoPanel.setVisibility(View.VISIBLE);
 		mBillDatePanel.setVisibility(View.VISIBLE);
 		mBillDueDatePanel.setVisibility(View.VISIBLE);
@@ -310,6 +343,7 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
     	} else if (Constant.BILL_TYPE_EXPENSE.equals(mBillType)) {
     		
     		mSupplierPanel.setVisibility(View.GONE);
+            mDeliveryNoPanel.setVisibility(View.GONE);
     		mDeliveryDatePanel.setVisibility(View.GONE);
     		
     		mandatoryFields.add(new FormFieldBean(mBillDate, R.string.field_bills_date));
@@ -339,6 +373,27 @@ public class BillsEditFragment extends BaseEditFragment<Bills> {
 				}
 			}
 		};
+    }
+
+    private View.OnClickListener getDeliveryNoOnClickListener() {
+
+        return new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if (mDeliveryNoText.isEnabled()) {
+
+                    if (isEnableInputFields) {
+
+                        saveItem();
+
+                        boolean isMandatory = false;
+                        mBillsItemListener.onSelectDelivery(isMandatory);
+                    }
+                }
+            }
+        };
     }
     
     private AdapterView.OnItemSelectedListener getTypeOnItemSelectedListener() {

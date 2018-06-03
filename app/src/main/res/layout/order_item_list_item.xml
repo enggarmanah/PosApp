@@ -8,19 +8,19 @@
         android:layout_height="fill_parent"
         android:minHeight="30dp">
     	
-        <TextView
+        <com.tokoku.pos.common.StdTextView
 	        android:id="@+id/productNameText"
 	        style="@style/ListViewRowTransItemProductNameTextStyle"
 	        android:layout_gravity="center"
 	        android:layout_height="wrap_content"/>
 	    
-        <TextView
+        <com.tokoku.pos.common.StdTextView
 	        android:id="@+id/productInfoText"
 	        style="@style/ListViewRowTransItemProductInfoStyle" />
     
     </LinearLayout>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/productQuantityText"
         style="@style/ListViewRowOrderPrdQuantityTextStyle"/>
     

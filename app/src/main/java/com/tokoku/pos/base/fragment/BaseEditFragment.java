@@ -7,6 +7,8 @@ import com.tokoku.pos.R;
 import com.tokoku.pos.Constant;
 import com.tokoku.pos.base.fragment.BaseFragment;
 import com.tokoku.pos.base.listener.BaseItemListener;
+import com.tokoku.pos.common.BoldEditText;
+import com.tokoku.pos.common.StdEditText;
 import com.tokoku.pos.model.FormFieldBean;
 import com.tokoku.pos.util.CommonUtil;
 import com.tokoku.pos.util.NotificationUtil;
@@ -187,7 +189,7 @@ public abstract class BaseEditFragment<T> extends BaseFragment {
     	
     	for (Object field : mInputFields) {
     		
-    		if (field instanceof EditText) {
+    		if (field instanceof EditText || field instanceof StdEditText || field instanceof BoldEditText) {
     			
     			EditText editText = (EditText) field;
     			

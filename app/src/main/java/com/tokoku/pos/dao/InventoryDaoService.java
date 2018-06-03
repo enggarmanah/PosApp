@@ -1,6 +1,7 @@
 package com.tokoku.pos.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.database.Cursor;
@@ -74,7 +75,7 @@ public class InventoryDaoService {
 		Cursor cursor = db.rawQuery("SELECT _id "
 				+ " FROM inventory "
 				+ " WHERE (bill_reference_no like ? OR product_name like ? OR supplier_name like ? OR remarks like ? ) AND status <> ? AND status <> ? "
-				+ " ORDER BY inventory_date DESC LIMIT ? OFFSET ? ",
+				+ " ORDER BY inventory_date DESC, _id DESC LIMIT ? OFFSET ? ",
 				new String[] { queryStr, queryStr, queryStr, queryStr, statusSale, status, limit, lastIdx});
 		
 		List<Inventory> list = new ArrayList<Inventory>();
@@ -102,7 +103,7 @@ public class InventoryDaoService {
 		Cursor cursor = db.rawQuery("SELECT _id "
 				+ " FROM inventory "
 				+ " WHERE bill_reference_no like ? AND status <> ? AND status <> ? "
-				+ " ORDER BY inventory_date DESC ",
+				+ " ORDER BY inventory_date DESC, _id DESC ",
 				new String[] { billReferenceNo, statusSale, status});
 		
 		List<Inventory> list = new ArrayList<Inventory>();
@@ -128,7 +129,7 @@ public class InventoryDaoService {
 		Cursor cursor = db.rawQuery("SELECT _id "
 				+ " FROM inventory "
 				+ " WHERE bill_reference_no like ? AND status <> ? "
-				+ " ORDER BY inventory_date DESC ",
+				+ " ORDER BY inventory_date DESC, _id DESC ",
 				new String[] { billReferenceNo, status});
 		
 		List<Inventory> list = new ArrayList<Inventory>();
@@ -142,6 +143,34 @@ public class InventoryDaoService {
 		
 		cursor.close();
 		
+		return list;
+	}
+
+	public List<Inventory> getInventories(String deliveryNo, Date deliveryDate) {
+
+		SQLiteDatabase db = DbUtil.getDb();
+
+		String status = Constant.STATUS_DELETED;
+
+		String deliveryDateStr = String.valueOf(deliveryDate.getTime());
+
+		Cursor cursor = db.rawQuery("SELECT _id "
+						+ " FROM inventory "
+						+ " WHERE delivery_no = ? AND inventory_date = ? AND status <> ? "
+						+ " ORDER BY inventory_date DESC, _id DESC ",
+				new String[] { deliveryNo, deliveryDateStr, status});
+
+		List<Inventory> list = new ArrayList<Inventory>();
+
+		while(cursor.moveToNext()) {
+
+			Long id = cursor.getLong(0);
+			Inventory item = getInventory(id);
+			list.add(item);
+		}
+
+		cursor.close();
+
 		return list;
 	}
 	

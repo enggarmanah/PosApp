@@ -12,14 +12,14 @@
 	        style="@style/SectionBackButtonStyle"
 	        android:contentDescription="@string/none" />
 	
-	    <TextView
+	    <com.tokoku.pos.common.BoldTextView
 	        android:id="@+id/infoText"
 	        style="@style/SectionTopTextStyle"
 	        android:layout_weight="2"
 	        android:gravity="start|center_vertical"
 	        android:text="@string/transaction" />
 	
-	    <TextView
+	    <com.tokoku.pos.common.BoldTextView
 	        android:id="@+id/dateText"
 	        style="@style/SectionTopTextStyle"
 	        android:layout_weight="1"
@@ -35,15 +35,15 @@
         android:orientation="vertical">
 		
         <LinearLayout style="@style/PaymentRowTotalStyle" >
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:text="@string/total"
                 style="@style/PaymentRowTotalContentLeftStyle" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/totalItemText"
                 style="@style/PaymentRowTotalContentLeftStyle" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/totalCommissionText"
                 style="@style/PaymentRowTotalContentRightStyle" />
 

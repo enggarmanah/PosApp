@@ -7,7 +7,7 @@
         android:id="@+id/topPanel"
         style="@style/SectionTopPanelStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/headerText"
             style="@style/SectionTopTextStyle"
             android:gravity="center_vertical|center_horizontal"
@@ -26,11 +26,11 @@
             android:id="@+id/discountPanel"
             style="@style/PaymentRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/discountLabelText"
                 style="@style/PaymentRowContentLeftStyle" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/discountText"
                 style="@style/PaymentRowContentRightStyle" />
         </LinearLayout>
@@ -39,12 +39,12 @@
             android:id="@+id/taxPanel"
             style="@style/PaymentRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/taxLabel"
                 style="@style/PaymentRowContentLeftStyle"
                 android:text="@string/tax" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/taxText"
                 style="@style/PaymentRowContentRightStyle" />
         </LinearLayout>
@@ -53,23 +53,23 @@
             android:id="@+id/serviceChargePanel"
             style="@style/PaymentRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/serviceChargeLabel"
                 style="@style/PaymentRowContentLeftStyle"
                 android:text="@string/service_charge" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/serviceChargeText"
                 style="@style/PaymentRowContentRightStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/PaymentRowTotalStyle" >
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/PaymentRowTotalContentLeftStyle"
                 android:text="@string/total" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/totalOrderText"
                 style="@style/PaymentRowTotalContentRightStyle" />
         </LinearLayout>
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/paymentText"
                     style="@style/CashierButtonStyle"
                     android:drawableLeft="@drawable/ic_check_white"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/orderNewItemText"
                     style="@style/CashierButtonStyle"
                     android:drawableLeft="@drawable/ic_check_white"
@@ -117,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent">
                 
-	            <TextView
+	            <com.tokoku.pos.common.BoldTextView
 	                android:id="@+id/orderDivider"
 	                android:layout_width="1dp"
 	                android:layout_height="fill_parent"
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/orderText"
                     style="@style/CashierButtonStyle"
                     android:drawableLeft="@drawable/ic_border_color_white"
@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent">
             	
-            	<TextView
+            	<com.tokoku.pos.common.BoldTextView
                 android:layout_width="0.5dp"
                 android:layout_height="fill_parent"
                 android:background="@color/payment_btn_text" />    
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/cancelText"
                     style="@style/CashierButtonStyle"
                     android:text="@string/cancel"

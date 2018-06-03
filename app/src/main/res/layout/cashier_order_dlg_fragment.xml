@@ -11,7 +11,7 @@
         android:padding="15dp"
         android:background="@color/dialog_header_background" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -22,7 +22,7 @@
             android:textSize="@dimen/title_mega_text"
             android:textStyle="bold" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/totalItemText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         android:gravity="center_vertical"
         android:background="@color/background">
         
-        <EditText
+        <com.tokoku.pos.common.BoldEditText
             android:id="@+id/customerText"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         
     </LinearLayout>
     
-    <EditText
+    <com.tokoku.pos.common.BoldEditText
         android:id="@+id/reservationNoText"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
@@ -97,7 +97,7 @@
         android:gravity="center_vertical"
         android:background="@color/background">
         
-        <EditText
+        <com.tokoku.pos.common.BoldEditText
             android:id="@+id/waitressText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -118,17 +118,17 @@
     
 	<LinearLayout style="@style/CashierNumberRowStyle" >
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/okBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/ok" />
 		
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:layout_height="fill_parent"
             android:layout_width="0.5dp"
             android:background="#AAA"/>
         
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/cancelBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/cancel" />

@@ -11,12 +11,12 @@
             style="@style/SectionBackButtonStyle"
             android:contentDescription="@string/none" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/navigationTitle"
             style="@style/SectionTopTextStyle"
             android:gravity="start|center_vertical" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/navText"
             style="@style/SectionTopTextStyle"
             android:gravity="end|center_vertical" />

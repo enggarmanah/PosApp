@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListViewRowStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/dateText"
         style="@style/ListViewRowReportDateTextStyle"
         android:textColor="@color/text_light"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/productNameText"
         style="@style/ListViewRowReportDetailTextStyle"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/commisionText"
         style="@style/ListViewRowReportTotalTextStyle"/>
 

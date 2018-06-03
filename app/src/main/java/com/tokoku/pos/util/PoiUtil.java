@@ -1,13 +1,17 @@
 package com.tokoku.pos.util;
 
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * Created by Radix on 6/8/2017.
@@ -15,18 +19,28 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 public class PoiUtil {
 
-    public static HSSFWorkbook getWorkbook() {
+    public static XSSFWorkbook getWorkbook() {
 
-        return new HSSFWorkbook();
+        return new XSSFWorkbook();
     }
 
-    public static CellStyle getHeaderCellStyle(Workbook wb) {
+    public static XSSFCellStyle getHeaderCellStyle(XSSFWorkbook wb) {
 
         //Cell style for header row
-        CellStyle cs = wb.createCellStyle();
-        cs.setFillForegroundColor(HSSFColor.BLACK.index);
-        cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-        cs.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+        XSSFCellStyle cs = wb.createCellStyle();
+
+        byte[] rgb = new byte[3];
+        rgb[0] = (byte) 52; // red
+        rgb[1] = (byte) 84; // green
+        rgb[2] = (byte) 148; // blue
+
+        XSSFColor myColor = new XSSFColor();
+        myColor.setRGB(rgb);
+
+        cs.setFillForegroundColor(myColor);
+
+        cs.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        cs.setVerticalAlignment(VerticalAlignment.CENTER);
         cs.setWrapText(true);
 
         Font font = wb.createFont();
@@ -37,17 +51,17 @@ public class PoiUtil {
         return cs;
     }
 
-    public static CellStyle getContentCellStyle(Workbook wb) {
+    public static XSSFCellStyle getContentCellStyle(XSSFWorkbook wb) {
 
         //Cell style for header row
-        CellStyle cs = wb.createCellStyle();
-        cs.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+        XSSFCellStyle cs = wb.createCellStyle();
+        cs.setVerticalAlignment(VerticalAlignment.CENTER);
         cs.setWrapText(true);
 
-        cs.setBorderBottom((short) 1);
-        cs.setBorderLeft((short) 1);
-        cs.setBorderRight((short) 1);
-        cs.setBorderTop((short) 1);
+        cs.setBorderBottom(BorderStyle.THIN);
+        cs.setBorderLeft(BorderStyle.THIN);
+        cs.setBorderRight(BorderStyle.THIN);
+        cs.setBorderTop(BorderStyle.THIN);
 
         cs.setBottomBorderColor(HSSFColor.GREY_50_PERCENT.index);
         cs.setLeftBorderColor(HSSFColor.GREY_50_PERCENT.index);
@@ -57,18 +71,18 @@ public class PoiUtil {
         return cs;
     }
 
-    public static CellStyle getContentNumberCellStyle(Workbook wb) {
+    public static XSSFCellStyle getContentNumberCellStyle(XSSFWorkbook wb) {
 
         //Cell style for header row
-        CellStyle cs = wb.createCellStyle();
-        cs.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-        cs.setAlignment(CellStyle.ALIGN_RIGHT);
+        XSSFCellStyle cs = wb.createCellStyle();
+        cs.setVerticalAlignment(VerticalAlignment.CENTER);
+        cs.setAlignment(HorizontalAlignment.RIGHT);
         cs.setWrapText(true);
 
-        cs.setBorderBottom((short) 1);
-        cs.setBorderLeft((short) 1);
-        cs.setBorderRight((short) 1);
-        cs.setBorderTop((short) 1);
+        cs.setBorderBottom(BorderStyle.THIN);
+        cs.setBorderLeft(BorderStyle.THIN);
+        cs.setBorderRight(BorderStyle.THIN);
+        cs.setBorderTop(BorderStyle.THIN);
 
         cs.setBottomBorderColor(HSSFColor.GREY_50_PERCENT.index);
         cs.setLeftBorderColor(HSSFColor.GREY_50_PERCENT.index);
@@ -81,19 +95,19 @@ public class PoiUtil {
         return cs;
     }
 
-    public static CellStyle getBottomCellStyle(Workbook wb) {
+    public static XSSFCellStyle getBottomCellStyle(XSSFWorkbook wb) {
 
         //Cell style for header row
-        CellStyle cs = wb.createCellStyle();
+        XSSFCellStyle cs = wb.createCellStyle();
         cs.setFillForegroundColor(HSSFColor.GREY_25_PERCENT.index);
-        cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-        cs.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+        cs.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        cs.setVerticalAlignment(VerticalAlignment.CENTER);
         cs.setWrapText(true);
 
-        cs.setBorderBottom((short) 1);
-        cs.setBorderLeft((short) 1);
-        cs.setBorderRight((short) 1);
-        cs.setBorderTop((short) 1);
+        cs.setBorderBottom(BorderStyle.THIN);
+        cs.setBorderLeft(BorderStyle.THIN);
+        cs.setBorderRight(BorderStyle.THIN);
+        cs.setBorderTop(BorderStyle.THIN);
 
         cs.setBottomBorderColor(HSSFColor.GREY_50_PERCENT.index);
         cs.setLeftBorderColor(HSSFColor.GREY_50_PERCENT.index);
@@ -103,20 +117,20 @@ public class PoiUtil {
         return cs;
     }
 
-    public static CellStyle getBottomNumberCellStyle(Workbook wb) {
+    public static XSSFCellStyle getBottomNumberCellStyle(XSSFWorkbook wb) {
 
         //Cell style for header row
-        CellStyle cs = wb.createCellStyle();
+        XSSFCellStyle cs = wb.createCellStyle();
         cs.setFillForegroundColor(HSSFColor.GREY_25_PERCENT.index);
-        cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-        cs.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
-        cs.setAlignment(CellStyle.ALIGN_RIGHT);
+        cs.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        cs.setVerticalAlignment(VerticalAlignment.CENTER);
+        cs.setAlignment(HorizontalAlignment.RIGHT);
         cs.setWrapText(true);
 
-        cs.setBorderBottom((short) 1);
-        cs.setBorderLeft((short) 1);
-        cs.setBorderRight((short) 1);
-        cs.setBorderTop((short) 1);
+        cs.setBorderBottom(BorderStyle.THIN);
+        cs.setBorderLeft(BorderStyle.THIN);
+        cs.setBorderRight(BorderStyle.THIN);
+        cs.setBorderTop(BorderStyle.THIN);
 
         cs.setBottomBorderColor(HSSFColor.GREY_50_PERCENT.index);
         cs.setLeftBorderColor(HSSFColor.GREY_50_PERCENT.index);

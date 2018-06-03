@@ -34,6 +34,7 @@ public class Constant {
 	public static final String SPACE_STRING = " ";
 	public static final String SPACE_DASH_SPACE_STRING = " - ";
 	public static final String CR_STRING = "\r";
+	public static final String NEWLINE_STRING = "\n";
 	
 	public static final String STATUS_YES = "Y";
 	public static final String STATUS_NO = "N";
@@ -45,7 +46,7 @@ public class Constant {
 	
 	public static final String PRODUCT_TYPE_GOODS = "P"; 
 	public static final String PRODUCT_TYPE_SERVICE = "S";
-	public static final String PRODUCT_TYPE_MENU = "M";
+	public static final String PRODUCT_TYPE_NON_GOODS_N_SERVICE = "N";
 	
 	public static final String USER_ROLE_CASHIER = "C";
 	public static final String USER_ROLE_ADMIN = "A";
@@ -65,7 +66,12 @@ public class Constant {
 	public static final String PAYMENT_TYPE_CREDIT_CARD = "CREDIT_CARD";
 	public static final String PAYMENT_TYPE_DEBIT_CARD = "DEBIT_CARD";
 	public static final String PAYMENT_TYPE_CREDIT = "CREDIT";
-	
+
+	public static final String PRINTING_OPTION_NO = "PRINTING_OPTION_NO";
+	public static final String PRINTING_OPTION_YES_ONCE = "PRINTING_OPTION_YES_ONCE";
+	public static final String PRINTING_OPTION_YES_TWICE = "PRINTING_OPTION_YES_TWICE";
+	public static final String PRINTING_OPTION_SEND_EMAIL = "PRINTING_OPTION_SEND_EMAIL";
+
 	public static final String DISCOUNT_TYPE_AMOUNT = "A";
 	public static final String DISCOUNT_TYPE_PERCENTAGE = "P";
 	

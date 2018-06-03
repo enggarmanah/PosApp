@@ -6,56 +6,56 @@
 		
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_name_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_name" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/nameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_telephone_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_telephone" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/telephoneText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_address_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_address" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/addressText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_status_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_status" />
 

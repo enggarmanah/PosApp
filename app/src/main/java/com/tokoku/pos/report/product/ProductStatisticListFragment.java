@@ -244,7 +244,7 @@ public class ProductStatisticListFragment extends BaseFragment
 		setBackButtonVisible(false);
 		
 		if (Constant.PRODUCT_QUANTITY.equals(mSelectedProductInfo)) {
-			mNavText.setText("Total   " + CommonUtil.formatNumber(getTransactionYearsTotalAmount(mTransactionYears)));
+			mNavText.setText("Total   " + CommonUtil.formatNumber(getTransactionYearsTotalAmount(mTransactionYears)).toUpperCase());
 		} else {
 			mNavText.setText(CommonUtil.formatCurrency(getTransactionYearsTotalAmount(mTransactionYears)));
 		}
@@ -274,10 +274,10 @@ public class ProductStatisticListFragment extends BaseFragment
 		
 		setBackButtonVisible(true);
 		
-		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())));
+		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())).toUpperCase());
 		
 		if (Constant.PRODUCT_QUANTITY.equals(mSelectedProductInfo)) {
-			mNavText.setText(getString(R.string.report_total, CommonUtil.formatNumber(getTransactionMonthsTotalAmount(mTransactionMonths))));
+			mNavText.setText(getString(R.string.report_total, CommonUtil.formatNumber(getTransactionMonthsTotalAmount(mTransactionMonths))).toUpperCase());
 		} else {
 			mNavText.setText(CommonUtil.formatCurrency(getTransactionMonthsTotalAmount(mTransactionMonths)));
 		}

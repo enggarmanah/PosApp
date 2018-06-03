@@ -3,7 +3,7 @@
     android:id="@+id/spinnerRowLayout"
     style="@style/SpinnerRowStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/label1Text"
         style="@style/RegistrationSpinnerRowDropDownTextStyle"/>
 

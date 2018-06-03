@@ -54,7 +54,7 @@
     
     <color name="background">#FFF</color>
     <color name="background_grey">#FBFBFB</color>
-    <color name="background_red">#dc2a32</color>
+    <color name="background_red">#cc2900</color>
     <color name="background_red_light">#e3565c</color>
     <color name="background_orange">#dca621</color>
     <color name="background_blue">#aac8e1</color>
@@ -76,12 +76,12 @@
     <color name="button_divider">#999</color>
     
     <color name="flow_out">#fc82a4</color>
-    <color name="flow_out_start">#fc7198</color>
-    <color name="flow_out_end">#fc93b0</color>
+    <color name="flow_out_start">#ff6666</color>
+    <color name="flow_out_end">#ff6666</color>
     
     <color name="flow_in">#7bfbb8</color>
-    <color name="flow_in_start">#5afaa6</color>
-    <color name="flow_in_end">#9cfcca</color>
+    <color name="flow_in_start">#40bf80</color>
+    <color name="flow_in_end">#40bf80</color>
     
     <color name="search_row_start">#DEDEDE</color>
     <color name="search_row_end">#DEDEDE</color>

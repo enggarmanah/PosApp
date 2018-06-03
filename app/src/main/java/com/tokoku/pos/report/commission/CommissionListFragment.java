@@ -1,19 +1,5 @@
 package com.tokoku.pos.report.commission;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.tokoku.pos.Constant;
-import com.tokoku.pos.R;
-import com.android.pos.dao.Employee;
-import com.tokoku.pos.base.fragment.BaseFragment;
-import com.tokoku.pos.dao.ProductDaoService;
-import com.tokoku.pos.model.CommissionMonthBean;
-import com.tokoku.pos.model.CommissionYearBean;
-import com.tokoku.pos.util.CommonUtil;
-import com.tokoku.pos.util.PoiUtil;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,11 +9,26 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.pos.dao.Employee;
+import com.tokoku.pos.Constant;
+import com.tokoku.pos.R;
+import com.tokoku.pos.base.fragment.BaseFragment;
+import com.tokoku.pos.dao.ProductDaoService;
+import com.tokoku.pos.model.CommissionMonthBean;
+import com.tokoku.pos.model.CommissionYearBean;
+import com.tokoku.pos.util.CommonUtil;
+import com.tokoku.pos.util.PoiUtil;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommissionListFragment extends BaseFragment 
 	implements CommissionMonthArrayAdapter.ItemActionListener,
@@ -255,7 +256,7 @@ public class CommissionListFragment extends BaseFragment
 		
 		setBackButtonVisible(true);
 		
-		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())));
+		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())).toUpperCase());
 		
 		mNavText.setText(CommonUtil.formatCurrency(getCommisionMonthsTotalAmount(mCommisionMonths)));
 		
@@ -322,7 +323,7 @@ public class CommissionListFragment extends BaseFragment
 		mActionListener.onGenerateReportStart();
 
 		//New Workbook
-		Workbook wb = PoiUtil.getWorkbook();
+		XSSFWorkbook wb = PoiUtil.getWorkbook();
 
 		Cell c = null;
 

@@ -20,7 +20,7 @@
     android:background="@color/background"
     android:orientation="vertical" >
 
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/header_background"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/title_paired_devices"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             android:layout_alignParentBottom="true"
             android:orientation="vertical" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 android:id="@+id/title_new_devices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 android:paddingTop="2dp"
 	        	android:paddingBottom="2dp" />
 
-            <Button
+            <com.tokoku.pos.common.BoldButton
                 android:id="@+id/button_scan"
                 style="@style/CashierOkButtonStyle"
                 android:text="@string/scan_device" />

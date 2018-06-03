@@ -33,6 +33,7 @@ public class MerchantBean {
     private String security_question;
     private String security_answer;
 	private String status;
+	private String printer_footer;
 
 	protected Long remote_id;
 	protected String ref_id;
@@ -321,5 +322,13 @@ public class MerchantBean {
 
 	public void setSync_date(Date sync_date) {
 		this.sync_date = sync_date;
+	}
+
+	public String getPrinter_footer() {
+		return printer_footer;
+	}
+
+	public void setPrinter_footer(String printer_footer) {
+		this.printer_footer = printer_footer;
 	}
 }

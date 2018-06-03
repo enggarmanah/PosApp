@@ -1,14 +1,28 @@
 package com.tokoku.pos.util;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.tokoku.pos.R;
 import com.android.pos.dao.Merchant;
 import com.android.pos.dao.OrderItem;
@@ -21,6 +35,8 @@ import com.tokoku.pos.cashier.CashierActivity;
 import com.tokoku.pos.cashier.CashierPrinterListActivity;
 import com.tokoku.pos.dao.ProductDaoService;
 import com.tokoku.pos.driver.BluetoothPrintDriver;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class PrintUtil {
 
@@ -59,8 +75,11 @@ public class PrintUtil {
 	// Member object for the chat services
 	private static BluetoothPrintDriver mChatService = null;
 	
-	private static CashierActivity mActivity;
+	private static Activity mActivity;
 	private static ProductDaoService mProductDaoService;
+
+    private static String spaces = "                                                                                                    ";
+    private static String divider = "---------------------------------------------------------------------------------------------------";
 	
 	public static void reset() {
 		
@@ -106,13 +125,13 @@ public class PrintUtil {
 		// setupChat() will then be called during onActivityResult
 
 		if (mBluetoothAdapter == null) {
-			mActivity.setMessage(mActivity.getString(R.string.alert_bluetooth_not_available));
+            ((CashierActivity)mActivity).setMessage(mActivity.getString(R.string.alert_bluetooth_not_available));
 
 		} else {
 
 			if (!mBluetoothAdapter.isEnabled()) {
 
-				mActivity.setMessage(mActivity.getString(R.string.alert_bluetooth_not_active));
+				((CashierActivity)mActivity).setMessage(mActivity.getString(R.string.alert_bluetooth_not_active));
 				Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 				
 				mActivity.startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
@@ -178,7 +197,7 @@ public class PrintUtil {
 	public static void disablePrinterOptions() {
 		
 		if (mActivity != null) {
-			mActivity.disablePrinterOption();
+			((CashierActivity)mActivity).disablePrinterOption();
 		}
 	}
 	
@@ -200,16 +219,16 @@ public class PrintUtil {
 				
 				case BluetoothPrintDriver.STATE_CONNECTED:
 
-					mActivity.showMessage(mActivity.getString(R.string.printer_connected_to, mConnectedDeviceName));
-					mActivity.clearMessage();
+					((CashierActivity)mActivity).showMessage(mActivity.getString(R.string.printer_connected_to, mConnectedDeviceName));
+					((CashierActivity)mActivity).clearMessage();
 					
-					mActivity.setSelectPrinterVisible(false);
+					((CashierActivity)mActivity).setSelectPrinterVisible(false);
 					
 					break;
 
 				case BluetoothPrintDriver.STATE_CONNECTING:
 
-					mActivity.showMessage(mActivity.getString(R.string.printer_connecting));
+					((CashierActivity)mActivity).showMessage(mActivity.getString(R.string.printer_connecting));
 					
 					break;
 
@@ -217,8 +236,8 @@ public class PrintUtil {
 
 				case BluetoothPrintDriver.STATE_NONE:
 					
-					mActivity.setMessage(mActivity.getString(R.string.printer_please_check_printer));
-					mActivity.setSelectPrinterVisible(true);
+					((CashierActivity)mActivity).setMessage(mActivity.getString(R.string.printer_please_check_printer));
+					((CashierActivity)mActivity).setSelectPrinterVisible(true);
 
 					break;
 				}
@@ -258,18 +277,18 @@ public class PrintUtil {
 
 				Voltage = (float) ((readBuf[0] * 256 + readBuf[1]) / 10.0);
 
-				mActivity.showMessage(ErrorMsg + "Battery voltage : " + Voltage + " V");
+				((CashierActivity)mActivity).showMessage(ErrorMsg + "Battery voltage : " + Voltage + " V");
 				break;
 
 			case MESSAGE_DEVICE_NAME:
 
 				mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);
-				mActivity.showMessage(mActivity.getString(R.string.printer_connected_to, mConnectedDeviceName));
+				((CashierActivity)mActivity).showMessage(mActivity.getString(R.string.printer_connected_to, mConnectedDeviceName));
 				break;
 
 			case MESSAGE_TOAST:
 
-				mActivity.showMessage(msg.getData().getString(TOAST));
+				((CashierActivity)mActivity).showMessage(msg.getData().getString(TOAST));
 				break;
 			}
 		}
@@ -305,7 +324,26 @@ public class PrintUtil {
 		
 		return !Constant.FONT_SIZE_REGULAR.equals(MerchantUtil.getMerchant().getPrinterMiniFont());
 	}
-	
+
+	public static void printTransaction(Transactions transaction, String printingOption) throws Exception {
+
+		if (Constant.PRINTING_OPTION_YES_ONCE.equals(printingOption)) {
+			printTransaction(transaction);
+			printFooter();
+			printFeed();
+
+		} else if (Constant.PRINTING_OPTION_YES_TWICE.equals(printingOption)) {
+
+            printTransaction(transaction);
+            printFooter();
+            BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+            BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+            printTransaction(transaction);
+            printFooter();
+            printFeed();
+		}
+	}
+
 	public static void printTransaction(Transactions transaction) throws Exception {
 		
 		mProductDaoService = new ProductDaoService();
@@ -335,9 +373,6 @@ public class PrintUtil {
 		// highlight
 		// BluetoothPrintDriver.SetBlackReversePrint((byte)0x01);
 
-		String spaces = "                                                                                                    ";
-		String divider = "---------------------------------------------------------------------------------------------------";
-		
 		StringBuffer line = new StringBuffer();
 		
 		Merchant merchant = MerchantUtil.getMerchant();
@@ -609,24 +644,437 @@ public class PrintUtil {
 		line.append(returnText);
 
 		BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
-		
-		BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
-		BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
-		
-		String thankYou = mActivity.getString(R.string.print_thank_you);
-		
-		line.setLength(0);
-		line.append(thankYou);
-		line.append(spaces.substring(0, mPrinterLineSize - thankYou.length()));
 
-		BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
-		
-		//BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
-		//BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
-		//BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+		BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
 	}
-	
-	public static void printOrder(Orders order) throws Exception {
+
+	public static void initPdf(Activity activity) {
+
+	    mActivity = activity;
+    }
+
+	public static Uri printPdf(Transactions transaction) throws Exception {
+
+        File file = new File(Environment.getExternalStorageDirectory() + "/Receipt " + transaction.getTransactionNo() + ".pdf");
+
+        OutputStream output = new FileOutputStream(file);
+
+        Document document = new Document(PageSize.A4, 25f, 25f, 15f, 20f);
+
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, output);
+
+        document.open();
+
+        mPrinterLineSize = 90;
+
+        float fntSize = 10f;
+        float lineSpacing = 12f;
+
+        Paragraph p = new Paragraph(new Phrase(lineSpacing,"",
+                FontFactory.getFont(FontFactory.COURIER, fntSize)));
+
+        mProductDaoService = new ProductDaoService();
+
+		StringBuffer line = new StringBuffer();
+
+		Merchant merchant = MerchantUtil.getMerchant();
+
+		p.add(Constant.NEWLINE_STRING);
+
+		line.append(merchant.getName());
+		line.append(spaces.substring(0, mPrinterLineSize - merchant.getName().length()));
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		p.add(Constant.NEWLINE_STRING);
+
+		String addrAndTelp = merchant.getAddress();
+
+		if (!CommonUtil.isEmpty(merchant.getTelephone())) {
+			addrAndTelp += mActivity.getString(R.string.print_telephone) + merchant.getTelephone();
+		}
+
+		String[] addrAndTelps = addrAndTelp.split(Constant.SPACE_STRING);
+
+		String addrAndTlpLine = Constant.EMPTY_STRING;
+
+		for (String str : addrAndTelps) {
+
+			if (addrAndTlpLine.length() + str.length() < mPrinterLineSize) {
+
+				addrAndTlpLine = addrAndTlpLine + str + Constant.SPACE_STRING;
+
+			} else {
+
+				line.setLength(0);
+				line.append(addrAndTlpLine);
+				line.append(spaces.substring(0, mPrinterLineSize - addrAndTlpLine.length()));
+
+				p.add(line.toString() + Constant.NEWLINE_STRING);
+
+				addrAndTlpLine = str + Constant.SPACE_STRING;
+			}
+		}
+
+		line.setLength(0);
+		line.append(addrAndTlpLine);
+		line.append(spaces.substring(0, mPrinterLineSize - addrAndTlpLine.length()));
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		p.add(Constant.NEWLINE_STRING);
+
+		String transDateText = CommonUtil.formatDateTime(transaction.getTransactionDate());
+
+		line.setLength(0);
+		line.append(transDateText);
+		line.append(spaces.substring(0, mPrinterLineSize - transDateText.length() - transaction.getTransactionNo().length()));
+		line.append(transaction.getTransactionNo());
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		String cashierText = mActivity.getString(R.string.print_cashier) + transaction.getCashierName();
+
+		line.setLength(0);
+		line.append(cashierText);
+		line.append(spaces.substring(0, mPrinterLineSize - cashierText.length()));
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		p.add(Constant.NEWLINE_STRING);
+
+		List<TransactionItem> transactionItems = transaction.getTransactionItemList();
+
+		float totalQuantity = 0;
+
+		for (TransactionItem item : transactionItems) {
+
+			if (item.getQuantity() != 0) {
+
+			    int pricingInfoLineSize = 37;
+			    int productLineSize = mPrinterLineSize - pricingInfoLineSize;
+
+				String productName = item.getProductName();
+
+				if (productName.length() > productLineSize - 2) {
+					productName = productName.substring(0, productLineSize - 2);
+				}
+
+				float quantity = item.getQuantity();
+				float price = item.getPrice();
+				float total = quantity * price;
+
+				totalQuantity += quantity;
+
+				line.setLength(0);
+
+				line.append(productName);
+				line.append(spaces.substring(0, productLineSize - productName.length()));
+
+				p.add(line.toString());
+
+				String quantityStr = CommonUtil.formatNumber(quantity);
+				String priceStr = CommonUtil.formatNumber(price);
+				String totalStr = CommonUtil.formatCurrency(total);
+
+				line.setLength(0);
+
+				line.append(quantityStr);
+
+				int size = quantityStr.length() <= 2 ? 2 : quantityStr.length();
+				line.append(spaces.substring(0, size - quantityStr.length()));
+
+				Product product = mProductDaoService.getProduct(item.getProductId());
+
+				line.append(" " + CommonUtil.getShortUnitName(product.getQuantityType()) + " x @ ");
+				line.append(priceStr);
+				line.append(spaces.substring(0, pricingInfoLineSize - line.toString().length() - totalStr.length()));
+				line.append(totalStr);
+
+				p.add(line.toString() + Constant.NEWLINE_STRING);
+			}
+		}
+
+		p.add(Constant.NEWLINE_STRING);
+
+		String billLabel = CommonUtil.formatNumber(transactionItems.size()) + Constant.SPACE_STRING + mActivity.getString(R.string.product_short) + Constant.SPACE_STRING +
+				CommonUtil.formatNumber(totalQuantity) + Constant.SPACE_STRING + mActivity.getString(R.string.item);
+		String billAmount = CommonUtil.formatCurrency(transaction.getBillAmount());
+
+		line.setLength(0);
+		line.append(billLabel);
+		line.append(spaces.substring(0, mPrinterLineSize - billLabel.length() - billAmount.length()));
+		line.append(billAmount);
+
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		p.add(spaces.substring(0, mPrinterLineSize) + Constant.NEWLINE_STRING);
+
+		if (transaction.getDiscountName() != null) {
+
+			String discountLabel = transaction.getDiscountName();
+
+			if (transaction.getDiscountPercentage() != null && transaction.getDiscountPercentage() != 0) {
+				discountLabel +=  Constant.SPACE_STRING + CommonUtil.formatPercentage(transaction.getDiscountPercentage());
+			}
+
+			String discountText = mActivity.getString(R.string.print_negative) + CommonUtil.formatCurrency(transaction.getDiscountAmount());
+
+			int minSpaces = 2;
+
+			if (discountLabel.length() + minSpaces + discountText.length() < mPrinterLineSize) {
+
+				line.setLength(0);
+				line.append(discountLabel);
+				line.append(spaces.substring(0, mPrinterLineSize - discountLabel.length() - discountText.length()));
+				line.append(discountText);
+
+				p.add(line.toString() + Constant.NEWLINE_STRING);
+
+			} else {
+
+				line.setLength(0);
+				line.append(discountLabel);
+
+				p.add(line.toString() + Constant.NEWLINE_STRING);
+
+				line.setLength(0);
+				line.append(spaces.substring(0, mPrinterLineSize - discountText.length()));
+				line.append(discountText);
+
+				p.add(line.toString() + Constant.NEWLINE_STRING);
+			}
+		}
+
+		if (transaction.getTaxAmount() != 0) {
+
+			String taxLabel = mActivity.getString(R.string.print_tax) + CommonUtil.formatPercentage(transaction.getTaxPercentage());
+			String taxText = CommonUtil.formatCurrency(transaction.getTaxAmount());
+
+			line.setLength(0);
+			line.append(taxLabel);
+			line.append(spaces.substring(0, mPrinterLineSize - taxLabel.length() - taxText.length()));
+			line.append(taxText);
+
+			p.add(line.toString() + Constant.NEWLINE_STRING);
+		}
+
+		if (transaction.getServiceChargeAmount() != 0) {
+
+			String serviceChargeLabel = mActivity.getString(R.string.print_service_charge) + CommonUtil.formatPercentage(transaction.getServiceChargePercentage());
+			String serviceChargeText = CommonUtil.formatCurrency(transaction.getServiceChargeAmount());
+
+			line.setLength(0);
+			line.append(serviceChargeLabel);
+			line.append(spaces.substring(0, mPrinterLineSize - serviceChargeLabel.length() - serviceChargeText.length()));
+			line.append(serviceChargeText);
+
+			p.add(line.toString() + Constant.NEWLINE_STRING);
+		}
+
+		String totalLabel = mActivity.getString(R.string.print_total);
+
+		String paymentLabel =  Constant.EMPTY_STRING;
+		String returnLabel = Constant.EMPTY_STRING;
+
+		if (Constant.PAYMENT_TYPE_CREDIT.equals(transaction.getPaymentType())) {
+			paymentLabel = mActivity.getString(R.string.payment);
+			returnLabel = CodeUtil.getPaymentTypeLabel(transaction.getPaymentType());
+		} else {
+			paymentLabel = CodeUtil.getPaymentTypeLabel(transaction.getPaymentType());
+			returnLabel = mActivity.getString(R.string.change);
+		}
+
+		String totalText = CommonUtil.formatCurrency(transaction.getTotalAmount());
+		String paymentText = CommonUtil.formatCurrency(transaction.getPaymentAmount());
+		String returnText = CommonUtil.formatCurrency(Math.abs(transaction.getReturnAmount()));
+
+		line.setLength(0);
+
+		p.add(Constant.NEWLINE_STRING);
+
+		line.setLength(0);
+
+		line.append(totalLabel.toUpperCase());
+		line.append(spaces.substring(0, mPrinterLineSize - totalLabel.length() - totalText.length()));
+		line.append(totalText);
+
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		line.setLength(0);
+		line.append(paymentLabel.toUpperCase());
+		line.append(spaces.substring(0, mPrinterLineSize - paymentLabel.length() - paymentText.length()));
+		line.append(paymentText);
+
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+		p.add(Constant.NEWLINE_STRING);
+
+		line.setLength(0);
+		line.append(returnLabel.toUpperCase());
+		line.append(spaces.substring(0, mPrinterLineSize - returnLabel.length() - returnText.length()));
+		line.append(returnText);
+
+		p.add(line.toString() + Constant.NEWLINE_STRING);
+
+        // print footer
+
+        p.add(Constant.NEWLINE_STRING);
+
+        String footer = merchant.getPrinterFooter();
+
+        if (!CommonUtil.isEmpty(footer)) {
+            String[] footers = footer.split(Constant.SPACE_STRING);
+            String footerLine = Constant.EMPTY_STRING;
+
+            for (String str : footers) {
+
+                if (footerLine.length() + str.length() < mPrinterLineSize) {
+
+                    footerLine = footerLine + str + Constant.SPACE_STRING;
+
+                } else {
+
+                    line.setLength(0);
+                    line.append(footerLine.toUpperCase(CommonUtil.getLocale()));
+                    line.append(spaces.substring(0, mPrinterLineSize - footerLine.length()));
+
+                    p.add(line.toString() + Constant.NEWLINE_STRING);
+
+                    footerLine = str + Constant.SPACE_STRING;
+                }
+            }
+
+            line.setLength(0);
+            line.append(footerLine);
+            line.append(spaces.substring(0, mPrinterLineSize - footerLine.length()));
+
+            p.add(line.toString() + Constant.NEWLINE_STRING);
+
+        } else {
+            footer = mActivity.getString(R.string.print_thank_you);
+
+            line.setLength(0);
+            line.append(footer);
+            line.append(spaces.substring(0, mPrinterLineSize - footer.length()));
+
+            p.add(line.toString() + Constant.NEWLINE_STRING);
+        }
+
+        p.add(Constant.NEWLINE_STRING);
+
+        // creating line divider
+
+        int addrAndTelpLineCount = StringUtils.countMatches(addrAndTlpLine, "\n") + 1;
+        int printerFooterCount = StringUtils.countMatches(footer, "\n") + 1;
+
+        int lineHeight = 12;
+
+        float top = 818f;
+        float line1Y = top;
+        float line2Y = line1Y - 2 * lineHeight;
+        float line3Y = line2Y - lineHeight - addrAndTelpLineCount * lineHeight;
+        float line4Y = line3Y - 3 * lineHeight;
+        float line5Y = line4Y - lineHeight - (transactionItems.size() * lineHeight);
+        float line6Y = line5Y - 3 * lineHeight;
+        float line7Y = line6Y - 3 * lineHeight;
+        float line8Y = line7Y - 2 * lineHeight;
+        float line9Y = line8Y - lineHeight - printerFooterCount * lineHeight;
+
+        float leftX = 20;
+        float rightX = 570;
+        float midLeftX = 335;
+        float midRightX = 465;
+
+        PdfContentByte canvas = pdfWriter.getDirectContent();
+        CMYKColor magentaColor = new CMYKColor(0.f, 0.f, 0.f, 1.f);
+
+        canvas.setColorStroke(magentaColor);
+        canvas.moveTo(leftX, line1Y);
+        canvas.lineTo(rightX, line1Y);
+        canvas.moveTo(leftX, line2Y);
+        canvas.lineTo(rightX, line2Y);
+        canvas.moveTo(leftX, line3Y);
+        canvas.lineTo(rightX, line3Y);
+        canvas.moveTo(leftX, line4Y);
+        canvas.lineTo(rightX, line4Y);
+        canvas.moveTo(leftX, line5Y);
+        canvas.lineTo(rightX, line5Y);
+        canvas.moveTo(leftX, line6Y);
+        canvas.lineTo(rightX, line6Y);
+        canvas.moveTo(leftX, line7Y);
+        canvas.lineTo(rightX, line7Y);
+        canvas.moveTo(leftX, line8Y);
+        canvas.lineTo(rightX, line8Y);
+        canvas.moveTo(leftX, line9Y);
+        canvas.lineTo(rightX, line9Y);
+
+        canvas.moveTo(leftX, line1Y);
+        canvas.lineTo(leftX, line9Y);
+        canvas.moveTo(midLeftX, line4Y);
+        canvas.lineTo(midLeftX, line5Y);
+        canvas.moveTo(midRightX, line4Y);
+        canvas.lineTo(midRightX, line8Y);
+        canvas.moveTo(rightX, top);
+        canvas.lineTo(rightX, line9Y);
+
+        canvas.closePathStroke();
+
+        document.add(p);
+        document.close();
+
+        return Uri.fromFile(file);
+	}
+
+    public static void printFooter() throws Exception {
+
+        StringBuffer line = new StringBuffer();
+
+	    Merchant merchant = MerchantUtil.getMerchant();
+        String footer = merchant.getPrinterFooter();
+
+        if (!CommonUtil.isEmpty(footer)) {
+            String[] footers = footer.split(Constant.SPACE_STRING);
+            String footerLine = Constant.EMPTY_STRING;
+
+            for (String str : footers) {
+
+                if (footerLine.length() + str.length() < mPrinterLineSize) {
+
+                    footerLine = footerLine + str + Constant.SPACE_STRING;
+
+                } else {
+
+                    line.setLength(0);
+                    line.append(footerLine.toUpperCase(CommonUtil.getLocale()));
+                    line.append(spaces.substring(0, mPrinterLineSize - footerLine.length()));
+
+                    BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
+
+                    footerLine = str + Constant.SPACE_STRING;
+                }
+            }
+
+            line.setLength(0);
+            line.append(footerLine.toUpperCase(CommonUtil.getLocale()));
+            line.append(spaces.substring(0, mPrinterLineSize - footerLine.length()));
+            BluetoothPrintDriver.BT_Write(line.toString() + Constant.CR_STRING);
+
+        } else {
+            String thankYou = mActivity.getString(R.string.print_thank_you);
+
+            line.setLength(0);
+            line.append(thankYou);
+            line.append(spaces.substring(0, mPrinterLineSize - thankYou.length()));
+        }
+
+        BluetoothPrintDriver.BT_Write(divider.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+	}
+
+    public static void printFeed() throws Exception {
+
+        //BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+        BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+        BluetoothPrintDriver.BT_Write(spaces.substring(0, mPrinterLineSize) + Constant.CR_STRING);
+	}
+
+    public static void printOrder(Orders order) throws Exception {
 
 		BluetoothPrintDriver.WakeUpPritner();
 		

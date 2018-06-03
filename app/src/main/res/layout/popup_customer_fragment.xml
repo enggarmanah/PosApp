@@ -18,12 +18,12 @@
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal"
 	        android:background="@color/background_blue_dark">
-	        <TextView
+	        <com.tokoku.pos.common.BoldTextView
 	            style="@style/PopUpDialogHeaderStyle"
 	            android:gravity="start|center_vertical"
 	            android:text="@string/select_customer" >
-	        </TextView>
-		    <TextView
+	        </com.tokoku.pos.common.BoldTextView>
+		    <com.tokoku.pos.common.BoldTextView
 		        android:id="@+id/cancelBtn"
 		        style="@style/PopUpDialogHeaderBtnStyle"
 		        android:layout_marginStart="10dp"
@@ -34,11 +34,11 @@
 		        android:drawableLeft="@drawable/ic_clear_white"/>
 		</LinearLayout>
 		
-        <EditText
+        <com.tokoku.pos.common.BoldEditText
             android:id="@+id/customerSearchText"
             android:hint="@string/search_customer"
             style="@style/PopupSearchTextStyle">
-        </EditText>
+        </com.tokoku.pos.common.BoldEditText>
     </LinearLayout>
     
     <LinearLayout style="@style/SectionDividerStyle"></LinearLayout>
@@ -49,7 +49,7 @@
         android:layout_height="357dp">
     </ListView>
 	
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:id="@+id/newCustomerText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -61,8 +61,8 @@
         android:textSize="@dimen/button_text"
         android:textStyle="bold"
         android:layout_marginBottom="0.5dp">
-    </TextView>
-    <TextView
+    </com.tokoku.pos.common.BoldTextView>
+    <com.tokoku.pos.common.BoldTextView
         android:id="@+id/noCustomerText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -73,6 +73,6 @@
         android:textColor="@color/dialog_button_text"
         android:textSize="@dimen/button_text"
         android:textStyle="bold" >
-    </TextView>
+    </com.tokoku.pos.common.BoldTextView>
 
 </LinearLayout>

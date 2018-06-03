@@ -1,7 +1,9 @@
 package com.tokoku.pos.cashier;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,10 +12,12 @@ import com.android.pos.dao.Customer;
 import com.tokoku.pos.CodeBean;
 import com.tokoku.pos.Constant;
 import com.tokoku.pos.base.adapter.CodeSpinnerArrayAdapter;
+import com.tokoku.pos.base.fragment.DatePickerFragment;
 import com.tokoku.pos.util.CodeUtil;
 import com.tokoku.pos.util.CommonUtil;
 import com.tokoku.pos.util.MerchantUtil;
 import com.tokoku.pos.util.NotificationUtil;
+import com.tokoku.pos.util.UserUtil;
 
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -22,13 +26,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class CashierPaymentDlgFragment extends DialogFragment {
-	
+
+    private DateFormat dateFormat = CommonUtil.getDateFormat();
+
+    LinearLayout mTransactionDatePanel;
 	TextView mTotalBillText;
+	TextView mTransactionDateText;
 	Spinner mPaymentTypeSp;
 	TextView mCustomerText;
 	TextView mPaymentText;
@@ -49,7 +59,8 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 	
 	Button okBtn;
 	Button cancelBtn;
-	
+
+	Date mTransactionDate;
 	Float mTotalBill;
 	String mPaymentType;
 	Customer mCustomer;
@@ -95,8 +106,10 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 	public void onStart() {
 		
 		super.onStart();
-		
+
+		mTransactionDatePanel = (LinearLayout) getView().findViewById(R.id.transactionDatePanel);
 		mTotalBillText = (TextView) getView().findViewById(R.id.totalBillText);
+		mTransactionDateText = (TextView) getView().findViewById(R.id.transactionDateText);
 		mPaymentTypeSp = (Spinner) getView().findViewById(R.id.paymentTypeSp);
 		mCustomerText = (TextView) getView().findViewById(R.id.customerText);
 		mPaymentText = (TextView) getView().findViewById(R.id.paymentText);
@@ -117,6 +130,9 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 		
 		okBtn = (Button) getView().findViewById(R.id.okBtn);
 		cancelBtn = (Button) getView().findViewById(R.id.cancelBtn);
+
+        mTransactionDateText.setOnClickListener(getDateFieldOnClickListener("startDatePicker"));
+        linkDatePickerWithInputField("startDatePicker", mTransactionDateText);
 		
 		number0Btn.setOnClickListener(getNumberBtnOnClickListener("0"));
 		number1Btn.setOnClickListener(getNumberBtnOnClickListener("1"));
@@ -197,9 +213,14 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 		if (getView() == null) {
 			return;
 		}
-		
+
+		if (!Constant.USER_ROLE_ADMIN.equals(UserUtil.getUser().getRole())) {
+		    mTransactionDatePanel.setVisibility(View.GONE);
+        }
+
 		int picPaymentTypeIndex = paymentTypeArrayAdapter.getPosition(mPaymentType);
-		
+
+		mTransactionDateText.setText(dateFormat.format(new Date()));
 		mTotalBillText.setText(CommonUtil.formatCurrency(mTotalBill));
 		mPaymentTypeSp.setSelection(picPaymentTypeIndex);
 		mPaymentText.setText(CommonUtil.formatNumber(mPayment));
@@ -304,10 +325,14 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 			
 			@Override
 			public void onClick(View v) {
-				
-				mPayment = CommonUtil.parseFloatCurrency(mPaymentText.getText().toString()); 
+
+                if (!dateFormat.format(new Date()).equals(mTransactionDateText.getText().toString())) {
+                    mTransactionDate = CommonUtil.parseDate(mTransactionDateText.getText().toString());
+                }
+
+			    mPayment = CommonUtil.parseFloatCurrency(mPaymentText.getText().toString());
 				mPaymentType = CodeBean.getNvlCode((CodeBean) mPaymentTypeSp.getSelectedItem());
-				
+
 				if (Constant.PAYMENT_TYPE_CREDIT.equals(mPaymentType) && mCustomer == null) {
 					
 					NotificationUtil.setAlertMessage(getFragmentManager(), getString(R.string.payment_credit_without_customer));
@@ -322,7 +347,7 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 				
 				if (Constant.PAYMENT_TYPE_CREDIT.equals(mPaymentType) || mPayment >= mTotalBill) {
 				
-					mActionListener.onPaymentInfoProvided(mCustomer, mPaymentType, mTotalBill, mPayment);
+					mActionListener.onPaymentInfoProvided(mTransactionDate, mCustomer, mPaymentType, mTotalBill, mPayment);
 					
 					mPayment = Float.valueOf(0);
 					mPaymentType = null;
@@ -386,4 +411,43 @@ public class CashierPaymentDlgFragment extends DialogFragment {
 		
 		return paymentTypes.toArray(new CodeBean[paymentTypes.size()]);
 	}
+
+    protected View.OnClickListener getDateFieldOnClickListener(final String fragmentTag) {
+
+        return new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                TextView dateInput = (TextView) v;
+
+                if (getActivity().getCurrentFocus() != null) {
+                    getActivity().getCurrentFocus().clearFocus();
+                }
+
+                DatePickerFragment fragment = null;
+
+                if (getFragmentManager().findFragmentByTag(fragmentTag) != null) {
+                    fragment = (DatePickerFragment) getFragmentManager().findFragmentByTag(fragmentTag);
+                } else {
+                    fragment = new DatePickerFragment();
+                    fragment.setInputField(dateInput);
+                }
+
+                if (fragment.isAdded()) {
+                    return;
+                }
+
+                fragment.show(getFragmentManager(), fragmentTag);
+            }
+        };
+    }
+
+    protected void linkDatePickerWithInputField(String fragmentTag, TextView inputField) {
+
+        DatePickerFragment dp = (DatePickerFragment) getFragmentManager().findFragmentByTag(fragmentTag);
+        if (dp != null) {
+            dp.setInputField(inputField);
+        }
+    }
 }

@@ -6,11 +6,11 @@
 		
         <LinearLayout style="@style/FormRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_type_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_type" />
 
@@ -21,15 +21,15 @@
         
         <LinearLayout style="@style/FormRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_product_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_product" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/productNameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
@@ -37,15 +37,15 @@
         <LinearLayout style="@style/FormRowStyle"
             android:id="@+id/productCostPricePanel">
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_cost_price_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_cost_price" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/productCostPriceText"
                 style="@style/FormInputNumericStyle"
                 android:hint="@string/hint_cost_price" />
@@ -53,31 +53,47 @@
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_quantity_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_quantity" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/quantityText"
                 style="@style/FormInputNumericStyle" />
         </LinearLayout>
-        
+
+        <LinearLayout style="@style/FormRowStyle"
+            android:id="@+id/deliveryNoPanel">
+
+            <com.tokoku.pos.common.BoldTextView
+                style="@style/FormTextFirstLetterStyle"
+                android:text="@string/field_delivery_no_fl" />
+
+            <com.tokoku.pos.common.BoldTextView
+                style="@style/FormTextStyle"
+                android:text="@string/field_delivery_no" />
+
+            <com.tokoku.pos.common.BoldEditText
+                android:id="@+id/deliveryNoText"
+                style="@style/FormInputSelectStyle" />
+        </LinearLayout>
+
         <LinearLayout style="@style/FormRowStyle"
             android:id="@+id/billReferenceNoPanel">
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_bills_reference_no_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_bills_reference_no" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/billsReferenceNoText"
                 style="@style/FormInputSelectStyle" />
         </LinearLayout>
@@ -85,30 +101,30 @@
         <LinearLayout style="@style/FormRowStyle"
             android:id="@+id/supplierPanel">
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_supplier_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_supplier" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/supplierNameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_date_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_date" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/inventoryDate"
                 style="@style/FormInputDateStyle" />
         </LinearLayout>
@@ -117,15 +133,15 @@
             android:id="@+id/remarksPanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_remarks_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_remarks" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/remarksText"
                 style="@style/FormInputTextAreaStyle" />
         </LinearLayout>

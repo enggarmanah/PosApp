@@ -41,6 +41,7 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class TransactionListFragment extends BaseFragment 
 	implements TransactionArrayAdapter.ItemActionListener, 
@@ -285,7 +286,7 @@ public class TransactionListFragment extends BaseFragment
 		
 		setBackButtonVisible(true);
 		
-		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())));
+		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionMonthsTotalAmount(mTransactionMonths)));
 		
 		mTransactionList.setAdapter(mTransactionMonthAdapter);
@@ -305,7 +306,7 @@ public class TransactionListFragment extends BaseFragment
 		
 		setBackButtonVisible(true);
 		
-		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()));
+		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionDaysTotalAmount(mTransactionDays)));
 		
 		mTransactionList.setAdapter(mTransactionDayAdapter);
@@ -349,7 +350,7 @@ public class TransactionListFragment extends BaseFragment
 		mTransactionMonths.clear();
 		mTransactionMonths.addAll(mTransactionDaoService.getTransactionMonths(transactionYear));
 		
-		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())));
+		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionMonthsTotalAmount(mTransactionMonths)));
 		
 		mTransactionList.setAdapter(mTransactionMonthAdapter);
@@ -374,7 +375,7 @@ public class TransactionListFragment extends BaseFragment
 		mTransactionDays.clear();
 		mTransactionDays.addAll(mTransactionDaoService.getTransactionDays(transactionMonth));
 		
-		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()));
+		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionDaysTotalAmount(mTransactionDays)));
 		
 		mTransactionList.setAdapter(mTransactionDayAdapter);
@@ -399,7 +400,7 @@ public class TransactionListFragment extends BaseFragment
 		mTransactions.clear();
 		mTransactions.addAll(mTransactionDaoService.getTransactions(transactionDay.getDate()));
 		
-		mNavigationTitle.setText(CommonUtil.formatDayDate(transactionDay.getDate()));
+		mNavigationTitle.setText(CommonUtil.formatDayDate(transactionDay.getDate()).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionsTotalAmount(mTransactions)));
 		
 		mTransactionList.setAdapter(mTransactionAdapter);
@@ -437,7 +438,7 @@ public class TransactionListFragment extends BaseFragment
 		mActionListener.onGenerateReportStart();
 
         //New Workbook
-        Workbook wb = PoiUtil.getWorkbook();
+		XSSFWorkbook wb = PoiUtil.getWorkbook();
 
         Cell c = null;
 

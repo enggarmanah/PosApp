@@ -7,6 +7,8 @@ import com.android.pos.dao.Orders;
 import com.android.pos.dao.Product;
 import com.android.pos.dao.Transactions;
 
+import java.util.Date;
+
 public interface CashierActionListener {
 	
 	public void onShowProductGroups();
@@ -19,7 +21,7 @@ public interface CashierActionListener {
 	
 	public void onOrderRequested(Integer totalOrder);
 	
-	public void onPaymentInfoProvided(Customer customer, String paymentType, Float totalBill, Float payment);
+	public void onPaymentInfoProvided(Date transactionDate, Customer customer, String paymentType, Float totalBill, Float payment);
 	
 	public void onOrderInfoProvided(String orderReference, String orderType, Employee waitress, Customer customer);
 	
@@ -27,7 +29,7 @@ public interface CashierActionListener {
 	
 	public void onOrderConfirmed(Orders order);
 	
-	public void onPrintReceipt(Transactions transaction);
+	public void onPrintReceipt(Transactions transaction, String printingOption);
 	
 	public void onPrintOrder(Orders order);
 	

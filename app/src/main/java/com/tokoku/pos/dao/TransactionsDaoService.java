@@ -117,10 +117,10 @@ public class TransactionsDaoService {
 		String lastIdx = String.valueOf(lastIndex);
 		
 		Cursor cursor = db.rawQuery("SELECT t._id, IFNULL(c.cash_amount, 0) cash_amount, (t.total_amount - t.payment_amount - IFNULL(c.cash_amount, 0)) outstanding_amount  "
-				+ " FROM transactions t LEFT JOIN (SELECT transaction_id, SUM(cash_amount) cash_amount FROM cashflow GROUP BY transaction_id) c ON t._id = c.transaction_id "
+				+ " FROM transactions t LEFT JOIN (SELECT transaction_id, SUM(cash_amount) cash_amount FROM cashflow WHERE status <> ? GROUP BY transaction_id) c ON t._id = c.transaction_id "
 				+ " WHERE (transaction_no like ? OR customer_name like ? ) AND payment_type = ? AND status <> ? "
 				+ " ORDER BY outstanding_amount DESC, transaction_date ASC LIMIT ? OFFSET ? ",
-				new String[] { queryStr, queryStr, paymentType, status, limit, lastIdx});
+				new String[] { status, queryStr, queryStr, paymentType, status, limit, lastIdx});
 		
 		List<TransactionsBean> list = new ArrayList<TransactionsBean>();
 		

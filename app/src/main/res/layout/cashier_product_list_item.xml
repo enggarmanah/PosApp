@@ -2,22 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListViewRowStyle">
 	
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/codeText"
         style="@style/ListViewRowProductCodeTextStyle"
         android:text="101011"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/nameText"
         style="@style/ListViewRowProductNameTextStyle"
-        android:text="Gula Pasir"/>
+        android:text="Gula Pasir"
+        android:paddingLeft="3dp"/>
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/unitText"
         style="@style/ListViewRowProductUnitTextStyle"
         android:text="Pc"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/priceText"
         style="@style/ListViewRowProductPriceTextStyle"
         android:text="Rp 10.000"/>

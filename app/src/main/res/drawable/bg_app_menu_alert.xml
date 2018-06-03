@@ -5,7 +5,7 @@
         <shape>
             <gradient
                 android:startColor="@color/background_red"
-                android:endColor="@color/background_red_light"
+                android:endColor="@color/background_red"
                 android:angle="270" />
             <stroke
                 android:width="0dp"

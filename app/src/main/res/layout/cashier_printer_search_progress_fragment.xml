@@ -16,7 +16,7 @@
         android:layout_height="wrap_content" >
     </ProgressBar>
 
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scanning"
@@ -24,6 +24,6 @@
         android:textSize="@dimen/text_big"
         android:textStyle="bold"
         android:padding="10dp">
-    </TextView>
+    </com.tokoku.pos.common.BoldTextView>
 
 </LinearLayout>

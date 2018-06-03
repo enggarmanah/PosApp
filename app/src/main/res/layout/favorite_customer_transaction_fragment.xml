@@ -18,12 +18,12 @@
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal"
 	        android:background="@color/background_blue_dark">
-	        <TextView
+	        <com.tokoku.pos.common.BoldTextView
 	            style="@style/PopUpDialogHeaderStyle"
 	            android:gravity="start|center_vertical"
 	            android:text="@string/favorite_customer_transaction" >
-	        </TextView>
-		    <TextView
+	        </com.tokoku.pos.common.BoldTextView>
+		    <com.tokoku.pos.common.BoldTextView
 		        android:id="@+id/cancelBtn"
 		        style="@style/PopUpDialogHeaderBtnStyle"
 		        android:layout_marginStart="10dp"
@@ -34,7 +34,7 @@
 		        android:drawableLeft="@drawable/ic_clear_white"/>
 		</LinearLayout>
 
-        <EditText
+        <com.tokoku.pos.common.BoldEditText
             android:id="@+id/billSearchText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
-        </EditText>
+        </com.tokoku.pos.common.BoldEditText>
         
         <LinearLayout style="@style/SectionDividerStyle"></LinearLayout>
         

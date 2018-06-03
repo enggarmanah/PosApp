@@ -69,6 +69,47 @@ public class ProductDaoService {
 		
 		return product;
 	}
+
+	public Product getProduct(String code, String name) {
+
+		SQLiteDatabase db = DbUtil.getDb();
+
+		code = CommonUtil.getNvlString(code);
+		name = CommonUtil.getNvlString(name);
+
+		String status = Constant.STATUS_DELETED;
+
+		Cursor cursor = null;
+
+		if (!CommonUtil.isEmpty(code)) {
+
+            cursor = db.rawQuery("SELECT _id "
+                            + " FROM product "
+                            + " WHERE code LIKE ? AND status <> ? "
+                            + " ORDER BY name, price1 ",
+                    new String[]{code, status});
+        } else {
+
+            cursor = db.rawQuery("SELECT _id "
+                            + " FROM product "
+                            + " WHERE name LIKE ? AND status <> ? "
+                            + " ORDER BY name, price1 ",
+                    new String[]{name, status});
+        }
+
+		List<Product> list = new ArrayList<Product>();
+
+		while(cursor.moveToNext()) {
+
+			Long id = cursor.getLong(0);
+			Product item = getProduct(id);
+			list.add(item);
+		}
+
+		cursor.close();
+
+		return list.size() != 0 ? list.get(0) : null;
+	}
 	
 	public List<Product> getProducts(String query, int lastIndex) {
 
@@ -330,8 +371,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT product_name, SUM(quantity) quantity "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
+				+ " FROM transactions t, transaction_item ti, product p "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY product_name "
 				+ " ORDER BY quantity DESC, product_name ASC ", new String[] { startDate, endDate });
 			
@@ -363,8 +404,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT product_name, SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END)) * quantity) revenue "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY product_name "
 				+ " ORDER BY revenue DESC, product_name ASC ", new String[] { startDate, endDate });
 			
@@ -395,9 +436,9 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT product_name, SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - cost_price) * quantity) profit "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
+		Cursor cursor = db.rawQuery("SELECT product_name, SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - ti.cost_price) * quantity) profit "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY product_name "
 				+ " ORDER BY profit DESC, product_name ASC ", new String[] { startDate, endDate });
 			
@@ -426,8 +467,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM(quantity) quantity "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  "
 				+ " GROUP BY strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime')", null);
 			
 		while(cursor.moveToNext()) {
@@ -452,8 +493,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price-(CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END)) * quantity) revenue "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  "
 				+ " GROUP BY strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime')", null);
 			
 		while(cursor.moveToNext()) {
@@ -478,8 +519,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - cost_price) * quantity) profit "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  "
 				+ " GROUP BY strftime('%Y', transaction_date/1000, 'unixepoch', 'localtime')", null);
 			
 		while(cursor.moveToNext()) {
@@ -507,8 +548,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM(quantity) quantity "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') ", 
 				new String[] { startDate, endDate });
 		
@@ -537,8 +578,8 @@ public class ProductDaoService {
 		SQLiteDatabase db = DbUtil.getDb();
 		
 		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price-(CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END)) * quantity) revenue "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
+				+ " FROM transactions t, transaction_item ti, product p  "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') ", 
 				new String[] { startDate, endDate });
 		
@@ -566,9 +607,9 @@ public class ProductDaoService {
 		
 		SQLiteDatabase db = DbUtil.getDb();
 		
-		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - cost_price) * quantity) profit "
-				+ " FROM transactions t, transaction_item ti "
-				+ " WHERE t.status = 'A' AND t._id = ti.transaction_id AND transaction_date BETWEEN ? AND ? "
+		Cursor cursor = db.rawQuery("SELECT strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime'), SUM((price - (CASE WHEN discount IS NOT NULL THEN discount ELSE 0 END) - ti.cost_price) * quantity) profit "
+				+ " FROM transactions t, transaction_item ti, product p "
+				+ " WHERE t.status = 'A' AND p.type <> 'N' AND t._id = ti.transaction_id AND ti.product_id = p._id  AND transaction_date BETWEEN ? AND ? "
 				+ " GROUP BY strftime('%m-%Y', transaction_date/1000, 'unixepoch', 'localtime') ", 
 				new String[] { startDate, endDate });
 		

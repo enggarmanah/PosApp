@@ -27,6 +27,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ProductStatisticDetailFragment extends BaseFragment implements ProductStatisticDetailArrayAdapter.ItemActionListener {
 	
@@ -159,7 +160,7 @@ public class ProductStatisticDetailFragment extends BaseFragment implements Prod
 			return;
 		}
 		
-		mDateText.setText(CommonUtil.formatMonth(mTransactionMonth.getMonth()));
+		mDateText.setText(CommonUtil.formatMonth(mTransactionMonth.getMonth()).toUpperCase());
 		
 		mAdapter.notifyDataSetChanged();
 	}
@@ -192,7 +193,7 @@ public class ProductStatisticDetailFragment extends BaseFragment implements Prod
 		mActionListener.onGenerateReportStart();
 
 		//New Workbook
-		Workbook wb = PoiUtil.getWorkbook();
+		XSSFWorkbook wb = PoiUtil.getWorkbook();
 
 		Cell c = null;
 

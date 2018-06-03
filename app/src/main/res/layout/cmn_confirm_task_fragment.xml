@@ -5,27 +5,27 @@
     android:layout_gravity="center"
     android:orientation="vertical" >
 	
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         style="@style/ConfirmTaskDialogHeaderStyle"
         android:text="@string/confirmation" />
 
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
     	android:id="@+id/confirmationText"
     	style="@style/ConfirmTextStyle"/>
 	
 	<LinearLayout style="@style/CashierNumberRowStyle" >
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/okBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/ok" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:layout_width="0.5dp"
             android:layout_height="fill_parent"
             android:background="#AAA" />
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/cancelBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/cancel" />

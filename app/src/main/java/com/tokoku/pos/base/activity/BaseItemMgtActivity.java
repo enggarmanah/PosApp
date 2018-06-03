@@ -665,6 +665,8 @@ public abstract class BaseItemMgtActivity<S, E, T> extends BaseActivity
 	public void onSelectProductGroup(boolean isMandatory) {}
 	
 	public void onSelectSupplier(boolean isMandatory) {}
+
+	public void onSelectDelivery(boolean isMandatory) {}
 	
 	public void onSelectBill(boolean isMandatory) {}
 	

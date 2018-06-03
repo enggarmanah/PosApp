@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListViewRowPopUpStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/nameText"
         style="@style/ListViewRowPopUpTitleStyle"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/telephoneText"
         style="@style/ListViewRowPopUpContentStyle"
         android:layout_marginTop="5dp"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/addressText"
         style="@style/ListViewRowPopUpContentStyle"/>
 

@@ -264,7 +264,7 @@ public class TaxListFragment extends BaseFragment
 		
 		setBackButtonVisible(true);
 		
-		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())));
+		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionMonthsTaxAmount(mTransactionMonths)));
 		
 		mTransactionList.setAdapter(mTransactionMonthAdapter);
@@ -284,7 +284,7 @@ public class TaxListFragment extends BaseFragment
 		
 		setBackButtonVisible(true);
 		
-		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()));
+		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionDaysTaxAmount(mTransactionDays)));
 		
 		mTransactionList.setAdapter(mTransactionDayAdapter);
@@ -328,7 +328,7 @@ public class TaxListFragment extends BaseFragment
 		mTransactionMonths.clear();
 		mTransactionMonths.addAll(mTransactionDaoService.getTransactionTaxMonths(transactionYear));
 		
-		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())));
+		mNavigationTitle.setText(getString(R.string.report_year, CommonUtil.formatYear(transactionYear.getYear())).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionMonthsTaxAmount(mTransactionMonths)));
 		
 		mTransactionList.setAdapter(mTransactionMonthAdapter);
@@ -353,7 +353,7 @@ public class TaxListFragment extends BaseFragment
 		mTransactionDays.clear();
 		mTransactionDays.addAll(mTransactionDaoService.getTransactionTaxDays(transactionMonth));
 		
-		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()));
+		mNavigationTitle.setText(CommonUtil.formatMonth(transactionMonth.getMonth()).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionDaysTaxAmount(mTransactionDays)));
 		
 		mTransactionList.setAdapter(mTransactionDayAdapter);
@@ -378,7 +378,7 @@ public class TaxListFragment extends BaseFragment
 		mTransactions.clear();
 		mTransactions.addAll(mTransactionDaoService.getTransactions(transactionDay.getDate()));
 		
-		mNavigationTitle.setText(CommonUtil.formatDayDate(transactionDay.getDate()));
+		mNavigationTitle.setText(CommonUtil.formatDayDate(transactionDay.getDate()).toUpperCase());
 		mNavText.setText(CommonUtil.formatCurrency(getTransactionsTaxAmount(mTransactions)));
 		
 		mTransactionList.setAdapter(mTransactionAdapter);

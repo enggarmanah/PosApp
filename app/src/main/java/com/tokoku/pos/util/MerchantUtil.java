@@ -25,12 +25,14 @@ public class MerchantUtil {
 		
 		if (mMerchant == null && Config.isDebug() && !UserUtil.isRoot()) {
 			
-			Long merchantId = Long.valueOf(10189);
+			Long merchantId = Long.valueOf(6370);
 			
 			DbUtil.switchDb(null, merchantId);
 			MerchantUtil.recreateDao();
 			
 			mMerchant = merchantDaoService.getMerchant(merchantId);
+
+			CommonUtil.setLocale(CommonUtil.parseLocale(mMerchant.getLocale()));
 		}
 		
 		return mMerchant;

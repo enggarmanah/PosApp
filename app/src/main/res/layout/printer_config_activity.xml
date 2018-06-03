@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:background="@color/background_blue_dark"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <com.tokoku.pos.common.BoldTextView
+            android:id="@+id/productText"
+            style="@style/PopUpDialogHeaderStyle"
+            android:layout_width="fill_parent"
+            android:gravity="start|center_vertical"
+            android:text="@string/printer_settings"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerRequiredPanel"
+        style="@style/FormRowStyle" >
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_required_fl" />
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_required" />
+
+        <Spinner
+            android:id="@+id/printerRequiredSp"
+            style="@style/FormInputListStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerMiniSizePanel"
+        style="@style/FormRowStyle">
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_font_fl" />
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_font" />
+
+        <Spinner
+            android:id="@+id/printerFontSizeSp"
+            style="@style/FormInputListStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerLineSizePanel"
+        style="@style/FormRowStyle" >
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_line_size_fl" />
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_line_size" />
+
+        <com.tokoku.pos.common.BoldEditText
+            android:id="@+id/printerLineSizeText"
+            style="@style/FormInputNumericStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/printerFooterPanel"
+        style="@style/FormRowStyle" >
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextFirstLetterStyle"
+            android:text="@string/field_printer_footer_fl" />
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/FormTextStyle"
+            android:text="@string/field_printer_footer" />
+
+        <com.tokoku.pos.common.BoldEditText
+            android:id="@+id/printerFooterText"
+            style="@style/FormInputTextAreaStyle" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/CashierNumberRowStyle"
+         android:layout_marginTop="20dp">
+
+        <com.tokoku.pos.common.BoldButton
+            android:id="@+id/okBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/ok" />
+
+        <com.tokoku.pos.common.BoldTextView
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="#AAA" />
+
+        <com.tokoku.pos.common.BoldButton
+            android:id="@+id/cancelBtn"
+            style="@style/OkCancelButtonStyle"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

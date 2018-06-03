@@ -46,6 +46,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -140,7 +143,7 @@ public class CashierActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.cashier_activity);
-		
+
 		mState = Constant.CASHIER_STATE_CASHIER;
 		
 		mTransactionDaoService = new TransactionsDaoService();
@@ -707,14 +710,14 @@ public class CashierActivity extends BaseActivity
 	}
 
 	@Override
-	public void onPaymentInfoProvided(Customer customer, String paymentType, Float totalBill, Float payment) {
+	public void onPaymentInfoProvided(Date transactionDate, Customer customer, String paymentType, Float totalBill, Float payment) {
 		
 		if (mPaymentSummaryDlgFragment.isAdded()) {
 			return;
 		}
 		
 		mPaymentSummaryDlgFragment.show(getFragmentManager(), mPaymentSummaryDlgFragmentTag);
-		mPaymentSummaryDlgFragment.setPaymentInfo(customer, paymentType, totalBill, payment);
+		mPaymentSummaryDlgFragment.setPaymentInfo(transactionDate, customer, paymentType, totalBill, payment);
 	}
 	
 	@Override
@@ -889,12 +892,12 @@ public class CashierActivity extends BaseActivity
 	}
 
 	@Override
-	public void onPrintReceipt(Transactions transaction) {
+	public void onPrintReceipt(Transactions transaction, String printingOption) {
 		
 		transaction = mTransactionDaoService.getTransactions(transaction.getId());
 		
 		try {
-			PrintUtil.printTransaction(transaction);
+			PrintUtil.printTransaction(transaction, printingOption);
 		} catch (Exception e) {
 			e.printStackTrace();
 			showMessage(getString(R.string.printer_cant_print));

@@ -6,7 +6,7 @@
         android:id="@+id/topPanel"
         style="@style/SectionTopPanelStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/sectionTitle"
             style="@style/SectionTopTextStyle"
             android:text="@string/order_list"

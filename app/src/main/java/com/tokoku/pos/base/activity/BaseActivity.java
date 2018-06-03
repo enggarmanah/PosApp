@@ -27,6 +27,7 @@ import com.tokoku.pos.data.discount.DiscountMgtActivity;
 import com.tokoku.pos.data.employee.EmployeeMgtActivity;
 import com.tokoku.pos.data.inventory.InventoryMgtActivity;
 import com.tokoku.pos.data.merchant.MerchantMgtActivity;
+import com.tokoku.pos.data.product.ProductImportExportActivity;
 import com.tokoku.pos.data.product.ProductMgtActivity;
 import com.tokoku.pos.data.productGrp.ProductGrpMgtActivity;
 import com.tokoku.pos.data.supplier.SupplierMgtActivity;
@@ -105,6 +106,28 @@ public abstract class BaseActivity extends Activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		System.setProperty("org.apache.poi.javax.xml.stream.XMLInputFactory", "com.fasterxml.aalto.stax.InputFactoryImpl");
+		System.setProperty("org.apache.poi.javax.xml.stream.XMLOutputFactory", "com.fasterxml.aalto.stax.OutputFactoryImpl");
+		System.setProperty("org.apache.poi.javax.xml.stream.XMLEventFactory", "com.fasterxml.aalto.stax.EventFactoryImpl");
+
+        /*ActionBar actionbar = getActionBar();
+
+        // Assests folder font folder path
+        String ExternalFontPath = "fonts/MyriadPro-Regular.otf";
+
+        // Load Typeface font url String ExternalFontPath
+        Typeface fontLoaderTypeface = Typeface.createFromAsset(getAssets(), ExternalFontPath);
+
+        TextView TextViewNewFont = new TextView(BaseActivity.this);
+        TextViewNewFont.setText("POS - TokoKu");
+        TextViewNewFont.setTextSize(24);
+        TextViewNewFont.setTextColor(Color.WHITE);
+        TextViewNewFont.setGravity(Gravity.CENTER_VERTICAL);
+        TextViewNewFont.setTypeface(fontLoaderTypeface);
+
+        actionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionbar.setCustomView(TextViewNewFont);*/
 		
 		CodeUtil.initCodes(this);
 		
@@ -429,6 +452,7 @@ public abstract class BaseActivity extends Activity
 			mMenus.add(getString(R.string.menu_reference_discount));
 			mMenus.add(getString(R.string.menu_reference_employee));
 			mMenus.add(getString(R.string.menu_reference_supplier));
+			mMenus.add(getString(R.string.menu_reference_import_export));
 		}
 		
 		if (!UserUtil.isRoot()) {
@@ -668,6 +692,11 @@ public abstract class BaseActivity extends Activity
 			Intent intent = new Intent(this, DiscountMgtActivity.class);
 			startActivity(intent);
 			
+		} else if (getString(R.string.menu_reference_import_export).equals(menu)) {
+
+			Intent intent = new Intent(this, ProductImportExportActivity.class);
+			startActivity(intent);
+
 		} else if (getString(R.string.menu_sync).equals(menu)) {
 			
 			doSyncUp();

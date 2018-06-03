@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListViewRowDiscountStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/nameText"
         style="@style/ListViewRowDiscountTextStyle"/>
 

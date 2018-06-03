@@ -25,6 +25,7 @@ public class CodeUtil {
 	private static CodeBean[] discountTypes;
 	private static CodeBean[] orderTypes;
 	private static CodeBean[] paymentTypes;
+	private static CodeBean[] printingOptions;
 	private static CodeBean[] fnBorderTypes;
 	private static CodeBean[] billTypes;
 	private static CodeBean[] inventoryStatus;
@@ -286,17 +287,22 @@ public class CodeUtil {
 		code.setLabel(mContext.getString(R.string.product_status_inactive));
 		productStatus[1] = code;
 		
-		productTypes = new CodeBean[2];
+		productTypes = new CodeBean[3];
 		
 		code = new CodeBean();
-		code.setCode("P");
+		code.setCode(Constant.PRODUCT_TYPE_GOODS);
 		code.setLabel(mContext.getString(R.string.product_type_goods));
 		productTypes[0] = code;
 		
 		code = new CodeBean();
-		code.setCode("S");
+		code.setCode(Constant.PRODUCT_TYPE_SERVICE);
 		code.setLabel(mContext.getString(R.string.product_type_service));
 		productTypes[1] = code;
+
+		code = new CodeBean();
+		code.setCode(Constant.PRODUCT_TYPE_NON_GOODS_N_SERVICE);
+		code.setLabel(mContext.getString(R.string.product_type_non_goods_n_service));
+		productTypes[2] = code;
 		
 		fnBProductTypes = new CodeBean[2];
 		
@@ -448,7 +454,29 @@ public class CodeUtil {
 		code.setCode(Constant.PAYMENT_TYPE_CREDIT);
 		code.setLabel(mContext.getString(R.string.payment_type_credit));
 		paymentTypes[3] = code;
-		
+
+		printingOptions = new CodeBean[4];
+
+		code = new CodeBean();
+		code.setCode(Constant.PRINTING_OPTION_NO);
+		code.setLabel(mContext.getString(R.string.printing_option_no));
+		printingOptions[0] = code;
+
+		code = new CodeBean();
+		code.setCode(Constant.PRINTING_OPTION_YES_ONCE);
+		code.setLabel(mContext.getString(R.string.printing_option_yes_once));
+		printingOptions[1] = code;
+
+		code = new CodeBean();
+		code.setCode(Constant.PRINTING_OPTION_YES_TWICE);
+		code.setLabel(mContext.getString(R.string.printing_option_yes_twice));
+		printingOptions[2] = code;
+
+		code = new CodeBean();
+		code.setCode(Constant.PRINTING_OPTION_SEND_EMAIL);
+		code.setLabel(mContext.getString(R.string.printing_option_send_email));
+		printingOptions[3] = code;
+
 		fnBorderTypes = new CodeBean[2];
 		
 		code = new CodeBean();
@@ -617,7 +645,11 @@ public class CodeUtil {
 	public static CodeBean[] getPaymentTypes() {
 		return paymentTypes;
 	}
-	
+
+	public static CodeBean[] getPrintingOptions() {
+        return printingOptions;
+    }
+
 	public static CodeBean[] getFnBOrderTypes() {
 		return fnBorderTypes;
 	}
@@ -721,4 +753,172 @@ public class CodeUtil {
 		
 		return label;
 	}
+
+	public static String getProductType(String label) {
+
+		String code = Constant.PRODUCT_TYPE_GOODS;
+
+		for (CodeBean codeBean : productTypes) {
+			if (codeBean.getLabel().equals(label)) {
+				code = codeBean.getCode();
+				break;
+			}
+		}
+
+		return code;
+	}
+
+    public static String getProductTypeLabel(String code) {
+
+        String label = Constant.EMPTY_STRING;
+
+        for (CodeBean codeBean : productTypes) {
+            if (codeBean.getCode().equals(code)) {
+                label = codeBean.getLabel();
+                break;
+            }
+        }
+
+        return label;
+    }
+
+    public static String getPriceType(String label) {
+
+        String code = Constant.PRICE_TYPE_STATIC;
+
+        for (CodeBean codeBean : priceTypes) {
+            if (codeBean.getLabel().equals(label)) {
+                code = codeBean.getCode();
+                break;
+            }
+        }
+
+        return code;
+    }
+
+    public static String getPriceTypeLabel(String code) {
+
+        String label = Constant.EMPTY_STRING;
+
+        for (CodeBean codeBean : priceTypes) {
+            if (codeBean.getCode().equals(code)) {
+                label = codeBean.getLabel();
+                break;
+            }
+        }
+
+        return label;
+    }
+
+    public static String getPicRequired(String label) {
+
+        String code = Constant.STATUS_NO;
+
+        for (CodeBean codeBean : booleans) {
+            if (codeBean.getLabel().equals(label)) {
+                code = codeBean.getCode();
+                break;
+            }
+        }
+
+        return code;
+    }
+
+    public static String getPicRequiredLabel(String code) {
+
+        String label = Constant.EMPTY_STRING;
+
+        for (CodeBean codeBean : booleans) {
+            if (codeBean.getCode().equals(code)) {
+                label = codeBean.getLabel();
+                break;
+            }
+        }
+
+        return label;
+    }
+
+    public static String getCommissionType(String label) {
+
+        String code = Constant.COMMISSION_TYPE_AMOUNT;
+
+        for (CodeBean codeBean : commissionTypes) {
+            if (codeBean.getLabel().equals(label)) {
+                code = codeBean.getCode();
+                break;
+            }
+        }
+
+        return code;
+    }
+
+    public static String getCommissionTypeLabel(String code) {
+
+        String label = Constant.EMPTY_STRING;
+
+        for (CodeBean codeBean : commissionTypes) {
+            if (codeBean.getCode().equals(code)) {
+                label = codeBean.getLabel();
+                break;
+            }
+        }
+
+        return label;
+    }
+
+    public static String getQuantityType(String label) {
+
+        String code = Constant.QUANTITY_TYPE_PIECE;
+
+        for (CodeBean codeBean : quantityType) {
+            if (codeBean.getLabel().equals(label)) {
+                code = codeBean.getCode();
+                break;
+            }
+        }
+
+        return code;
+    }
+
+    public static String getQuantityTypeLabel(String code) {
+
+        String label = Constant.EMPTY_STRING;
+
+        for (CodeBean codeBean : quantityType) {
+            if (codeBean.getCode().equals(code)) {
+                label = codeBean.getLabel();
+                break;
+            }
+        }
+
+        return label;
+    }
+
+    public static String getProductStatus(String label) {
+
+        String code = Constant.STATUS_ACTIVE;
+
+        for (CodeBean codeBean : productStatus) {
+            if (codeBean.getLabel().equals(label)) {
+                code = codeBean.getCode();
+                break;
+            }
+        }
+
+        return code;
+    }
+
+    public static String getProductStatusLabel(String code) {
+
+        String label = Constant.EMPTY_STRING;
+
+        for (CodeBean codeBean : productStatus) {
+            if (codeBean.getCode().equals(code)) {
+                label = codeBean.getLabel();
+                break;
+            }
+        }
+
+        return label;
+    }
 }

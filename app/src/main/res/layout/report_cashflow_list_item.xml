@@ -19,13 +19,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-	    <TextView
+	    <com.tokoku.pos.common.StdTextView
 	        android:id="@+id/typeText"
 	        style="@style/ListViewRowInventoryNameTextStyle"/>
-	   	<TextView
+	   	<com.tokoku.pos.common.StdTextView
 	        android:id="@+id/remarksText"
 	        style="@style/ListViewRowInventoryRemarksTextStyle"/>
-	   	<TextView
+	   	<com.tokoku.pos.common.StdTextView
 	        android:id="@+id/entityText"
 	        style="@style/ListViewRowInventorySupplierTextStyle"/>
     </LinearLayout>
@@ -35,10 +35,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
-	   	<TextView
+	   	<com.tokoku.pos.common.StdTextView
 	        android:id="@+id/cashDateText"
 	        style="@style/ListViewRowInventoryDeliveryDateTextStyle"/>
-	    <TextView
+	    <com.tokoku.pos.common.StdTextView
 	        android:id="@+id/cashAmountText"
 	        style="@style/ListViewRowCashflowAmountTextStyle"/>
     </LinearLayout>

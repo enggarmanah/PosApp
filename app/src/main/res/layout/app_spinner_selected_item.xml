@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/SpinnerRowStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/label1Text"
         style="@style/SpinnerRowTextStyle"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/label2Text"
         style="@style/SpinnerRowTextStyle"/>
 

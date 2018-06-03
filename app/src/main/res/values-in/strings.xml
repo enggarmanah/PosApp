@@ -60,25 +60,36 @@
     <string name="info_profit">Laba</string>
     
     <string name="empty"></string>
-    <string name="search">Cari</string>
-    <string name="add">Tambah</string>
-    <string name="alert">Perhatian</string>
-    <string name="notification">Notifikasi</string>
+    <string name="search">CARI</string>
+    <string name="add">TAMBAH</string>
+    <string name="alert">PERHATIAN</string>
+    <string name="notification">NOTIFIKASI</string>
     <string name="ok">OK</string>
-    <string name="cancel">Batal</string>
-    <string name="delete">Hapus</string>
-    <string name="edit">Edit</string>
-    <string name="select">Pilih</string>
-    <string name="confirmation">Konfirmasi</string>
-    <string name="save">Simpan&#160;</string>
-    <string name="select_printer">Pilih Printer</string>
-    <string name="remarks">Catatan</string>
+    <string name="cancel">BATAL</string>
+    <string name="delete">HAPUS</string>
+    <string name="edit">EDIT</string>
+    <string name="select">PILIH</string>
+    <string name="confirmation">KONFIRMASI</string>
+    <string name="save">SIMPAN&#160;</string>
+    <string name="select_printer">PILIH PRINTER</string>
+    <string name="remarks">CATATAN</string>
     <string name="none"></string>
+    <string name="price">HARGA</string>
+
+    <string name="Receipt">Nota Penjualan</string>
+
+    <string name="import_excel">IMPORT PRODUK</string>
+    <string name="export_excel">EXPORT PRODUK</string>
+
+    <string name="import_add_product">Register %1$s</string>
+    <string name="import_update_product">Update %1$s</string>
+    <string name="import_product">Import product</string>
+    <string name="export_product">Export produk</string>
     
     <string name="sync">Sync</string>
     <string name="exit">Keluar</string>
 	<string name="logout">Keluar</string>
-    
+    <string name="refresh">Refresh</string>
     
     <string name="status_active">Aktif</string>
     <string name="status_inactive">Tidak Aktif</string>
@@ -94,6 +105,7 @@
     
     <string name="product_type_goods">Barang</string>
     <string name="product_type_service">Jasa</string>
+    <string name="product_type_non_goods_n_service">Non Barang &amp; Jasa</string>
     
     <string name="fnb_product_type_purchased">Hasil Pembelian</string>
     <string name="fnb_product_type_self_made">Buatan Sendiri</string>
@@ -110,10 +122,10 @@
     <string name="order_type_before_payment">Sebelum Bayar</string>
     <string name="order_type_after_payment">Setelah Bayar</string>
     
-    <string name="product_search">Cari Produk</string>
-    <string name="product_list">Daftar Produk</string>
-    <string name="product_add">Tambah Produk</string>
-    <string name="product_group_list">Kategori Produk</string>
+    <string name="product_search">CARI PRODUK</string>
+    <string name="product_list">DAFTAR PRODUK</string>
+    <string name="product_add">TAMBAH PRODUK</string>
+    <string name="product_group_list">KATEGORI PRODUK</string>
     
     <string name="product_stock_alert">Stok Di Bawah Batas</string>
     <string name="bill_pastdue_alert">Tagihan Jatuh Tempo</string>
@@ -223,6 +235,8 @@
     <string name="field_quantity_fl">J</string>
     <string name="field_bills_reference_no">No. Nota</string>
     <string name="field_bills_reference_no_fl">N</string>
+    <string name="field_delivery_no">No. Pengiriman</string>
+    <string name="field_delivery_no_fl">N</string>
     <string name="field_supplier">Supplier</string>
     <string name="field_supplier_fl">S</string>
     <string name="field_delivery_date">Tgl. Terima</string>
@@ -255,6 +269,8 @@
     <string name="field_printer_font_fl">F</string>
     <string name="field_printer_line_size">Teks / Baris</string>
     <string name="field_printer_line_size_fl">T</string>
+    <string name="field_printer_footer">Footer</string>
+    <string name="field_printer_footer_fl">F</string>
     <string name="field_discount_type">Tipe</string>
     <string name="field_discount_type_fl">T</string>
     <string name="field_order_type">Tipe Pesanan</string>
@@ -292,9 +308,9 @@
     <string name="report_sale_income">Hasil Penjualan</string>
 	<string name="report_sale_profit">Laba Penjualan</string>
 	    
-    <string name="report_inventory_product">Produk</string>
-    <string name="report_inventory_product_stock">Jumlah</string>
-   	<string name="report_inventory_stock">"Jumlah : %1$s"</string>
+    <string name="report_inventory_product">PRODUK</string>
+    <string name="report_inventory_product_stock">JUMLAH</string>
+   	<string name="report_inventory_stock">"JUMLAH: %1$s"</string>
    	
    	<string name="report_credit_title">Piutang</string>
     <string name="report_credit_date">Tanggal</string>
@@ -319,7 +335,7 @@
     <string name="report_cashflow_service_charge_amount">Service Charge</string>
     <string name="report_cashflow_expense">Pengeluaran</string>
     
-    <string name="report_bill">Tagihan</string>
+    <string name="report_bill">TAGIHAN</string>
     <string name="report_bill_pastdue">Tagihan Jatuh Tempo</string>
     <string name="report_bill_supplier">Supplier</string>
     <string name="report_bill_duedate">Jatuh Tempo</string>
@@ -336,12 +352,12 @@
     
     <string name="report_bill_outstanding_title">Tagihan Belum Lunas</string>
     
-    <string name="report_commision">Komisi</string>
+    <string name="report_commision">KOMISI</string>
     
     <string name="hint_percentage">Persentase %</string>
     <string name="hint_cost_price">Harga Beli Satuan</string>  
     
-    <string name="count">Jumlah</string>
+    <string name="count">TOTAL</string>
     <string name="number_0">0</string>
     <string name="number_1">1</string>
     <string name="number_2">2</string>
@@ -356,15 +372,16 @@
     <string name="delete_char">X</string>
 
     <string name="total_items">Item: </string>
-    
-    <string name="total">Total</string>
-    <string name="email">Email</string>
-    <string name="payment">Bayar</string>
-    <string name="payment_type">Tipe</string>
-    <string name="change">Kembali</string>
-    <string name="order">Pesan</string>
-    <string name="print">Print Nota</string>
-    <string name="transaction_items">Daftar Penjualan</string>
+
+    <string name="date">TANGGAL</string>
+    <string name="total">TOTAL</string>
+    <string name="email">EMAIL</string>
+    <string name="payment">BAYAR</string>
+    <string name="payment_type">TIPE</string>
+    <string name="change">KEMBALI</string>
+    <string name="order">PESAN</string>
+    <string name="print">PRINT NOTA</string>
+    <string name="transaction_items">DAFTAR PENJUALAN</string>
     
     <string name="reservation_no">No. Pesanan</string>
     
@@ -383,15 +400,15 @@
     <string name="product_short">Prd</string>
     <string name="item">Item</string>
     
-    <string name="select_discount">Pilih Diskon</string>
-    <string name="discount">Diskon</string>
-    <string name="no_discount">Tanpa Diskon</string>
-    <string name="tax">Pajak</string>
-    <string name="service_charge">Bea Servis</string>
+    <string name="select_discount">PILIH DISKON</string>
+    <string name="discount">DISKON</string>
+    <string name="no_discount">TANPA DISKON</string>
+    <string name="tax">PAJAK</string>
+    <string name="service_charge">BEA SERVIS</string>
     
     <string name="order_table_no_add_on">"Tambahan No. Pesanan : %1$s"</string>
     <string name="order_customer_add_on">"Tambahan Pelanggan : %1$s"</string>
-  	<string name="order_transaction_list">"Daftar Penjualan"</string>
+  	<string name="order_transaction_list">"DAFTAR PENJUALAN"</string>
   	<string name="order_order_list">"Daftar Pesanan"</string>
     
     <string name="transaction_summary">Konfirmasi Transaksi</string>
@@ -399,50 +416,53 @@
     
     <string name="customer">Pelanggan</string>
     <string name="search_customer">Cari Pelanggan</string>
-    <string name="select_customer">Pilih Pelanggan</string>
-    <string name="track_customer">Catat Pelanggan</string>
-    <string name="new_customer">Pelanggan Baru</string>
-    <string name="no_customer">Tanpa Pelanggan</string>
+    <string name="select_customer">PILIH PELANGGAN</string>
+    <string name="track_customer">CATAT PELANGGAN</string>
+    <string name="new_customer">PELANGGAN BARU</string>
+    <string name="no_customer">TANPA PELANGGAN</string>
     <string name="search_employee">Cari Karyawan</string>
-    <string name="select_employee">Pilih Karyawan</string>
-    <string name="track_employee">Catat Karyawan</string>
+    <string name="select_employee">PILIH KARYAWAN</string>
+    <string name="track_employee">CATAT KARYAWAN</string>
     <string name="search_locale">Cari Kalender &amp; Mata Uang</string>
-    <string name="select_locale">Pilih Kalender &amp; Mata Uang</string>
-    <string name="track_locale">Catat Kalender &amp; Mata Uang</string>
+    <string name="select_locale">PILIH KALENDER &amp; MATA UANG</string>
+    <string name="track_locale">CATAT KALENDER &amp; MATA UANG</string>
     <string name="no_locale">Tanpa Seting Local</string>
-    <string name="no_employee">Tanpa Karyawan</string>
+    <string name="no_employee">TANPA KARYAWAN</string>
+    <string name="no_delivery">TANPA PENGIRIMAN</string>
     <string name="customer_name">Nama Pelanggan</string>
     <string name="search_product">Cari Produk</string>
-    <string name="select_product">Pilih Produk</string>
-    <string name="no_product">Tanpa Produk</string>
+    <string name="select_product">PILIH PRODUK</string>
+    <string name="search_delivery">Cari Pengiriman</string>
+    <string name="select_delivery">PILIH PENGIRIMAN</string>
+    <string name="no_product">TANPA PRODUK</string>
     <string name="search_product_group">Cari Grup Produk</string>
-    <string name="select_product_group">Pilih Grup Produk</string>
-    <string name="no_product_group">Tanpa Grup Produk</string>
+    <string name="select_product_group">PILIH GRUP PRODUK</string>
+    <string name="no_product_group">TANPA GRUP PRODUK</string>
     <string name="search_supplier">Cari Supplier</string>
-    <string name="select_supplier">Pilih Supplier</string>
-    <string name="no_supplier">Tanpa Supplier</string>
+    <string name="select_supplier">PILIH SUPPLIER</string>
+    <string name="no_supplier">TANPA SUPPLIER</string>
     <string name="search_bill">Cari Nota</string>
-    <string name="select_bill">Pilih Nota</string>
-    <string name="no_bill">Tanpa Nota</string>
+    <string name="select_bill">PILIH NOTA</string>
+    <string name="no_bill">TANPA NOTA</string>
     <string name="search_credit">Cari Piutang</string>
-    <string name="select_credit">Pilih Piutang</string>
-    <string name="no_credit">Tanpa Piutang</string>
+    <string name="select_credit">PILIH PIUTANG</string>
+    <string name="no_credit">TANPA PIUTANG</string>
     <string name="search_transaction">Cari Transaksi</string>
-    <string name="select_transaction">Pilih Transaksi</string>
-    <string name="no_transaction">Tanpa Transaksi</string>
+    <string name="select_transaction">PILIH TRANSAKSI</string>
+    <string name="no_transaction">TANPA TRANSAKSI</string>
     <string name="waitress">Pramusaji</string>
     
     <string name="transaction_daily">Transaksi Harian</string>
     
-    <string name="transaction">Transaksi</string>
-    <string name="transaction_no">No. Transaksi</string>
-    <string name="transaction_date">Tgl. Transaksi</string>
-    <string name="transaction_cashier">Kasir</string>
-    <string name="transaction_list">Daftar Transaksi</string>
-    <string name="transaction_recap">Rekap Transaksi</string>
-    <string name="transaction_total">Total Transaksi</string>
+    <string name="transaction">TRANSAKSI</string>
+    <string name="transaction_no">NO. TRANSAKSI</string>
+    <string name="transaction_date">TGL. TRANSAKSI</string>
+    <string name="transaction_cashier">KASIR</string>
+    <string name="transaction_list">DAFTAR TRANSAKSI</string>
+    <string name="transaction_recap">REKAP TRANSAKSI</string>
+    <string name="transaction_total">TOTAL TRANSAKSI</string>
     
-    <string name="printer_settings">Konfigurasi Printer</string>
+    <string name="printer_settings">KONFIGURASI PRINTER</string>
     
     <string name="font_size_regular">Standar</string>
     <string name="font_size_small">Kecil</string>
@@ -531,6 +551,7 @@
     <string name="alert_demo_account">"Tidak dapat menghapus data di akun demo."</string>
     <string name="alert_product_price_issue">"Harga jual produk sama atau lebih rendah dari harga beli"</string>
     <string name="alert_install_browser">"Mohon install web browser untuk melihat petunjuk penggunaan sistem."</string>
+    <string name="alert_import_invalid_file">"File format tidak valid untuk import info product."</string>
     
     <string name="user_role_cashier">Kasir</string>
 	<string name="user_role_admin">Admin</string>
@@ -559,11 +580,16 @@
     <string name="quantity_type_gram_short">g</string>
     <string name="quantity_type_milliliter_short">ml</string>
 	
-	<string name="payment_type_cash">Tunai</string>
-	<string name="payment_type_debit_card">Kartu Debit</string>
-	<string name="payment_type_credit_card">Kartu Kredit</string>
-	<string name="payment_type_credit">Kredit</string>
-	
+	<string name="payment_type_cash">TUNAI</string>
+	<string name="payment_type_debit_card">KARTU DEBIT</string>
+	<string name="payment_type_credit_card">KARTU KREDIT</string>
+	<string name="payment_type_credit">KREDIT</string>
+
+    <string name="printing_option_no">TANPA NOTA</string>
+    <string name="printing_option_yes_once">CETAK NOTA</string>
+    <string name="printing_option_yes_twice">CETAK 2X</string>
+    <string name="printing_option_send_email">KIRIM EMAIL</string>
+
 	<string name="order_type_dine_in">Makan di Tempat</string>
 	<string name="order_type_take_away">Take Away</string>
 	
@@ -630,6 +656,7 @@
 	<string name="menu_reference_employee">Karyawan</string>	
 	<string name="menu_reference_supplier">Supplier</string>	
 	<string name="menu_reference_discount">Diskon</string>
+    <string name="menu_reference_import_export">Import / Export</string>
 	<string name="menu_printer">Printer</string>
     <string name="menu_reupload">Re-upload</string>
 	<string name="menu_change_password">Ganti Password</string>

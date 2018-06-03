@@ -91,7 +91,8 @@
             android:theme="@android:style/Theme.Dialog"></activity>
         <activity
             android:name="com.tokoku.pos.cashier.CashierActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name="com.tokoku.pos.waitress.WaitressActivity"
             android:launchMode="singleTask"></activity>
@@ -134,12 +135,17 @@
             android:name="com.tokoku.pos.data.discount.DiscountMgtActivity"
             android:launchMode="singleTask"></activity>
         <activity
+            android:name="com.tokoku.pos.data.product.ProductImportExportActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
             android:name="com.tokoku.pos.report.transaction.TransactionActivity"
             android:launchMode="singleTask">
         </activity>
         <activity
             android:name="com.tokoku.pos.report.product.ProductStatisticActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name="com.tokoku.pos.report.inventory.InventoryActivity"
             android:launchMode="singleTask"></activity>

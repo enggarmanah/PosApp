@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.util.Log;
 import android.util.TypedValue;
@@ -41,6 +42,8 @@ import java.io.ByteArrayInputStream;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
+import uk.co.chrisjenx.calligraphy.TypefaceUtils;
+
 @SuppressLint("SimpleDateFormat")
 public class CommonUtil {
 	
@@ -58,6 +61,9 @@ public class CommonUtil {
 
     private static HashMap<String,String> nonStdLangIso3Iso2Map;
     private static HashMap<String,String> nonStdCountryIso3Iso2Map;
+
+    private static Typeface mStdTypeFace;
+    private static Typeface mBoldTypeFace;
 
     static {
 
@@ -409,6 +415,15 @@ public class CommonUtil {
 			return Constant.EMPTY_STRING;
 		} else {
 			return value;
+		}
+	}
+
+	public static String getNvlDate(Date value) {
+
+		if (value == null) {
+			return Constant.EMPTY_STRING;
+		} else {
+			return formatDate(value, "dd/mm/yyyy");
 		}
 	}
 	
@@ -1312,7 +1327,7 @@ public class CommonUtil {
 
 		try {
 
-			file = new File(mContext.getExternalCacheDir(), fileName + ".xls");
+			file = new File(mContext.getExternalCacheDir(), fileName + ".xlsx");
 			os = new FileOutputStream(file);
 			wb.write(os);
 			Log.w("FileUtils", "Writing file" + file);
@@ -1360,4 +1375,22 @@ public class CommonUtil {
 
 		return emailIntent;
 	}
+
+	public static Typeface getStdTypeFace() {
+
+	    if (mStdTypeFace == null) {
+            mStdTypeFace = TypefaceUtils.load(mContext.getAssets(), "fonts/MyriadPro-Regular.otf");
+        }
+
+		return mStdTypeFace;
+	}
+
+    public static Typeface getBoldTypeFace() {
+
+        if (mBoldTypeFace == null) {
+            mBoldTypeFace = TypefaceUtils.load(mContext.getAssets(), "fonts/MyriadPro-Regular.otf");
+        }
+
+        return mBoldTypeFace;
+    }
 }

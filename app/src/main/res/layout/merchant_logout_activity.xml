@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:layout_marginBottom="20dp">
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             style="@style/PopUpDialogHeaderStyle"
             android:layout_width="fill_parent"
             android:gravity="start|center_vertical"
@@ -23,15 +23,15 @@
     <LinearLayout
         style="@style/FormRowStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             style="@style/FormTextFirstLetterStyle"
             android:text="@string/field_password_fl" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             style="@style/FormTextStyle"
             android:text="@string/field_password"/>
 
-        <EditText
+        <com.tokoku.pos.common.BoldEditText
             android:id="@+id/passwordText"
             style="@style/FormInputPasswordStyle" />
     </LinearLayout>
@@ -39,17 +39,17 @@
     <LinearLayout style="@style/CashierNumberRowStyle"
          android:layout_marginTop="20dp">
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/okBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/ok" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:layout_width="0.5dp"
             android:layout_height="fill_parent"
             android:background="#AAA" />
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/cancelBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/cancel" />

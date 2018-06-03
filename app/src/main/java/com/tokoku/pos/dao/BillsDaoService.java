@@ -30,6 +30,8 @@ public class BillsDaoService {
 	private BillsDao billsDao = DbUtil.getSession().getBillsDao();
 	private InventoryDao inventoryDao = DbUtil.getSession().getInventoryDao();
 	private CashflowDao cashflowDao = DbUtil.getSession().getCashflowDao();
+
+	private InventoryDaoService inventoryDaoService = new InventoryDaoService();
 	
 	public void addBills(Bills bills) {
 		
@@ -38,16 +40,54 @@ public class BillsDaoService {
 		}
 		
 		billsDao.insert(bills);
+
+        // linked from delivery no
+        if (!CommonUtil.isEmpty(bills.getDeliveryNo())) {
+
+            List<Inventory> inventories = inventoryDaoService.getInventories(bills.getDeliveryNo(), bills.getDeliveryDate());
+
+            for (Inventory i : inventories) {
+                i.setBills(bills);
+                i.setBillId(bills.getId());
+                i.setBillReferenceNo(bills.getBillReferenceNo());
+                i.setUploadStatus(Constant.STATUS_YES);
+                inventoryDao.update(i);
+            }
+        }
 	}
 	
 	public void updateBills(Bills bills) {
 		
 		billsDao.update(bills);
-		
-		for (Inventory i : bills.getInventoryList()) {
-			i.setBillReferenceNo(bills.getBillReferenceNo());
-			i.setUploadStatus(Constant.STATUS_YES);
-			inventoryDao.update(i);
+
+		// linked from delivery no
+		if (!CommonUtil.isEmpty(bills.getDeliveryNo())) {
+
+            for (Inventory i : bills.getInventoryList()) {
+                i.setBills(null);
+                i.setBillId(null);
+                i.setBillReferenceNo(null);
+                i.setUploadStatus(Constant.STATUS_YES);
+                inventoryDao.update(i);
+            }
+
+            List<Inventory> inventories = inventoryDaoService.getInventories(bills.getDeliveryNo(), bills.getDeliveryDate());
+
+            for (Inventory i : inventories) {
+                i.setBills(bills);
+                i.setBillId(bills.getId());
+                i.setBillReferenceNo(bills.getBillReferenceNo());
+                i.setUploadStatus(Constant.STATUS_YES);
+                inventoryDao.update(i);
+            }
+
+        // linked from inventory by selecting the invoice
+		} else {
+			for (Inventory i : bills.getInventoryList()) {
+				i.setBillReferenceNo(bills.getBillReferenceNo());
+				i.setUploadStatus(Constant.STATUS_YES);
+				inventoryDao.update(i);
+			}
 		}
 	}
 	
@@ -83,7 +123,7 @@ public class BillsDaoService {
 				+ " FROM bills "
 				+ " WHERE (bill_reference_no like ? OR supplier_name like ? OR remarks like ? ) AND status <> ? "
 				+ " ORDER BY "
-				+ "   bill_date DESC"
+				+ "   bill_date DESC, _id DESC "
 				+ " LIMIT ? OFFSET ? ",
 				new String[] { queryStr, queryStr, queryStr, status, limit, lastIdx});
 		
@@ -114,7 +154,7 @@ public class BillsDaoService {
 				+ " FROM bills "
 				+ " WHERE (bill_reference_no like ? OR supplier_name like ? OR remarks like ? ) AND bill_type = ? AND status <> ? "
 				+ " ORDER BY "
-				+ "   bill_date DESC"
+				+ "   bill_date DESC, _id DESC "
 				+ " LIMIT ? OFFSET ? ",
 				new String[] { queryStr, queryStr, queryStr, billType, status, limit, lastIdx});
 		

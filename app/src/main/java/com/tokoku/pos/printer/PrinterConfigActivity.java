@@ -23,6 +23,7 @@ import android.widget.Spinner;
 public class PrinterConfigActivity extends BasePopUpActivity {
 
 	EditText mPrinterLineSizeText;
+	EditText mPrinterFooterText;
 
 	Spinner mPrinterRequiredSp;
 	Spinner mPrinterFontSizeSp;
@@ -43,7 +44,7 @@ public class PrinterConfigActivity extends BasePopUpActivity {
 		
 		setTheme(android.R.style.Theme_Holo_Light_Dialog);
 		
-		setContentView(R.layout.printer_select_activity);
+		setContentView(R.layout.printer_config_activity);
 		
 		setFinishOnTouchOutside(false);
 	}
@@ -54,6 +55,7 @@ public class PrinterConfigActivity extends BasePopUpActivity {
 		super.onStart();
 
 		mPrinterLineSizeText = (EditText) findViewById(R.id.printerLineSizeText);
+		mPrinterFooterText = (EditText) findViewById(R.id.printerFooterText);
 
 		mPrinterRequiredSp = (Spinner) findViewById(R.id.printerRequiredSp);
 		mPrinterFontSizeSp = (Spinner) findViewById(R.id.printerFontSizeSp);
@@ -76,6 +78,7 @@ public class PrinterConfigActivity extends BasePopUpActivity {
 		int printerMiniFontIndex = printerFontSizeArrayAdapter.getPosition(merchant.getPrinterMiniFont());
 
 		mPrinterLineSizeText.setText(CommonUtil.formatString(merchant.getPrinterLineSize()));
+		mPrinterFooterText.setText(merchant.getPrinterFooter());
 
 		mPrinterRequiredSp.setSelection(printerRequiredIndex);
 		mPrinterFontSizeSp.setSelection(printerMiniFontIndex);
@@ -102,10 +105,12 @@ public class PrinterConfigActivity extends BasePopUpActivity {
 					String printerRequired = CodeBean.getNvlCode((CodeBean) mPrinterRequiredSp.getSelectedItem());
 			    	String printerMiniFont = CodeBean.getNvlCode((CodeBean) mPrinterFontSizeSp.getSelectedItem());
 			    	Integer printerLineSize = CommonUtil.parseInteger(mPrinterLineSizeText.getText().toString());
+			    	String printerFooter = mPrinterFooterText.getText().toString();
 					
 			    	merchant.setPrinterRequired(printerRequired);
 			    	merchant.setPrinterMiniFont(printerMiniFont);
 					merchant.setPrinterLineSize(printerLineSize);
+					merchant.setPrinterFooter(printerFooter);
 					
 					PrintUtil.setPrinterLineSize(MerchantUtil.getMerchant().getPrinterLineSize());
 					

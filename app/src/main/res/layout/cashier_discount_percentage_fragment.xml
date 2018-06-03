@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:orientation="vertical">
     
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:layout_height="50dp"
         android:layout_width="300dp"
         android:textSize="@dimen/dialog_header"
@@ -14,7 +14,7 @@
         android:background="@color/dialog_header_background"
         android:gravity="center"
         android:text="@string/select_discount">
-	</TextView>
+	</com.tokoku.pos.common.BoldTextView>
     
     <ListView
         android:id="@+id/discountListView"
@@ -23,7 +23,7 @@
         
     </ListView>
     
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         android:id="@+id/noDiscountText"
         android:layout_height="50dp"
         android:layout_width="fill_parent"
@@ -34,6 +34,6 @@
         android:gravity="center"
         android:text="@string/no_discount">
        
-    </TextView>
+    </com.tokoku.pos.common.BoldTextView>
     
 </LinearLayout>

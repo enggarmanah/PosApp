@@ -7,6 +7,9 @@ import com.tokoku.pos.R;
 import com.android.pos.dao.Bills;
 import com.android.pos.dao.Supplier;
 import com.tokoku.pos.base.activity.BaseItemMgtActivity;
+import com.tokoku.pos.model.Delivery;
+import com.tokoku.pos.popup.search.DeliveryDlgFragment;
+import com.tokoku.pos.popup.search.DeliverySelectionListener;
 import com.tokoku.pos.popup.search.SupplierDlgFragment;
 import com.tokoku.pos.popup.search.SupplierSelectionListener;
 
@@ -14,14 +17,16 @@ import android.os.Bundle;
 import android.view.View;
 
 public class BillsMgtActivity extends BaseItemMgtActivity<BillsSearchFragment, BillsEditFragment, Bills> 
-	implements SupplierSelectionListener {
+	implements SupplierSelectionListener, DeliverySelectionListener {
 	
 	List<Bills> mBills;
 	Bills mSelectedBills;
 	
 	private SupplierDlgFragment mSupplierDlgFragment;
+    private DeliveryDlgFragment mDeliveryDlgFragment;
 	
 	private static String mSupplierDlgFragmentTag = "mSupplierDlgFragmentTag";
+    private static String mDeliveryDlgFragmentTag = "mDeliveryDlgFragmentTag";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,12 @@ public class BillsMgtActivity extends BaseItemMgtActivity<BillsSearchFragment, B
 		if (mSupplierDlgFragment == null) {
 			mSupplierDlgFragment = new SupplierDlgFragment();
 		}
+
+        mDeliveryDlgFragment = (DeliveryDlgFragment) getFragmentManager().findFragmentByTag(mDeliveryDlgFragmentTag);
+
+        if (mDeliveryDlgFragment == null) {
+            mDeliveryDlgFragment = new DeliveryDlgFragment();
+        }
 	}
 	
 	@Override
@@ -190,9 +201,24 @@ public class BillsMgtActivity extends BaseItemMgtActivity<BillsSearchFragment, B
 		mSupplierDlgFragment.setMandatory(isMandatory);
 		mSupplierDlgFragment.show(getFragmentManager(), mSupplierDlgFragmentTag);
 	}
+
+	public void onSelectDelivery(boolean isMandatory) {
+
+		if (mDeliveryDlgFragment.isAdded()) {
+			return;
+		}
+
+        mDeliveryDlgFragment.setMandatory(isMandatory);
+        mDeliveryDlgFragment.show(getFragmentManager(), mDeliveryDlgFragmentTag);
+	}
 	
 	public void onSupplierSelected(Supplier supplier) {
 		
 		mEditFragment.setSupplier(supplier);
 	}
+
+    public void onDeliverySelected(Delivery delivery) {
+
+        mEditFragment.setDelivery(delivery);
+    }
 }

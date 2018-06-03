@@ -145,6 +145,7 @@ public class BeanUtil {
 		bean.setCreate_date(merchant.getCreateDate());
 		bean.setUpdate_by(merchant.getUpdateBy());
 		bean.setUpdate_date(merchant.getUpdateDate());
+		bean.setPrinter_footer(merchant.getPrinterFooter());
 		
 		return bean;
 	}
@@ -198,6 +199,7 @@ public class BeanUtil {
 		merchant.setCreateDate(bean.getCreate_date());
 		merchant.setUpdateBy(bean.getUpdate_by());
 		merchant.setUpdateDate(bean.getUpdate_date());
+		merchant.setPrinterFooter(bean.getPrinter_footer());
 	}
 	
 	public static EmployeeBean getBean(Employee employee) {
@@ -545,6 +547,7 @@ public class BeanUtil {
 		bean.setCreate_date(inventory.getCreateDate());
 		bean.setUpdate_by(inventory.getUpdateBy());
 		bean.setUpdate_date(inventory.getUpdateDate());
+		bean.setDelivery_no(inventory.getDeliveryNo());
 		
 		return bean;
 	}
@@ -570,6 +573,7 @@ public class BeanUtil {
 		inventory.setCreateDate(bean.getCreate_date());
 		inventory.setUpdateBy(bean.getUpdate_by());
 		inventory.setUpdateDate(bean.getUpdate_date());
+		inventory.setDeliveryNo(bean.getDelivery_no());
 	}
 	
 	public static BillsBean getBean(Bills bills) {
@@ -598,6 +602,8 @@ public class BeanUtil {
 		bean.setCreate_date(bills.getCreateDate());
 		bean.setUpdate_by(bills.getUpdateBy());
 		bean.setUpdate_date(bills.getUpdateDate());
+
+		bean.setDelivery_no(bills.getDeliveryNo());
 		
 		return bean;
 	}
@@ -627,6 +633,8 @@ public class BeanUtil {
 		bills.setCreateDate(bean.getCreate_date());
 		bills.setUpdateBy(bean.getUpdate_by());
 		bills.setUpdateDate(bean.getUpdate_date());
+
+		bills.setDeliveryNo(bean.getDelivery_no());
 	}
 	
 	public static CashflowBean getBean(Cashflow cashflow) {

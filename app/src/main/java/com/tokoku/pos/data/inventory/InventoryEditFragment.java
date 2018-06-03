@@ -9,6 +9,7 @@ import com.android.pos.dao.Product;
 import com.android.pos.dao.Supplier;
 import com.tokoku.pos.CodeBean;
 import com.tokoku.pos.Constant;
+import com.tokoku.pos.Session;
 import com.tokoku.pos.base.adapter.CodeSpinnerArrayAdapter;
 import com.tokoku.pos.base.fragment.BaseEditFragment;
 import com.tokoku.pos.base.listener.BaseItemListener;
@@ -40,12 +41,14 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 	EditText mProductNameText;
 	EditText mProductCostPriceText;
 	EditText mQuantityText;
-    EditText mBillsReferenceNoText;
+	EditText mDeliveryNoText;
+	EditText mBillsReferenceNoText;
     EditText mSupplierNameText;
     EditText mInventoryDate;
     EditText mRemarksText;
     
     LinearLayout mProductCostPricePanel;
+    LinearLayout mDeliveryNoPanel;
     LinearLayout mBillsReferenceNoPanel;
     LinearLayout mSupplierPanel;
     LinearLayout mRemarksPanel;
@@ -104,12 +107,14 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     	mProductNameText = (EditText) view.findViewById(R.id.productNameText);
     	mProductCostPriceText = (EditText) view.findViewById(R.id.productCostPriceText);
     	mQuantityText = (EditText) view.findViewById(R.id.quantityText);
+		mDeliveryNoText = (EditText) view.findViewById(R.id.deliveryNoText);
     	mBillsReferenceNoText = (EditText) view.findViewById(R.id.billsReferenceNoText);
     	mSupplierNameText = (EditText) view.findViewById(R.id.supplierNameText);
     	mInventoryDate = (EditText) view.findViewById(R.id.inventoryDate);
     	mRemarksText = (EditText) view.findViewById(R.id.remarksText);
     	
     	mProductCostPricePanel = (LinearLayout) view.findViewById(R.id.productCostPricePanel);
+        mDeliveryNoPanel = (LinearLayout) view.findViewById(R.id.deliveryNoPanel);
     	mBillsReferenceNoPanel = (LinearLayout) view.findViewById(R.id.billReferenceNoPanel);
     	mSupplierPanel = (LinearLayout) view.findViewById(R.id.supplierPanel);
         mRemarksPanel = (LinearLayout) view.findViewById(R.id.remarksPanel);
@@ -118,6 +123,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     	registerField(mProductNameText);
     	registerField(mProductCostPriceText);
     	registerField(mQuantityText);
+		registerField(mDeliveryNoText);
     	registerField(mBillsReferenceNoText);
     	registerField(mSupplierNameText);
     	registerField(mInventoryDate);
@@ -158,6 +164,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     		mProductNameText.setText(inventory.getProductName());
     		mProductCostPriceText.setText(CommonUtil.formatCurrency(inventory.getProductCostPrice()));
     		mQuantityText.setText(inventory.getQuantity() == null ? Constant.EMPTY_STRING : CommonUtil.formatNumber(Math.abs(inventory.getQuantity())));
+    		mDeliveryNoText.setText(inventory.getDeliveryNo());
     		mBillsReferenceNoText.setText(inventory.getBillReferenceNo());
     		mSupplierNameText.setText(inventory.getSupplierName());
     		mInventoryDate.setText(CommonUtil.formatDate(inventory.getInventoryDate()));
@@ -184,6 +191,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     	String productName = mProductNameText.getText().toString();
     	Float productCostPrice = CommonUtil.parseFloatCurrency(mProductCostPriceText.getText().toString());
     	Float quantity = CommonUtil.parseFloatNumber(mQuantityText.getText().toString());
+    	String deliveryNo = mDeliveryNoText.getText().toString();
     	String billReferenceNo = mBillsReferenceNoText.getText().toString();
     	String supplierName = mSupplierNameText.getText().toString();
     	Date deliveryDate = CommonUtil.parseDate(mInventoryDate.getText().toString());
@@ -210,7 +218,8 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     				mItem.setQuantity(-quantity);
     			}
     		}
-     		
+
+            mItem.setDeliveryNo(deliveryNo);
     		mItem.setBillReferenceNo(billReferenceNo);
     		mItem.setSupplierName(supplierName);
     		mItem.setInventoryDate(deliveryDate);
@@ -244,10 +253,13 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
         
         mProductNameText.getText().clear();
         mQuantityText.getText().clear();
+        mDeliveryNoText.getText().clear();
         mBillsReferenceNoText.getText().clear();
         mSupplierNameText.getText().clear();
         mInventoryDate.getText().clear();
         mRemarksText.getText().clear();
+
+        Session.setInventory(mItem);
         
         mItem = null;
         
@@ -267,7 +279,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 	    	product.setCostPrice(mItem.getProductCostPrice());
 	    	mProductDaoService.updateProduct(product);
     	}
-    	
+
     	return true;
     }
     
@@ -295,7 +307,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     			
     			mItem.setProductId(product.getId());
     			mItem.setProductName(product.getName());
-    			mItem.setProductCostPrice(product.getCostPrice());
+    			//mItem.setProductCostPrice(product.getCostPrice());
     			
     		} else {
     			
@@ -357,6 +369,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     private void refreshVisibleField() {
     	
     	mProductCostPricePanel.setVisibility(View.VISIBLE);
+    	mDeliveryNoPanel.setVisibility(View.VISIBLE);
     	mBillsReferenceNoPanel.setVisibility(View.VISIBLE);
     	mSupplierPanel.setVisibility(View.VISIBLE);
 		mRemarksPanel.setVisibility(View.VISIBLE);
@@ -367,12 +380,13 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 			
 			mandatoryFields.add(new FormFieldBean(mProductNameText, R.string.field_product));
 	    	mandatoryFields.add(new FormFieldBean(mQuantityText, R.string.field_quantity));
-	    	mandatoryFields.add(new FormFieldBean(mBillsReferenceNoText, R.string.field_bills_reference_no));
+	    	//mandatoryFields.add(new FormFieldBean(mBillsReferenceNoText, R.string.field_bills_reference_no));
 	    	mandatoryFields.add(new FormFieldBean(mInventoryDate, R.string.field_delivery_date));
 		
 		} else if (Constant.INVENTORY_STATUS_REFUND.equals(mStatus)) {
 			
 			mProductCostPricePanel.setVisibility(View.GONE);
+            mDeliveryNoPanel.setVisibility(View.GONE);
 			mBillsReferenceNoPanel.setVisibility(View.GONE);
 			mSupplierPanel.setVisibility(View.GONE);
 			
@@ -401,6 +415,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 		} else if (Constant.INVENTORY_STATUS_LOST.equals(mStatus)) {
 			
 			mProductCostPricePanel.setVisibility(View.GONE);
+            mDeliveryNoPanel.setVisibility(View.GONE);
 			mBillsReferenceNoPanel.setVisibility(View.GONE);
 			mSupplierPanel.setVisibility(View.GONE);
 			
@@ -411,6 +426,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 		} else if (Constant.INVENTORY_STATUS_DAMAGE.equals(mStatus)) {
 			
 			mProductCostPricePanel.setVisibility(View.GONE);
+            mDeliveryNoPanel.setVisibility(View.GONE);
 			mBillsReferenceNoPanel.setVisibility(View.GONE);
 			mSupplierPanel.setVisibility(View.GONE);
 			
@@ -422,6 +438,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 				    Constant.INVENTORY_STATUS_SELF_PRODUCTION.equals(mStatus)) {
 			
 			mProductCostPricePanel.setVisibility(View.GONE);
+            mDeliveryNoPanel.setVisibility(View.GONE);
 			mBillsReferenceNoPanel.setVisibility(View.GONE);
 			mSupplierPanel.setVisibility(View.GONE);
 			
@@ -443,6 +460,33 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
 		    	mStatus = CodeBean.getNvlCode((CodeBean) mStatusSp.getSelectedItem());
 		    	
 		    	refreshVisibleField();
+
+		    	boolean isAdd = mItem == null || mItem.getId() == null;
+
+		    	if (isAdd) {
+                    if (Constant.INVENTORY_STATUS_PURCHASE.equals(mStatus)) {
+
+                        Inventory prevPurchasedInventory = Session.getInventory();
+
+                        if (prevPurchasedInventory != null) {
+
+                            mItem.setDeliveryNo(prevPurchasedInventory.getDeliveryNo());
+                            mItem.setInventoryDate(prevPurchasedInventory.getInventoryDate());
+                            mItem.setBills(prevPurchasedInventory.getBills());
+                            mItem.setBillReferenceNo(prevPurchasedInventory.getBillReferenceNo());
+                            mItem.setSupplierName(prevPurchasedInventory.getSupplierName());
+                        }
+                    } else {
+
+                        mItem.setDeliveryNo(null);
+                        mItem.setInventoryDate(null);
+                        mItem.setBills(null);
+                        mItem.setBillReferenceNo(null);
+                        mItem.setSupplierName(null);
+                    }
+
+                    updateView(mItem);
+                }
 		    }
 
 			@Override

@@ -33,7 +33,8 @@ public class MerchantDaoService {
 	}
 	
 	public void updateMerchant(Merchant merchant) {
-		
+
+		merchant.setUploadStatus(Constant.STATUS_YES);
 		merchantDao.update(merchant);
 	}
 	

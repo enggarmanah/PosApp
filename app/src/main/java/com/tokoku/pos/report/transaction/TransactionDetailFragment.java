@@ -178,7 +178,7 @@ public class TransactionDetailFragment extends BaseFragment implements Transacti
 			return;
 		}
 		
-		mDateText.setText(CommonUtil.formatDayDateTime(mTransaction.getTransactionDate()));
+		mDateText.setText(CommonUtil.formatDayDateTime(mTransaction.getTransactionDate()).toUpperCase());
 		mTitleText.setText(CommonUtil.formatCurrency(mTransaction.getTotalAmount()));
 		
 		mTransactionNoText.setText(mTransaction.getTransactionNo());

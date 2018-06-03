@@ -15,7 +15,7 @@
 		        style="@style/SectionBackButtonStyle"
 		        android:contentDescription="@string/none" />
 		
-		    <TextView
+		    <com.tokoku.pos.common.BoldTextView
 		        android:id="@+id/customerNameText"
 		        style="@style/SectionTopTextStyle"
 		        android:gravity="start|center_vertical"
@@ -36,11 +36,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_first_trans" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/firstTransactionText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
@@ -49,11 +49,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_last_trans" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/lastTransactionText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
@@ -62,17 +62,17 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_average" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/averageTransactionText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
         </LinearLayout>
 		
-        <TextView style="@style/SectionDividerStyle" />
+        <com.tokoku.pos.common.BoldTextView style="@style/SectionDividerStyle" />
         
         <LinearLayout
             style="@style/SectionContentPanelStyle"
@@ -82,11 +82,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_transaction" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/transactionCountText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
@@ -95,11 +95,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_product" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/productCountText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
@@ -108,17 +108,17 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_total" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/totalAmountText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
         </LinearLayout>
 		
-        <TextView style="@style/SectionDividerStyle" />
+        <com.tokoku.pos.common.BoldTextView style="@style/SectionDividerStyle" />
         
         <LinearLayout
             style="@style/SectionContentPanelStyle"
@@ -128,11 +128,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_min_trans" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/minTransactionText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
@@ -141,11 +141,11 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_max_trans" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/maxTransactionText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
@@ -154,17 +154,17 @@
                 style="@style/SectionSubContentPanelStyle"
                 android:layout_weight="1" >
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     style="@style/SectionSubCashFlowContentLabelTextStyle"
                     android:text="@string/favorite_customer_average" />
 
-                <TextView
+                <com.tokoku.pos.common.BoldTextView
                     android:id="@+id/averageAmountText"
                     style="@style/SectionSubCashFlowContentInfoTextStyle" />
             </LinearLayout>
         </LinearLayout>
 		
-        <TextView style="@style/SectionDividerStyle" />
+        <com.tokoku.pos.common.BoldTextView style="@style/SectionDividerStyle" />
         
         <LinearLayout
             style="@style/SectionContentPanelStyle"
@@ -174,26 +174,26 @@
             android:paddingRight="11dp"
             android:paddingEnd="11dp">
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
             	style="@style/SectionSubFavoriteTitleTextStyle"
                 android:text="@string/favorite_customer_category"
                 android:gravity="center_vertical|start"
                 android:layout_weight="2"/>
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
             	style="@style/SectionSubFavoriteTitleTextStyle"
                 android:text="@string/favorite_customer_quantity"
                 android:gravity="center_vertical|end"
                 android:layout_weight="1"/>
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
             	style="@style/SectionSubFavoriteTitleTextStyle"
                 android:text="@string/favorite_customer_amount"
                 android:gravity="center_vertical|end"
                 android:layout_weight="2"/>	
         </LinearLayout>
         
-        <TextView style="@style/SectionDividerStyle" />
+        <com.tokoku.pos.common.BoldTextView style="@style/SectionDividerStyle" />
         
     </LinearLayout>
 

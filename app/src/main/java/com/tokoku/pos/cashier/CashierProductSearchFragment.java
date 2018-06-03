@@ -131,7 +131,7 @@ public class CashierProductSearchFragment extends BaseFragment
 	private void refreshNavigationPanel() {
 		
 		if (mSelectedPrdGroup != null) {
-			mNavigationTitle.setText(mSelectedPrdGroup.getName());
+			mNavigationTitle.setText(mSelectedPrdGroup.getName().toUpperCase());
 			mBackButton.setVisibility(View.VISIBLE);
 		
 		} else if (mSearchQuery != null) {

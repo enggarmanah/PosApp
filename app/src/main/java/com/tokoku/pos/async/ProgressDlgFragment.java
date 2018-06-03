@@ -1,5 +1,6 @@
 package com.tokoku.pos.async;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,6 +16,11 @@ import com.tokoku.pos.Constant;
 import com.tokoku.pos.util.NotificationUtil;
 
 public class ProgressDlgFragment extends DialogFragment {
+
+	public interface ProgressListener {
+
+		void onCancel();
+	}
 	
 	private static final String PROGRESS_PERCENTAGE = "PROGRESS_PERCENTAGE";
 	private static final String PROGRESS_MESSAGE = "PROGRESS_MESSAGE";
@@ -26,7 +32,8 @@ public class ProgressDlgFragment extends DialogFragment {
 	int mProgress = 0;
 	
 	private boolean miShowCancellationMessage = true;
-	
+	private ProgressListener progressListener;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -95,6 +102,11 @@ public class ProgressDlgFragment extends DialogFragment {
 			});
 		}
 	}
+
+	public void setProgressListener(ProgressListener listener) {
+
+	    progressListener = listener;
+    }
 	
 	public void setProgress(int progress) {
 		
@@ -135,4 +147,13 @@ public class ProgressDlgFragment extends DialogFragment {
 		
 		miShowCancellationMessage = isShowCancellationMessage;
 	}
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+
+	    super.onDismiss(dialog);
+        if (progressListener != null) {
+            progressListener.onCancel();
+        }
+    }
 }

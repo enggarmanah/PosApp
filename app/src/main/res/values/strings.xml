@@ -60,24 +60,36 @@
     <string name="info_profit">Profit</string>
     
     <string name="empty"></string>
-    <string name="search">Search</string>
-    <string name="add">Add</string>
-    <string name="alert">Alert</string>
-    <string name="notification">Notification</string>
+    <string name="search">SEARCH</string>
+    <string name="add">ADD</string>
+    <string name="alert">ALERT</string>
+    <string name="notification">NOTIFICATION</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    <string name="delete">Delete</string>
-    <string name="edit">Edit</string>
-    <string name="select">Select</string>
-    <string name="confirmation">Confirmation</string>
-    <string name="save">Save&#160;</string>
-    <string name="select_printer">Select Printer</string>
-    <string name="remarks">Remarks</string>
+    <string name="cancel">CANCEL</string>
+    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
+    <string name="select">SELECT</string>
+    <string name="confirmation">CONFIRMATION</string>
+    <string name="save">SAVE&#160;</string>
+    <string name="select_printer">SELECT PRINTER</string>
+    <string name="remarks">REMARKS</string>
     <string name="none"></string>
+    <string name="price">PRICE</string>
+
+    <string name="receipt">Receipt</string>
+
+    <string name="import_excel">IMPORT PRODUCT</string>
+    <string name="export_excel">EXPORT PRODUCT</string>
+
+    <string name="import_add_product">Register %1$s</string>
+    <string name="import_update_product">Update %1$s</string>
+    <string name="import_product">Import product</string>
+    <string name="export_product">Export product</string>
     
     <string name="sync">Sync</string>
     <string name="exit">Exit</string>
     <string name="logout">Logout</string>
+    <string name="refresh">Refresh</string>
 
     <string name="status_active">Active</string>
     <string name="status_inactive">Inactive</string>
@@ -93,6 +105,7 @@
     
     <string name="product_type_goods">Goods</string>
     <string name="product_type_service">Service</string>
+    <string name="product_type_non_goods_n_service">Non Goods &amp; Service</string>
     
     <string name="fnb_product_type_purchased">Purchased</string>
     <string name="fnb_product_type_self_made">Self Made</string>
@@ -109,10 +122,10 @@
     <string name="order_type_before_payment">Before Payment</string>
     <string name="order_type_after_payment">After Payment</string>
     
-    <string name="product_search">Product Search</string>
-    <string name="product_list">Product List</string>
-    <string name="product_add">Add Product</string>
-    <string name="product_group_list">Product Category</string>
+    <string name="product_search">PRODUCT SEARCH</string>
+    <string name="product_list">PRODUCT LIST</string>
+    <string name="product_add">ADD PRODUCT</string>
+    <string name="product_group_list">PRODUCT CATEGORY</string>
     
     <string name="product_stock_alert">Stock Below Limit</string>
     <string name="bill_pastdue_alert">Bill Past Due</string>
@@ -222,6 +235,8 @@
     <string name="field_quantity_fl">T</string>
     <string name="field_bills_reference_no">Bill No.</string>
     <string name="field_bills_reference_no_fl">B</string>
+    <string name="field_delivery_no">Delivery No.</string>
+    <string name="field_delivery_no_fl">D</string>
     <string name="field_supplier">Supplier</string>
     <string name="field_supplier_fl">S</string>
     <string name="field_delivery_date">Delivery Date</string>
@@ -254,6 +269,8 @@
     <string name="field_printer_font_fl">F</string>
     <string name="field_printer_line_size">Text / Line</string>
     <string name="field_printer_line_size_fl">T</string>
+    <string name="field_printer_footer">Footer</string>
+    <string name="field_printer_footer_fl">F</string>
     <string name="field_discount_type">Type</string>
     <string name="field_discount_type_fl">T</string>
     <string name="field_order_type">Order Type</string>
@@ -287,13 +304,13 @@
     <string name="favorite_supplier_quantity">Quantity</string>
     <string name="favorite_supplier_amount">Amount</string>
     
-    <string name="report_sale_count">Quantity</string>
-    <string name="report_sale_income">Revenue</string>
-	<string name="report_sale_profit">Profit</string>
+    <string name="report_sale_count">QUANTITY</string>
+    <string name="report_sale_income">REVENUE</string>
+	<string name="report_sale_profit">PROFIT</string>
 	    
-    <string name="report_inventory_product">Product</string>
-    <string name="report_inventory_product_stock">Stock</string>
-   	<string name="report_inventory_stock">"Total : %1$s"</string>
+    <string name="report_inventory_product">PRODUCT</string>
+    <string name="report_inventory_product_stock">STOCK</string>
+   	<string name="report_inventory_stock">"TOTAL: %1$s"</string>
    	
    	<string name="report_credit_title">Credit</string>
     <string name="report_credit_date">Date</string>
@@ -318,7 +335,7 @@
     <string name="report_cashflow_service_charge_amount">Service Charge</string>
     <string name="report_cashflow_expense">Expense</string>
     
-    <string name="report_bill">Bills</string>
+    <string name="report_bill">BILLS</string>
     <string name="report_bill_pastdue">Past Due</string>
     <string name="report_bill_supplier">Supplier</string>
     <string name="report_bill_duedate">Due Date</string>
@@ -335,12 +352,12 @@
 
     <string name="report_bill_outstanding_title">Outstanding Bill</string>
     
-    <string name="report_commision">Commission</string>
+    <string name="report_commision">COMMISSION</string>
     
     <string name="hint_percentage">Percentage %</string>
     <string name="hint_cost_price">Cost Price</string>  
     
-    <string name="count">Total</string>
+    <string name="count">TOTAL</string>
     <string name="number_0">0</string>
     <string name="number_1">1</string>
     <string name="number_2">2</string>
@@ -355,15 +372,16 @@
     <string name="delete_char">X</string>
 
     <string name="total_items">Item: </string>
-    
-    <string name="total">Total</string>
-    <string name="email">Email</string>
-    <string name="payment">Payment</string>
-    <string name="payment_type">Type</string>
-    <string name="change">Return</string>
-    <string name="order">Order</string>
-    <string name="print">Print Receipt</string>
-    <string name="transaction_items">Transaction Items</string>
+
+    <string name="date">DATE</string>
+    <string name="total">TOTAL</string>
+    <string name="email">EMAIL</string>
+    <string name="payment">PAYMENT</string>
+    <string name="payment_type">TYPE</string>
+    <string name="change">RETURN</string>
+    <string name="order">ORDER</string>
+    <string name="print">PRINT RECEIPT</string>
+    <string name="transaction_items">TRANSACTION ITEMS</string>
     
     <string name="reservation_no">Order No.</string>
     
@@ -382,66 +400,69 @@
     <string name="product_short">Prd</string>
     <string name="item">Item</string>
     
-    <string name="select_discount">Select Discount</string>
-    <string name="discount">Discount</string>
-    <string name="no_discount">No Discount</string>
-    <string name="tax">Tax</string>
-    <string name="service_charge">Service Charge</string>
+    <string name="select_discount">SELECT DISCOUNT</string>
+    <string name="discount">DISCOUNT</string>
+    <string name="no_discount">NO DISCOUNT</string>
+    <string name="tax">TAX</string>
+    <string name="service_charge">SERVICE CHARGE</string>
     
     <string name="order_table_no_add_on">"Order Add On : %1$s"</string>
     <string name="order_customer_add_on">"Customer Add On : %1$s"</string>
-  	<string name="order_transaction_list">"Transaction Items"</string>
+  	<string name="order_transaction_list">TRANSACTION ITEMS</string>
   	<string name="order_order_list">"Order List"</string>
     
-    <string name="transaction_summary">Transaction Confirmation</string>
-    <string name="order_summary">Order Confirmation</string>
+    <string name="transaction_summary">TRANSACTION CONFIRMATION</string>
+    <string name="order_summary">ORDER CONFIRMATION</string>
     
     <string name="customer">Customer</string>
     <string name="search_customer">Search Customer</string>
-    <string name="select_customer">Select Customer</string>
-    <string name="track_customer">Select Customer</string>
-    <string name="no_customer">No Customer</string>
-    <string name="new_customer">New Customer</string>
+    <string name="select_customer">SELECT CUSTOMER</string>
+    <string name="track_customer">SELECT CUSTOMER</string>
+    <string name="no_customer">NO CUSTOMER</string>
+    <string name="new_customer">NEW CUSTOMER</string>
     <string name="search_employee">Search Employee</string>
-    <string name="select_employee">Select Employee</string>
-    <string name="track_employee">Select Employee</string>
-    <string name="no_employee">No Employee</string>
+    <string name="select_employee">SELECT EMPLOYEE</string>
+    <string name="track_employee">SELECT EMPLOYEE</string>
+    <string name="no_employee">NO EMPLOYEE</string>
     <string name="search_locale">Search Calendar &amp; Currency</string>
-    <string name="select_locale">Select Calendar &amp; Currency</string>
-    <string name="track_locale">Select Calendar &amp; Currency</string>
-    <string name="no_locale">No Local Setting</string>
+    <string name="select_locale">SELECT CALENDAR &amp; CURRENCY</string>
+    <string name="track_locale">SELECT CALENDAR &amp; CURRENCY</string>
+    <string name="no_locale">NO LOCAL SETTING</string>
     <string name="customer_name">Customer Name</string>
     <string name="search_product">Search Product</string>
-    <string name="select_product">Select Product</string>
-    <string name="no_product">No Product</string>
+    <string name="select_product">SELECT PRODUCT</string>
+    <string name="search_delivery">Search Delivery</string>
+    <string name="select_delivery">SELECT DELIVERY</string>
+    <string name="no_delivery">NO DELIVERY</string>
+    <string name="no_product">NO PRODUCT</string>
     <string name="search_product_group">Search Product Group</string>
-    <string name="select_product_group">Select Product Group</string>
-    <string name="no_product_group">No Product Group</string>
+    <string name="select_product_group">SELECT PRODUCT GROUP</string>
+    <string name="no_product_group">NO PRODUCT GROUP</string>
     <string name="search_supplier">Search Supplier</string>
-    <string name="select_supplier">Select Supplier</string>
-    <string name="no_supplier">No Supplier</string>
+    <string name="select_supplier">SELECT SUPPLIER</string>
+    <string name="no_supplier">NO SUPPLIER</string>
     <string name="search_bill">Search Bills</string>
-    <string name="select_bill">Select Bill</string>
-    <string name="no_bill">No Receipt</string>
+    <string name="select_bill">SELECT BILL</string>
+    <string name="no_bill">NO RECEIPT</string>
 	<string name="search_credit">Search Credit</string>
-    <string name="select_credit">Select Credit</string>
-    <string name="no_credit">No Credit</string>
+    <string name="select_credit">SELECT CREDIT</string>
+    <string name="no_credit">NO CREDIT</string>
     <string name="search_transaction">Search Transaction</string>
-    <string name="select_transaction">Select Transaction</string>
-    <string name="no_transaction">No Transaction</string>
+    <string name="select_transaction">SELECT TRANSACTION</string>
+    <string name="no_transaction">NO TRANSACTION</string>
     <string name="waitress">Waitress</string>
     
     <string name="transaction_daily">Daily Transaction</string>
     
-    <string name="transaction">Transaction</string>
-    <string name="transaction_no">Transaction No.</string>
-    <string name="transaction_date">Date</string>
-    <string name="transaction_cashier">Cashier</string>
-    <string name="transaction_list">Transaction List</string>
-    <string name="transaction_recap">Transaction Summary</string>
-    <string name="transaction_total">Total Transaction</string>
+    <string name="transaction">TRANSACTION</string>
+    <string name="transaction_no">TRANSACTION NO.</string>
+    <string name="transaction_date">DATE</string>
+    <string name="transaction_cashier">CASHIER</string>
+    <string name="transaction_list">TRANSACTION LIST</string>
+    <string name="transaction_recap">TRANSACTION SUMMARY</string>
+    <string name="transaction_total">TOTAL TRANSACTION</string>
     
-    <string name="printer_settings">Printer Configuration</string>
+    <string name="printer_settings">PRINTER CONFIGURATION</string>
     
     <string name="font_size_regular">Standard</string>
     <string name="font_size_small">Small</string>
@@ -530,6 +551,7 @@
     <string name="alert_demo_account">"Delete is not allowed under demo account."</string>
     <string name="alert_product_price_issue">"Product price is lesser or equal than product cost"</string>
     <string name="alert_install_browser">"Please install browser to view user guide."</string>
+    <string name="alert_import_invalid_file">"Invalid file format to import product info."</string>
     
     <string name="user_role_cashier">Cashier</string>
 	<string name="user_role_admin">Admin</string>
@@ -558,11 +580,16 @@
     <string name="quantity_type_gram_short">g</string>
     <string name="quantity_type_milliliter_short">ml</string>
 	
-	<string name="payment_type_cash">Cash</string>
-	<string name="payment_type_debit_card">Debit Card</string>
-	<string name="payment_type_credit_card">Credit Card</string>
-	<string name="payment_type_credit">Credit</string>
-	
+	<string name="payment_type_cash">CASH</string>
+	<string name="payment_type_debit_card">DEBIT CARD</string>
+	<string name="payment_type_credit_card">CREDIT CARD</string>
+	<string name="payment_type_credit">CREDIT</string>
+
+    <string name="printing_option_no">NO RECEIPT</string>
+    <string name="printing_option_yes_once">PRINT RECEIPT</string>
+    <string name="printing_option_yes_twice">PRINT TWICE</string>
+    <string name="printing_option_send_email">SEND EMAIL</string>
+
 	<string name="order_type_dine_in">Dine In</string>
 	<string name="order_type_take_away">Take Away</string>
 	
@@ -629,6 +656,7 @@
 	<string name="menu_reference_employee">Employee</string>	
 	<string name="menu_reference_supplier">Supplier</string>	
 	<string name="menu_reference_discount">Discount</string>
+    <string name="menu_reference_import_export">Import / Export</string>
 	<string name="menu_printer">Printer</string>
     <string name="menu_reupload">Re-upload</string>
 	<string name="menu_change_password">Change Password</string>

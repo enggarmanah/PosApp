@@ -388,6 +388,21 @@ public class DbUtil {
 
 				db.execSQL("ALTER TABLE 'DISCOUNT' ADD 'TYPE' TEXT");
 			}
+
+			// handle version 48 changes
+			if (oldVersion < 49) {
+
+				db.execSQL("ALTER TABLE 'MERCHANT' ADD 'PRINTER_FOOTER' TEXT");
+				db.execSQL("ALTER TABLE 'MERCHANT' ADD 'PRINTING_OPTION' TEXT");
+
+				db.execSQL("ALTER TABLE 'INVENTORY' ADD 'DELIVERY_NO' TEXT");
+			}
+
+			// handle version 49 changes
+			if (oldVersion < 50) {
+
+				db.execSQL("ALTER TABLE 'BILLS' ADD 'DELIVERY_NO' TEXT");
+			}
             
             //DaoMaster.dropAllTables(db, true);
             //onCreate(db);
@@ -437,7 +452,7 @@ public class DbUtil {
     		context = ctx;
     	}
     	
-    	if (merchantId == getDbId()) {
+    	if (merchantId == getDbId() || (merchantId != null && merchantId.equals(getDbId()))) {
     		
     		System.out.println("Equal DB : No Switch");
     		return;
@@ -458,7 +473,7 @@ public class DbUtil {
         
         System.out.println("Open DB : " + db);
         
-        /* db.execSQL("UPDATE 'BILLS' set upload_status = 'Y'");
+        /*db.execSQL("UPDATE 'BILLS' set upload_status = 'Y'");
         db.execSQL("UPDATE 'CASHFLOW' set upload_status = 'Y'");
         db.execSQL("UPDATE 'CUSTOMER' set upload_status = 'Y'");
         db.execSQL("UPDATE 'DISCOUNT' set upload_status = 'Y'");

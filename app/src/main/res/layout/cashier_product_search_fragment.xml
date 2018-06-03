@@ -11,7 +11,7 @@
             style="@style/SectionBackButtonStyle"
             android:contentDescription="@string/none" />
         
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/navigationTitle"
             style="@style/SectionTopTextStyle"
             android:gravity="center_vertical|start"

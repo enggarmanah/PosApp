@@ -6,56 +6,56 @@
 		
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_name_fl"/>
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_name" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/nameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_login_id_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_login_id" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/userIdText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
         
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_password_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_password" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/passwordText"
                 style="@style/FormInputPasswordStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_type_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_type" />
 
@@ -68,26 +68,26 @@
         <LinearLayout android:id="@+id/employeeLayout" 
             style="@style/FormRowStyle">
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_employee_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_employee" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/employeeText"
                 style="@style/FormInputSelectStyle" />
         </LinearLayout>
 
         <LinearLayout style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_status_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_status" />
 
@@ -99,13 +99,13 @@
         <LinearLayout 
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:layout_gravity="top"
                 android:text="@string/field_access_right_fl"
                 android:layout_marginTop="2dp"/>
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:layout_gravity="top"
                 android:layout_marginTop="2dp"

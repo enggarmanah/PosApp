@@ -259,12 +259,12 @@ public class CashierProductCountDlgFragment extends DialogFragment {
             mInfoText.setText(getText(R.string.count));
         }
 
-		mProductText.setText(mProduct.getName());
+		mProductText.setText(mProduct.getName().toUpperCase());
 		mRemarksText.setText(mRemarks);
 		mValueText.setText(CommonUtil.formatNumber(mValue));
 		
 		if (mPersonInCharge != null) {
-			mPersonInChargeText.setText(mPersonInCharge.getName());
+			mPersonInChargeText.setText(mPersonInCharge.getName().toUpperCase());
 		} else {
 			mPersonInChargeText.setText(getString(R.string.track_employee));
 		}
@@ -342,7 +342,7 @@ public class CashierProductCountDlgFragment extends DialogFragment {
 			}
 			
 			if (list.size() == 1) {
-				price1.setType(getString(R.string.field_price));
+				price1.setType(getString(R.string.price));
 			}
 		}
 		

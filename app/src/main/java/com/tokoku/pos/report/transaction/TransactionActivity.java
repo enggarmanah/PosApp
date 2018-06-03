@@ -1,5 +1,6 @@
 package com.tokoku.pos.report.transaction;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,6 +21,9 @@ import com.tokoku.pos.util.NotificationUtil;
 import com.tokoku.pos.util.PrintUtil;
 import com.tokoku.pos.util.UserUtil;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -243,15 +247,42 @@ public class TransactionActivity extends BaseActivity
 
 			case R.id.menu_item_email:
 
-				mTransactionListFragment.generateReport(getString(R.string.menu_report_transaction));
+                if (mIsDisplayTransactionYear || mIsDisplayTransactionMonth || mIsDisplayTransactionDay) {
+                    mTransactionListFragment.generateReport(getString(R.string.menu_report_transaction));
+
+                } else if (mIsDisplayTransaction) {
+
+                    try {
+                        PrintUtil.initPdf(this);
+                        Uri uri = PrintUtil.printPdf(mSelectedTransaction);
+
+                        startActivityForResult(CommonUtil.getActionSendIntent(new File(uri.getPath()), getString(R.string.receipt)), 1);
+
+                        /*Intent target = new Intent(Intent.ACTION_VIEW);
+                        target.setDataAndType(uri, "application/pdf");
+                        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+                        Intent intent = Intent.createChooser(target, "Open File");
+                        try {
+                            startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
+                            // Instruct the user to install a PDF reader here, or something
+                        }*/
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
 
 				return true;
 
 			case R.id.menu_item_print:
 				
 				if (PrintUtil.isPrinterConnected()) {
-					try {
+
+				    try {
 						PrintUtil.printTransaction(mSelectedTransaction);
+
 					} catch (Exception e) {
 						e.printStackTrace();
 						showMessage(getString(R.string.printer_cant_print));
@@ -456,6 +487,7 @@ public class TransactionActivity extends BaseActivity
 			} else if (mIsDisplayTransaction) {
 				
 				mUpItem.setVisible(false);
+                mEmailItem.setVisible(true);
 				mPrintItem.setVisible(true);
 				
 				if (Constant.USER_ROLE_ADMIN.equals(UserUtil.getUser().getRole())) {

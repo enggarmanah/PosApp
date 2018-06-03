@@ -100,9 +100,9 @@ public class ConfirmTaskDlgFragment extends BaseDialogFragment {
 
 			@Override
 			public void onClick(View v) {
-				
-				mListener.onConfirm(mTask);
+
 				dismiss();
+				mListener.onConfirm(mTask);
 			}
 		};
 	}

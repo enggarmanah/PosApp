@@ -6,15 +6,15 @@
 		
         <LinearLayout style="@style/FormRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_name_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_name" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/nameText"
                 style="@style/FormInputStyle" />
         </LinearLayout>
@@ -23,11 +23,11 @@
             android:id="@+id/discountTypePanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_discount_type_fl" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_discount_type" />
 
@@ -40,15 +40,15 @@
             android:id="@+id/percentagePanel"
             style="@style/FormRowStyle" >
 			
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_percentage_fl" />
             
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_percentage" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/percentageText"
                 style="@style/FormInputNumericStyle" />
         </LinearLayout>
@@ -57,15 +57,15 @@
             android:id="@+id/amountPanel"
             style="@style/FormRowStyle" >
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextFirstLetterStyle"
                 android:text="@string/field_amount_fl" />
 
-            <TextView
+            <com.tokoku.pos.common.BoldTextView
                 style="@style/FormTextStyle"
                 android:text="@string/field_amount" />
 
-            <EditText
+            <com.tokoku.pos.common.BoldEditText
                 android:id="@+id/amountText"
                 style="@style/FormInputNumericStyle" />
         </LinearLayout>

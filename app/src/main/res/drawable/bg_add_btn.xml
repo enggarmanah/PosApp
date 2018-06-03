@@ -19,8 +19,8 @@
         <shape android:shape="oval" >
             <solid android:color="@color/background_blue_dark" />
 			<size
-                android:height="60dp"
-                android:width="60dp" />
+                android:height="40dp"
+                android:width="40dp" />
 			<stroke
                 android:width="0.5dp"
                 android:color="#1f405c" />

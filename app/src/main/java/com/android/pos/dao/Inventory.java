@@ -1,8 +1,8 @@
 package com.android.pos.dao;
 
-import java.io.Serializable;
-
 import com.android.pos.dao.DaoSession;
+
+import java.io.Serializable;
 
 import de.greenrobot.dao.DaoException;
 
@@ -10,7 +10,6 @@ import de.greenrobot.dao.DaoException;
 /**
  * Entity mapped to table INVENTORY.
  */
-@SuppressWarnings("serial")
 public class Inventory implements Serializable {
 
     private Long id;
@@ -22,6 +21,7 @@ public class Inventory implements Serializable {
     private Float quantity;
     private Long billId;
     private String billReferenceNo;
+    private String deliveryNo;
     private Long supplierId;
     private String supplierName;
     private java.util.Date inventoryDate;
@@ -59,7 +59,7 @@ public class Inventory implements Serializable {
         this.id = id;
     }
 
-    public Inventory(Long id, String refId, long merchantId, long productId, String productName, Float productCostPrice, Float quantity, Long billId, String billReferenceNo, Long supplierId, String supplierName, java.util.Date inventoryDate, String remarks, String status, String uploadStatus, String createBy, java.util.Date createDate, String updateBy, java.util.Date updateDate) {
+    public Inventory(Long id, String refId, long merchantId, long productId, String productName, Float productCostPrice, Float quantity, Long billId, String billReferenceNo, String deliveryNo, Long supplierId, String supplierName, java.util.Date inventoryDate, String remarks, String status, String uploadStatus, String createBy, java.util.Date createDate, String updateBy, java.util.Date updateDate) {
         this.id = id;
         this.refId = refId;
         this.merchantId = merchantId;
@@ -69,6 +69,7 @@ public class Inventory implements Serializable {
         this.quantity = quantity;
         this.billId = billId;
         this.billReferenceNo = billReferenceNo;
+        this.deliveryNo = deliveryNo;
         this.supplierId = supplierId;
         this.supplierName = supplierName;
         this.inventoryDate = inventoryDate;
@@ -157,6 +158,14 @@ public class Inventory implements Serializable {
 
     public void setBillReferenceNo(String billReferenceNo) {
         this.billReferenceNo = billReferenceNo;
+    }
+
+    public String getDeliveryNo() {
+        return deliveryNo;
+    }
+
+    public void setDeliveryNo(String deliveryNo) {
+        this.deliveryNo = deliveryNo;
     }
 
     public Long getSupplierId() {

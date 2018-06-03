@@ -178,7 +178,7 @@ public class TaxDetailFragment extends BaseFragment implements TaxDetailArrayAda
 			return;
 		}
 		
-		mDateText.setText(CommonUtil.formatDayDateTime(mTransaction.getTransactionDate()));
+		mDateText.setText(CommonUtil.formatDayDateTime(mTransaction.getTransactionDate()).toUpperCase());
 		mTitleText.setText(CommonUtil.formatCurrency(mTransaction.getTaxAmount()));
 		
 		mTransactionNoText.setText(mTransaction.getTransactionNo());

@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListViewRowStyle">
 
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/transactionDateText"
         style="@style/ListViewRowReportDateTextStyle"/>
     
-    <TextView
+    <com.tokoku.pos.common.StdTextView
         android:id="@+id/totalAmountText"
         style="@style/ListViewRowReportTotalTextStyle"/>
 

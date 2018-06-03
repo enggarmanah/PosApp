@@ -5,71 +5,93 @@
     android:layout_gravity="center"
     android:orientation="vertical" >
 
-    <TextView
+    <com.tokoku.pos.common.BoldTextView
         style="@style/PopUpDialogHeaderStyle"
         android:layout_width="300dp"
         android:text="@string/transaction_summary" />
-	
+
+    <LinearLayout
+        android:id="@+id/transactionDatePanel"
+        style="@style/PaymentSummaryRowStyle" >
+
+        <com.tokoku.pos.common.BoldTextView
+            style="@style/PaymentSummaryRowLabelStyle"
+            android:text="@string/transaction_date" />
+
+        <com.tokoku.pos.common.BoldTextView
+            android:id="@+id/transactionDateText"
+            style="@style/PaymentSummaryRowValueStyle" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/customerPanel"
         style="@style/PaymentSummaryRowStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             style="@style/PaymentSummaryRowLabelStyle"
             android:text="@string/customer" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/customerText"
             style="@style/PaymentSummaryRowValueStyle" />
     </LinearLayout>
 
     <LinearLayout style="@style/PaymentSummaryRowStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             style="@style/PaymentSummaryRowLabelStyle"
             android:text="@string/total" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/totalBillText"
             style="@style/PaymentSummaryRowValueStyle" />
     </LinearLayout>
 
     <LinearLayout style="@style/PaymentSummaryRowStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/paymentTypeText"
             style="@style/PaymentSummaryRowLabelStyle"/>
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/paymentText"
             style="@style/PaymentSummaryRowValueStyle" />
     </LinearLayout>
 
     <LinearLayout style="@style/PaymentSummaryRowStyle" >
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/changeLabelText"
             style="@style/PaymentSummaryRowLabelStyle"
             android:text="@string/change" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:id="@+id/changeText"
             style="@style/PaymentSummaryRowValueStyle" />
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/printingOptionSp"
+            style="@style/CashierSpinnerRowTextStyle" />
+    </FrameLayout>
     
     <LinearLayout style="@style/CashierNumberRowStyle" >
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/okBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/ok" />
 
-        <TextView
+        <com.tokoku.pos.common.BoldTextView
             android:layout_width="0.5dp"
             android:layout_height="fill_parent"
             android:background="#AAA" />
 
-        <Button
+        <com.tokoku.pos.common.BoldButton
             android:id="@+id/cancelBtn"
             style="@style/OkCancelButtonStyle"
             android:text="@string/cancel" />

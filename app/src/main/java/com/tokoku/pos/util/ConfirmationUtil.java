@@ -12,6 +12,7 @@ public class ConfirmationUtil {
 	public static final String PRINT_ORDER = "PRINT_ORDER";
 	public static final String CANCEL_TRANSACTION = "CANCEL_TRANSACTION";
 	public static final String ADD_PAYMENT = "ADD_PAYMENT";
+	public static final String IMPORT_PRODUCT = "IMPORT_PRODUCT";
 	
 	public static ConfirmTaskDlgFragment mAlertDialog = new ConfirmTaskDlgFragment();
 	

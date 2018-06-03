@@ -14,7 +14,7 @@
 	    android:layout_marginLeft="4dp"
 	    android:layout_marginStart="4dp"
 	    android:contentDescription="@string/none"/>
-	<TextView
+	<com.tokoku.pos.common.StdTextView
 	    android:id="@+id/menuText"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_width="fill_parent"
 	    android:layout_gravity="center">
-		<TextView
+		<com.tokoku.pos.common.StdTextView
 		    android:id="@+id/countText"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
