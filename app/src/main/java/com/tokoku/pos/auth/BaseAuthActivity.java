@@ -105,7 +105,7 @@ public class BaseAuthActivity extends Activity implements HttpAsyncListener {
 
 		case R.id.menu_item_exit:
 
-			if (MerchantUtil.getMerchantId().longValue() != Constant.DEMO_MERCHANT_ID) {
+			if (MerchantUtil.getMerchantId() != null && MerchantUtil.getMerchantId().longValue() != Constant.DEMO_MERCHANT_ID) {
 
                 Intent intent = new Intent(context, LogoutPasswordActivity.class);
 				startActivityForResult(intent, AUTHENTICHATION_ON_EXIT);

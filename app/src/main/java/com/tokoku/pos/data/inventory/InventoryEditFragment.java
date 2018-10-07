@@ -52,7 +52,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     LinearLayout mBillsReferenceNoPanel;
     LinearLayout mSupplierPanel;
     LinearLayout mRemarksPanel;
-    	
+
     CodeSpinnerArrayAdapter statusArrayAdapter;
     
     private InventoryDaoService mInventoryDaoService = new InventoryDaoService();
@@ -159,7 +159,10 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
     	if (inventory != null) {
     		
     		int statusIndex = statusArrayAdapter.getPosition(inventory.getStatus());
-    		mStatusSp.setSelection(statusIndex);
+
+    		if (mStatusSp.getSelectedItemPosition() != statusIndex) {
+                mStatusSp.setSelection(statusIndex);
+            }
     		
     		mProductNameText.setText(inventory.getProductName());
     		mProductCostPriceText.setText(CommonUtil.formatCurrency(inventory.getProductCostPrice()));
@@ -478,6 +481,7 @@ public class InventoryEditFragment extends BaseEditFragment<Inventory> {
                         }
                     } else {
 
+                    	mItem.setStatus(mStatus);
                         mItem.setDeliveryNo(null);
                         mItem.setInventoryDate(null);
                         mItem.setBills(null);

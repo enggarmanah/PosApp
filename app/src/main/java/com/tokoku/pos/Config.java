@@ -12,9 +12,9 @@ public class Config {
 	//public static String SERVER_URL = "http://192.168.169.2:8888";
 	//public static String SERVER_URL = "http://192.168.1.161:8888";
 	//public static String SERVER_URL = "http://172.20.10.4:8888";
-	//public static String SERVER_URL = "http://10.0.3.2:8888";
+	//public static String SERVER_URL = "http://10.0.3.2:8080";
 	
-	public static String SERVER_URL = "http://pos-tokoku.appspot.com";
+	public static String SERVER_URL = "https://www.pos-tokoku.com";
 	
 	public static boolean isDebug() {
 		
@@ -23,7 +23,7 @@ public class Config {
 		
 	public static boolean isDevelopment() {
 
-		return !SERVER_URL.equals("http://pos-tokoku.appspot.com");
+		return !SERVER_URL.equals("https://www.pos-tokoku.com");
 	}
 	
 	private static boolean isMenuReportExpanded = false;

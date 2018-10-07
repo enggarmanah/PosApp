@@ -52,7 +52,8 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
-        android:paddingTop="30dp">
+        android:paddingTop="30dp"
+		android:gravity="center">
     	
         
         <com.tokoku.pos.common.BoldTextView
@@ -112,6 +113,26 @@
 	        android:textColor="@color/text_blue_dark"
 	        android:singleLine="true"/>
         
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+		android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:paddingTop="5dp">
+
+        <com.tokoku.pos.common.BoldTextView
+            android:id="@+id/privacyPolicyText"
+            android:text="@string/privacy_policy"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="@dimen/auth_sub_title"
+            android:textStyle="bold"
+            android:textColor="@color/text_blue_dark"
+            android:singleLine="true"/>
+
     </LinearLayout>
     
 </LinearLayout>

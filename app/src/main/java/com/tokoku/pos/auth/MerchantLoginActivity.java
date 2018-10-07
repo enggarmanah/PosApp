@@ -37,6 +37,7 @@ public class MerchantLoginActivity extends BaseAuthActivity implements LoginList
 	TextView mSignUpText;
 	TextView mForgotPasswordText;
 	TextView mDemoText;
+	TextView mPrivacyPolicyText;
 	
 	Merchant mMerchant;
 	
@@ -71,6 +72,9 @@ public class MerchantLoginActivity extends BaseAuthActivity implements LoginList
 		
 		mDemoText = (TextView) findViewById(R.id.demoText);
 		mDemoText.setOnClickListener(getDemoTextOnClickListener());
+
+        mPrivacyPolicyText = (TextView) findViewById(R.id.privacyPolicyText);
+        mPrivacyPolicyText.setOnClickListener(getPrivacyPolicyTextOnClickListener());
 				
 		registerField(mLoginIdText);
 		registerField(mPasswordText);
@@ -323,6 +327,19 @@ public class MerchantLoginActivity extends BaseAuthActivity implements LoginList
 			}
 		};
 	}
+
+    private View.OnClickListener getPrivacyPolicyTextOnClickListener() {
+
+        return new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, PrivacyPolicyActivity.class);
+                startActivity(intent);
+            }
+        };
+    }
 	
 	@Override
 	public void onMerchantValidated(Merchant merchant) {

@@ -52,15 +52,14 @@ public class OrderListFragment extends BaseFragment
 		}
 		
 		mOrderListAdapter = new OrderListArrayAdapter(getActivity(), mOrderReferences, this);
-		
+		mOrderList = (GridView) view.findViewById(R.id.orderList);
+
 		return view;
 	}
 	
 	@Override
 	public void onStart() {
 		super.onStart();
-		
-		mOrderList = (GridView) getActivity().findViewById(R.id.orderList);
 		
 		mOrderList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		mOrderList.setAdapter(mOrderListAdapter);

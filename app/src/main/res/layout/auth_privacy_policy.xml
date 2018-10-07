@@ -1,0 +1,24 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RegistrationFragmentStyle"
+    android:background="@color/background_blue_light">
+
+	<LinearLayout    
+	    style="@style/MainActivityStyle"
+	    android:orientation="vertical"
+	    android:gravity="center"
+	    android:layout_height="match_parent"
+        android:padding="20dp">
+		
+	    <com.tokoku.pos.common.HtmlTextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/privacy_policy_text"/>
+	    
+	    <com.tokoku.pos.common.BoldButton
+	        android:id="@+id/okBtn"
+	        android:text="@string/ok"
+	        style="@style/LoginButtonStyle"
+	        android:layout_marginTop="20dp"/>
+	    
+	</LinearLayout>
+</ScrollView>
